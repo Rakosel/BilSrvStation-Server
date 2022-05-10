@@ -1,0 +1,20 @@
+____________    BilSrv Station   _________
+
+1.  install Debian 
+       Static hostname: BilSrvStation
+        Icon name: computer-desktop
+        Chassis: desktop
+        Machine ID: 154908c6cbde4df189c8a86055496831
+        Boot ID: 2e4f57102fb04f6aa2c172fc6f46c797
+        Operating System: Debian GNU/Linux 11 (bullseye)
+        Kernel: Linux 5.10.0-9-amd64
+        Architecture: x86-64
+--time-style=long-iso -clt / | tail -n 1 | awk '{ print $7, $6}'
+21:13 2021-09-23
+
+2. Install drivers  AMD DRIVERS && rtl_nic
+
+https://linuxconfig.org/how-to-install-the-latest-amd-drivers-on-debian-10-buster
+
+3. Create users and groups
+

@@ -1,0 +1,4 @@
+# FARID_IOTWIFIST_DATA
+#/mnt/SMB/soft_2tbseagreen -fstype=cifs,username=user_soft,credentials=/home/rootsu/.smbusers ://192.168.1.1/soft_2tbseagreen
+#/mnt/SMB/soft_3tbseasyan -fstype=cifs,username=user_soft,credentials=/home/rootsu/.smbusers ://192.168.1.1/soft_3tbseasyan
+/mnt/SMB/	/etc/autofs/auto.smb_mount

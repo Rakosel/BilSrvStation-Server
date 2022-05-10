@@ -1,0 +1,210 @@
+
+module sudotev70522v21 1.0;
+# do sudotev11.te vkl
+require {
+	type sysadm_sudo_t;
+	type lib_t;
+	type anacron_exec_t;
+	type security_t;
+	type public_content_rw_t;
+	type usr_t;
+	type etc_t;
+	type tmp_t;
+	type staff_sudo_t;
+	type xdm_t;
+	type shell_exec_t;
+	type bin_t;
+	type crond_initrc_exec_t;
+	type shadow_t;
+	type dpkg_var_lib_t;
+	type init_t;
+	type sendmail_exec_t;
+	type apt_var_cache_t;
+	type syslog_conf_t;
+	type systemd_generator_exec_t;
+	type var_spool_t;
+	type apt_var_lib_t;
+	type postfix_spool_t;
+	class file { lock create link add_name remove_name append create getattr entrypoint ioctl map open read relabelfrom relabelto rename setattr unlink write };
+	class dir { dd_name getattr add_name create relabelfrom unlink relabelto remove_name rename rmdir search setattr write read open };
+	class fifo_file { ioctl read };
+	class system status;
+	class key create;
+	class process { noatsecure rlimitinh siginh transition };
+	type apt_var_log_t;
+	type fsdaemon_t;
+	type usr_t;
+	type public_content_rw_t;
+	type user_home_dir_t;
+	type syslogd_t;
+	type lib_t;
+	type var_log_t;
+	type man_t;
+	type user_home_t;
+	type dpkg_script_t;
+	type systemd_unit_t;
+	type var_lib_t;
+	type dpkg_lock_t;
+	type system_cron_spool_t;
+	type mount_t;
+	class process { getcap setcap };
+	class capability setpcap;
+	class capability net_admin;
+	class process { noatsecure rlimitinh siginh transition };
+	class lnk_file { getattr read unlink };
+	class security compute_create;
+}
+#============= staff_sudo_t ==============
+allow mount_t self:capability setpcap;
+
+#!!!! This avc is allowed in the current policy
+allow mount_t self:process { getcap setcap };
+
+#!!!! This avc is allowed in the current policy
+#!!!! This av rule may have been overridden by an extended permission av rule
+allow staff_sudo_t public_content_rw_t:file { append ioctl };
+
+#!!!! This avc is allowed in the current policy
+allow staff_sudo_t sysadm_sudo_t:key create;
+
+
+#	Possible cause is the source role (staff_r) and target role (sysadm_r) are different.
+allow staff_sudo_t sysadm_sudo_t:process { noatsecure rlimitinh siginh transition };
+
+#============= sysadm_sudo_t ==============
+
+#!!!! This avc is allowed in the current policy
+allow sysadm_sudo_t bin_t:file { relabelto rename write };
+
+#!!!! This avc is allowed in the current policy
+#allow sysadm_sudo_t cron_spool_t:dir { add_name remove_name write };
+
+#!!!! This avc is allowed in the current policy
+#allow sysadm_sudo_t cron_spool_t:file { create rename setattr unlink write };
+
+#!!!! This avc is allowed in the current policy
+allow sysadm_sudo_t dpkg_var_lib_t:dir rmdir;
+
+#!!!! This avc is allowed in the current policy
+allow sysadm_sudo_t lib_t:dir { add_name create relabelfrom relabelto rename setattr };
+
+#!!!! This avc is allowed in the current policy
+allow sysadm_sudo_t lib_t:file { create relabelfrom relabelto rename setattr write };
+
+#!!!! This avc is allowed in the current policy
+#!!!! This av rule may have been overridden by an extended permission av rule
+allow sysadm_sudo_t public_content_rw_t:file { write append ioctl };
+
+#!!!! This avc is allowed in the current policy
+allow sysadm_sudo_t security_t:file map;
+
+#_______________________________________________
+
+#============= sysadm_sudo_t ==============
+
+#!!!! This avc is allowed in the current policy
+allow sysadm_sudo_t bin_t:file { relabelto rename write };
+
+#!!!! This avc is allowed in the current policy
+#allow sysadm_sudo_t cron_spool_t:dir { add_name remove_name write };
+
+#!!!! This avc is allowed in the current policy
+#allow sysadm_sudo_t cron_spool_t:file { create rename setattr unlink write };
+
+#!!!! This avc is allowed in the current policy
+allow sysadm_sudo_t dpkg_var_lib_t:dir rmdir;
+
+#!!!! This avc is allowed in the current policy
+allow sysadm_sudo_t lib_t:dir { add_name create relabelfrom relabelto rename setattr };
+
+#!!!! This avc is allowed in the current policy
+allow sysadm_sudo_t lib_t:file { create relabelfrom relabelto rename setattr write };
+
+#!!!! This avc is allowed in the current policy
+#!!!! This av rule may have been overridden by an extended permission av rule
+allow sysadm_sudo_t public_content_rw_t:file { write append ioctl };
+
+#!!!! This avc is allowed in the current policy
+allow sysadm_sudo_t security_t:file map;
+
+#_______________________________________________
+
+#!!!! This avc is allowed in the current policy
+allow sysadm_sudo_t shell_exec_t:file entrypoint;
+
+#!!!! This avc is allowed in the current policy
+allow sysadm_sudo_t usr_t:dir { add_name create relabelfrom relabelto rename setattr };
+
+#!!!! This avc is allowed in the current policy
+allow sysadm_sudo_t usr_t:file { create relabelfrom relabelto rename setattr write };
+
+#============= xdm_t ==============
+
+#!!!! This avc is allowed in the current policy
+allow xdm_t init_t:system status;
+
+#============= fsdaemon_t ==============
+allow fsdaemon_t user_home_dir_t:dir { add_name write };
+#allow fsdaemon_t user_home_dir_t:file { append create getattr open };
+
+
+
+allow sysadm_sudo_t usr_t:dir { rmdir add_name create relabelfrom relabelto remove_name rename setattr write };
+allow sysadm_sudo_t usr_t:file { create open read relabelfrom relabelto rename setattr write unlink };
+allow sysadm_sudo_t var_lib_t:dir { remove_name write };
+allow sysadm_sudo_t var_log_t:dir { add_name write };
+allow sysadm_sudo_t var_log_t:file { append create open };
+
+#============= sysadm_sudo_t ==============
+allow sysadm_sudo_t anacron_exec_t:file { relabelto rename write };
+allow sysadm_sudo_t apt_var_cache_t:dir { add_name open read remove_name setattr };
+allow sysadm_sudo_t apt_var_lib_t:file { create setattr unlink };
+
+
+allow sysadm_sudo_t bin_t:file { create relabelfrom relabelto rename setattr write };
+allow sysadm_sudo_t crond_initrc_exec_t:file { relabelto rename write };
+allow sysadm_sudo_t dpkg_lock_t:file { lock open read write };
+allow sysadm_sudo_t etc_t:file { relabelfrom relabelto write };
+allow sysadm_sudo_t security_t:security compute_create;
+allow sysadm_sudo_t system_cron_spool_t:dir { add_name getattr relabelto remove_name rename search write };
+allow sysadm_sudo_t system_cron_spool_t:file { create relabelfrom relabelto rename setattr write };
+allow sysadm_sudo_t systemd_unit_t:dir { add_name getattr remove_name search write };
+allow sysadm_sudo_t tmp_t:dir write;
+allow sysadm_sudo_t tmp_t:file { getattr open write };
+allow sysadm_sudo_t var_log_t:file { append create open };
+allow sysadm_sudo_t var_spool_t:dir { add_name create getattr relabelfrom remove_name setattr write };
+
+#============= syslogd_t ==============
+allow syslogd_t postfix_spool_t:dir add_name;
+
+#_______________________________________________
+
+
+#============= sysadm_sudo_t ==============
+allow sysadm_sudo_t apt_var_log_t:dir { add_name getattr remove_name search write };
+allow sysadm_sudo_t apt_var_log_t:file { append create getattr open setattr unlink write };
+#allow sysadm_sudo_t bin_t:dir { remove_name rmdir write };
+#allow sysadm_sudo_t bin_t:file { add_name remove_name write setattr unlink };
+#allow sysadm_sudo_t bin_t:lnk_file unlink;
+allow sysadm_sudo_t dpkg_script_t:process { noatsecure rlimitinh siginh transition };
+allow sysadm_sudo_t dpkg_var_lib_t:dir { add_name remove_name write };
+allow sysadm_sudo_t dpkg_var_lib_t:file { create link rename setattr unlink write };
+allow sysadm_sudo_t lib_t:dir { remove_name rmdir write };
+allow sysadm_sudo_t lib_t:file unlink;
+allow sysadm_sudo_t lib_t:lnk_file unlink;
+allow sysadm_sudo_t man_t:dir { add_name getattr remove_name search write };
+allow sysadm_sudo_t man_t:file { create open relabelfrom relabelto rename setattr write };
+allow sysadm_sudo_t man_t:lnk_file { getattr read unlink };
+
+allow sysadm_sudo_t user_home_t:file write;
+
+allow sysadm_sudo_t self:capability net_admin;
+
+allow sysadm_sudo_t syslog_conf_t:dir { getattr search };
+#allow sysadm_sudo_t syslog_conf_t:file getattr;
+
+#allow sysadm_sudo_t systemd_unit_t:dir { dd_name getattr remove_name search write };
+#allow sysadm_sudo_t systemd_unit_t:file { create open relabelfrom relabelto rename setattr write getattr unlink };
+
+
+

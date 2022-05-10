@@ -1,0 +1,67 @@
+
+module sudotev3 1.0;
+
+require {
+	type postfix_spool_t;
+	type syslogd_t;
+	type smbd_t;
+	type mon_t;
+	type var_t;
+	type fsdaemon_t;
+	type sysadm_sudo_t;
+	type systemd_tmpfiles_t;
+	type hostname_t;
+	type fsadm_t;
+	type etc_t;
+	type unlabeled_t;
+	type dhcpc_t;
+	type mon_net_test_t;
+	type ntpd_t;
+	type sysadm_t;
+	type nmbd_t;
+	class dir { getattr read search };
+	class file { append execute getattr read rename unlink write };
+	class sock_file unlink;
+}
+
+#============= dhcpc_t ==============
+allow dhcpc_t etc_t:file execute;
+allow dhcpc_t unlabeled_t:file getattr;
+
+#============= fsadm_t ==============
+allow fsadm_t var_t:file append;
+
+#============= fsdaemon_t ==============
+allow fsdaemon_t unlabeled_t:file { read rename unlink write };
+
+#============= hostname_t ==============
+allow hostname_t unlabeled_t:file { getattr read };
+
+#============= mon_net_test_t ==============
+allow mon_net_test_t unlabeled_t:file { getattr read };
+
+#============= mon_t ==============
+allow mon_t unlabeled_t:file { getattr read };
+
+#============= nmbd_t ==============
+allow nmbd_t unlabeled_t:file unlink;
+allow nmbd_t unlabeled_t:sock_file unlink;
+
+#============= ntpd_t ==============
+allow ntpd_t unlabeled_t:file { getattr read };
+
+#============= smbd_t ==============
+allow smbd_t unlabeled_t:sock_file unlink;
+
+#============= sysadm_sudo_t ==============
+allow sysadm_sudo_t unlabeled_t:file { getattr read };
+
+#============= sysadm_t ==============
+allow sysadm_t unlabeled_t:file read;
+
+#============= syslogd_t ==============
+allow syslogd_t postfix_spool_t:dir search;
+allow syslogd_t unlabeled_t:file { getattr read };
+
+#============= systemd_tmpfiles_t ==============
+allow systemd_tmpfiles_t unlabeled_t:dir { getattr read };

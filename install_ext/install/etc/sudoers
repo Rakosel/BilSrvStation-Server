@@ -1,0 +1,38 @@
+#  @includedir /etc/sudoers.local
+#  This file MUST be edited with the 'visudo' command as root.
+#  https://linux.die.net/man/8/sysadm_selinux
+#   https://www.systutorials.com/docs/linux/man/8-sysadm_selinux/
+#
+# Please consider adding local content in /etc/sudoers.d/ instead of
+# directly modifying this file.
+#
+# See the man page for details on how to write a sudoers file.
+#
+# Sbros all variable
+Defaults	env_reset
+# Send message to mailto
+Defaults	mail_badpass
+# Path, where place FS find app
+Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+# Host alias specification
+
+# User alias specification
+
+# Cmnd alias specification
+Cmnd_Alias	DIR = /usr/bin/cd, /usr/bin/cp, /usr/bin/mv, /usr/bin/rm, /usr/bin/mkdir, /usr/bin/mkdir
+Cmnd_Alias	SHELL = /usr/bin/bash
+# User su privilege specification
+# User	ALL_HOSTS (USER:GROUP) ALL_CMD
+root	ALL=(ALL:ALL) ALL
+#  adminsu   ALL=(ALL:ALL) ALL
+# Allow members of group sudo to execute any command
+%sudo	ALL=(root) NOPASSWD:ALL
+%admins  ALL=(root) NOPASSWD:ALL
+admin ALL=(root) NOPASSWD:ALL
+admin_tech ALL=(sudo) NOPASSWD:ALL
+%exp_users ALL=(root) NOPASSWD:DIR,SHELL
+%ps_users ALL=(ALL:ps_users) NOPASSWD:/usr/bin/mc
+# See sudoers(5) for more information on "@include" directives:
+
+@includedir /etc/sudoers.d

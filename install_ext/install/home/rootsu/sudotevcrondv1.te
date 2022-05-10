@@ -1,0 +1,175 @@
+module sudotevcrondv1 1.0;
+
+require {
+
+	type auditd_etc_t;
+	type tls_privkey_t;
+	type postgresql_etc_t;
+	type dhcp_etc_t;
+	type policy_config_t;
+	type adjtime_t;
+	type etc_aliases_t;
+	class lnk_file read;
+	type sysadm_t;
+	type default_context_t;
+	class fd use;
+	type sysadm_t;
+	type unlabeled_t;
+	type sysadm_crontab_t;
+	type system_cronjob_t;
+#	type system_cron_spool_t;
+	type staff_sudo_t;
+	type user_home_t;
+	type sysadm_sudo_t;
+	type crond_tmp_t;
+	type var_t;
+	type cifs_t;
+	type syslog_conf_t;
+	type man_t;
+	type etc_runtime_t;
+	type initrc_tmp_t;
+	type etc_t;
+	type bacula_etc_t;
+	type shadow_t;
+	type sshd_key_t;
+	type home_root_t;
+	type cron_spool_t;
+	class file { append create execute execute_no_trans getattr ioctl map open read relabelfrom relabelto rename setattr unlink write lock entrypoint ioctl };
+	class dir { add_name remove_name rmdir write getattr };
+	class key { link create };
+	type bin_t;
+	type crond_t;
+	type unconfined_cronjob_t;
+	type system_cronjob_t;
+	type shell_exec_t;
+	type public_content_rw_t;
+	class process { noatsecure rlimitinh setexec setkeycreate siginh transition };
+	class fifo_file { ioctl read };
+}
+
+#	Possible cause is the source user (system_u) and target user (unconfined_u) are different.
+allow crond_t system_cronjob_t:process transition;
+
+#============= system_cronjob_t ==============
+allow system_cronjob_t public_content_rw_t:dir { add_name write };
+allow system_cronjob_t var_t:dir { add_name remove_name write };
+
+
+#!!!! This avc is a constraint violation.  You would need to modify the attributes of either the source or target types to allow this access.
+#Constraint rule: 
+#	constrain file { create relabelfrom relabelto } ((u1 == u2 -Fail-)  or (t1 == can_change_object_identity -Fail-) ); Constraint DENIED
+
+#	Possible cause is the source user (unconfined_u) and target user (system_u) are different.
+#	Possible cause is the source level (s0-s0:c0.c1023) and target level (s0) are different.
+allow system_cronjob_t var_t:file relabelto;
+
+#============= crond_t ==============
+#!!!! This avc is a constraint violation.  You would need to modify the attributes of either the source or target types to allow this access.
+#Constraint rule: 
+#	constrain process { transition noatsecure siginh rlimitinh dyntransition } ((u1 == u2 -Fail-)  or (t1 == can_change_process_identity)  and (t2 == process_user_target -Fail-)  or (t1 == cron_source_domain)  and (t2 == cron_job_domain -Fail-)  or (u2 == system_u -Fail-)  or (t1 == can_system_change -Fail-)  and (u2 == system_u -Fail-)  or (t1 == process_uncond_exempt -Fail-) ); Constraint DENIED
+
+#============= crond_t ==============
+allow crond_t unlabeled_t:file { getattr read open };
+
+#	Possible cause is the source user (system_u) and target user (unconfined_u) are different.
+
+allow crond_t system_cronjob_t:process transition;
+allow crond_t shell_exec_t:process transition;
+allow crond_t bin_t: file { ioctl read getattr lock execute execute_no_trans open }; 
+allow crond_t unconfined_cronjob_t:process transition;
+allow system_cronjob_t bin_t: file { ioctl read getattr lock execute execute_no_trans entrypoint open };
+allow crond_t shell_exec_t: file { ioctl read getattr lock execute execute_no_trans entrypoint open };
+
+#	Possible cause is the source user (system_u) and target user (unconfined_u) are different.
+allow crond_t system_cronjob_t:process transition;
+
+#============= sysadm_sudo_t ==============
+#allow sysadm_sudo_t system_cron_spool_t:dir { add_name getattr remove_name search write getattr };
+#allow sysadm_sudo_t system_cron_spool_t:file { create rename setattr unlink write };
+
+#============= sysadm_t ==============
+allow sysadm_t system_cronjob_t:file relabelto;
+
+#!!!! This avc is a constraint violation.  You would need to modify the attributes of either the source or target types to allow this access.
+#Constraint rule: 
+#	constrain file { ioctl read write create getattr setattr lock relabelfrom relabelto append map unlink link rename execute quotaon mounton audit_access open execmod watch watch_mount watch_sb watch_with_perm watch_reads execute_no_trans entrypoint } ((u1 == u2 -Fail-)  or (u1 == system_u -Fail-)  or (u1 == unconfined_u -Fail-)  or (u1 == sysadm_u -Fail-)  or (u2 == system_u -Fail-)  or (t1 != ubac_constrained_type -Fail-)  or (t2 != ubac_constrained_type -Fail-)  or (t1 == ubacfile -Fail-) ); Constraint DENIED
+
+#	Possible cause is the source user (root) and target user (unconfined_u) are different.
+#	Possible cause is the source level (s0-s0:c0.c1023) and target level (s0) are different.
+allow sysadm_sudo_t user_home_t:file write;
+
+#============= system_cronjob_t ==============
+
+#!!!! This avc is allowed in the current policy
+#!!!! This av rule may have been overridden by an extended permission av rule
+allow system_cronjob_t public_content_rw_t:file { ioctl create read write };
+allow staff_sudo_t crond_tmp_t:file { ioctl read write };
+
+#!!!! This avc is allowed in the current policy
+allow sysadm_sudo_t crond_t:fifo_file read;
+
+#!!!! This avc is allowed in the current policy
+allow sysadm_sudo_t crond_tmp_t:file { read write };
+
+#============= system_cronjob_t ==============
+
+#!!!! This avc is allowed in the current policy
+allow system_cronjob_t public_content_rw_t:file { append open };
+
+#============= system_cronjob_t ==============
+allow system_cronjob_t public_content_rw_t:dir { add_name write };
+allow system_cronjob_t public_content_rw_t:file { append create open };
+
+#!!!! This avc is allowed in the current policy
+#!!!! This av rule may have been overridden by an extended permission av rule
+allow staff_sudo_t crond_t:fifo_file { ioctl read };
+
+#!!!! This avc is allowed in the current policy
+#!!!! This av rule may have been overridden by an extended permission av rule
+#allow staff_sudo_t crond_tmp_t:file { ioctl read write };
+
+#============= sysadm_crontab_t ==============
+allow sysadm_crontab_t cron_spool_t:file { getattr open read };
+allow sysadm_crontab_t home_root_t:file { open read };
+
+
+#============= crond_t ==============
+
+#!!!! This avc is a constraint violation.  You would need to modify the attributes of either the source or target types to allow this access.
+#Constraint rule: 
+#	constrain process { transition noatsecure siginh rlimitinh dyntransition } ((u1 == u2 -Fail-)  or (t1 == can_change_process_identity)  and (t2 == process_user_target -Fail-)  or (t1 == cron_source_domain)  and (t2 == cron_job_domain -Fail-)  or (u2 == system_u -Fail-)  or (t1 == can_system_change -Fail-)  and (u2 == system_u -Fail-)  or (t1 == process_uncond_exempt -Fail-) ); Constraint DENIED
+
+#	Possible cause is the source user (system_u) and target user (unconfined_u) are different.
+allow crond_t system_cronjob_t:process transition;
+
+#============= system_cronjob_t ==============
+allow system_cronjob_t adjtime_t:file { open read };
+allow system_cronjob_t auditd_etc_t:file { open read };
+allow system_cronjob_t cifs_t:dir { add_name remove_name write };
+allow system_cronjob_t cifs_t:file { create rename setattr };
+allow system_cronjob_t dhcp_etc_t:file { open read };
+allow system_cronjob_t dhcp_etc_t:lnk_file read;
+allow system_cronjob_t etc_aliases_t:file { open read };
+allow system_cronjob_t etc_t:dir { add_name remove_name write };
+allow system_cronjob_t etc_t:file { create setattr unlink write };
+allow system_cronjob_t initrc_tmp_t:dir { remove_name rmdir write };
+allow system_cronjob_t initrc_tmp_t:file unlink;
+allow system_cronjob_t man_t:file { ioctl open read };
+allow system_cronjob_t man_t:lnk_file read;
+allow system_cronjob_t policy_config_t:file { open read };
+allow system_cronjob_t postgresql_etc_t:file { open read };
+allow system_cronjob_t sshd_key_t:file { open read };
+allow system_cronjob_t syslog_conf_t:file { open read };
+allow system_cronjob_t tls_privkey_t:file { open read };
+allow system_cronjob_t var_t:file { create relabelfrom relabelto rename setattr unlink write };
+
+#============= sysadm_t ==============
+allow sysadm_t system_cronjob_t:fd use;
+
+#============= system_cronjob_t ==============
+allow system_cronjob_t default_context_t:file { open read };
+allow system_cronjob_t public_content_rw_t:file { append ioctl open };
+allow system_cronjob_t self:process { setexec setkeycreate };
+allow system_cronjob_t shadow_t:file { open read };
+allow system_cronjob_t sysadm_t:key create;
+allow system_cronjob_t sysadm_t:process { noatsecure rlimitinh siginh transition };

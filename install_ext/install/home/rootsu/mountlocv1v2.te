@@ -1,0 +1,15 @@
+
+module mountlocv1v2 1.0;
+
+require {
+	type mount_t;
+	class process { getcap setcap };
+	class capability { dac_read_search setpcap };
+	type samba_share_t;
+	class filesystem relabelfrom;
+}
+
+#============= mount_t ==============
+allow mount_t self:capability { dac_read_search setpcap };
+allow mount_t self:process { getcap setcap };
+allow mount_t samba_share_t:filesystem relabelfrom;

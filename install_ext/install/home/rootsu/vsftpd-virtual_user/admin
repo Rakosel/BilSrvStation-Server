@@ -1,0 +1,5 @@
+local_root=/media/admin
+cmds_allowed=USER,DELE,RMD,PASS,SYST,FEAT,OPTS,PWD,TYPE,PASV,LIST,STOR,CWD,MKD,SIZE,MDTM,CDUP,RETR,RNFR,RNTO,QUIT
+local_umask=077
+write_enable=YES
+allow_writeable_chroot=YES

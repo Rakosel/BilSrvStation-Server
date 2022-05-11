@@ -1,1 +1,5 @@
-site_name: My Docs
+site_name: BilSrvStation
+nav:
+    - Home: index.md
+    - About: about.md
+theme: readthedocs

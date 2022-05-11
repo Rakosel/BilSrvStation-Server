@@ -1,0 +1,31 @@
+# .readthedocs.yaml
+# Read the Docs configuration file
+# See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
+
+# Required
+version: 2
+# Build PDF & ePub
+formats: all
+
+
+# Set the version of Python and other tools you might need
+build:
+  os: debian
+  tools:
+    python: "3.9"
+
+mkdocs:
+  configuration: mkdocs.yml
+
+# search:
+#   ignore:
+     # Custom files to ignore
+#     - file.html
+#     - api/v1/*
+
+#     # Defaults
+#     - search.html
+#     - search/index.html
+#     - 404.html
+#     - 404/index.html'
+

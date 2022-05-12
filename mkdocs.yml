@@ -1,1 +1,14 @@
-site_name: My Docs
+site_name: BilSrvStation_Server_PC
+site_description: BilSrvStation_Server_PC documentation.
+site_author: iOT Bilymo
+theme:
+    name: readthedocs
+    locale: ru
+    analytics: {gtag: 'G-274394082'}
+    highlightjs: true
+    hljs_languages:
+        - yaml
+        - django
+nav:
+    - Home: index.md
+    - About: about.md

@@ -20,7 +20,7 @@ mkdocs:
 # Optionally declare the Python requirements required to build your docs
 python:
    install:
-   - requirements: docs/requirements.txt
+   - requirements: docs/requirement.txt
 #    - method: pip
 #      path: .
 #     extra_requirements:

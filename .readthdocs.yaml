@@ -7,7 +7,6 @@ version: 2
 # Build PDF & ePub
 formats: all
 
-
 # Set the version of Python and other tools you might need
 build:
   os: ubuntu-20.04
@@ -21,13 +20,13 @@ sphinx:
 python:
    install:
    - requirements: docs/requirements
-    - method: pip
-      path: .
+#    - method: pip
+#      path: .
 #     extra_requirements:
-   - docs
+#   - docs
 #   - method: setuptools
 #      path: package
-    system_packages: true
+#    system_packages: true
 # search:
 #   ignore:
      # Custom files to ignore

@@ -461,8 +461,7 @@ echo -e "y\n" | apt-get install man
 echo -e "y\n" | apt-get install acl
 echo -e "y\n" | apt-get install setools policycoreutils selinux-basics selinux-utils selinux-policy-default selinux-policy-mls auditd policycoreutils-python-utils semanage-utils audispd-plugins
 echo -e "y\n" | apt-get install mcstrans
-echo -e "y\n" | apt-get install pip
-pip install mkdocs
+
 sudo systemctl enable auditd
 sudo systemctl start auditd
 #policycoreutils-gui
@@ -633,9 +632,19 @@ echo -e "y\n" | apt-get install shared-mime-info
 echo -e "y\n" | apt-get install wget genisoimage xorriso isolinux
 echo -e "y\n" | apt-get install hddtemp lm-sensors
 echo -e "y\n" | apt-get install at
-echo -e "y\n" | apt-get install anacron
+echo -e "y\n" | apt-get install pip
+echo -e "y\n" | apt-get install curl
+echo -e "y\n" | apt-get install python3-sphinx
+pip install mkdocs
+pip install -U mkdocs
+pip install mkdocs-rtd-dropdown
+# Install Sphinx
+pip install -U sphinx
+apt-get install python3-venv
+python -m venv .venv
+#echo -e "y\n" | apt-get install anacron
 systemctl enable cron
-systemctl enable anacron
+#systemctl enable anacron
 #echo -e "y\n" | apt-get install postfix
 # Nmap Ngrep VnStat Iptraf-ng NetHogs Iotop dd dh netcat
 systemctl enable autofs
@@ -1376,6 +1385,7 @@ semodule -i sudotevb1.pp
 semodule -i sudotevb2.pp
 semodule -i sudotev70522v21.pp
 semodule -i sudotevcrondv1.pp
+semodule -i sphinxtev1.pp
 
 #touch log.log
 #journalctl -xe >> log.log

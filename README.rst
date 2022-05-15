@@ -33,16 +33,6 @@ full_subscr.lst
 | 			|||
 +------------------------+------------+---------------------+
 
-.. table:: Простая таблица
-    =====  =====  =======
-      A      B    A and B
-    =====  =====  =======
-    False  False  False
-    True   False  False
-    False  True   False
-    True   True   True
-    =====  =====  =======
-
 `Online Sphinx Editor <https://livesphinx.herokuapp.com/>`_, `NoTex Editor <https://www.notex.ch/>`_, allowed edit and view code sphinx
  
 

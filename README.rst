@@ -46,15 +46,14 @@ Features
 --------
 
 **15.05.2022**
-|    + Add pages `cut_discr`, `full_discr`, `nav_r`, `build_doc`, `structurs`
+- \+ Add pages `cut_discr`, `full_discr`, `nav_r`, `build_doc`, `structurs`
 
 Target
 --------
 
 **15.05.2022**
-----------
--:strike:`Create and generate release v1.02a project`
--:del:`Study getting started and settings the sphinx`
+- :strike:`Create and generate release v1.02a project`
+- :del:`Study getting started and settings the sphinx`
 -	Fill in the main part of the sections sections: `cut_discr`, `full_discr`, `nav_r`, `build_doc`, `structurs`
 -	Organize auto-generation of code in the documentation in the `cut_discr` section, extracting text from script comments
 

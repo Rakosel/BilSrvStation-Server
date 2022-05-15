@@ -39,23 +39,23 @@ full_subscr.lst
 
 Look how easy it is to use:
 
-    import project
-    # Get your stuff done
+|    import project
+|    # Get your stuff done
 
 Features
 --------
 
 **15.05.2022**
-+ Add pages `cut_discr`, `full_discr`, `nav_r`, `build_doc`, `structurs`
+|	+ Add pages `cut_discr`, `full_discr`, `nav_r`, `build_doc`, `structurs`
 
 Target
 --------
 
 **15.05.2022**
-	:strike:`Create and generate release v1.02a project`
-	:del:`Study getting started and settings the sphinx`
-	-	Fill in the main part of the sections sections: `cut_discr`, `full_discr`, `nav_r`, `build_doc`, `structurs`
-	-	Organize auto-generation of code in the documentation in the `cut_discr` section, extracting text from script comments
+|	:strike:`Create and generate release v1.02a project`
+|	:del:`Study getting started and settings the sphinx`
+|	-	Fill in the main part of the sections sections: `cut_discr`, `full_discr`, `nav_r`, `build_doc`, `structurs`
+|	-	Organize auto-generation of code in the documentation in the `cut_discr` section, extracting text from script comments
 
 Installation
 ------------
@@ -79,10 +79,10 @@ We have a mailing list located at: asusclinstaller@ya.ru
 Other [helping commands]
 -------
 
-git clone https://github.com/Rakosel/BilSrvStation_Server_PC.git
-git add .
-git commit -a
-git push https://github.com/Rakosel/BilSrvStation_Server_PC.git master
+|	git clone https://github.com/Rakosel/BilSrvStation_Server_PC.git
+|	git add .
+|	git commit -a
+|	git push https://github.com/Rakosel/BilSrvStation_Server_PC.git master
 (.venv) $ sphinx-build -b html docs/source/ docs/build/html
 
 License

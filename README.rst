@@ -46,7 +46,7 @@ Features
 --------
 
 **15.05.2022**
-- \+ Add pages `cut_discr`, `full_discr`, `nav_r`, `build_doc`, `structurs`
+- Add pages `cut_discr`, `full_discr`, `nav_r`, `build_doc`, `structurs`
 
 Target
 --------

@@ -33,6 +33,16 @@ full_subscr.lst
 | 			|||
 +------------------------+------------+---------------------+
 
+.. table:: Простая таблица
+    =====  =====  =======
+      A      B    A and B
+    =====  =====  =======
+    False  False  False
+    True   False  False
+    False  True   False
+    True   True   True
+    =====  =====  =======
+
 `Online Sphinx Editor <https://livesphinx.herokuapp.com/>`_, `NoTex Editor <https://www.notex.ch/>`_, allowed edit and view code sphinx
  
 
@@ -52,7 +62,7 @@ Target
 --------
 
 - **15.05.2022**
-~~~~~~~~~~~~~~~~~~
+
 - :strike:`Create and generate release v1.02a project`
 - :del:`Study getting started and settings the sphinx`
 -	Fill in the main part of the sections sections: `cut_discr`, `full_discr`, `nav_r`, `build_doc`, `structurs`

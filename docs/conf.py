@@ -46,7 +46,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
     'sphinx.ext.mathjax',
-    'sphinxnotes.strike',
+#    'sphinxnotes.strike',
 #    'sphinx.ext.pngmath'
 #    'sphinxcontrib.httpdomain',
 #    'djangodocs',

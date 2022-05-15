@@ -1,4 +1,4 @@
-Welcome to the project $project !!!
+Welcome to the project :project: !!!
 ===================================
 
 [![GitHub Actions status][GitHub Actions SVG]][GitHub Actions]
@@ -8,7 +8,7 @@ Welcome to the project $project !!!
 Purpose
 -------
 
-$project will solve your problem of where to start with 
+:project: will solve your problem of where to start with 
 documentation on auto-installation of a ready-made server,
 by providing a basic explanation of how to do it easily.
 
@@ -88,7 +88,7 @@ git push https://github.com/Rakosel/BilSrvStation_Server_PC.git master
 License
 -------
 
-$project © is Copyright 2011–2021 [$autor](https://109.195.28.53),
+$project © is Copyright 2011–2021 [:autor:](https://109.195.28.53),
 2021–2022 [F@rid](mailto:asusclinstaller@ya.ru), and is
 licensed under GNU GPL (v2+) license, the current version is available in
 `LICENSE_GPL` file.

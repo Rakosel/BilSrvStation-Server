@@ -18,22 +18,24 @@ sphinx:
 
 # Optionally declare the Python requirements required to build your docs
 python:
-   install:
-   - requirements: docs/requirements
-#    - method: pip
-#      path: .
-#     extra_requirements:
-#   - docs
-#   - method: setuptools
+    install:
+    - requirements: docs/requirements
+    - method: pip
+    path: .
+    extra_requirements:
+    - docs
+   - method: setuptools
 #      path: package
-#    system_packages: true
+    system_packages: true
 # search:
 #   ignore:
      # Custom files to ignore
-#     - file.html
-#     - api/v1/*
-
-#     # Defaults
+#     - '*/ref.html': 0
+#   ranking:
+      # Match all files that end with tutorial.html
+#     '*/index.html': 3
+#      api/v1/*: -1
+#      api/v2/*: 4
 #     - search.html
 #     - search/index.html
 #     - 404.html

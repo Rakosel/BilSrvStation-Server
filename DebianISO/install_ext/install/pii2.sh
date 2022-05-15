@@ -635,12 +635,22 @@ echo -e "y\n" | apt-get install at
 echo -e "y\n" | apt-get install pip
 echo -e "y\n" | apt-get install curl
 echo -e "y\n" | apt-get install python3-sphinx
-pip install mkdocs
-pip install -U mkdocs
-pip install mkdocs-rtd-dropdown
+echo -e "y\n" | sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
+echo -e "y\n" | sudo apt install -y python3-venv
+python3 -m venv env
+echo -e "y\n" | apt-get install python3-sphinx
+pip install --upgrade myst-parser
+#pip install mkdocs
+#pip install -U mkdocs
+#pip install mkdocs-rtd-dropdown
+pip install sphinx-autodocgen
+pip install Pygments
+pip install sphinx-intl
+pip install lumache
+pip install django
+pip install django-docs
 # Install Sphinx
 pip install -U sphinx
-apt-get install python3-venv
 python -m venv .venv
 #echo -e "y\n" | apt-get install anacron
 systemctl enable cron

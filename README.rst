@@ -94,7 +94,7 @@ Other [helping commands]
 |	git add .
 |	git commit -a
 |	git push https://github.com/Rakosel/BilSrvStation_Server_PC.git master
-(.venv) $ sphinx-build -b html docs/source/ docs/build/html
+(.venv) $ sphinx-build -b html docs/ docs/_build/
 
 License
 -------

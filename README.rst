@@ -52,11 +52,10 @@ Target
 --------
 
 **15.05.2022**
-:strike:`Create and generate release v1.02a project`
-:del:`Study getting started and settings the sphinx`
--	Fill in the main part of the sections sections: `cut_discr`, `full_discr`, `nav_r`, `build_doc`, `structurs`
--	Organize auto-generation of code in the documentation in the `cut_discr` section, extracting text from script comments
-
+	:strike:`Create and generate release v1.02a project`
+	:del:`Study getting started and settings the sphinx`
+	-	Fill in the main part of the sections sections: `cut_discr`, `full_discr`, `nav_r`, `build_doc`, `structurs`
+	-	Organize auto-generation of code in the documentation in the `cut_discr` section, extracting text from script comments
 
 Installation
 ------------
@@ -76,6 +75,15 @@ Support
 
 If you are having issues, please let us know.
 We have a mailing list located at: asusclinstaller@ya.ru
+
+Other [helping commands]
+-------
+
+git clone https://github.com/Rakosel/BilSrvStation_Server_PC.git
+git add .
+git commit -a
+git push https://github.com/Rakosel/BilSrvStation_Server_PC.git master
+(.venv) $ sphinx-build -b html docs/source/ docs/build/html
 
 License
 -------

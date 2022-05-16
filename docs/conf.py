@@ -15,6 +15,11 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 import sys, os
+import sphinx_rtd_theme
+import sphinx_rtd_theme
+#import django
+
+#django.setup()
 #sys.path.insert(0, pathlib.Path(__file__).parents[2].resolve().as_posix())
 # General
 sys.path.insert(0, os.path.abspath('.'))
@@ -29,7 +34,7 @@ today_fmt = '%B %d, %Y'
 # -- Project information -----------------------------------------------------
 
 project = 'BilSrvStation_Server_PC'
-copyright = '2022, BiLymo iOT corp.'
+copyright = '2022, BiLymo iOT corp'
 author = 'BiLymo iOt corp.'
 
 # The full version, including alpha/beta/rc tags 
@@ -39,7 +44,11 @@ verison = '1.0.2'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.extensions = ['myst_parser',
+exclude_patterns = ["_build"]
 # https://github.com/readthedocs/readthedocs.org/tree/main/docs
+
+#os.environ.setdefault("DJANGO_SETTINGS_MODULE", "readthedocs.settings.dev")
+# sys.path.append(os.path.abspath("_ext"))
 extensions = [
 #    'multiproject',
     'sphinx.ext.autosectionlabel',
@@ -68,6 +77,58 @@ templates_path = ['_templates']
 #
 # source_suffix = ['.rst', '.md']
 source_suffix = '.rst'
+
+man_pages = [
+    (
+        "index",
+        "read-the-docs",
+        "Read the Docs Documentation",
+        ["Eric Holscher, Charlie Leifer, Bobby Grace"],
+        1,
+    )
+]
+
+hoverxref_intersphinx = [
+    "sphinx",
+    "pip",
+    "nbsphinx",
+    "myst-nb",
+    "ipywidgets",
+    "jupytext",
+]
+
+hoverxref_auto_ref = True
+hoverxref_domains = ["py"]
+hoverxref_roles = [
+    "option",
+    "doc",
+]
+hoverxref_role_types = {
+    "mod": "modal",  # for Python Sphinx Domain
+    "doc": "modal",  # for whole docs
+    "class": "tooltip",  # for Python Sphinx Domain
+    "ref": "tooltip",  # for hoverxref_auto_ref config
+    "confval": "tooltip",  # for custom object
+}
+
+rst_epilog = """
+.. |org_brand| replace:: Read the Docs Community
+.. |com_brand| replace:: Read the Docs for Business
+"""
+
+# Activate autosectionlabel plugin
+autosectionlabel_prefix_document = True
+
+# sphinx-notfound-page
+# https://github.com/readthedocs/sphinx-notfound-page
+notfound_context = {
+    "title": "Page Not Found",
+    "body": """
+<h1>Страница не найдена!</h1>
+<p>Sorry, we couldn't find that page.</p>
+<p>Try using the search box or go to the homepage.</p>
+""",
+}
 
 # The encoding of source files.
 #
@@ -143,7 +204,7 @@ pygments_style = 'sphinx'
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
 
-html_theme = 'classic'
+html_theme = 'sphinx_rtd_theme'
 #default
 #sphinxdoc
 #scrolls

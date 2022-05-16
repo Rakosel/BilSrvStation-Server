@@ -1,4 +1,4 @@
-Welcome to the project :project: !!!
+Welcome to the project |project| !!!
 ===================================
 
 [![GitHub Actions status][GitHub Actions SVG]][GitHub Actions]

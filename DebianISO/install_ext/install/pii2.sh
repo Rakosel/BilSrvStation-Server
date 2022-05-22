@@ -1,8 +1,8 @@
-#/bin/bash 
+#!/bin/bash
 #-xv
 #set -x
 # https://wiki.debian.org/Microcode
-# uncomment #639!!!!
+#<--! uncomment #639!!!!
 #if [[ -z $STATE ]]; then
 #	exit 3;
 #fi
@@ -11,13 +11,14 @@
 # sudo usermod -p $(echo "" | mkpasswd -s -H MD5) test1
 # sudo usermod -p $S test1
 # su -p test1
-
+#!-->
 #
-#		AUTO 	POSTINSTALL		1.2.8a
+#<--!
+#			1.0 AUTO POSTINSTALL
 #		octanovilca na SSL + po4initb script cmd
 #		danger!!! do postinstall copy wufu & wpa_supplicant.conf + SAMBA
 #
-#		1.1.0	Pre-install EMV && Settings
+#			1.1	PRE-INSTALL EMV AND SETTINGS
 #
 #d-i preseed/late_command string mkdir -p /target/install/; cp -R /install/* /target/install/; cp -Rf /install/lib/ /target/lib/;
 #
@@ -27,9 +28,9 @@
 #cd ./wpa_supplicant-0.7.3/
 #./configure
 #./install
+#!-->
 
-
-
+#<--!
 # include this boilerplate
 #
 #	https://stackoverflow.com/questions/9639103/is-there-a-goto-statement-in-bash
@@ -37,6 +38,8 @@
 #
 # rm /install/pii2.sh /etc/init.d/
 #update-rc.d -f pii2.sh remove
+#!-->
+#<--code
 function jumpto
 {
     label=$1
@@ -48,8 +51,11 @@ function jumpto
 function reinterfaces
 {
 cd /etc/network/
+#--code>
+#<--!
 #
 #if [[ -n $( egrep -n '^[a-z] || ^#' interfaces) && TMPS=="0" ]]; then
+#!-->
 BUF="# This file describes the network interfaces available on your system\n
 # and how to activate them. For more information, see interfaces(5).\n
 \n
@@ -65,7 +71,6 @@ iface en inet dhcp\n";
 rm interfaces
 touch interfaces
 echo -e $BUF > interfaces;
-#fi
 }
 
 start=${1:-"start"}
@@ -73,8 +78,9 @@ interface_sh=${2:-"interface_sh"}
 step_one=${3:-"step_one"}
 step_two=${4:-"step_two"}
 step_three=${5:-"step_three"}
-
+#<--!
 # 		+ install wpa_supplicant-0.7.3.tar.gz
+#!-->
 export LC_ALL=ru_RU.UTF-8
 FILES="steps.txt"
 BUF="";
@@ -86,9 +92,9 @@ NET_WI="";
 STATE="0";
 PORT_SSH="4103"
 NET_ARR=();
-#
-#		1.1.1	Check root privilege
-#
+#<--!
+#			1.2	CHECK ROOT PRIVILEGE
+#!-->
 
 if [[ $EUID -ne 0 ]]; then
 	if [[ ${LANG:0:5} -eq 'ru_RU' ]]; then
@@ -102,10 +108,11 @@ fi
 if [[ ! -f "$FILES" ]]; then
 	touch steps.txt
 fi	
-
+#<--!
 #https://askubuntu.com/questions/1705/how-can-i-create-a-select-menu-in-a-shell-script
 #options=("Option 1" "Option 2" "Option 3" "Quit")
 #select opt in "${options[@]}"
+#!-->
 select opt in Auto PoluAuto Hands Exit; do
 case $opt in
     Auto)
@@ -133,11 +140,11 @@ jumpto $start
 
 start:
 
-#
-#
+#<--!
 #  Проверка отдельных переменных окружения.
 #  Если переменная, к примеру $USER, не установлена,
 #+ то выводится сообщение об ошибке.
+#!-->
 : ${HOSTNAME?} ${USER?} ${HOME?} ${MAIL?}
   echo
   echo "Имя машины: $HOSTNAME."
@@ -153,10 +160,9 @@ start:
 
 cd /etc/apt/
 cp sources.list sources.tmp
-
+#<--!
 # &VERSION_DEBIAN -e mojno off
 #lsb_release -d | sed -n -e 's/.*(\([^\)]\+\))/\1/p'
-
 # egrep '^[a-z]' sources.list
 # sed -i 's/#deb-src http/deb-src http/g' sources.list
 # sed -i 's/#deb http/deb http/g' sources.list
@@ -177,29 +183,31 @@ cp sources.list sources.tmp
 #	lsb_version -da
 #	a.3 else ok
 #
-#		
-#		1_1_1_1		Settings /etc/network -> interfaces 
-#
+#			1.3	SETTINGS /ETC/NETWORK -> INTERFACES [interface_sh]
+#!-->
 TMPS="0";
 interface_sh:
 
 cd /install/
 if [[ -z $(sed -n -e "s/^\(1_settings_interface_with_wifi\).*/\1/p" steps.txt) ]]; then
-#		1_1_2	settings network/interfaces
+#<--!
+#			1.3.1	SETTINGS NETWORK/INTERFACES
 #
-#
+#!-->
 cd /etc/network/
-#
-#		1_1_2_1		search interfaces (wifi?)
+#<--!
+#			1.3.2	SEARCH INTERFACES (WIFI?)
 #
 #	#2:	number  
+#!-->
 if [[ ! -f /etc/network/interfaces ]]; then
 	touch interfaces
 fi
 #
 cp interfaces interfaces.back 
+#<--!
 # t.k while 1 step s.b. str !0
-#
+#!-->
 COUNT=1;
 NET_EN=""
 
@@ -211,8 +219,9 @@ NET_ARR[COUNT]=$( ip addr | sed -n -e "s/.*$COUNT\:\s\(.*\)\:\s<.*/\1/p");
 done
 
 COUNT=0;
-
+#<--!
 #search index arr for WIFI[COUNT] and NETEN[COUNT]
+#!-->
 for COUNT in ${NET_ARR[@]}
 do
 	if [[ -n $(echo $NET_ARR[$COUNT] | sed -n -e 's/en\(.*\).*/\1/p') ]]; then
@@ -234,7 +243,7 @@ else
 	sleep 1;
 	exit 2;
 fi;
-#
+#<--!
 # state => "1" add interfaces only en_*!!!
 # state => "0" all ok
 # interfaces.back - zamenit bez .back
@@ -242,9 +251,11 @@ fi;
 # proverka interfaces
 #
 #	Jump to label interface_sh
+#!-->
 if [[ -z $( egrep -n '^[a-z] || ^#' interfaces) && $TMPS -eq "0" ]]; then
 reinterfaces
 fi
+#<--!
 # cat interfaces.back
 # analys set en wifi to two branch
 # create interfaces.tmp c orig
@@ -270,13 +281,16 @@ fi
 #		TMPS="1";
 #		jumpto interface_sh;
 #fi
+#!-->
 TMPS="1";
-
+#<--!
 #sed -n -e "s/rsa_cert_file=.*$\|#rsa_cert_file=.*$/rsa_cert_file=\/ssl\/certs\/vsftpd.crt/p" vsftpd.conf
-
+#!-->
 if [[ $STATE -eq "0" ]]; then
+#<--!
 #source /etc/network/interfaces.d/*\n
 # str auto $( sed -n -e "s/\(auto\s\).*/\1$NET_ARR[$NET_WI]\s$NET_ARR[$NET_EN]/p"
+#!-->
 if [[ -z $(sed -n -e "s/\(source \/etc\/network\/interfaces/\\).*/\1/p" interfaces) ]]; then
 		TMPS="1";
 		reinterfaces;
@@ -287,36 +301,50 @@ if [[ -z $(sed -n -e "s/\(auto\slo\).*/\1/p" interfaces) ]]; then
 		reinterfaces;
 fi
 sed -i -e "s/\(auto\s\).*/\1$NET_WI $NET_EN/g" interfaces
+#<--!
 # str iface NET_EN
+#!-->
 if [[ -z $( sed -n -e "s/\(iface\slo\).*/\1/p" interfaces) ]]; then
 		TMPS="1";
 		reinterfaces;
 fi
+#<--!
 #TMPS=$(sed -n -e "/\(iface\slo\).*/{=;q;}" interfaces)
 #sed -i -e "$TMPS s/\(iface\s\).*/\1$NET_EN inet dhcp/g" interfaces
+#!-->
 sed -i -e "s/iface\slo.*/iface $NET_EN inet dhcp/g" interfaces
+#<--!
 # str allow-hotplug
+#!-->
 if [[ -z $( sed -n -e "s/\(allow-hotplug\s\).*/\1/p" interfaces) ]]; then
 		TMPS="1";
 		reinterfaces;
 fi
 sed -i -e "s/\(allow-hotplug\s\).*/\1$NET_WI/g" interfaces
+#<--!
 # str iface NET_WI
+#!-->
 if [[ -z $( sed -n -e "s/\(iface\s\).*/\1/p" interfaces) ]]; then
 		TMPS="1";
 		reinterfaces;
 fi
+#<--!
 # str auto
 #TMPS=$(sed -n -e "/\(iface\s[en]\).*/{=;q;}" interfaces)
-#
+#!-->
 sed -i -e "$a s/\(iface\s\).*/\1$NET_WI inet dhcp/g" interfaces
+#<--!
 #sed -n -e "s/\(iface\s[en]\).*/\1$NET_ARR[$NET_WI] inet dhcp/g" interfaces
+#!-->
 sed '$a	wpa-conf \/home\/rootsu\/wpa_supplicant.conf' interfaces >> interfaces;
+#<--!
 #if [[-z $( sed -n -e "s/\(auto\s\).*/\1/p" interfaces) ]]; then
 #	jumpto interface_sh;
 #fi
 #systemctl restart wpa_supplicant@$NET_ARR[$NET_WI]
+#!-->
 systemctl restart wpa_supplicant
+#<--!
 #sed -n -e "s/\(auto\s\).*/\1$NET_ARR[$NET_WI]\s$NET_ARR[$NET_EN]/g" interfaces
 # str iface NET_EN
 #if [[-z $( sed -n -e "s/\(iface\s\).*/\1/p" interfaces) ]]; then
@@ -324,68 +352,84 @@ systemctl restart wpa_supplicant
 #fi
 #sed -n -e "s/\(iface\s\).*/\1$NET_ARR[$NET_WI] inet dhcp/g" interfaces
 # str allow-hotplug
+#!-->
 else
-#
+
 if [[ -z $(sed -n -e "s/\(source \/etc\/network\/interfaces/\\).*/\1/p" interfaces) ]]; then
 		TMPS="1";
 		reinterfaces;
 fi
+#<--!
 # str auto $( sed -n -e "s/\(auto\s\).*/\1$NET_ARR[$NET_WI]\s$NET_ARR[$NET_EN]/p"
+#!-->
 if [[ -z $(sed -n -e "s/\(auto\slo\).*/\1/p" interfaces) ]]; then
 		TMPS="1";
 		reinterfaces;
 fi
 sed -i -e "s/\(auto\s\).*/\1$NET_EN/g" interfaces
+#<--!
 # str iface NET_EN
+#!-->
 if [[ -z $(sed -n -e "s/\(iface\slo\).*/\1/p" interfaces) ]]; then
 		TMPS="1";
 		reinterfaces;
 fi
 sed -i -e "s/iface\slo.*/iface $NET_EN inet dhcp/g" interfaces
+#<--!
 # str allow-hotplug
+#!-->
 if [[ -z $(sed -n -e "s/\(allow-hotplug\s\).*/\1/p" interfaces) ]]; then
 		TMPS="1";
 		reinterfaces;
 fi
 sed -i -e "s/\(allow-hotplug\s\).*/\1$NET_EN/g" interfaces
+#<--!
 # str iface NET_WI
+#!-->
 if [[ -z $(sed -n -e "s/\(iface\s\).*/\1/p" interfaces) ]]; then
 		TMPS="1";
 		reinterfaces;
 fi
+#<--!
 #TMPS=$(sed -n -e "/\(iface\s[en]\).*/{=;q;}" interfaces);
-#
+#!-->
 sed -i -e "$a s/\(iface\s\).*/\1$NET_EN inet dhcp/g" interfaces
+#<--!
 #sed -n -e "s/\(iface\s[en]\).*/\1$NET_ARR[$NET_WI] inet dhcp/g" interfaces
 #sed '$a	wpa-conf \/home\/rootsu\/wpa_supplicant.conf' interfaces >> interfaces;
 #sed -n -e "s/\(allow.*\s\).*/\1$NET_ARR[$NET_WIFI]\sinet\sdhcp/g" interfaces
 #
 # if [[ $STATE -eq "0" ]]; then fi
+#!-->
 fi
-#	
-#		1_1_2_3		restart service
-#
+#<--!
+#			1.3.2	restart service
+#!-->
 
 systemctl restart networking 
  
 cd /install/
 echo -e "1_settings_interface_with_wifi" >> steps.txt
 fi
-
+#<--!
+#			1.4		Update distribution (update && upgrade) [step_one]
+#!-->
 step_one:
 
 cd /install/
 if [[ -z $(sed -n -e "s/^\(1_src_list\).*/\1/p" steps.txt) ]]; then
-#
+
 cd /etc/apt/
 if [[ -z $( lsb_release -d | sed -n -e 's/.*(\([^\)]\+\))/\1/p') ]]; then
+#<--!
 #	echo "Error: not defined version DebianOS, wait 3 sec";
+#!-->
 	DEB_VER=$(cat /etc/os-release | sed -n -e "s/.*(\([^\)].*\))\"$/\1/p");
 	DEB_VER=$(echo $DEB_VER | sed -n -e "s/\([a-z]*\)$//p")
 else
 	DEB_VER=$( lsb_release -d | sed -n -e 's/.*(\([^\)]\+\))/\1/p')
 fi;
-#
+#<--!
 #cd /etc/apt/;
 # rm sources.tmp;
 #touch sources.tmp
@@ -394,13 +438,15 @@ fi;
 #main — здесь находятся пакеты соответствующие DFSG-compliant (Debian Free Software Guidelines) не требуют дополнительное ПО из других источников. Это часть дистрибутива Debian. Полностью свободны для любого использования.
 #contrib — смешанные пакеты которые содержат не только свободные пакеты DFSG-compliant но и пакеты из других веток например non-free.
 #non-free — не свободное программное обеспечение. Не соответствует DFSG.
-
-#							check null string		???? 		dob add usloviya proverki ft http
+#check null string		???? 		dob add usloviya proverki ft http
 #
+#!-->
 if [[ -n $(egrep -n '^[a-z] && ^#' sources.list) && -n $( sed -n -e "s/^deb http:\/\/ftp//p" sources.list) && -n $( sed -n -e "s/^deb-src http:\/\/ftp//p" sources.list) && -n $( sed -n -e "s/^deb http:\/\/deb//p" sources.list) && -n $( sed -n -e "s/^deb-src http:\/\/deb//p" sources.list) ]]; then
 STATE="1";
 rm sources.list;
+#<--!
 # touch sources.tmp;
+#!-->
 BUF="#deb cdrom:[Debian GNU/Linux _*_ - Official amd64 NETINST 20210814-10:07]/ * main\ndeb http://ftp.debian.org/debian/ $DEB_VER main non-free contrib\ndeb-src http://ftp.debian.org/debian/ $DEB_VER main non-free contrib\n
 \ndeb http://security.debian.org/debian-security/ $DEB_VER-security main contrib non-free \ndeb-src http://security.debian.org/debian-security/ $DEB_VER-security main contrib non-free \n
 \n# *-updates, to get updates before a point release is made; \r\n# see https://www.debian.org/doc/manuals/debian-reference/ch02.en.html#_updates_and_backports \ndeb http://deb.debian.org/debian/ $DEB_VER-updates main contrib non-free \ndeb-src http://deb.debian.org/debian/ $DEB_VER-updates main contrib non-free \n
@@ -412,13 +458,18 @@ BUF="#deb cdrom:[Debian GNU/Linux _*_ - Official amd64 NETINST 20210814-10:07]/ 
 # see the sources.list(5) manual. \n"
 echo -e $BUF > sources.list;
 echo "Info: sources.list is null";
-sleep 1;  # Waits 5 seconds.
+sleep 1; 
+#<--! 
+# Waits 5 seconds.
 # sed -i '34s/AAA/BBB/' file_name
+#!-->
 else
+#<--! 
 #The first part of it is an "address", i.e. the following command only applies to lines matching it. The ! negates the condition, i.e. the command will only be applied to lines not matching the address. So, in other words, Replace Hello by Hello world! on lines that don't contain Hello world!.
 # sed -n -e 's/.*bullseye\-[a-z]\(.\)/\1/p' sources.tmp
 #The pattern [a-z]* matches zero or more characters in the range a to z (the actual characters are dependent on the current locale). There are zero such characters at the very start of the string 123 abc (i.e. the pattern matches), and also four of them at the start of this is a line.
 #If you need at least one match, then use [a-z][a-z]* or [a-z]\{1,\}, or enable extended regular expressions with sed -E and use [a-z]+.
+#!-->
  sed -i -e "s/$DEB_VER\s.*$/$DEB_VER main contrib non-free/g" sources.list
  sed -i -e "s/\(\/\s$DEB_VER\-[a-z]*\).*/\1 main contrib non-free/g" sources.list
 fi;
@@ -435,22 +486,24 @@ echo -e "1_src_list" >> steps.txt
 
 fi
 
+#<--!
+#			1.5		Install drivers: install non-free firmware && *-nonfree and tools [step_two]
+# ??? do make analys 'lspci' and install autochoose driver
+#!-->
 step_two:
-#
+
 cd /install/
 if [[ -z $(sed -n -e "s/^\(2_install_driver\).*/\1/p" steps.txt) ]]; then
-#
-#		1_1_5 Install drivers: install non-free firmware && *-nonfree
-# 		??? do make analys 'lspci' and install autochoose driver
-#
+
 if [[ $(lspci | grep VGA | sed -n -e "s/.*\[\(.*\)\/.*/\1/p") == "AMD" ]]; then 
 	echo -e "y\n" | apt-get install libdrm-amdgpu1
 	echo -e "y\n" | apt-get install xserver-xorg-video-amdgpu
 else
 	echo -e "y\n" | apt-get install nvidia-driver firmware-misc-nonfree nvidia-settings
 fi
-
+#<--!
 #apt-get install firmware-linux | apt-get install firmware-linux-nonfree | apt-get install firmware-linux | apt-get install firmware-realtek | apt-get install libdrm-amdgpu1 | apt-get install xserver-xorg-video-amdgpu  | apt-get install man 
+#!-->
 echo -e "y\n" | apt-get install firmware-linux
 
 if [[ $(lspci | grep Ethernet | sed -n -e "s/.*ller:\s\([a-zA-Z]\+\s\).*/\1/p") == "Realtek" ]]; then 
@@ -458,13 +511,18 @@ echo -e "y\n" | apt-get install firmware-realtek
 fi
 echo -e "y\n" | apt-get install firmware-linux-nonfree
 echo -e "y\n" | apt-get install man 
+#<--!
+#			1.5.1	Install SElinux utils & acl
+#!-->
 echo -e "y\n" | apt-get install acl
 echo -e "y\n" | apt-get install setools policycoreutils selinux-basics selinux-utils selinux-policy-default selinux-policy-mls auditd policycoreutils-python-utils semanage-utils audispd-plugins
 echo -e "y\n" | apt-get install mcstrans
 
 sudo systemctl enable auditd
 sudo systemctl start auditd
+#<--!
 #policycoreutils-gui
+#!-->
 touch /.autorelabel
 selinux-activate
 
@@ -474,32 +532,34 @@ if [ $? -ne 0 ]; then
 fi
 
 echo -e "2_install_driver" >> steps.txt
+#<--!
+#			1.5.2	Reboot, before activate-SELinux
+#!-->
 reboot
 fi
-#
-#exit 1;
-#
+#<--!
+#			1.6		Install git && nanorc [step_three]
+#!-->
+
 if [[ -z $(sed -n -e "s/^\(3_nanorc\).*/\1/p" steps.txt) ]]; then
-#
+#<--!
 # nano /etc/rc.local
 #setupcon
-
+#!-->
 echo -e "y\n" | apt-get install git
 if [ 
 ? -ne 0 ]; then
    echo "Error: error install git!!!"
    exit 1;
 fi
-echo -e "3_nanorc" >> steps.txt
-
 cd /install
 git clone git://git.savannah.gnu.org/nano.git; cd nano;./autogen.sh;./configure; make install 
+#<--!
 #rm -Rf /nano/
 #rmdir /nano/
 #git clone https://github.com/nanorc/nanorc.git
 #cd nanorc
 #make install
-
 #exit 1;
 # make list all autogen
 #cat ~/.nano/syntax/ALL.nanorc
@@ -541,22 +601,26 @@ git clone git://git.savannah.gnu.org/nano.git; cd nano;./autogen.sh;./configure;
 ## asm
 #echo -e 'include "/usr/share/nano/asm.nanorc' >> ~/.nanorc
 #include "/usr/share/nano/*.nanorc"
+#!-->
 find /usr/share/nano -name '*.nanorc' -printf "include %p\n" > ~/.nanorc
+#<--!
 #for i in `ls /usr/share/nano`
 #  do
 #    echo "include /usr/share/nano/$i" >> ~/.nanorc
 #  done
-
 #rm -Rf /nanorc/
 #rmdir /nanorc/
+#!-->
 fi
-
-cd /install/
+echo -e "3_nanorc" >> steps.txt
 #
-#exit 1;
+#<--!
+#			1.7		Copy dir .sh -> in directory home path [step_four]
+#!-->
 #
 if [[ -z $(sed -n -e "s/^\(4_copy_sh\).*/\1/p" steps.txt) ]]; then
 #
+cd /install/
 cp -Rf /install/home/* /home/
 cp -Rf /install/home/rootsu/.bashrc ~root 
 cp -Rf /install/home/rootsu/.profile ~root 
@@ -564,20 +628,20 @@ cp -Rf /install/home/rootsu/.cmd_shell.sh ~root
 
 cp -Rf /install/home/rootsu/* ~root
 chmod ug+rwx -Rf ~root
+#<--!
 # cp -Rf /install/home/admin/.bashrc /root/
 #cp /etc/nanorc ~/.nanorc
-#
-cd /install/
+#!-->
 echo -e "4_copy_sh" >> steps.txt
-#
-
 fi
-#
-
+#<--!
 #exit 1;
 #cp -Rf /install/home/ /home/ # -> rootsu, admin
 # https://superuser.com/questions/904001/how-to-install-tar-xz-file-in-ubuntu
-#apt-get install xz-utils
+#!-->
+#<--!
+#			1.8		Install utils [step_five]
+#!-->
 if [[ -z $(sed -n -e "s/^\(5_install_util_wd\).*/\1/p" steps.txt) ]]; then
 #
 echo "y\n" | apt-get install build-essential
@@ -587,11 +651,13 @@ if [ $? -ne 0 ]; then
 fi
 
 add-apt-repository-get ppa:ubuntu-toolchain-r/test && apt update
-
+#<--!
 #https://pcp.io/docs/guide.html
 #apt-get install gcc-snapshot && apt-get install gcc-11g++-11
 #update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 60 --slave /usr/bin/g++ g++ /usr/bin/g++-9
+#!-->
 echo -e "y\n" | apt-get install python
+echo -e "y\n" | apt-get install python3
 echo -e "y\n" | apt-get install tmux;
 echo -e "y\n" | apt-get install net-tools
 echo -e "y\n" | apt-get install manpages-dev;
@@ -633,6 +699,7 @@ echo -e "y\n" | apt-get install wget genisoimage xorriso isolinux
 echo -e "y\n" | apt-get install hddtemp lm-sensors
 echo -e "y\n" | apt-get install at
 echo -e "y\n" | apt-get install pip
+echo -e "y\n" | apt-get install xz-utils
 echo -e "y\n" | apt-get install curl
 echo -e "y\n" | apt-get install python3-sphinx
 echo -e "y\n" | sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
@@ -640,15 +707,18 @@ echo -e "y\n" | sudo apt install -y python3-venv
 python3 -m venv env
 echo -e "y\n" | apt-get install python3-sphinx
 pip install --upgrade myst-parser
+#<--!
 #pip install mkdocs
 #pip install -U mkdocs
 #pip install mkdocs-rtd-dropdown
+#!-->
 pip install sphinx-autodocgen
 pip install Pygments
 pip install sphinx-intl
 pip install lumache
 pip install django
 pip install django-docs
+pip install sphinxnotes-strike
 # Install Sphinx
 pip install -U sphinx
 python -m venv .venv
@@ -660,10 +730,8 @@ systemctl enable cron
 systemctl enable autofs
 #systemctl start autofs
 #echo -e "y\n" | apt-get install selinux-basics selinux-policy-default auditd
-
 #echo -e "y\n" | apt-get install setools policycoreutils selinux-basics selinux-utils selinux-policy-default selinux-policy-mls  auditd policycoreutils-python-utils semanage-utils 
 #setroubleshoot selinux-policy-targeted
-
 
 apt-get install openssh-server -y
 if [ $? -ne 0 ]; then
@@ -687,7 +755,6 @@ if [ $? -ne 0 ]; then
    echo "Error: copy install to etc"
    exit 1
 fi
-
 cd /install/
 echo -e "5_install_util_wd" >> steps.txt
 
@@ -702,7 +769,6 @@ echo -e "5_install_util_wd" >> steps.txt
 #then
 #	reboot;
 #fi
-
 #done
 
 fi
@@ -717,7 +783,6 @@ fi
 #./configure
 #./install
 #cp -Rf /install/etc/default/console-setup /etc/default/
-
 #
 #
 #if [ -f /etc/resolv.conf ]; then
@@ -725,28 +790,27 @@ fi
 #fi
 step_three:
 
-
 #Search 
 # add-apt-repository ppa:un-brice/ppa
 # apt-get update
 # apt-get install shake-fs
+#<--!
+#			1.9		Install driver opt and acc [step_six]
+#!-->
 step_four:
 cd /install/
 if [[ -z $(sed -n -e "s/^\(7_driver_opt\).*/\1/p" steps.txt) ]]; then
+#<--!
+#			1.9.1	create disk /opt/
 #
-#		1_1_3	create disk /opt/
+#			1.9.2	search /dev/s**
 #
-#		1_1_3_1 search /dev/s**
-#
-
 #touch fdiskhdd.txt;
 #fdisk -l > fdiskhdd.txt
 #STATE=$(sed -n -e "s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p" fdiskhdd.txt);
-
 #if [[ -z $(sed -n -e "s/.*\(\/dev\/s[a-z]*\).*/\1/p" fdiskhdd.txt) ]]; then
 #	STATE=$(sed -n -e "s/.*\(\/dev\/s[a-z]*\).*/\1/p" fdiskhdd.txt);
 #fi
-
 #
 #	OPTIONS: g , w
 #
@@ -756,7 +820,10 @@ if [[ -z $(sed -n -e "s/^\(7_driver_opt\).*/\1/p" steps.txt) ]]; then
 #	Create fs
 #
 #mkfs.ext4 $STATE /opt
-
+#!-->
+#<--!
+#			1.9.3	mount /dev/s**
+#!-->
 mount -t ext4 $(sudo fdisk -l | sed -n -e "s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p") /opt
 
 shd=$(sudo fdisk -l | sed -n -e "s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p" | sed 's/\//\\\//g')
@@ -780,8 +847,6 @@ echo -e "7_driver_opt" >> steps.txt
 fi
 #
 cd /install/
-
-
 #
 ##  in-target mkfs.ext4 /dev/sdb1 ; \
 #  in-target echo "/dev/sdb1  /srv  ext4  nodiratime  0  2" >> /etc/fstab
@@ -810,14 +875,19 @@ cd /install/
 #
 #	Jump to label interface_sh
 #
+#<--!
+#			1.10		Create users and groups, settings netutils: ssh,ftp,smbd etc... [step_seven]
+#!-->
+
+if [[ -z $(sed -n -e "s/^\(9_user_settings\).*/\1/p" steps.txt) ]]; then
+
 STEP_TWO_AFTER:
 
 #
 #	 cp sources.tmp sources.list;
-#
-#			1_1_6 Create users and groups
-#           1.1.6 Создание пользователей и групп
-#
+#<--!
+#			1.10.1		Create users and groups
+#!-->
 #cp -Rf /install/home/rootsu/.cmd_shell.sh ~/.cmd_shell.sh
 #cp -Rf /install/home/rootsu/.bashrc ~/.bashrc
 #cp -Rf /install/home/rootsu/.bashrc /home/admin/
@@ -830,12 +900,9 @@ STEP_TWO_AFTER:
  groupadd -g 5000 technics
  groupadd -g 6000 ps_users
  groupadd -g 7000 others
-
-
  useradd -u 1100 -g admins -c "admin" -s /bin/bash -p $(echo "vkd174asqd" | mkpasswd -s -H MD5) -m admin
  
  useradd -u 1200 -g admins -c "admin" -s /bin/bash -p $(echo "vkd174asqd" | mkpasswd -s -H MD5) -m admin_tech
- #	Везде исправить на admins!!!!
 usermod -aG sudo,technics,root admin
 usermod -aG sudo,technics,root admin_tech
  
@@ -873,10 +940,13 @@ chmod ug+rw /opt/ /opt/SAMBA_SHARE /mnt/SMB
 setfacl -m u:pub_share:rwx,u:admin_share:rwx -R "/mnt/SMB";
 #chown -R admin_share:technics,pub_share:technics /mnt/SMB
 
-#		1_1_7 Create ssh_ssl
+#<--!
+#			1.10.2		Create ssh_ssl
+#!-->
 #		https://www.cyberciti.biz/tips/checking-openssh-sshd-configuration-syntax-errors.html
-# 		1_1_7_1 Install ssh settings
-#
+#<--!
+#			1.10.3	Install ssh settings
+#!-->
 cd /etc/ssh/
 
 cp sshd_config sshd_config.tmp
@@ -966,23 +1036,21 @@ cp sshd_config sshd_config.tmp
 #
 #
 systemctl restart ssh
-#
-#
-#		1_1_8 Create users ssh
+#<--!
+#			1.10.4	Create users ssh
+#!-->
 #
 sudo bash ~/.cmd_shell.sh --mode "ssh_keygen" --uadd "tom" --gadd "ps_users" --pwd "debian"
 bash ~/.cmd_shell.sh --mode "ssh_keygen" --uadd "admin" --gadd "admins" --pwd "debian"
 #
-#
-#
-#		1_1_8 Create SAMBA
+#<--!
+#			1.10.5	Create SAMBA
+#!-->
 #
 #
 
 mount -v -t cifs //192.168.1.1/SOFT_2TBSEAGREEN/  /mnt/SMB/SOFT_2TBSEAGREEN -o credentials=/home/rootsu/.smbusers,defcontext="system_u:object_r:samba_share_t:s0";
 mount -v -t cifs //192.168.1.1/SOFT_3TBSEASYAN/  /mnt/SMB/SOFT_3TBSEASYAN -o credentials=/home/rootsu/.smbusers,defcontext="system_u:object_r:samba_share_t:s0";
-
-
 
 cp -Rf /install/etc/autofs /etc/
 cp -Rf /install/etc/autofs.conf /etc/
@@ -993,21 +1061,26 @@ chmod 644 -Rf /etc/autofs/
 systemctl restart autofs
 systemctl restart smbd
 
-#		1_1_7_1 Install and settings firewall ?
-
-#		1_1_8 Install other soft
-
-
-#		1_1_8_1 Extended nano (non autosettings)
+#<--!
+#			1.10.6	Install and settings firewall ?
+#!-->
+#<--!
+#			1.10.7	Install other soft
+#!-->
+#<--!
+#			1.10.8	Extended nano (non autosettings)
 #cp /install/nanorc /etc/nanorc
-
-#		1_1_8_2 cp ers (non autosettings)
+#<--!
+#
+#<--!
+#			1.10.9	cp ers (non autosettings)
 #cp /install/ers /etc/ers
-
+#!-->
 echo -e "y" | apt-get install ntfs-3g;
 #exit 1;
-#		Install vsftp
-
+#<--!
+#			1.10.10	Install vsftp
+#!-->
 echo -e "y" | sudo apt install vsftpd
 
 cd /etc/
@@ -1054,7 +1127,6 @@ sed -i -e "s/rsa_cert_file=.*$\|#rsa_cert_file=.*$/rsa_cert_file=\/etc\/ssl\/cer
 # This option specifies the location of the RSA certificate to use for SSL
 # encrypted connections.
 #rsa_private_key_file=
-
 sed -i -e "s/rsa_private_key_file=.*$\|#rsa_private_key_file=.*$/rsa_private_key_file=\/etc\/ssl\/private\/vsftpd.key/g" vsftpd.conf
 #ssl_enable=NO
 sed -i -e "s/ssl_enable=.*$\|#ssl_enable=.*$/ssl_enable=YES/g" vsftpd.conf
@@ -1200,9 +1272,15 @@ cp -Rf /home/admin/.ssh/ /media/admin/ssh
 cp -Rf /home/tom/.ssh/ /media/admin/ssh2
 chown -Rf admin:admins /media/admin/ /home/admin/
 
-rm /install/steps.txt
+echo -e "9_user_settings" >> steps.txt
+fi
+#rm /install/steps.txt
 
+#<--!
+#			1.11	Settings permissive SELinux
+#!-->
 # seinfo -t
+if [[ -z $(sed -n -e "s/^\(10_SELinux_settings\).*/\1/p" steps.txt) ]]; then
 
 semanage fcontext -a -s system_u "/home/rootsu(/.*)?";
 semanage fcontext -a -t user_home_dir_t "/home/rootsu(/.*)?";
@@ -1218,8 +1296,6 @@ semanage fcontext -a -t samba_etc_t "/home/rootsu/.smbusers";
 chcon -Rv -t samba_etc_t "/home/rootsu/.smbusers";
 semanage fcontext -a -u system_u "/home/";
 chcon -Rv -u system_u "/home/";
-
-
 
 chcon -Rv -t public_content_rw_t "/media/admin";
 semanage fcontext -a -t public_content_rw_t "/media/admin(/.*)?";
@@ -1433,18 +1509,17 @@ semanage permissive -a boot_t
 semanage permissive -a crond_t
 semanage permissive -a crontab_t
 semanage permissive -a system_crontab_t
-
 semanage module -d permissive_boot_t
-semanage module -r permissive_boot_t
+#semanage module -r permissive_boot_t
 #semanage user -m -R "system_r sysadm_r staff_r" -r "s0-s0:c0.c1023" sysadm_u
 #semanage user -m -R "system_r" -r "s0-s0:c0.c1023" system_u
-	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" admin
-	semanage login -a -s root -r "s0-s0:c0.c1023" admin_tech
-	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" %admins
+semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" admin
+semanage login -a -s root -r "s0-s0:c0.c1023" admin_tech
+semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" %admins
 #semanage login -m -s sysadm_u -r "s0-s0:c0.c1023" root
 #semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" %root
-	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" %sudo
-	semanage login -a -s user_u tom
+semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" %sudo
+semanage login -a -s user_u tom
 #sudo chmod o-rwx -R "/etc/";
 #sudo chmod o-rwx -R "/boot/";
 #sudo chmod o-rwx -R "/var/";
@@ -1470,6 +1545,8 @@ semanage module -r permissive_boot_t
 #	
 #	sudo tasksel install kde-desktop
 setenforce 1
+echo -e "10_SELinux_settings" >> steps.txt
+fi
 echo "Press ESC key to quit"
 # read a single character
 while read -r -n1 key

@@ -17,18 +17,18 @@ index.lst
 full_subscr.lst
 
 
-    +------------------------+------------+----------+----------+
-    | Header row, column 1   | Header 2   | Header 3 | Header 4 |
-    | (header rows optional) |            |          |          |
-    +========================+============+==========+==========+
-    | body row 1, column 1   | column 2   | column 3 | column 4 |
-    +------------------------+------------+----------+----------+
-    | body row 2             | Cells may span columns.          |
-    +------------------------+------------+---------------------+
-    | body row 3             | Cells may  | - Table cells       |
-    +------------------------+ span rows. | - contain           |
-    | body row 4             |            | - body elements.    |
-    +------------------------+------------+---------------------+
++------------------------+------------+----------+----------+
+| Header row, column 1   | Header 2   | Header 3 | Header 4 |
+| (header rows optional) |            |          |          |
++========================+============+==========+==========+
+| body row 1, column 1   | column 2   | column 3 | column 4 |
++------------------------+------------+----------+----------+
+| body row 2             | Cells may span columns.          |
++------------------------+------------+---------------------+
+| body row 3             | Cells may  | - Table cells       |
++------------------------+ span rows. | - contain           |
+| body row 4             |            | - body elements.    |
++------------------------+------------+---------------------+
 
 .. table:: Простая таблица
     =====  =====  =======
@@ -52,6 +52,9 @@ Look how easy it is to use:
 Features
 --------
 
+**22.05.2022**
+- Add script `copy.py' for copy content from work directory in `git`
+- Add script `extract_pii2.py' v.0.1a for autoextract commentary and code in page `cut_discr`
 **15.05.2022**
 - Add pages `cut_discr`, `full_discr`, `nav_r`, `build_doc`, `structurs`
 

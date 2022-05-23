@@ -18,17 +18,17 @@ full_subscr.lst
 .. code-block:: bash
    :caption: EXT:site_package/Configuration/TCA/Overrides/sys_template.php
 
-export LC_ALL=ru_RU.UTF-8
-FILES="steps.txt"
-BUF="";
-TMPS="";
-COUNT=0;
-DEB_VER="";
-NET_EN="";
-NET_WI="";
-STATE="0";
-PORT_SSH="4103"
-NET_ARR=();
+   export LC_ALL=ru_RU.UTF-8
+   FILES="steps.txt"
+   BUF="";
+   TMPS="";
+   COUNT=0;
+   DEB_VER="";
+   NET_EN="";
+   NET_WI="";
+   STATE="0";
+   PORT_SSH="4103"
+   NET_ARR=();
 
 +------------------------+------------+----------+----------+
 | Header row, column 1   | Header 2   | Header 3 | Header 4 |

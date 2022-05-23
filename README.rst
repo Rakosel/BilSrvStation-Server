@@ -18,8 +18,8 @@ full_subscr.lst
 .. code-block:: bash
    :caption: EXT:site_package/Configuration/TCA/Overrides/sys_template.php
 
-   export LC_ALL=ru_RU.UTF-8
-   FILES="steps.txt"
+   export LC_ALL=ru_RU.UTF-8;
+   FILES="steps.txt";
    BUF="";
    TMPS="";
    COUNT=0;

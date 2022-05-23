@@ -15,7 +15,17 @@ by providing a basic explanation of how to do it easily.
 index.lst
 
 full_subscr.lst
+.. code-block:: bash
+   :caption: EXT:site_package/Configuration/TCA/Overrides/sys_template.php
 
+   /**
+    * Add default TypoScript (constants and setup)
+    */
+   \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
+       'site_package',
+       'Configuration/TypoScript',
+       'Site Package'
+   );
 
 +------------------------+------------+----------+----------+
 | Header row, column 1   | Header 2   | Header 3 | Header 4 |

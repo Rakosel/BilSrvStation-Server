@@ -1,6 +1,10 @@
-.. sidebar:: Optional Sidebar Title
-   :subtitle: Optional Sidebar Subtitle
+"To Ma Own Beloved Lassie: A Poem on her 17th Birthday", by
+Ewan McTeagle (for Lassie O'Shea):
 
-   Subsequent indented lines comprise
-   the body of the sidebar, and are
-   interpreted as body elements.
+    .. line-block::
+
+        Lend us a couple of bob till Thursday.
+        I'm absolutely skint.
+        But I'm expecting a postal order and I can pay you back
+            as soon as it comes.
+        Love, Ewan.

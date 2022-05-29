@@ -1,6 +1,15 @@
 Welcome to the project |project| !!!
 ===================================
 
+Literal blocks are either indented or line-prefix-quoted blocks,
+and indicated with a double-colon ("::") at the end of the
+preceding paragraph (right here -->)::
+
+    if literal_block:
+        text = 'is left as-is'
+        spaces_and_linebreaks = 'are preserved'
+        markup_processing = None
+
 Paragraphs contain text and may contain inline markup:
 *emphasis*, **strong emphasis**, `interpreted text`, ``inline
 literals``, standalone hyperlinks (https://www.python.org),

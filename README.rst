@@ -1,6 +1,8 @@
 Welcome to the project |project| !!!
 ===================================
 
+@section{The Section Title}
+
 r"""This is a raw docstring.  Backslashes (\) are not touched."""
 
 - This is the first line of a bullet list

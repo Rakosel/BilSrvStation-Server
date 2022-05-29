@@ -10,5 +10,5 @@
 
 .. container:: custom
 
-   This paragraph might be rendered in a custom way.
-   fdfd
+This paragraph might be rendered in a custom way.
+fdfd

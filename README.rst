@@ -2,9 +2,6 @@
 | New line and we are still on
   the same line
 |   Yet a new line
-|bash
-|******
-|
 |-xv
 |set -x
 | https://wiki.debian.org/Microcode

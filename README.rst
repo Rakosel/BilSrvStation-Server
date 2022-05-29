@@ -1,5 +1,4 @@
-|bash
-|******
+|  bash
 |-xv
 |set -x
 

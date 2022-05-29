@@ -1,5 +1,8 @@
 Welcome to the project |project| !!!
 ===================================
+
+r"""This is a raw docstring.  Backslashes (\) are not touched."""
+
 - This is the first line of a bullet list
   item's paragraph.  All lines must align
   relative to the first line.

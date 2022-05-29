@@ -1,18 +1,16 @@
-.. compound::
+.. class:: special
 
-   The 'rm' command is very dangerous.  
-   If you are logged
-   
-   in as root and enter ::
+This is a "special" paragraph.
 
-       cd /
-       rm -rf *
+.. class:: exceptional remarkable
 
-.. container:: custom
+An Exceptional Section
+======================
 
-This paragraph might be rendered in a custom way.
-fdfd
+This is an ordinary paragraph.
 
-.. contents:: Table of Contents
-   sdfdf
-   fdfgd
+.. class:: multiple
+
+   First paragraph.
+
+   Second paragraph.

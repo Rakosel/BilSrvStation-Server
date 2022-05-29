@@ -5,6 +5,13 @@ Welcome to the project |project| !!!
 
 |build-status| |docs| |coverage|
 
+    """
+    Keep data fresher longer.
+
+    Extend `Storer`.  Class attribute `instances` keeps track
+    of the number of `Keeper` objects instantiated.
+    """
+
 Purpose
 -------
 

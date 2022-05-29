@@ -16,13 +16,13 @@ bash
 |	
 |	
 |	
-1	AUTO POSTINSTALL
-==================
+01	AUTO POSTINSTALL
+===================
 |	 octanovilca na SSL + po4initb script cmd
 |	 danger!!! do postinstall copy wufu & wpa_supplicant.conf + SAMBA
 |	
-1.1	PRE-INSTALL EMV AND SETTINGS
---------------------------------
+01.01	PRE-INSTALL EMV AND SETTINGS
+----------------------------------
 |	
 |	d-i preseed/late_command string mkdir -p /target/install/; cp -R /install/* /target/install/; cp -Rf /install/lib/ /target/lib/;
 |	
@@ -100,8 +100,8 @@ bash
 	PORT_SSH="4103"
 	NET_ARR=();
 |	
-1.2	CHECK ROOT PRIVILEGE
-------------------------
+01.02	CHECK ROOT PRIVILEGE
+--------------------------
 |	
 .. code-block:: bash
 
@@ -199,8 +199,8 @@ bash
 |		lsb_version -da
 |		a.3 else ok
 |	
-1.3	SETTINGS /ETC/NETWORK -> INTERFACES [interface_sh]
-------------------------------------------------------
+01.03	SETTINGS /ETC/NETWORK -> INTERFACES [interface_sh]
+--------------------------------------------------------
 |	
 .. code-block:: bash
 
@@ -210,16 +210,16 @@ bash
 	cd /install/
 	if [[ -z $(sed -n -e "s/^\(1_settings_interface_with_wifi\).*/\1/p" steps.txt) ]]; then
 |	
-1.3.1	SETTINGS NETWORK/INTERFACES
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+01.03.01	SETTINGS NETWORK/INTERFACES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	
 |	
 .. code-block:: bash
 
 	cd /etc/network/
 |	
-1.3.2	SEARCH INTERFACES 
-~~~~~~~~~~~~~~~~~~~~~~~~
+01.03.02	SEARCH INTERFACES 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	
 |		|	2:	number  
 |	
@@ -472,8 +472,8 @@ bash
 
 	fi
 |	
-1.3.2	restart service
-~~~~~~~~~~~~~~~~~~~~~
+01.03.02	restart service
+~~~~~~~~~~~~~~~~~~~~~~~~
 |	
 .. code-block:: bash
 
@@ -484,8 +484,8 @@ bash
 	echo -e "1_settings_interface_with_wifi" >> steps.txt
 	fi
 |	
-1.4		Update distribution 
--------------------------
+01.04		Update distribution 
+---------------------------
 |	
 .. code-block:: bash
 
@@ -572,8 +572,8 @@ bash
 	fi
 	
 |	
-1.5		Install drivers
---------------------
+01.05		Install drivers
+----------------------
 |	 ??? do make analys 'lspci' and install autochoose driver
 |	
 .. code-block:: bash
@@ -602,8 +602,8 @@ bash
 	echo -e "y\n" | apt-get install firmware-linux-nonfree
 	echo -e "y\n" | apt-get install man 
 |	
-1.5.1	Install SElinux utils & acl
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+01.05.01	Install SElinux utils & acl
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	
 .. code-block:: bash
 
@@ -628,16 +628,16 @@ bash
 	
 	echo -e "2_install_driver" >> steps.txt
 |	
-1.5.2	Reboot
-~~~~~~~~~~~~
+01.05.02	Reboot
+~~~~~~~~~~~~~~~
 |	
 .. code-block:: bash
 
 	reboot
 	fi
 |	
-1.6		Install git && nanorc [step_three]
----------------------------------------
+01.06		Install git && nanorc [step_three]
+-----------------------------------------
 |	
 .. code-block:: bash
 
@@ -722,8 +722,8 @@ bash
 	echo -e "3_nanorc" >> steps.txt
 |	
 |	
-1.7		Copy dir 
---------------
+01.07		Copy dir 
+----------------
 |	
 |	
 .. code-block:: bash
@@ -754,8 +754,8 @@ bash
 |	 https://superuser.com/questions/904001/how-to-install-tar-xz-file-in-ubuntu
 |	
 |	
-1.8		Install utils [step_five]
-------------------------------
+01.08		Install utils [step_five]
+--------------------------------
 |	
 .. code-block:: bash
 
@@ -936,8 +936,8 @@ bash
 |	 apt-get update
 |	 apt-get install shake-fs
 |	
-1.9		Install driver opt and acc [step_six]
-------------------------------------------
+01.09		Install driver opt and acc [step_six]
+--------------------------------------------
 |	
 .. code-block:: bash
 
@@ -945,11 +945,11 @@ bash
 	cd /install/
 	if [[ -z $(sed -n -e "s/^\(7_driver_opt\).*/\1/p" steps.txt) ]]; then
 |	
-1.9.1	create disk /opt/
-~~~~~~~~~~~~~~~~~~~~~~~
+01.09.01	create disk /opt/
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	
-1.9.2	search /dev/s**
-~~~~~~~~~~~~~~~~~~~~~
+01.09.02	search /dev/s**
+~~~~~~~~~~~~~~~~~~~~~~~~
 |	
 |	touch fdiskhdd.txt;
 |	fdisk -l > fdiskhdd.txt
@@ -970,8 +970,8 @@ bash
 |	mkfs.ext4 $STATE /opt
 |	
 |	
-1.9.3	mount /dev/s**
-~~~~~~~~~~~~~~~~~~~~
+01.09.03	mount /dev/s**
+~~~~~~~~~~~~~~~~~~~~~~~
 |	
 .. code-block:: bash
 
@@ -1037,8 +1037,8 @@ bash
 |		Jump to label interface_sh
 |	
 |	
-1.10		Create users and groups
------------------------------
+01.10		Create users and groups
+------------------------------
 |	
 .. code-block:: bash
 
@@ -1050,7 +1050,8 @@ bash
 |	
 |		 cp sources.tmp sources.list;
 |	
-|				1.10.1		Create users and groups
+01.10.01		Create users and groups
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	
 |	cp -Rf /install/home/rootsu/.cmd_shell.sh ~/.cmd_shell.sh
 |	cp -Rf /install/home/rootsu/.bashrc ~/.bashrc
@@ -1115,11 +1116,13 @@ bash
 
 	
 |	
-|				1.10.2		Create ssh_ssl
+01.10.02		Create ssh_ssl
+~~~~~~~~~~~~~~~~~~~~~~~~
 |	
 |			https://www.cyberciti.biz/tips/checking-openssh-sshd-configuration-syntax-errors.html
 |	
-|				1.10.3	Install ssh settings
+01.10.03	Install ssh settings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	
 .. code-block:: bash
 
@@ -1255,7 +1258,8 @@ bash
 
 	systemctl restart ssh
 |	
-|				1.10.4	Create users ssh
+01.10.04	Create users ssh
+~~~~~~~~~~~~~~~~~~~~~~~~~
 |	
 |	
 .. code-block:: bash
@@ -1264,7 +1268,8 @@ bash
 	bash ~/.cmd_shell.sh --mode "ssh_keygen" --uadd "admin" --gadd "admins" --pwd "debian"
 |	
 |	
-|				1.10.5	Create SAMBA
+01.10.05	Create SAMBA
+~~~~~~~~~~~~~~~~~~~~~
 |	
 |	
 |	
@@ -1284,18 +1289,22 @@ bash
 	systemctl restart smbd
 	
 |	
-|				1.10.6	Install and settings firewall ?
+01.10.06	Install and settings firewall 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	
 |	
-|				1.10.7	Install other soft
+01.10.07	Install other soft
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	
 |	
-|				1.10.8	Extended nano (non autosettings)
+01.10.08	Extended nano 
+~~~~~~~~~~~~~~~~~~~~~~~
 |	cp /install/nanorc /etc/nanorc
 |	
 |	
 |	
-|				1.10.9	cp ers (non autosettings)
+01.10.09	cp ers 
+~~~~~~~~~~~~~~~~
 |	cp /install/ers /etc/ers
 |	
 .. code-block:: bash
@@ -1303,7 +1312,8 @@ bash
 	echo -e "y" | apt-get install ntfs-3g;
 |	exit 1;
 |	
-|				1.10.10	Install vsftp
+01.10.10	Install vsftp
+~~~~~~~~~~~~~~~~~~~~~~
 |	
 .. code-block:: bash
 
@@ -1595,8 +1605,8 @@ bash
 
 	
 |	
-1.11	Settings permissive SELinux
---------------------------------
+01.11	Settings permissive SELinux
+---------------------------------
 |	
 |	 seinfo -t
 .. code-block:: bash

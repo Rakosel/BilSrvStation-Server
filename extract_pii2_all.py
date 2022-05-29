@@ -241,7 +241,7 @@ print(''.join(POS_LIST[1]))
 print(int((''.join(POS_LIST[1]).split(' ')[1]),10))
 print(int((''.join(POS_LIST[1]).split(' ')[2]),10))
 
-print(len(POS_LIST))
+#print(POS_LIST)
 
 j=0;
 #pdir=''.join([os.getcwd(),"/out_list.sh"]);
@@ -257,6 +257,11 @@ j=0;
 #print(POS_LIST[363])
 print("+_++++++++++++++++++++++++++")
 
+print(linep[802])
+print(''.join(re.findall("(\d.\d\d.\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[802])))
+
+print(linep[885])
+print(''.join(re.findall("(\d.\d\d.\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[885])))
 
 #https://pyneng.readthedocs.io/ru/latest/book/15_module_re/
 for i in linep_out:
@@ -265,9 +270,9 @@ for i in linep_out:
         POS_0=int((''.join(POS_LIST[j]).split(' ')[1]),10);
         POS_END=int((''.join(POS_LIST[j]).split(' ')[2]),10);
         while(POS_0<=POS_END):
-            s0=''.join(re.findall("#\t\t\t(\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
-            s1=''.join(re.findall("#\t\t\t(\d.\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
-            s2=''.join(re.findall("#\t\t\t(\d.\d.\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
+            s0=''.join(re.findall("#\t\t\t(\d\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
+            s1=''.join(re.findall("#\t\t\t(\d\d.\d\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
+            s2=''.join(re.findall("#\t\t\t(\d\d.\d\d.\d\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
             if(s0!=""):
                 h1=''.join(['=']*len(s0));
                 linep_out[k] = strToList("{0}\n{1}\n".format(s0,h1));
@@ -288,11 +293,11 @@ for i in linep_out:
                 k+=3;
                 POS_0=POS_0+1;
                 #print("{0} {1}".format(POS_0,POS_END))
-            #if(s0=="" and s1=="" and s2==""):
-            linep[POS_0] = re.sub('#<--!|#!-->', '|\t', linep[POS_0])
-            linep[POS_0] = re.sub('#', '|\t', linep[POS_0])
+            if(s0=="" and s1=="" and s2==""):
+                linep[POS_0] = re.sub('#<--!|#!-->', '|\t', linep[POS_0])
+                linep[POS_0] = re.sub('#', '|\t', linep[POS_0])
                 #linep[POS_0] = re.sub('|    danger!!!', '.. danger::', linep[POS_0])
-            linep_out[k] = re.sub('^ ', '', linep[POS_0])
+                linep_out[k] = re.sub('^ ', '', linep[POS_0])
             #if(''.join(re.findall("^|    (danger!!! [.*]*)", linep[POS_0]))!= ""):
             #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
             #    print(linep[POS_0]);
@@ -301,7 +306,7 @@ for i in linep_out:
                 
                 #linep_out[k] = re.sub('#<--!|#!-->', '', linep[POS_0]);
                 #linep_out[k] = linep[POS_0];
-            POS_0=POS_0+1;
+                POS_0=POS_0+1;
             k+=1;
     if (''.join(POS_LIST[j])[0]=="$"):
         POS_0=int((''.join(POS_LIST[j]).split(' ')[1]),10);

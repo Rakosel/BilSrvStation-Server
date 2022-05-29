@@ -14,11 +14,11 @@
 #!-->
 #
 #<--!
-#			1	AUTO POSTINSTALL
+#			01	AUTO POSTINSTALL
 # octanovilca na SSL + po4initb script cmd
 # danger!!! do postinstall copy wufu & wpa_supplicant.conf + SAMBA
 #
-#			1.1	PRE-INSTALL EMV AND SETTINGS
+#			01.01	PRE-INSTALL EMV AND SETTINGS
 #
 #d-i preseed/late_command string mkdir -p /target/install/; cp -R /install/* /target/install/; cp -Rf /install/lib/ /target/lib/;
 #
@@ -90,7 +90,7 @@ STATE="0";
 PORT_SSH="4103"
 NET_ARR=();
 #<--!
-#			1.2	CHECK ROOT PRIVILEGE
+#			01.02	CHECK ROOT PRIVILEGE
 #!-->
 
 if [[ $EUID -ne 0 ]]; then
@@ -180,7 +180,7 @@ cp sources.list sources.tmp
 #	lsb_version -da
 #	a.3 else ok
 #
-#			1.3	SETTINGS /ETC/NETWORK -> INTERFACES [interface_sh]
+#			01.03	SETTINGS /ETC/NETWORK -> INTERFACES [interface_sh]
 #!-->
 TMPS="0";
 interface_sh:
@@ -188,12 +188,12 @@ interface_sh:
 cd /install/
 if [[ -z $(sed -n -e "s/^\(1_settings_interface_with_wifi\).*/\1/p" steps.txt) ]]; then
 #<--!
-#			1.3.1	SETTINGS NETWORK/INTERFACES
+#			01.03.01	SETTINGS NETWORK/INTERFACES
 #
 #!-->
 cd /etc/network/
 #<--!
-#			1.3.2	SEARCH INTERFACES (WIFI?)
+#			01.03.02	SEARCH INTERFACES (WIFI?)
 #
 #	#2:	number  
 #!-->
@@ -400,7 +400,7 @@ sed -i -e "$a s/\(iface\s\).*/\1$NET_EN inet dhcp/g" interfaces
 #!-->
 fi
 #<--!
-#			1.3.2	restart service
+#			01.03.02	restart service
 #!-->
 
 systemctl restart networking 
@@ -409,7 +409,7 @@ cd /install/
 echo -e "1_settings_interface_with_wifi" >> steps.txt
 fi
 #<--!
-#			1.4		Update distribution (update && upgrade) [step_one]
+#			01.04		Update distribution (update && upgrade) [step_one]
 #!-->
 step_one:
 
@@ -484,7 +484,7 @@ echo -e "1_src_list" >> steps.txt
 fi
 
 #<--!
-#			1.5		Install drivers: install non-free firmware && *-nonfree and tools [step_two]
+#			01.05		Install drivers: install non-free firmware && *-nonfree and tools [step_two]
 # ??? do make analys 'lspci' and install autochoose driver
 #!-->
 step_two:
@@ -509,7 +509,7 @@ fi
 echo -e "y\n" | apt-get install firmware-linux-nonfree
 echo -e "y\n" | apt-get install man 
 #<--!
-#			1.5.1	Install SElinux utils & acl
+#			01.05.01	Install SElinux utils & acl
 #!-->
 echo -e "y\n" | apt-get install acl
 echo -e "y\n" | apt-get install setools policycoreutils selinux-basics selinux-utils selinux-policy-default selinux-policy-mls auditd policycoreutils-python-utils semanage-utils audispd-plugins
@@ -530,12 +530,12 @@ fi
 
 echo -e "2_install_driver" >> steps.txt
 #<--!
-#			1.5.2	Reboot, before activate-SELinux
+#			01.05.02	Reboot, before activate-SELinux
 #!-->
 reboot
 fi
 #<--!
-#			1.6		Install git && nanorc [step_three]
+#			01.06		Install git && nanorc [step_three]
 #!-->
 
 if [[ -z $(sed -n -e "s/^\(3_nanorc\).*/\1/p" steps.txt) ]]; then
@@ -612,7 +612,7 @@ fi
 echo -e "3_nanorc" >> steps.txt
 #
 #<--!
-#			1.7		Copy dir .sh -> in directory home path [step_four]
+#			01.07		Copy dir .sh -> in directory home path [step_four]
 #!-->
 #
 if [[ -z $(sed -n -e "s/^\(4_copy_sh\).*/\1/p" steps.txt) ]]; then
@@ -637,7 +637,7 @@ fi
 # https://superuser.com/questions/904001/how-to-install-tar-xz-file-in-ubuntu
 #!-->
 #<--!
-#			1.8		Install utils [step_five]
+#			01.08		Install utils [step_five]
 #!-->
 if [[ -z $(sed -n -e "s/^\(5_install_util_wd\).*/\1/p" steps.txt) ]]; then
 #
@@ -792,15 +792,15 @@ step_three:
 # apt-get update
 # apt-get install shake-fs
 #<--!
-#			1.9		Install driver opt and acc [step_six]
+#			01.09		Install driver opt and acc [step_six]
 #!-->
 step_four:
 cd /install/
 if [[ -z $(sed -n -e "s/^\(7_driver_opt\).*/\1/p" steps.txt) ]]; then
 #<--!
-#			1.9.1	create disk /opt/
+#			01.09.01	create disk /opt/
 #
-#			1.9.2	search /dev/s**
+#			01.09.02	search /dev/s**
 #
 #touch fdiskhdd.txt;
 #fdisk -l > fdiskhdd.txt
@@ -819,7 +819,7 @@ if [[ -z $(sed -n -e "s/^\(7_driver_opt\).*/\1/p" steps.txt) ]]; then
 #mkfs.ext4 $STATE /opt
 #!-->
 #<--!
-#			1.9.3	mount /dev/s**
+#			01.09.03	mount /dev/s**
 #!-->
 mount -t ext4 $(sudo fdisk -l | sed -n -e "s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p") /opt
 
@@ -873,7 +873,7 @@ cd /install/
 #	Jump to label interface_sh
 #
 #<--!
-#			1.10		Create users and groups, settings netutils: ssh,ftp,smbd etc... [step_seven]
+#			01.10		Create users and groups, settings netutils: ssh,ftp,smbd etc... [step_seven]
 #!-->
 
 if [[ -z $(sed -n -e "s/^\(9_user_settings\).*/\1/p" steps.txt) ]]; then
@@ -883,7 +883,7 @@ STEP_TWO_AFTER:
 #
 #	 cp sources.tmp sources.list;
 #<--!
-#			1.10.1		Create users and groups
+#			01.10.01		Create users and groups
 #!-->
 #cp -Rf /install/home/rootsu/.cmd_shell.sh ~/.cmd_shell.sh
 #cp -Rf /install/home/rootsu/.bashrc ~/.bashrc
@@ -938,11 +938,11 @@ setfacl -m u:pub_share:rwx,u:admin_share:rwx -R "/mnt/SMB";
 #chown -R admin_share:technics,pub_share:technics /mnt/SMB
 
 #<--!
-#			1.10.2		Create ssh_ssl
+#			01.10.02		Create ssh_ssl
 #!-->
 #		https://www.cyberciti.biz/tips/checking-openssh-sshd-configuration-syntax-errors.html
 #<--!
-#			1.10.3	Install ssh settings
+#			01.10.03	Install ssh settings
 #!-->
 cd /etc/ssh/
 
@@ -1034,14 +1034,14 @@ cp sshd_config sshd_config.tmp
 #
 systemctl restart ssh
 #<--!
-#			1.10.4	Create users ssh
+#			01.10.04	Create users ssh
 #!-->
 #
 sudo bash ~/.cmd_shell.sh --mode "ssh_keygen" --uadd "tom" --gadd "ps_users" --pwd "debian"
 bash ~/.cmd_shell.sh --mode "ssh_keygen" --uadd "admin" --gadd "admins" --pwd "debian"
 #
 #<--!
-#			1.10.5	Create SAMBA
+#			01.10.05	Create SAMBA
 #!-->
 #
 #
@@ -1059,24 +1059,24 @@ systemctl restart autofs
 systemctl restart smbd
 
 #<--!
-#			1.10.6	Install and settings firewall ?
+#			01.10.06	Install and settings firewall ?
 #!-->
 #<--!
-#			1.10.7	Install other soft
+#			01.10.07	Install other soft
 #!-->
 #<--!
-#			1.10.8	Extended nano (non autosettings)
+#			01.10.08	Extended nano (non autosettings)
 #cp /install/nanorc /etc/nanorc
 #<--!
 #
 #<--!
-#			1.10.9	cp ers (non autosettings)
+#			01.10.09	cp ers (non autosettings)
 #cp /install/ers /etc/ers
 #!-->
 echo -e "y" | apt-get install ntfs-3g;
 #exit 1;
 #<--!
-#			1.10.10	Install vsftp
+#			01.10.10	Install vsftp
 #!-->
 echo -e "y" | sudo apt install vsftpd
 
@@ -1274,7 +1274,7 @@ fi
 #rm /install/steps.txt
 
 #<--!
-#			1.11	Settings permissive SELinux
+#			01.11	Settings permissive SELinux
 #!-->
 # seinfo -t
 if [[ -z $(sed -n -e "s/^\(10_SELinux_settings\).*/\1/p" steps.txt) ]]; then

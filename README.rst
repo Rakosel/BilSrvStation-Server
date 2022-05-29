@@ -16,3 +16,8 @@ This is an ordinary paragraph.
    Second paragraph.
    fdsafsdg
    sgfdsgdfs
+
+| Line block
+| New line and we are still on
+  the same line
+|   Yet a new line

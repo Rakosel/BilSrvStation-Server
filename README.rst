@@ -18,12 +18,12 @@ bash
 |	
 1	AUTO POSTINSTALL
 ==================
-# octanovilca na SSL + po4initb script cmd
+|	 octanovilca na SSL + po4initb script cmd
 |	 danger!!! do postinstall copy wufu & wpa_supplicant.conf + SAMBA
 |	
 1.1	PRE-INSTALL EMV AND SETTINGS
 --------------------------------
-#
+|	
 |	d-i preseed/late_command string mkdir -p /target/install/; cp -R /install/* /target/install/; cp -Rf /install/lib/ /target/lib/;
 |	
 |	cd /install/
@@ -99,7 +99,7 @@ bash
 |	
 1.2	CHECK ROOT PRIVILEGE
 ------------------------
-#!-->
+|	
 .. code-block:: bash
 	
 	if [[ $EUID -ne 0 ]]; then
@@ -194,7 +194,7 @@ bash
 |	
 1.3	SETTINGS /ETC/NETWORK -> INTERFACES [interface_sh]
 ------------------------------------------------------
-#!-->
+|	
 .. code-block:: bash
 	TMPS="0";
 	interface_sh:
@@ -204,14 +204,14 @@ bash
 |	
 1.3.1	SETTINGS NETWORK/INTERFACES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#
+|	
 |	
 .. code-block:: bash
 	cd /etc/network/
 |	
 1.3.2	SEARCH INTERFACES 
 ~~~~~~~~~~~~~~~~~~~~~~~~
-#
+|	
 |		|	2:	number  
 |	
 .. code-block:: bash
@@ -442,7 +442,7 @@ bash
 |	
 1.3.2	restart service
 ~~~~~~~~~~~~~~~~~~~~~
-#!-->
+|	
 .. code-block:: bash
 	
 	systemctl restart networking 
@@ -453,7 +453,7 @@ bash
 |	
 1.4		Update distribution 
 -------------------------
-#!-->
+|	
 .. code-block:: bash
 	step_one:
 	
@@ -535,7 +535,7 @@ bash
 |	
 1.5		Install drivers
 --------------------
-# ??? do make analys 'lspci' and install autochoose driver
+|	 ??? do make analys 'lspci' and install autochoose driver
 |	
 .. code-block:: bash
 	step_two:
@@ -563,7 +563,7 @@ bash
 |	
 1.5.1	Install SElinux utils & acl
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#!-->
+|	
 .. code-block:: bash
 	echo -e "y\n" | apt-get install acl
 	echo -e "y\n" | apt-get install setools policycoreutils selinux-basics selinux-utils selinux-policy-default selinux-policy-mls auditd policycoreutils-python-utils semanage-utils audispd-plugins
@@ -587,14 +587,14 @@ bash
 |	
 1.5.2	Reboot
 ~~~~~~~~~~~~
-#!-->
+|	
 .. code-block:: bash
 	reboot
 	fi
 |	
 1.6		Install git && nanorc [step_three]
 ---------------------------------------
-#!-->
+|	
 .. code-block:: bash
 	
 	if [[ -z $(sed -n -e "s/^\(3_nanorc\).*/\1/p" steps.txt) ]]; then
@@ -676,7 +676,7 @@ bash
 |	
 1.7		Copy dir 
 --------------
-#!-->
+|	
 |	
 .. code-block:: bash
 	if [[ -z $(sed -n -e "s/^\(4_copy_sh\).*/\1/p" steps.txt) ]]; then
@@ -705,7 +705,7 @@ bash
 |	
 1.8		Install utils [step_five]
 ------------------------------
-#!-->
+|	
 .. code-block:: bash
 	if [[ -z $(sed -n -e "s/^\(5_install_util_wd\).*/\1/p" steps.txt) ]]; then
 |	
@@ -874,7 +874,7 @@ bash
 |	
 1.9		Install driver opt and acc [step_six]
 ------------------------------------------
-#!-->
+|	
 .. code-block:: bash
 	step_four:
 	cd /install/
@@ -882,10 +882,10 @@ bash
 |	
 1.9.1	create disk /opt/
 ~~~~~~~~~~~~~~~~~~~~~~~
-#
+|	
 1.9.2	search /dev/s**
 ~~~~~~~~~~~~~~~~~~~~~
-#
+|	
 |	touch fdiskhdd.txt;
 |	fdisk -l > fdiskhdd.txt
 |	STATE=$(sed -n -e "s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p" fdiskhdd.txt);
@@ -906,7 +906,7 @@ bash
 |	
 1.9.3	mount /dev/s**
 ~~~~~~~~~~~~~~~~~~~~
-#!-->
+|	
 .. code-block:: bash
 	mount -t ext4 $(sudo fdisk -l | sed -n -e "s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p") /opt
 	
@@ -967,7 +967,7 @@ bash
 |	
 1.10		Create users and groups
 -----------------------------
-#!-->
+|	
 .. code-block:: bash
 	
 	if [[ -z $(sed -n -e "s/^\(9_user_settings\).*/\1/p" steps.txt) ]]; then
@@ -1447,7 +1447,7 @@ bash
 |	
 1.11	Settings permissive SELinux
 --------------------------------
-#!-->
+|	
 |	 seinfo -t
 .. code-block:: bash
 	if [[ -z $(sed -n -e "s/^\(10_SELinux_settings\).*/\1/p" steps.txt) ]]; then

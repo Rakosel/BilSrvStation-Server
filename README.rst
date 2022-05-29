@@ -1,9 +1,17 @@
 Welcome to the project |project| !!!
 ===================================
+- This is the first line of a bullet list
+  item's paragraph.  All lines must align
+  relative to the first line.
 
-.. Comments begin with two dots and a space.  Anything may
-   follow, except for the syntax of footnotes/citations,
-   hyperlink targets, directives, or substitution definitions.
+      This indented paragraph is interpreted
+      as a block quote.
+
+  Another paragraph belonging to the first list item.
+
+ Because it is not sufficiently indented,
+ this paragraph does not belong to the list
+ item (it's a block quote following the list)..
 
 Paragraphs contain text and may contain inline markup:
 *emphasis*, **strong emphasis**, `interpreted text`, ``inline

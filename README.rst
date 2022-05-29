@@ -21,7 +21,7 @@ fi
  octanovilca na SSL + po4initb script cmd
  danger!!! do postinstall copy wufu & wpa_supplicant.conf + SAMBA
 
-	1.1	PRE-INSTALL EMV AND SETTINGS
+1.1	PRE-INSTALL EMV AND SETTINGS
 --------------------------------
 
 d-i preseed/late_command string mkdir -p /target/install/; cp -R /install/* /target/install/; cp -Rf /install/lib/ /target/lib/;

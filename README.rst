@@ -1,3 +1,7 @@
+| Line block
+| New line and we are still on
+  the same line
+|   Yet a new line
 |bash
 |******
 |

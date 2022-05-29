@@ -1,6 +1,6 @@
-bash
-******
-
+|bash
+|******
+|
 |-xv
 |set -x
 | https://wiki.debian.org/Microcode

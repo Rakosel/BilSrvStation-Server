@@ -1,6 +1,6 @@
 |  bash
-|-xv
-|set -x
+|  -xv
+|  set -x
 
 .. pull-quote::
 

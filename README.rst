@@ -151,7 +151,7 @@ bash
 |	+ то выводится сообщение об ошибке.
 |	
 .. code-block:: bash
-	: ${HOSTNAME?} ${USER?} ${HOME?} ${MAIL?}
+	${HOSTNAME?} ${USER?} ${HOME?} ${MAIL?}
 	echo
 	echo "Имя машины: $HOSTNAME."
 	echo "Ваше имя: $USER."

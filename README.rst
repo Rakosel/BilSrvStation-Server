@@ -42,6 +42,8 @@ bash
 |	update-rc.d -f pii2.sh remove
 |	
 .. code-block:: bash
+
+	
 	function jumpto
 	{
 	label=$1
@@ -52,11 +54,13 @@ bash
 	function reinterfaces
 	{
 	cd /etc/network/
+	
 |	
 |	
 |	if [[ -n $( egrep -n '^[a-z] || ^|	' interfaces) && TMPS=="0" ]]; then
 |	
 .. code-block:: bash
+
 	BUF="# This file describes the network interfaces available on your system\n
 		# and how to activate them. For more information, see interfaces(5).\n
 		\n
@@ -83,6 +87,7 @@ bash
 |	 		+ install wpa_supplicant-0.7.3.tar.gz
 |	
 .. code-block:: bash
+
 	export LC_ALL=ru_RU.UTF-8
 	FILES="steps.txt"
 	BUF="";
@@ -99,6 +104,7 @@ bash
 ------------------------
 |	
 .. code-block:: bash
+
 	
 	if [[ $EUID -ne 0 ]]; then
 		if [[ ${LANG:0:5} -eq 'ru_RU' ]]; then
@@ -118,6 +124,7 @@ bash
 |	select opt in "${options[@]}"
 |	
 .. code-block:: bash
+
 	select opt in Auto PoluAuto Hands Exit; do
 	case $opt in
 	Auto)
@@ -141,6 +148,7 @@ bash
 	done
 |	
 .. code-block:: bash
+
 	
 	jumpto $start
 	
@@ -152,6 +160,7 @@ bash
 |	+ то выводится сообщение об ошибке.
 |	
 .. code-block:: bash
+
 	: ${HOSTNAME?} ${USER?} ${HOME?} ${MAIL?}
 	echo
 	echo "Имя машины: $HOSTNAME."
@@ -194,6 +203,7 @@ bash
 ------------------------------------------------------
 |	
 .. code-block:: bash
+
 	TMPS="0";
 	interface_sh:
 	
@@ -205,6 +215,7 @@ bash
 |	
 |	
 .. code-block:: bash
+
 	cd /etc/network/
 |	
 1.3.2	SEARCH INTERFACES 
@@ -213,16 +224,19 @@ bash
 |		|	2:	number  
 |	
 .. code-block:: bash
+
 	if [[ ! -f /etc/network/interfaces ]]; then
 		touch interfaces
 	fi
 |	
 .. code-block:: bash
+
 	cp interfaces interfaces.back 
 |	
 |	 t.k while 1 step s.b. str !0
 |	
 .. code-block:: bash
+
 	COUNT=1;
 	NET_EN=""
 	
@@ -238,6 +252,7 @@ bash
 |	search index arr for WIFI[COUNT] and NETEN[COUNT]
 |	
 .. code-block:: bash
+
 	for COUNT in ${NET_ARR[@]}
 	do
 		if [[ -n $(echo $NET_ARR[$COUNT] | sed -n -e 's/en\(.*\).*/\1/p') ]]; then
@@ -269,6 +284,7 @@ bash
 |		Jump to label interface_sh
 |	
 .. code-block:: bash
+
 	if [[ -z $( egrep -n '^[a-z] || ^#' interfaces) && $TMPS -eq "0" ]]; then
 	reinterfaces
 	fi
@@ -294,6 +310,7 @@ bash
 |	COUNT=$(($( sed -r -e '/[a-z]\/+{1,}\*/{=;q;}' interfaces.back | sed -n '$=')-1));
 |	if [[ $(($( sed -r -e '/[a-z]\/+{1,}\*/{=;q;}' interfaces | sed -n '$=')-1)) == "0" ]]; then
 .. code-block:: bash
+
 	
 |	if [[ $(sed -n -e "$=;" interfaces) == "0" ]]; then
 |			TMPS="1";
@@ -301,17 +318,20 @@ bash
 |	fi
 |	
 .. code-block:: bash
+
 	TMPS="1";
 |	
 |	sed -n -e "s/rsa_cert_file=.*$\||	rsa_cert_file=.*$/rsa_cert_file=\/ssl\/certs\/vsftpd.crt/p" vsftpd.conf
 |	
 .. code-block:: bash
+
 	if [[ $STATE -eq "0" ]]; then
 |	
 |	source /etc/network/interfaces.d/*\n
 |	 str auto $( sed -n -e "s/\(auto\s\).*/\1$NET_ARR[$NET_WI]\s$NET_ARR[$NET_EN]/p"
 |	
 .. code-block:: bash
+
 	if [[ -z $(sed -n -e "s/\(source \/etc\/network\/interfaces/\\).*/\1/p" interfaces) ]]; then
 			TMPS="1";
 			reinterfaces;
@@ -326,6 +346,7 @@ bash
 |	 str iface NET_EN
 |	
 .. code-block:: bash
+
 	if [[ -z $( sed -n -e "s/\(iface\slo\).*/\1/p" interfaces) ]]; then
 			TMPS="1";
 			reinterfaces;
@@ -335,11 +356,13 @@ bash
 |	sed -i -e "$TMPS s/\(iface\s\).*/\1$NET_EN inet dhcp/g" interfaces
 |	
 .. code-block:: bash
+
 	sed -i -e "s/iface\slo.*/iface $NET_EN inet dhcp/g" interfaces
 |	
 |	 str allow-hotplug
 |	
 .. code-block:: bash
+
 	if [[ -z $( sed -n -e "s/\(allow-hotplug\s\).*/\1/p" interfaces) ]]; then
 			TMPS="1";
 			reinterfaces;
@@ -349,6 +372,7 @@ bash
 |	 str iface NET_WI
 |	
 .. code-block:: bash
+
 	if [[ -z $( sed -n -e "s/\(iface\s\).*/\1/p" interfaces) ]]; then
 			TMPS="1";
 			reinterfaces;
@@ -358,11 +382,13 @@ bash
 |	TMPS=$(sed -n -e "/\(iface\s[en]\).*/{=;q;}" interfaces)
 |	
 .. code-block:: bash
+
 	sed -i -e "$a s/\(iface\s\).*/\1$NET_WI inet dhcp/g" interfaces
 |	
 |	sed -n -e "s/\(iface\s[en]\).*/\1$NET_ARR[$NET_WI] inet dhcp/g" interfaces
 |	
 .. code-block:: bash
+
 	sed '$a	wpa-conf \/home\/rootsu\/wpa_supplicant.conf' interfaces >> interfaces;
 |	
 |	if [[-z $( sed -n -e "s/\(auto\s\).*/\1/p" interfaces) ]]; then
@@ -371,6 +397,7 @@ bash
 |	systemctl restart wpa_supplicant@$NET_ARR[$NET_WI]
 |	
 .. code-block:: bash
+
 	systemctl restart wpa_supplicant
 |	
 |	sed -n -e "s/\(auto\s\).*/\1$NET_ARR[$NET_WI]\s$NET_ARR[$NET_EN]/g" interfaces
@@ -382,6 +409,7 @@ bash
 |	 str allow-hotplug
 |	
 .. code-block:: bash
+
 	else
 	
 	if [[ -z $(sed -n -e "s/\(source \/etc\/network\/interfaces/\\).*/\1/p" interfaces) ]]; then
@@ -392,6 +420,7 @@ bash
 |	 str auto $( sed -n -e "s/\(auto\s\).*/\1$NET_ARR[$NET_WI]\s$NET_ARR[$NET_EN]/p"
 |	
 .. code-block:: bash
+
 	if [[ -z $(sed -n -e "s/\(auto\slo\).*/\1/p" interfaces) ]]; then
 			TMPS="1";
 			reinterfaces;
@@ -401,6 +430,7 @@ bash
 |	 str iface NET_EN
 |	
 .. code-block:: bash
+
 	if [[ -z $(sed -n -e "s/\(iface\slo\).*/\1/p" interfaces) ]]; then
 			TMPS="1";
 			reinterfaces;
@@ -410,6 +440,7 @@ bash
 |	 str allow-hotplug
 |	
 .. code-block:: bash
+
 	if [[ -z $(sed -n -e "s/\(allow-hotplug\s\).*/\1/p" interfaces) ]]; then
 			TMPS="1";
 			reinterfaces;
@@ -419,6 +450,7 @@ bash
 |	 str iface NET_WI
 |	
 .. code-block:: bash
+
 	if [[ -z $(sed -n -e "s/\(iface\s\).*/\1/p" interfaces) ]]; then
 			TMPS="1";
 			reinterfaces;
@@ -427,6 +459,7 @@ bash
 |	TMPS=$(sed -n -e "/\(iface\s[en]\).*/{=;q;}" interfaces);
 |	
 .. code-block:: bash
+
 	sed -i -e "$a s/\(iface\s\).*/\1$NET_EN inet dhcp/g" interfaces
 |	
 |	sed -n -e "s/\(iface\s[en]\).*/\1$NET_ARR[$NET_WI] inet dhcp/g" interfaces
@@ -436,12 +469,14 @@ bash
 |	 if [[ $STATE -eq "0" ]]; then fi
 |	
 .. code-block:: bash
+
 	fi
 |	
 1.3.2	restart service
 ~~~~~~~~~~~~~~~~~~~~~
 |	
 .. code-block:: bash
+
 	
 	systemctl restart networking 
 	 
@@ -453,6 +488,7 @@ bash
 -------------------------
 |	
 .. code-block:: bash
+
 	step_one:
 	
 	cd /install/
@@ -464,6 +500,7 @@ bash
 |		echo "Error: not defined version DebianOS, wait 3 sec";
 |	
 .. code-block:: bash
+
 		DEB_VER=$(cat /etc/os-release | sed -n -e "s/.*(\([^\)].*\))\"$/\1/p");
 		DEB_VER=$(echo $DEB_VER | sed -n -e "s/\([a-z]*\)$//p")
 	else
@@ -482,6 +519,7 @@ bash
 |	
 |	
 .. code-block:: bash
+
 	if [[ -n $(egrep -n '^[a-z] && ^#' sources.list) && -n $( sed -n -e "s/^deb http:\/\/ftp//p" sources.list) && -n $( sed -n -e "s/^deb-src http:\/\/ftp//p" sources.list) && -n $( sed -n -e "s/^deb http:\/\/deb//p" sources.list) && -n $( sed -n -e "s/^deb-src http:\/\/deb//p" sources.list) ]]; then
 	STATE="1";
 	rm sources.list;
@@ -489,6 +527,7 @@ bash
 |	 touch sources.tmp;
 |	
 .. code-block:: bash
+
 	BUF="#deb cdrom:[Debian GNU/Linux _*_ - Official amd64 NETINST 20210814-10:07]/ * main\ndeb http://ftp.debian.org/debian/ $DEB_VER main non-free contrib\ndeb-src http://ftp.debian.org/debian/ $DEB_VER main non-free contrib\n
 	\ndeb http://security.debian.org/debian-security/ $DEB_VER-security main contrib non-free \ndeb-src http://security.debian.org/debian-security/ $DEB_VER-security main contrib non-free \n
 	\n# *-updates, to get updates before a point release is made; \r\n# see https://www.debian.org/doc/manuals/debian-reference/ch02.en.html#_updates_and_backports \ndeb http://deb.debian.org/debian/ $DEB_VER-updates main contrib non-free \ndeb-src http://deb.debian.org/debian/ $DEB_VER-updates main contrib non-free \n
@@ -506,6 +545,7 @@ bash
 |	 sed -i '34s/AAA/BBB/' file_name
 |	
 .. code-block:: bash
+
 	else
 |	 
 |	The first part of it is an "address", i.e. the following command only applies to lines matching it. The ! negates the condition, i.e. the command will only be applied to lines not matching the address. So, in other words, Replace Hello by Hello world! on lines that don't contain Hello world!.
@@ -514,6 +554,7 @@ bash
 |	If you need at least one match, then use [a-z][a-z]* or [a-z]\{1,\}, or enable extended regular expressions with sed -E and use [a-z]+.
 |	
 .. code-block:: bash
+
 	 sed -i -e "s/$DEB_VER\s.*$/$DEB_VER main contrib non-free/g" sources.list
 	 sed -i -e "s/\(\/\s$DEB_VER\-[a-z]*\).*/\1 main contrib non-free/g" sources.list
 	fi;
@@ -536,6 +577,7 @@ bash
 |	 ??? do make analys 'lspci' and install autochoose driver
 |	
 .. code-block:: bash
+
 	step_two:
 	
 	cd /install/
@@ -551,6 +593,7 @@ bash
 |	apt-get install firmware-linux | apt-get install firmware-linux-nonfree | apt-get install firmware-linux | apt-get install firmware-realtek | apt-get install libdrm-amdgpu1 | apt-get install xserver-xorg-video-amdgpu  | apt-get install man 
 |	
 .. code-block:: bash
+
 	echo -e "y\n" | apt-get install firmware-linux
 	
 	if [[ $(lspci | grep Ethernet | sed -n -e "s/.*ller:\s\([a-zA-Z]\+\s\).*/\1/p") == "Realtek" ]]; then 
@@ -563,6 +606,7 @@ bash
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	
 .. code-block:: bash
+
 	echo -e "y\n" | apt-get install acl
 	echo -e "y\n" | apt-get install setools policycoreutils selinux-basics selinux-utils selinux-policy-default selinux-policy-mls auditd policycoreutils-python-utils semanage-utils audispd-plugins
 	echo -e "y\n" | apt-get install mcstrans
@@ -573,6 +617,7 @@ bash
 |	policycoreutils-gui
 |	
 .. code-block:: bash
+
 	touch /.autorelabel
 	selinux-activate
 	
@@ -587,6 +632,7 @@ bash
 ~~~~~~~~~~~~
 |	
 .. code-block:: bash
+
 	reboot
 	fi
 |	
@@ -594,6 +640,7 @@ bash
 ---------------------------------------
 |	
 .. code-block:: bash
+
 	
 	if [[ -z $(sed -n -e "s/^\(3_nanorc\).*/\1/p" steps.txt) ]]; then
 |	
@@ -601,6 +648,7 @@ bash
 |	setupcon
 |	
 .. code-block:: bash
+
 	echo -e "y\n" | apt-get install git
 	if [ 
 	? -ne 0 ]; then
@@ -658,6 +706,7 @@ bash
 |	include "/usr/share/nano/*.nanorc"
 |	
 .. code-block:: bash
+
 	find /usr/share/nano -name '*.nanorc' -printf "include %p\n" > ~/.nanorc
 |	
 |	for i in `ls /usr/share/nano`
@@ -668,6 +717,7 @@ bash
 |	rmdir /nanorc/
 |	
 .. code-block:: bash
+
 	fi
 	echo -e "3_nanorc" >> steps.txt
 |	
@@ -677,9 +727,11 @@ bash
 |	
 |	
 .. code-block:: bash
+
 	if [[ -z $(sed -n -e "s/^\(4_copy_sh\).*/\1/p" steps.txt) ]]; then
 |	
 .. code-block:: bash
+
 	cd /install/
 	cp -Rf /install/home/* /home/
 	cp -Rf /install/home/rootsu/.bashrc ~root 
@@ -693,6 +745,7 @@ bash
 |	cp /etc/nanorc ~/.nanorc
 |	
 .. code-block:: bash
+
 	echo -e "4_copy_sh" >> steps.txt
 	fi
 |	
@@ -705,9 +758,11 @@ bash
 ------------------------------
 |	
 .. code-block:: bash
+
 	if [[ -z $(sed -n -e "s/^\(5_install_util_wd\).*/\1/p" steps.txt) ]]; then
 |	
 .. code-block:: bash
+
 	echo "y\n" | apt-get install build-essential
 	if [ $? -ne 0 ]; then
 	 echo "Error: error install gcc-utils!!!"
@@ -721,6 +776,7 @@ bash
 |	update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 60 --slave /usr/bin/g++ g++ /usr/bin/g++-9
 |	
 .. code-block:: bash
+
 	echo -e "y\n" | apt-get install python
 	echo -e "y\n" | apt-get install python3
 	echo -e "y\n" | apt-get install tmux;
@@ -731,6 +787,7 @@ bash
 	echo -e "y\n" | apt-get install ncdu;
 |	echo -e "y\n" | apt-get install monitorix;
 .. code-block:: bash
+
 	echo -e "y\n" | apt-get install netdata;
 	echo -e "y\n" | apt-get install systat;
 	echo -e "y\n" | apt-get install iftop;
@@ -748,6 +805,7 @@ bash
 	echo -e "y\n" | apt-get install aptitude
 |	echo -e "y\n" | apt-get install iptables
 .. code-block:: bash
+
 	iptables –F
 	echo -e "y\n" | apt-get install cifs-utils
 	echo -e "y\n" | apt-get install samba
@@ -780,6 +838,7 @@ bash
 |	pip install mkdocs-rtd-dropdown
 |	
 .. code-block:: bash
+
 	pip install sphinx-autodocgen
 	pip install Pygments
 	pip install sphinx-intl
@@ -789,21 +848,25 @@ bash
 	pip install sphinxnotes-strike
 |	 Install Sphinx
 .. code-block:: bash
+
 	pip install -U sphinx
 	python -m venv .venv
 |	echo -e "y\n" | apt-get install anacron
 .. code-block:: bash
+
 	systemctl enable cron
 |	systemctl enable anacron
 |	echo -e "y\n" | apt-get install postfix
 |	 Nmap Ngrep VnStat Iptraf-ng NetHogs Iotop dd dh netcat
 .. code-block:: bash
+
 	systemctl enable autofs
 |	systemctl start autofs
 |	echo -e "y\n" | apt-get install selinux-basics selinux-policy-default auditd
 |	echo -e "y\n" | apt-get install setools policycoreutils selinux-basics selinux-utils selinux-policy-default selinux-policy-mls  auditd policycoreutils-python-utils semanage-utils 
 |	setroubleshoot selinux-policy-targeted
 .. code-block:: bash
+
 	
 	apt-get install openssh-server -y
 	if [ $? -ne 0 ]; then
@@ -817,6 +880,7 @@ bash
 |	
 |		locale -a
 .. code-block:: bash
+
 	update-locale LC_TIME=ru_RU.UTF-8;
 	update-locale LC_ALL=ru_RU.UTF-8;
 	update-locale LANG=ru_RU.UTF-8;
@@ -844,6 +908,7 @@ bash
 |	fi
 |	done
 .. code-block:: bash
+
 	
 	fi
 |	dpkg -i xz-utils_5.2.4-1_amd64.deb
@@ -863,6 +928,7 @@ bash
 |		jumpto STEP_TWO_AFTER;
 |	fi
 .. code-block:: bash
+
 	step_three:
 	
 |	Search 
@@ -874,6 +940,7 @@ bash
 ------------------------------------------
 |	
 .. code-block:: bash
+
 	step_four:
 	cd /install/
 	if [[ -z $(sed -n -e "s/^\(7_driver_opt\).*/\1/p" steps.txt) ]]; then
@@ -895,6 +962,7 @@ bash
 |	
 |	echo "\ng\nn\n1\n2048\n\nw" |  fdisk $STATE --wipe AUTO 
 .. code-block:: bash
+
 	
 |	
 |		Create fs
@@ -906,12 +974,14 @@ bash
 ~~~~~~~~~~~~~~~~~~~~
 |	
 .. code-block:: bash
+
 	mount -t ext4 $(sudo fdisk -l | sed -n -e "s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p") /opt
 	
 	shd=$(sudo fdisk -l | sed -n -e "s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p" | sed 's/\//\\\//g')
 	
 |	S1=$(sudo blkid | sed -n -e "s/$shd:\s\(.*\).*/\1/p" | sed -n -e "s/$shd:\s\([\=a-zA-Z_]*\)/\1/p;s/UUID=\(.*\)\sB.*/\1/p" | sed 's/\"/\\"/g')
 .. code-block:: bash
+
 	
 	S1=$(sudo blkid | sed -n -e "s/$shd:\s\(.*\).*/\1/p" | sed -n -e "s/UUID=\(.*\)\sB.*/\1/p" | sed 's/\"/\\"/g')
 	
@@ -927,10 +997,12 @@ bash
 |	 https://superuser.com/questions/332252/how-to-create-and-format-a-partition-using-a-bash-script
 |	
 .. code-block:: bash
+
 	echo -e "7_driver_opt" >> steps.txt
 	fi
 |	
 .. code-block:: bash
+
 	cd /install/
 |	
 |	|	  in-target mkfs.ext4 /dev/sdb1 ; \
@@ -946,6 +1018,7 @@ bash
 |			copy sources.list -> sources.tmp
 |	
 .. code-block:: bash
+
 	
 |		https://www.baeldung.com/linux/run-script-on-startup
 |	
@@ -958,6 +1031,7 @@ bash
 |		Posle del!!!
 |	 https://serverfault.com/questions/32438/disable-a-service-from-starting-at-all-runlevels
 .. code-block:: bash
+
 	
 |	
 |		Jump to label interface_sh
@@ -967,6 +1041,7 @@ bash
 -----------------------------
 |	
 .. code-block:: bash
+
 	
 	if [[ -z $(sed -n -e "s/^\(9_user_settings\).*/\1/p" steps.txt) ]]; then
 	
@@ -983,6 +1058,7 @@ bash
 |	cp -Rf /install/home/rootsu/.cmd_shell.sh /home/admin/
 |	В
 .. code-block:: bash
+
 	 groupadd -g 1000 admins
 	 groupadd -g 2000 exp_users
 	 groupadd -g 3000 pro_users
@@ -1008,9 +1084,11 @@ bash
 	 useradd -u 6100 -g ps_users -s /bin/bash -c "far_user" -p $(echo "vkd174asqd" | mkpasswd -s -H MD5) -m far_user
 |	 useradd -u 6100 -g users -s /bin/bash -c "test" -p "" -m test
 .. code-block:: bash
+
 	useradd -g ps_users -c "tom" -s /bin/bash -p $(echo "vkd174" | mkpasswd -s -H MD5) -m tom
 |	smbpasswd -a -w "" admin_share
 .. code-block:: bash
+
 	echo -e "vkd174\nvkd174" | smbpasswd -a admin_share
 	echo -e "vkd174\nvkd174" | smbpasswd -a pub_share
 	smbpasswd -e admin_share
@@ -1020,6 +1098,7 @@ bash
 |		
 |	fi
 .. code-block:: bash
+
 	
 	mkdir /opt/SAMBA_SHARE
 	mkdir /mnt/SMB
@@ -1033,6 +1112,7 @@ bash
 	setfacl -m u:pub_share:rwx,u:admin_share:rwx -R "/mnt/SMB";
 |	chown -R admin_share:technics,pub_share:technics /mnt/SMB
 .. code-block:: bash
+
 	
 |	
 |				1.10.2		Create ssh_ssl
@@ -1042,6 +1122,7 @@ bash
 |				1.10.3	Install ssh settings
 |	
 .. code-block:: bash
+
 	cd /etc/ssh/
 	
 	cp sshd_config sshd_config.tmp
@@ -1049,114 +1130,136 @@ bash
 |	 |	Port 22
 |	
 .. code-block:: bash
+
 	 sed -i -e "s/#Port\s.*$\|Port\s.*$/Port $PORT_SSH/g" sshd_config
 |	
 |	 HostKey
 |	
 .. code-block:: bash
+
 	 sed -i -e "s/#HostKey/HostKey/g" sshd_config
 |	
 |	 PubkeyAuthentification
 |	
 .. code-block:: bash
+
 	 sed -i -e "s/#PubkeyAuthentication\s.*$\|PubkeyAuthentication\s.*$/PubkeyAuthentication yes/g" sshd_config
 |	
 |	 |	SysLogFacility
 |	
 .. code-block:: bash
+
 	 sed -i -e "s/#SysLogFacility\s.*$\|SysLogFacility\s.*$/SysLogFacility AUTHPRIV/g" sshd_config
 |	
 |	 |	LogLevel
 |	
 .. code-block:: bash
+
 	 sed -i -e "s/#LogLevel\s.*$\|LogLevel\s.*$/#LogLevel INFO/g" sshd_config
 |	
 |	 |	LogLevel
 |	
 .. code-block:: bash
+
 	 sed -i -e "s/#LoginGraceTime\s.*$\|LoginGraceTime\s.*$/LoginGraceTime 2m/g" sshd_config
 |	
 |	 |	PermitRootLogin
 |	
 .. code-block:: bash
+
 	 sed -i -e "s/#PermitRootLogin\s.*$\|PermitRootLogin\s.*$/PermitRootLogin yes/g" sshd_config
 |	
 |	 |	StrictModes
 |	
 .. code-block:: bash
+
 	 sed -i -e "s/#StrictModes\s.*$\|StrictModes\s.*$/StrictModes no/g" sshd_config
 |	
 |	 |	MaxAuthTries
 |	
 .. code-block:: bash
+
 	 sed -i -e "s/#MaxAuthTries\s.*$\|MaxAuthTries\s.*$/MaxAuthTries 3/g" sshd_config
 |	
 |	 |	MaxAuthTries
 |	
 .. code-block:: bash
+
 	 sed -i -e "s/#MaxSessions\s.*$\|MaxSessions\s.*$/MaxSessions 3/g" sshd_config
 |	
 |	
 |	 |	AuthorizedKeysFile
 |	
 .. code-block:: bash
+
 	 sed -i -e "s/#AuthorizedKeysFile\s.*$\|AuthorizedKeysFile\s.*$/AuthorizedKeysFile \/home\/rootsu\/.ssh\/authorized_keys \/home\/%u\/.ssh\/authorized_keys/g" sshd_config
 |	
 |	 |	PasswordAuthentication no
 |	
 .. code-block:: bash
+
 	 sed -i -e "s/#PasswordAuthentication\s.*$\|PasswordAuthentication\s.*$/PasswordAuthentication no/g" sshd_config
 |	
 |	 |	PermitEmptyPasswords no
 |	
 .. code-block:: bash
+
 	 sed -i -e "s/#PermitEmptyPasswords\s.*$\|PermitEmptyPasswords\s.*$/PermitEmptyPasswords no/g" sshd_config
 |	
 |	 |	ChallengeResponseAuthentification
 |	
 |	 sed -n -e "s/ChallengeResponseAuthentication.*$\||	ChallengeResponseAuthentication.*$/ChallengeResponseAuthentification yes/p" sshd_config.tmp
 .. code-block:: bash
+
 	 sed -i -e "s/ChallengeResponseAuthentication.*$\|#ChallengeResponseAuthentication.*$/ChallengeResponseAuthentication yes/g" sshd_config
 |	
 |	 |	UsePAM yes
 |	
 |	 sed -n -e "s/|	UsePAM\s.*$\|UsePAM\s.*$/UsePAM yes/p" sshd_config.tmp
 .. code-block:: bash
+
 	 sed -i -e "s/#UsePAM\s.*$\|UsePAM\s.*$/UsePAM yes/g" sshd_config
 |	
 |	 |	AllowTcpForwarding yes
 |	
 .. code-block:: bash
+
 	 sed -i -e "s/#AllowTcpForwarding\s.*$\|AllowTcpForwarding\s.*$/AllowTcpForwarding yes/g" sshd_config
 |	
 |	 |	X11Forwarding yes
 |	
 .. code-block:: bash
+
 	 sed -i -e "s/#X11Forwarding\s.*$\|X11Forwarding\s.*$/X11Forwarding yes/g" sshd_config
 |	
 |	 |	X11DisplayOffset yes
 |	
 .. code-block:: bash
+
 	 sed -i -e "s/#X11DisplayOffset\s.*$\|X11DisplayOffset\s.*$/X11DisplayOffset 10/g" sshd_config
 |	
 |	 |	PrintMotd no
 |	
 .. code-block:: bash
+
 	 sed -i -e "s/#PrintMotd\s.*$\|PrintMotd\s.*$/PrintMotd yes/g" sshd_config
 |	
 |	 |	 Subsystem 
 |	
 .. code-block:: bash
+
 	 sed -i -e "s/Subsystem\s/#Subsystem\s/g" sshd_config
 |	
 |	
 .. code-block:: bash
+
 	systemctl restart ssh
 |	
 |				1.10.4	Create users ssh
 |	
 |	
 .. code-block:: bash
+
 	sudo bash ~/.cmd_shell.sh --mode "ssh_keygen" --uadd "tom" --gadd "ps_users" --pwd "debian"
 	bash ~/.cmd_shell.sh --mode "ssh_keygen" --uadd "admin" --gadd "admins" --pwd "debian"
 |	
@@ -1166,6 +1269,7 @@ bash
 |	
 |	
 .. code-block:: bash
+
 	
 	mount -v -t cifs //192.168.1.1/SOFT_2TBSEAGREEN//mnt/SMB/SOFT_2TBSEAGREEN -o credentials=/home/rootsu/.smbusers,defcontext="system_u:object_r:samba_share_t:s0";
 	mount -v -t cifs //192.168.1.1/SOFT_3TBSEASYAN//mnt/SMB/SOFT_3TBSEASYAN -o credentials=/home/rootsu/.smbusers,defcontext="system_u:object_r:samba_share_t:s0";
@@ -1195,12 +1299,14 @@ bash
 |	cp /install/ers /etc/ers
 |	
 .. code-block:: bash
+
 	echo -e "y" | apt-get install ntfs-3g;
 |	exit 1;
 |	
 |				1.10.10	Install vsftp
 |	
 .. code-block:: bash
+
 	echo -e "y" | sudo apt install vsftpd
 	
 	cd /etc/
@@ -1208,70 +1314,91 @@ bash
 	
 |	 Listen=YES
 .. code-block:: bash
+
 	sed -i -e "s/listen=.*$/listen=YES/g" vsftpd.conf
 |	 listen_ipv6=
 .. code-block:: bash
+
 	sed -i -e "s/listen_ipv6=.*$/listen_ipv6=NO/g" vsftpd.conf
 |	 annonymous_enable=NO
 .. code-block:: bash
+
 	sed -i -e "s/#anonymous_enable=.*$\|anonymous_enable=.*$/anonymous_enable=NO/g" vsftpd.conf
 |	 anon_upload_enable=NO
 .. code-block:: bash
+
 	sed -i -e "s/#anon_upload_enable=.*$\|anon_upload_enable=.*$/anon_upload_enable=NO/g" vsftpd.conf
 |	 anon_mkdir_write_enable=NOanon_mkdir_write_enable=YES
 .. code-block:: bash
+
 	sed -i -e "s/anon_mkdir_write_enable=.*$\|#anon_mkdir_write_enable=.*$/anon_mkdir_write_enable=NO/g" vsftpd.conf
 |	 write_enable=YES
 .. code-block:: bash
+
 	sed -i -e "s/#write_enable=.*$\|write_enable=.*$/write_enable=YES/g" vsftpd.conf
 |	 local_umask=022
 .. code-block:: bash
+
 	sed -i -e "s/#local_umask=.*$\|local_umask=.*$/local_umask=022/g" vsftpd.conf
 |	 connect_from_port 20
 .. code-block:: bash
+
 	sed -i -e "s/connect_from_port_20=.*$/connect_from_port_20=NO/g" vsftpd.conf
 |	 local_umask=022
 .. code-block:: bash
+
 	sed -i -e "s/#ascii_upload_enable=.*$\|ascii_upload_enable=.*$/ascii_upload_enable=YES/g" vsftpd.conf
 |	 ascii_upload_enable=YES
 .. code-block:: bash
+
 	sed -i -e "s/#ascii_upload_enable=.*$\|ascii_upload_enable=.*$/ascii_upload_enable=YES/g" vsftpd.conf
 |	 ascii_download_enable=YES
 .. code-block:: bash
+
 	sed -i -e "s/#ascii_download_enable=.*$\|ascii_download_enable=.*$/ascii_download_enable=YES/g" vsftpd.conf
 |	 ftpd_banner=
 .. code-block:: bash
+
 	sed -i -e "s/#ftpd_banner=.*$\|ftpd_banner=.*$/ftpd_banner=Welcome to $HOSTNAME!!!/g" vsftpd.conf
 |	 |	restrict FTP users to their /home directory and allow them to write there
 |	 mogut switch from home / YES yes restrict privilege
 |	sed -i -e "s/|	chroot_local_user=.*$\|chroot_local_user=.*$/chroot_local_user=YES/g" vsftpd.conf
 .. code-block:: bash
+
 	sed -i -e "0,/#chroot_local_user=.*$\|chroot_local_user=.*$/ s//chroot_local_user=YES/g" vsftpd.conf
 |	 is_recurse_enable -R
 .. code-block:: bash
+
 	sed -i -e "s/#ls_recurse_enable=.*$\|ls_recurse_enable=.*$/ls_recurse_enable=YES/g" vsftpd.conf
 |	 chroot_list_file=/etc/vsftpd.chroot_list/
 .. code-block:: bash
+
 	sed -i -e "s/#chroot_list_file=.*$\|chroot_list_file=.*$/chroot_list_file=\/home\/rootsu\/vsftpd.chroot_list/g" vsftpd.conf
 |	 ut8 fs
 .. code-block:: bash
+
 	sed -i -e "s/#utf8_filesystem=.*$\|utf8_filesystem=.*$/utf8_filesystem=YES/g" vsftpd.conf
 |	 pam_service_name off
 .. code-block:: bash
+
 	sed -i -e "s/pam_service_name=.*$/#pam_service_name=vsftpd/g" vsftpd.conf
 |	 rsa_cert_file=/
 .. code-block:: bash
+
 	sed -i -e "s/rsa_cert_file=.*$\|#rsa_cert_file=.*$/rsa_cert_file=\/etc\/ssl\/certs\/vsftpd.crt/g" vsftpd.conf
 |	 This option specifies the location of the RSA certificate to use for SSL
 |	 encrypted connections.
 |	rsa_private_key_file=
 .. code-block:: bash
+
 	sed -i -e "s/rsa_private_key_file=.*$\|#rsa_private_key_file=.*$/rsa_private_key_file=\/etc\/ssl\/private\/vsftpd.key/g" vsftpd.conf
 |	ssl_enable=NO
 .. code-block:: bash
+
 	sed -i -e "s/ssl_enable=.*$\|#ssl_enable=.*$/ssl_enable=YES/g" vsftpd.conf
 |	force_dot_files=YES
 .. code-block:: bash
+
 	sed -i -e "$ a force_dot_files=YES" vsftpd.conf
 |	background=YES
 |	pasv_port
@@ -1279,17 +1406,21 @@ bash
 |	sed -i -e "$ a pasv_max_port=55000" vsftpd.conf
 |		allow_anon_ssl=NO
 .. code-block:: bash
+
 	sed -i -e "$ a allow_anon_ssl=NO" vsftpd.conf
 |		force_local_data_ssl=YES
 .. code-block:: bash
+
 	sed -i -e "$ a force_local_data_ssl=NO" vsftpd.conf
 |		force_local_logins_ssl=YES
 .. code-block:: bash
+
 	sed -i -e "$ a force_local_logins_ssl=YES" vsftpd.conf
 |		ssl_tlsv1_1=YES
 |	sed -i -e "$ a ssl_tlsv1_1=YES" vsftpd.conf
 |		ssl_tlsv1_2=YES
 .. code-block:: bash
+
 	sed -i -e "$ a ssl_sslv3=YES" vsftpd.conf
 |	ssl_tlsv1_1=NO
 |	ssl_tlsv1_2=YES
@@ -1304,34 +1435,44 @@ bash
 |	sed -i -e "$ a ssl_sslv3=NO" vsftpd.conf
 |		require_ssl_reuse=YES
 .. code-block:: bash
+
 	sed -i -e "$ a require_ssl_reuse=YES" vsftpd.conf
 |		ssl_ciphers=HIGH
 .. code-block:: bash
+
 	sed -i -e "$ a ssl_ciphers=HIGH" vsftpd.conf
 |	|	|	|	Problems have been reported with EPSV. The only way to disable EPSV mode in vsftpd appears to be to disallow the EPSV and EPRT commands, so that a client will recieve a "550 Permission Denied" response to any EPSV command and hopefully drop back to regular PASV. Unfortunately the "cmds_denied" blacklisting option was only introduced in vsftpd 2.1. We therefore have to take a whitelisting approach using the "cmds_allowed" option. The list below basicly includes everything except the commands needed for EPSV.
 .. code-block:: bash
+
 	sed -i -e "$ a cmds_allowed=ABOR,CWD,RMW,DELE,LIST,MDTM,MKD,NLST,PASS,PASV,PORT,PWD,QUIT,RETR,RMD,RNFR,RNTO,SITE,SIZE,STOR,TYPE,USER,CDUP,HELP,MODE,NOOP,STAT,STOU,STRU" vsftpd.conf
 	
 |		USERLIST
 .. code-block:: bash
+
 	sed -i -e "$ a userlist_enable=YES" vsftpd.conf
 |		userlist_deny
 .. code-block:: bash
+
 	sed -i -e "$ a userlist_deny=NO" vsftpd.conf
 |		userlist_enable
 .. code-block:: bash
+
 	sed -i -e "$ a userlist_enable=YES" vsftpd.conf
 |		userlist_file=/home/rootsu/vsftpd-virtual_user/vsftpd_user
 .. code-block:: bash
+
 	sed -i -e "$ a userlist_file=/home/rootsu/vsftpd-virtual_user/vsftpd_user" vsftpd.conf
 |	 user_config_dir=/
 .. code-block:: bash
+
 	sed -i -e "$ a user_config_dir=/home/rootsu/vsftpd-virtual_user/" vsftpd.conf
 |		chown_uploads=YES
 .. code-block:: bash
+
 	sed -i -e "$ a chown_uploads=YES" vsftpd.conf
 |		chown_username=nobody
 .. code-block:: bash
+
 	sed -i -e "$ a chown_username=nobody" vsftpd.conf
 |	 Запретить /etc/vsftpd.userlist вход в список пользователей
 |	userlist_enable=YES
@@ -1339,26 +1480,33 @@ bash
 |	userlist_file=/etc/vsftpd.user_list
 |	 set it to YES to turn on TCP wappers
 .. code-block:: bash
+
 	sed -i -e "$ a tcp_wrappers=YES" vsftpd.conf
 |	set maximum allowed connections per single IP address (0 = no limits)
 .. code-block:: bash
+
 	sed -i -e "$ a max_per_ip=10" vsftpd.conf
 |	 Enable the userlist 
 .. code-block:: bash
+
 	sed -i -e "$ a userlist_enable=YES" vsftpd.conf
 |	 Allow the local users to login to the FTP (if they're in the userlist)
 .. code-block:: bash
+
 	sed -i -e "$ a local_enable=YES" vsftpd.conf
 |	 Allow virtual users to use the same privileges as local users
 .. code-block:: bash
+
 	sed -i -e "$ a virtual_use_local_privs=YES" vsftpd.conf
 |	 Allow virtual users to use the same privileges as local users
 |	sed -i -e "$ a pam_service_name=vsftpd" vsftpd.conf
 |	 FTP port 21
 .. code-block:: bash
+
 	sed -i -e "$ a listen_port=21" vsftpd.conf
 |	 PAM SHell off
 .. code-block:: bash
+
 	cd /etc/pam.d/
 	sed -i -e "s/auth	required	pam_shells.so.*$\|#auth	required	pam_shells.so.*$/#auth	required	pam_shells.so/g" vsftpd
 |	echo -e "RU\nRussia\nSaratov\n$HOSTNAME Ltd.\n\nadmin\n\n" | openssl req -x509 -nodes -days 365 -newkey rsa:4096 -keyout /etc/ssl/private/vsftpd.key -out /etc/ssl/certs/vsftpd.crt
@@ -1366,6 +1514,7 @@ bash
 |	 echo 'seccomp_sandbox=NO' >> /etc/vsftpd/vsftpd.conf
 |	$ sudo openssl req -x509 -nodes -days 365 -newkey rsa:4095 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem
 .. code-block:: bash
+
 	echo -e "RU\nRussia\nSaratov\n$HOSTNAME Ltd.\nWSB-IOT-Embedded\nadmin\nfar1803@ya.ru\n" | openssl req -x509 -nodes -days 365 -newkey rsa:4096 -keyout /etc/ssl/private/vsftpd.key -out /etc/ssl/certs/vsftpd.crt
 	
 	chmod 770 /home/rootsu/vsftpd-virtual_user
@@ -1425,6 +1574,7 @@ bash
 |	 TYPE - Sets the transfer mode (ASCII/Binary).
 |	 USER - Authentication username. 
 .. code-block:: bash
+
 	iptables -F
 	sudo systemctl restart vsftpd
 	sudo systemctl enable vsftpd
@@ -1432,6 +1582,7 @@ bash
 |	sudo ufw allow 20/tcp
 |	sudo ufw allow 21/tcp
 .. code-block:: bash
+
 	cp -Rf /home/admin/.ssh/ /media/admin/ssh
 	
 	cp -Rf /home/tom/.ssh/ /media/admin/ssh2
@@ -1441,6 +1592,7 @@ bash
 	fi
 |	rm /install/steps.txt
 .. code-block:: bash
+
 	
 |	
 1.11	Settings permissive SELinux
@@ -1448,6 +1600,7 @@ bash
 |	
 |	 seinfo -t
 .. code-block:: bash
+
 	if [[ -z $(sed -n -e "s/^\(10_SELinux_settings\).*/\1/p" steps.txt) ]]; then
 	
 	semanage fcontext -a -s system_u "/home/rootsu(/.*)?";
@@ -1482,6 +1635,7 @@ bash
 |	setsebool -P allow_use_cifs on
 |	setsebool -P allow_use_nfs on
 .. code-block:: bash
+
 	setsebool -P httpd_use_cifs on
 	setsebool -P allow_ftpd_use_nfs 1
 	setsebool -P allow_ftpd_use_cifs 1
@@ -1508,12 +1662,14 @@ bash
 	
 |	semanage permissive -a sshd_t 
 .. code-block:: bash
+
 	semanage permissive -a boot_t 
 	
 |	setsebool -P allow_execmem 1
 |	setsebool -P allow_execheap 1
 |	setsebool -P allow_user_mysql_connect 1
 .. code-block:: bash
+
 	setsebool -P cron_can_relabel 1
 	setsebool -P fcron_crond 1
 	setsebool -P cron_userdomain_transition 1
@@ -1523,12 +1679,14 @@ bash
 	
 |	setsebool -P samba_run_unconfined 1
 .. code-block:: bash
+
 	setsebool -P allow_mount_anyfile 1
 	setsebool -P webadm_manage_user_files 1
 	setsebool -P webadm_read_user_files 1
 	
 |	setsebool -P use_nfs_home_dirs 1
 .. code-block:: bash
+
 	setsebool -P samba_export_all_ro 1
 	setsebool -P samba_export_all_rw 1
 	setsebool -P dhcpc_manage_samba 1
@@ -1539,6 +1697,7 @@ bash
 	setsebool -P use_samba_home_dirs 1
 |	setsebool -P use_samba_nfs_dirs 1
 .. code-block:: bash
+
 	setsebool -P virt_use_samba 1
 	setsebool -P virt_use_nfs 1
 	setsebool -P samba_portmapper 1
@@ -1547,6 +1706,7 @@ bash
 	
 |	setsebool -P nscd_use_shm 1
 .. code-block:: bash
+
 	setsebool -P use_nfs_home_dirs 1
 	
 	setsebool -P sudo_all_tcp_connect_http_port 1
@@ -1569,14 +1729,17 @@ bash
 	systemctl start fstrim.timer
 |	setenforce 0
 .. code-block:: bash
+
 	
 	cd /etc/selinux
 	
 |		systemctl disable auditd
 .. code-block:: bash
+
 	sed -i -e "s/SELINUX=permissive\|SELINUX=default/SELINUX=enforcing/g" config
 |	 ROLE=sysadm_r 
 .. code-block:: bash
+
 	sed -i -e "s/%sudo.*$/%sudo	ALL=(root) TYPE=sysadm_sudo_t NOPASSWD:ALL/g" /etc/sudoers
 	sed -i -e "s/%admins.*$/%admins	ALL=(root) ROLE=sysadm_r NOPASSWD:ALL/g" /etc/sudoers
 	sed -i -e "s/admin.*$/admin	ALL=(root) ROLE=sysadm_r NOPASSWD:ALL/g" /etc/sudoers
@@ -1592,14 +1755,17 @@ bash
 |	update-rc.d -f pii2.sh remove
 |	chmod o-rw -R "/etc/";
 .. code-block:: bash
+
 	chmod o-rwx -R "/boot/";
 |	chmod o-rwx "/var/";
 |	chmod o-rwx "/sys/";
 .. code-block:: bash
+
 	chmod o-rwx -R "/srv/";
 	chmod o-rwx -R "/mnt/";
 |	chmod o-rwx "/proc/";
 .. code-block:: bash
+
 	semanage fcontext -a -t tmp_t "/tmp(/.*)?"
 	chcon -t tmp_t -R "/tmp"
 	chmod o-rwx -R "/tmp/";
@@ -1615,6 +1781,7 @@ bash
 |	chmod o+r "/etc/hostname";
 |	chmod o+rx "/etc/console-setup";
 .. code-block:: bash
+
 	semanage fcontext -a -t system_cron_spool_t "/var/spool/cron(/.*)?"
 	chcon -t system_cron_spool_t -Rv /var/spool/cron/
 	
@@ -1622,6 +1789,7 @@ bash
 	chmod o-x -R "/home/rootsu" "/home/admin/";
 |	chmod o-r "/usr/bin/";
 .. code-block:: bash
+
 	
 	echo "deb https:\\\download.webmin.com\download\repository sarge contrib" >> /etc/apt/sources.list
 	
@@ -1629,18 +1797,22 @@ bash
 |	dpkg --configure -a
 |	apt-get dist-upgrade
 .. code-block:: bash
+
 	echo -e "\y\n" | apt-get -f install
 |	echo -e "y\n" | apt-get remove nvidia-*
 .. code-block:: bash
+
 	echo -e "y\n" | apt-get autoremove
 |	nvidia-uninstall
 .. code-block:: bash
+
 	cd ~
 |	grep AVC /var/log/audit/audit.log | audit2allow -m loaderlocalv4 > loaderlocalv4.te
 |	grep AVC altlog.log | audit2allow -m loaderlocalv4 > loaderlocalv4.te
 |	checkmodule -M -m -o loaderlocalv1.mod loaderlocalv1.te
 |	semodule_package -o loaderlocalv1.pp -m loaderlocalv1.mod
 .. code-block:: bash
+
 	
 	semodule -i loaderlocalv1.pp
 	semodule -i loaderlocalv2.pp
@@ -1650,6 +1822,7 @@ bash
 |	sudo apt-get install
 |	sudo apt-get automount
 .. code-block:: bash
+
 	semodule -i sudotev1.pp
 	semodule -i sudotev2.pp
 	semodule -i sudotev3.pp
@@ -1667,9 +1840,11 @@ bash
 |	checkmodule -M -m -o sudotev1.mod sudotev1.te
 |	semodule_package -o sudotev1.pp -m sudotev1.mod
 .. code-block:: bash
+
 	
 |	semodule -i sudotev1.pp
 .. code-block:: bash
+
 	
 	update-initramfs -k all -u
 	update-grub
@@ -1690,6 +1865,7 @@ bash
 |	echo -e "y\n" | apt-get update
 |	echo -e "y\n" | apt-get install webmin
 .. code-block:: bash
+
 	semanage port -a -t http_port_t -p tcp 10000
 	semanage port -a -t http_port_t -p tcp 20000
 	
@@ -1705,12 +1881,14 @@ bash
 |	semanage user -m -R "system_r sysadm_r staff_r" -r "s0-s0:c0.c1023" sysadm_u
 |	semanage user -m -R "system_r" -r "s0-s0:c0.c1023" system_u
 .. code-block:: bash
+
 	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" admin
 	semanage login -a -s root -r "s0-s0:c0.c1023" admin_tech
 	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" %admins
 |	semanage login -m -s sysadm_u -r "s0-s0:c0.c1023" root
 |	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" %root
 .. code-block:: bash
+
 	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" %sudo
 	semanage login -a -s user_u tom
 |	sudo chmod o-rwx -R "/etc/";
@@ -1728,6 +1906,7 @@ bash
 |	chmod o+rx "/etc/nanorc";
 |	chmod o+rx "/etc/passwd";
 .. code-block:: bash
+
 	
 |		Display manager: gdm3 sddm
 |		GDM KDM LightDM LXDM МДМ SLIM XDM
@@ -1739,16 +1918,19 @@ bash
 |		
 |		sudo tasksel install kde-desktop
 .. code-block:: bash
+
 	setenforce 1
 	echo -e "10_SELinux_settings" >> steps.txt
 	fi
 	echo "Press ESC key to quit"
 |	 read a single character
 .. code-block:: bash
+
 	while read -r -n1 key
 	do
 |	 if input == ESC key
 .. code-block:: bash
+
 	if [[ $key == $'\e' ]];
 	then
 	break;
@@ -1757,4 +1939,5 @@ bash
 |	set +x
 |	ls -la
 .. code-block:: bash
+
 	exit 0;

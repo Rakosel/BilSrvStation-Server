@@ -12,3 +12,7 @@
 
 This paragraph might be rendered in a custom way.
 fdfd
+
+.. contents:: Table of Contents
+   sdfdf
+   fdfgd

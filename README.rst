@@ -1,6 +1,7 @@
 .. compound::
 
-   The 'rm' command is very dangerous.  If you are logged
+   The 'rm' command is very dangerous.  
+   If you are logged
    in as root and enter ::
 
        cd /

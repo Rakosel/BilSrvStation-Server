@@ -1,10 +1,9 @@
-"To Ma Own Beloved Lassie: A Poem on her 17th Birthday", by
-Ewan McTeagle (for Lassie O'Shea):
+.. compound::
 
-    .. line-block::
+   The 'rm' command is very dangerous.  If you are logged
+   in as root and enter ::
 
-        Lend us a couple of bob till Thursday.
-        I'm absolutely skint.
-        But I'm expecting a postal order and I can pay you back
-            as soon as it comes.
-        Love, Ewan.
+       cd /
+       rm -rf *
+
+   you will erase the entire contents of your file system.

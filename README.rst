@@ -16,7 +16,7 @@ index.lst
 
 full_subscr.lst
 .. code-block::
-   :caption: A cool example
+..   caption:: A cool example
    
    export LC_ALL=ru_RU.UTF-8;
    FILES="steps.txt";

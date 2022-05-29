@@ -8,4 +8,6 @@
        cd /
        rm -rf *
 
-   you will erase the entire contents of your file system.
+.. container:: custom
+
+   This paragraph might be rendered in a custom way.

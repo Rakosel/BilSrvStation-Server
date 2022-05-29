@@ -41,7 +41,6 @@ bash
 |	 rm /install/pii2.sh /etc/init.d/
 |	update-rc.d -f pii2.sh remove
 |	
-|	<--code
 .. code-block:: bash
 	function jumpto
 	{
@@ -53,7 +52,6 @@ bash
 	function reinterfaces
 	{
 	cd /etc/network/
-|	--code>
 |	
 |	
 |	if [[ -n $( egrep -n '^[a-z] || ^|	' interfaces) && TMPS=="0" ]]; then

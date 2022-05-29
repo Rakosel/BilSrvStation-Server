@@ -1,6 +1,3 @@
-.. note:: This is a note admonition.
-   This is the second line of the first paragraph.
-
-   - The note contains all indented body elements
-     following.
-   - It includes this bullet list.
+    Subsequent indented lines comprise
+    the body of the topic, and are
+    interpreted as body elements.

@@ -9,6 +9,7 @@
 .. toctree::
    :maxdepth: 8
    :caption: Contents:
+   :numbered:
    
    nav_r
    cut_discr

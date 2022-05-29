@@ -14,22 +14,20 @@
 #!-->
 #
 #<--!
-#			1.0 AUTO POSTINSTALL
-#		octanovilca na SSL + po4initb script cmd
-#		danger!!! do postinstall copy wufu & wpa_supplicant.conf + SAMBA
+#			1	AUTO POSTINSTALL
+# octanovilca na SSL + po4initb script cmd
+# danger!!! do postinstall copy wufu & wpa_supplicant.conf + SAMBA
 #
 #			1.1	PRE-INSTALL EMV AND SETTINGS
 #
 #d-i preseed/late_command string mkdir -p /target/install/; cp -R /install/* /target/install/; cp -Rf /install/lib/ /target/lib/;
 #
-
 #cd /install/
 #tar -xvf wpa_supplicant-0.7.3.tar.gz
 #cd ./wpa_supplicant-0.7.3/
 #./configure
 #./install
 #!-->
-
 #<--!
 # include this boilerplate
 #
@@ -39,7 +37,7 @@
 # rm /install/pii2.sh /etc/init.d/
 #update-rc.d -f pii2.sh remove
 #!-->
-#<--code
+
 function jumpto
 {
     label=$1
@@ -47,27 +45,26 @@ function jumpto
     eval "$cmd"
     exit
 }
-
 function reinterfaces
 {
 cd /etc/network/
-#--code>
+
 #<--!
 #
 #if [[ -n $( egrep -n '^[a-z] || ^#' interfaces) && TMPS=="0" ]]; then
 #!-->
 BUF="# This file describes the network interfaces available on your system\n
-# and how to activate them. For more information, see interfaces(5).\n
-\n
-source /etc/network/interfaces.d/*\n
-\n
-# The loopback network interface\n
-auto lo\n
-iface lo inet loopback\n
-\n
-# The Primary\n
-allow-hotplug en\n
-iface en inet dhcp\n";
+	# and how to activate them. For more information, see interfaces(5).\n
+	\n
+	source /etc/network/interfaces.d/*\n
+	\n
+	# The loopback network interface\n
+	auto lo\n
+	iface lo inet loopback\n
+	\n
+	# The Primary\n
+	allow-hotplug en\n
+	iface en inet dhcp\n";
 rm interfaces
 touch interfaces
 echo -e $BUF > interfaces;
@@ -451,11 +448,11 @@ BUF="#deb cdrom:[Debian GNU/Linux _*_ - Official amd64 NETINST 20210814-10:07]/ 
 \ndeb http://security.debian.org/debian-security/ $DEB_VER-security main contrib non-free \ndeb-src http://security.debian.org/debian-security/ $DEB_VER-security main contrib non-free \n
 \n# *-updates, to get updates before a point release is made; \r\n# see https://www.debian.org/doc/manuals/debian-reference/ch02.en.html#_updates_and_backports \ndeb http://deb.debian.org/debian/ $DEB_VER-updates main contrib non-free \ndeb-src http://deb.debian.org/debian/ $DEB_VER-updates main contrib non-free \n
 \n
-# This system was installed using small removable media \n
-# (e.g. netinst, live or single CD). The matching \"deb cdrom\" \n
-# entries were disabled at the end of the installation process. \n
-# For information about how to configure apt package sources, \n
-# see the sources.list(5) manual. \n"
+	# This system was installed using small removable media \n
+	# (e.g. netinst, live or single CD). The matching \"deb cdrom\" \n
+	# entries were disabled at the end of the installation process. \n
+	# For information about how to configure apt package sources, \n
+	# see the sources.list(5) manual. \n"
 echo -e $BUF > sources.list;
 echo "Info: sources.list is null";
 sleep 1; 
@@ -1560,3 +1557,4 @@ done;
 #set +x
 #ls -la
 exit 0;
+#<==---END---==>

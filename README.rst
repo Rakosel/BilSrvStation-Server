@@ -2,10 +2,6 @@
 | New line and we are still on
   the same line
 |   Yet a new line
-|-xv
-|set -x
-| https://wiki.debian.org/Microcode
-| uncomment |639!!!!
 |if [[ -z $STATE ]]; then
 |	exit 3;
 |fi

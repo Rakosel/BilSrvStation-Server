@@ -15,8 +15,7 @@ by providing a basic explanation of how to do it easily.
 index.lst
 
 full_subscr.lst
-.. code-block::
-.. caption:: A cool example
+.. code-block bash::
    
    export LC_ALL=ru_RU.UTF-8;
    FILES="steps.txt";

@@ -10,6 +10,7 @@
    :maxdepth: 8
    :caption: Contents:
    :numbered:
+   :hidden:
    
    nav_r
    cut_discr
@@ -24,3 +25,16 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+.. |date| date:: %d.%m.%Y
+.. |time| date:: %H.%M.%s
+
+.. |copy| unicode:: 0xA9
+.. |---| unicode:: U+02014
+
+.. meta::
+   :description: BilSrvStation_Server_PC's docimentations
+   :keywords: Linux,OS,Server,WebServer
+   :http-equiv=Content-Type: text/html; charset=UTF-8
+   
+   

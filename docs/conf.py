@@ -15,14 +15,17 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 import sys, os
+sys.path.insert(0, os.path.abspath('.'))
 import sphinx_rtd_theme
-import sphinx_rtd_theme
+
+# adding Folder_2 to the system path
+sys.path.insert(0, '/opt/SAMBA_SHARE/git/BilSrvStation_Server_PC')
+import extract_pii2_all
 #import django
 
 #django.setup()
 #sys.path.insert(0, pathlib.Path(__file__).parents[2].resolve().as_posix())
 # General
-sys.path.insert(0, os.path.abspath('.'))
 #sys.path.insert(0, os.path.abspath('../..'))
 exclude_patterns = ['zzz']
 
@@ -35,7 +38,7 @@ today_fmt = '%B %d, %Y'
 
 project = 'BilSrvStation_Server_PC'
 copyright = '2022, BiLymo iOT corp'
-author = 'BiLymo iOt corp.'
+author = 'BiLymo F@rid'
 
 # The full version, including alpha/beta/rc tags 
 release = '1.0.2a'

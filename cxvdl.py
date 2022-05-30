@@ -1,4 +1,4 @@
-﻿#!/usr/bin/python3
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 # version v.0.6a
 # https://en.wikipedia.org/wiki/Shebang_(Unix) #!/usr/bin/env python3\
@@ -58,9 +58,10 @@ def EOF1(f):
 def strToList(st):
     return list(st.split("  "))
     
-#print(os.getcwd())
-#pdir=''.join([os.getcwd(),"\DebianISO\install_ext\install\pii2.sh"]);
+    
+#pdir=''.join([os.getcwd(),"/DebianISO/install_ext/install/pii2.sh"]);
 pdir="/opt/SAMBA_SHARE/git/BilSrvStation_Server_PC/DebianISO/install_ext/install/pii2.sh";
+
 #print(pdir);
 ##
 # "x" - Create - will create a file, returns an error if the file exist
@@ -72,7 +73,7 @@ pdir="/opt/SAMBA_SHARE/git/BilSrvStation_Server_PC/DebianISO/install_ext/install
 # "t" - Text - Default value. Text mode
 if not (os.path.exists(pdir)):
     print("The file does not exist");
-    exit;
+    sys.exit();
 
 #h1
 #==================
@@ -131,7 +132,6 @@ print("_______________")
 #print(content)
 
 j=0;
-#,encoding='cp1251',errors='replace', newline=''
 with open(pdir,"rt") as fpii2:
         #s0=''.join(content[j]);
         linep=fpii2.readlines();
@@ -148,14 +148,13 @@ if(str(''.join(re.findall('^#!\/bin\/(.*).*', linep[j])).strip())=="bash"):
         print("bash!")
 else:
         print("Error: Unknown shell!")
-        exit;
 j=0;k=0;
 POS_0=0;
 POS_END=0;
 POS_1=0;
 POS_END1=0;
 
-POS_LIST=[""]*int(len(linep)+0.5*len(linep));
+POS_LIST=[""]*int(len(linep)+0.3*len(linep));
 #POS_LIST[i]="# pos_c_0 pos_c_end"
 #POS_LIST[i]="$ pos_d_0 pos_d_end"
 #
@@ -193,8 +192,6 @@ for i in linep:
         k+=1;
         
     if((''.join(re.findall("^#", linep[j]))).strip()!=""):
-        linep[j] = re.sub('vkd174asqd', '********', linep[j])
-        #linep[j] = strToList("{0}".format(''.join(linep[j]).replace("vkd174asqd","********")));
         if((trig_search_comm & 0x08) == 0x08):
             trig_search_comm&=~0x08;
         trig_search_comm|=0x10;
@@ -213,38 +210,45 @@ for i in linep:
     #len(linep)
     if(j>=len(linep)):
         break;
-#j=0
-j=k
-POS_LIST[k]=strToList("Z 0 0");
-while(k<=(j+20)):
-	POS_LIST[k]=strToList("Z 0 0");
-	k+=1
 POS_LIST[k]=strToList("S 0 0");
-print(k)
+POS_LIST[k+1]=strToList("S 0 0");
+print(POS_LIST[k+1])
+print(j)
+#print(''.join(POS_LIST[0])[0])
+#print(re.split(r' +', ''.join(POS_LIST[0])))
 
 print;("_____________________________________________")
 
-j=0; k=1;
+j=0; k=0;
 str_search="";
 str_comm_0="";
 str_comm_end="";
 
 linep_out=[""]*int(len(linep)+0.3*len(linep));
-#print(linep); re.sub('^#!\/bin\/(.*).*', '|\t', linep[POS_0])
-linep_out[k]="|	BilSrvStation Cut Discr\n*************************\n"
-k+=1;
-linep_out[k]="| Published by |author|\n"
-k+=1;
-linep_out[k]="| Date: *|date|* Time *|time|*\n"
-k+=1;
+print("_________________             _________________");
+
+#print(linep);
+
 if(str(''.join(re.findall('^#!\/bin\/(.*).*', linep[0])).strip())=="bash"):
-    linep_out[k] = "|	Type script: *{0}*\n".format(str(''.join(re.findall('^#!\/bin\/(.*).*', linep[0])).strip()));
+    linep[0] = "bash\n******\n\n"
 else:
-    exit;
-k+=1;
+    sys.exit();
+
+#print(''.join(POS_LIST[j]))
+#print(''.join(POS_LIST[j]).split(' ')[2])
+print(''.join(POS_LIST[0]))
+
+print(int((''.join(POS_LIST[0]).split(' ')[1]),10))
+print(int((''.join(POS_LIST[0]).split(' ')[2]),10))
+
+print(''.join(POS_LIST[1]))
+
+print(int((''.join(POS_LIST[1]).split(' ')[1]),10))
+print(int((''.join(POS_LIST[1]).split(' ')[2]),10))
 
 #print(POS_LIST)
 
+j=0;
 #pdir=''.join([os.getcwd(),"/out_list.sh"]);
 #with open(pdir,"wt") as fpii2:
 #    for i in linep_out:
@@ -253,38 +257,24 @@ k+=1;
 #        #print(content[j])
 #        j=j+1;
 #fpii2.close();
+j=0;
 #print(POS_LIST[362])
 #print(POS_LIST[363])
 print("+_++++++++++++++++++++++++++")
 
-#print(linep[18])
-#print(''.join(re.findall("(\d.\d\d.\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[802])))
+print(linep[802])
+print(''.join(re.findall("(\d.\d\d.\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[802])))
 
-#linep[18] = re.sub('#', '|\t', linep[18])
-#linep[POS_0] = re.sub('|    danger!!!', '.. danger::', linep[POS_0])
-#linep[18] = re.sub('^ ', '', linep[18])
+print(linep[885])
+print(''.join(re.findall("(\d.\d\d.\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[885])))
 
-#.. list-table: Table header
-#	:widths: 15 10 30
-#	:header-rows: 1
-#	*	- Named
-#		- Family
-#		- Date
-#	and etc
-#	
-#.. table::	Easy Table
-#	====	====	====
-s0="";
-s1="";
-s2="";
-#print(POS_LIST)
 #https://pyneng.readthedocs.io/ru/latest/book/15_module_re/
 for i in linep_out:
+    #print(j)
     if(''.join(POS_LIST[j])[0]=="#"):
         POS_0=int((''.join(POS_LIST[j]).split(' ')[1]),10);
         POS_END=int((''.join(POS_LIST[j]).split(' ')[2]),10);
         while(POS_0<=POS_END):
-            #print(linep[POS_0])
             s0=''.join(re.findall("#\t\t\t(\d\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
             s1=''.join(re.findall("#\t\t\t(\d\d.\d\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
             s2=''.join(re.findall("#\t\t\t(\d\d.\d\d.\d\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
@@ -313,61 +303,20 @@ for i in linep_out:
                 linep[POS_0] = re.sub('#', '|\t', linep[POS_0])
                 #linep[POS_0] = re.sub('|    danger!!!', '.. danger::', linep[POS_0])
                 linep_out[k] = re.sub('^ ', '', linep[POS_0])
-                POS_0=POS_0+1;
-            #if(POS_0==18): print(linep[POS_0]);
-            #if(''.join(re.findall("^|\t ([a-zA-Z!]*)", linep_out[k]))=="danger!!!"):
+            #if(''.join(re.findall("^|    (danger!!! [.*]*)", linep[POS_0]))!= ""):
             #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-            #    s0=''.join(linep_out[k]).replace("|\t danger!!!",".. danger::");
-            #    linep_out[k] = strToList("{0}\n".format(s0));
+            #    print(linep[POS_0]);
+            #    s0=''.join(linep[POS_0]).replace("|     danger!!!",".. danger::");
+            #    linep[POS_0] = strToList("{0}\n".format(s0));
+                
                 #linep_out[k] = re.sub('#<--!|#!-->', '', linep[POS_0]);
                 #linep_out[k] = linep[POS_0];
-            if(''.join(re.findall("^|\t ([a-zA-Z!]*)", linep_out[k]))=="attention!!!"):
-            #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("|\t attention!!!",".. attention::");
-                linep_out[k] = strToList("{0}\n".format(s0));
-            if(''.join(re.findall("^|\t ([a-zA-Z!]*)", linep_out[k]))=="caution!!!"):
-            #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("|\t caution!!!",".. caution::");
-                linep_out[k] = strToList("{0}\n".format(s0));
-            if(''.join(re.findall("^|\t ([a-zA-Z!]*)", linep_out[k]))=="error!!!"):
-            #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("|\t error!!!",".. error::");
-                linep_out[k] = strToList("{0}\n".format(s0));
-            if(''.join(re.findall("^|\t ([a-zA-Z!]*)", linep_out[k]))=="hint!!!"):
-            #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("|\t hint!!!",".. hint::");
-                linep_out[k] = strToList("{0}\n".format(s0));
-            if(''.join(re.findall("^|\t ([a-zA-Z!]*)", linep_out[k]))=="important!!!"):
-            #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("|\t important!!!",".. important::");
-                linep_out[k] = strToList("{0}\n".format(s0));
-            if(''.join(re.findall("^|\t ([a-zA-Z!]*)", linep_out[k]))=="warning!!!"):
-            #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("|\t warning!!!",".. warning::");
-                linep_out[k] = strToList("{0}\n".format(s0));
-            if(''.join(re.findall("^|\t ([a-zA-Z!]*)", linep_out[k]))=="tip!!!"):
-            #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("|\t tip!!!",".. tip::");
-                linep_out[k] = strToList("{0}\n".format(s0));
-            if(''.join(re.findall("^|\t ([a-zA-Z!]*)", linep_out[k]))=="note!!!"):
-            #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("|\t note!!!",".. note::");
-                linep_out[k] = strToList("{0}\n".format(s0));
-            if(''.join(re.findall("^|\t ([a-zA-Z!]*)", linep_out[k]))=="rubric!!!"):
-            #    print(''.join(re.findall("^|    rubric([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("|\t rubric!!!",".. rubric::");
-                linep_out[k] = strToList("{0}\n".format(s0));
-            if(''.join(re.findall("^|\t ([a-zA-Z!]*)", linep_out[k]))=="danger!!!"):
-            #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("|\t danger!!!",".. danger::");
-                linep_out[k] = strToList("{0}\n".format(s0));
-#
-#
+                POS_0=POS_0+1;
             k+=1;
     if (''.join(POS_LIST[j])[0]=="$"):
         POS_0=int((''.join(POS_LIST[j]).split(' ')[1]),10);
         POS_END=int((''.join(POS_LIST[j]).split(' ')[2]),10);
-        s0=".. code-block:: bash\n\t:linenos:\n"
+        s0=".. code-block:: bash\n"
         linep_out[k]=strToList("{0}\n".format(s0));
         k+=1;
         while(POS_0<=POS_END):
@@ -381,10 +330,13 @@ for i in linep_out:
             k+=1;
             POS_0=POS_0+1;
     j+=1;
-    #print(POS_LIST[j])
     if((''.join(POS_LIST[j])[0])== "S"):
         break;
+
+#print(linep_out)
 j=0;
+#pdir=''.join([os.getcwd(),"/docs/cut_discr.rst"]);
+#pdir=''.join([os.getcwd(),"/docs/cut_discr.rst"]);
 pdir="/opt/SAMBA_SHARE/git/BilSrvStation_Server_PC/docs/cut_discr.rst";
 with open(pdir,"wt") as fpii2:
     for i in linep_out:
@@ -432,7 +384,7 @@ print(" ");
 # 1) poisk #<--!
 
 re.purge();
-exit;
+#sys.exit();
 
 #for filename in os.listdir(directory):
 #    if filename.endswith(".txt"):

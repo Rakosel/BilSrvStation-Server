@@ -11,6 +11,7 @@ Purpose
 |project| will solve your problem of where to start with 
 documentation on auto-installation of a ready-made server,
 by providing a basic explanation of how to do it easily.
+| https://readthedocs.org/
 
 index.lst
 

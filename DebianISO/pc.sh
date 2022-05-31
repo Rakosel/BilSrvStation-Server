@@ -102,10 +102,10 @@ if [[ $ONLY_DOWNLOAD == 1 && -n "$LOCK" ]];
 #        exit 1
     fi
 fi
-    #if [ $ONLY_DOWNLOAD == 1 ]
-    #then
-   #     exit 0
-    #fi
+#if [ $ONLY_DOWNLOAD == 1 ]
+#then
+#     exit 0
+#fi
 }
 
 INPUT=""
@@ -385,4 +385,4 @@ rm -rf loopdir
 
 echo -ne 'Preseeded ISO image created                 [==============================](100%)\r'
 echo -e "\nYour preseeded ISO image is located at $OUTPUT"
-
+#<==---END---==>

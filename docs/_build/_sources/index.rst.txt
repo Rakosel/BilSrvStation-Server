@@ -13,8 +13,8 @@
    
    nav_r
    cut_discr_pc
-   cut_discr_pii2
    cut_discr_preseed
+   cut_discr_pii2
    full_discr
    structure
    build_doc
@@ -26,9 +26,10 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
+   
 .. |date| date:: %d.%m.%Y
-.. |time| date:: %H.%M.%s
+.. |time| replace:: %H.%M.%s
+.. |author| replace:: BiLymo F@rid
 
 .. |copy| unicode:: 0xA9
 .. |---| unicode:: U+02014
@@ -37,5 +38,4 @@ Indices and tables
    :description: BilSrvStation_Server_PC's docimentations
    :keywords: Linux,OS,Server,WebServer
    :http-equiv=Content-Type: text/html; charset=UTF-8
-   
    

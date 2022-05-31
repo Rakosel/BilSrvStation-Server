@@ -235,7 +235,7 @@ str_comm_end="";
 
 linep_out=[""]*int(len(linep)*10);
 #print(linep); re.sub('^#!\/bin\/(.*).*', '|\t', linep[POS_0])
-linep_out[k]="|	BilSrvStation Preseed Creator \n*************************\n"
+linep_out[k]="ISO InstallDeb Cut Discr\n*************************\n"
 k+=1;
 linep_out[k]="\n| by (c) Luc Didry 2017, WTFPL and |author|"
 k+=1;

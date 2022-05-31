@@ -1,4 +1,4 @@
-|	BilSrvStation Preseed Creator 
+ISO InstallDeb Cut Discr
 *************************
 
 | by (c) Luc Didry 2017, WTFPL and |author|| Date: *|date|* Time: *|time|*
@@ -125,10 +125,13 @@
 
 	fi
 	fi
-	#if [ $ONLY_DOWNLOAD == 1 ]
-	#then
-	 # exit 0
-	#fi
+|	if [ $ONLY_DOWNLOAD == 1 ]
+|	then
+|	     exit 0
+|	fi
+.. code-block:: bash
+	:linenos:
+
 	}
 	
 	INPUT=""
@@ -423,3 +426,36 @@
 	then
 	echo -ne 'Create iso by genisoimage tool\r'
 |	genisoimage -quiet -o $OUTPUT -r -J -no-emul-boot -boot-load-size 4 -boot-info-table -b isolinux/isolinux.bin -c isolinux/boot.cat ./cd > /dev/null 2>&1 -f 
+.. code-block:: bash
+	:linenos:
+
+	
+	genisoimage -o $OUTPUT -r -J -no-emul-boot -boot-load-size 4 -boot-info-table -b isolinux/isolinux.bin -c isolinux/boot.cat ./cd > /dev/null 2>&1
+	
+	else
+	echo -ne 'Create iso by xorriso -as mkisofs tool\r'
+		xorriso -as mkisofs \
+			-quiet \
+			-o $OUTPUT \
+			-isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin \
+			-c isolinux/boot.cat \
+			-b isolinux/isolinux.bin \
+			-no-emul-boot -boot-load-size 4 -boot-info-table \
+			-eltorito-alt-boot \
+			-e boot/grub/efi.img \
+			-no-emul-boot \
+			-isohybrid-gpt-basdat \
+			./cd /dev/null 2>$1
+	fi
+	
+	if [ $? -ne 0 ]
+	then
+	echo "Error while creating the preseeded ISO image. Aborting"
+	exit 1
+	fi
+	
+	rm -rf cd
+	rm -rf loopdir
+	
+	echo -ne 'Preseeded ISO image created [==============================](100%)\r'
+	echo -e "\nYour preseeded ISO image is located at $OUTPUT"

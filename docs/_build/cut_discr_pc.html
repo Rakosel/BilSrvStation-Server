@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>&lt;no title&gt; &mdash; документация BilSrvStation_Server_PC 1.0.2a</title>
+  <title>2. ISO InstallDeb Cut Discr &mdash; документация BilSrvStation_Server_PC 1.0.2a</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -20,7 +20,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Алфавитный указатель" href="genindex.html" />
     <link rel="search" title="Поиск" href="search.html" />
-    <link rel="next" title="2. 01 AUTO POSTINSTALL" href="cut_discr_pii2.html" />
+    <link rel="next" title="3. Preseed Cut Discr" href="cut_discr_preseed.html" />
     <link rel="prev" title="1. Навигация" href="nav_r.html" /> 
 </head>
 
@@ -40,14 +40,15 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="nav_r.html">1. Навигация</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2.html">2. 01      AUTO POSTINSTALL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cut_discr_preseed.html">3. check debconf-set-selections -c preseed</a></li>
-<li class="toctree-l1"><a class="reference internal" href="full_discr.html">4. Полное описание конфигурации сервера</a></li>
-<li class="toctree-l1"><a class="reference internal" href="structure.html">5. Структура</a></li>
-<li class="toctree-l1"><a class="reference internal" href="build_doc.html">6. Построение этой документации</a></li>
-<li class="toctree-l1"><a class="reference internal" href="note.html">7. Заметки</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. ISO InstallDeb Cut Discr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_preseed.html">3. Preseed Cut Discr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2.html">4. AutoInstall Cut Discr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="full_discr.html">5. Полное описание конфигурации сервера</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structure.html">6. Структура</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_doc.html">7. Построение этой документации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="note.html">8. Заметки</a></li>
 </ul>
 
         </div>
@@ -64,7 +65,7 @@
           <div role="navigation" aria-label="Навигация по страницам">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>&lt;no title&gt;</li>
+      <li><span class="section-number">2. </span>ISO InstallDeb Cut Discr</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/cut_discr_pc.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
       </li>
@@ -74,10 +75,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="line-block">
-<div class="line">BilSrvStation Preseed Creator</div>
-</div>
-<hr class="docutils" />
+  <div class="section" id="iso-installdeb-cut-discr">
+<h1><span class="section-number">2. </span>ISO InstallDeb Cut Discr<a class="headerlink" href="#iso-installdeb-cut-discr" title="Ссылка на этот заголовок"></a></h1>
 <div class="line-block">
 <div class="line">by (c) Luc Didry 2017, WTFPL and <a href="#id1"><span class="problematic" id="id2">|author||</span></a> Date: <em>|date|</em> Time: <em>|time|</em></div>
 <div class="line-block">
@@ -207,59 +206,65 @@
 <div class="line-block">
 <div class="line">exit 1</div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">fi</span>
-<span class="linenos"> 2</span><span class="k">fi</span>
-<span class="linenos"> 3</span><span class="c1">#if [ $ONLY_DOWNLOAD == 1 ]</span>
-<span class="linenos"> 4</span><span class="c1">#then</span>
-<span class="linenos"> 5</span> <span class="c1"># exit 0</span>
-<span class="linenos"> 6</span><span class="c1">#fi</span>
-<span class="linenos"> 7</span><span class="o">}</span>
-<span class="linenos"> 8</span>
-<span class="linenos"> 9</span><span class="nv">INPUT</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<span class="linenos">10</span><span class="nv">PRESEED</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<span class="linenos">11</span><span class="nv">POSTINSTALL</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<span class="linenos">12</span><span class="nv">MYPWD</span><span class="o">=</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>
-<span class="linenos">13</span><span class="nv">OUTPUT</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<span class="linenos">14</span><span class="nv">XORRISO</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<span class="linenos">15</span><span class="k">while</span> <span class="nb">getopts</span> <span class="s2">&quot;:i:o:p:s:xdgh&quot;</span> opt<span class="p">;</span> <span class="k">do</span>
-<span class="linenos">16</span><span class="k">case</span> <span class="nv">$opt</span> in
-<span class="linenos">17</span>i<span class="o">)</span>
-<span class="linenos">18</span><span class="nv">INPUT</span><span class="o">=</span><span class="nv">$OPTARG</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">fi</span>
+<span class="linenos">2</span><span class="k">fi</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">if [ $ONLY_DOWNLOAD == 1 ]</div>
+<div class="line">then</div>
+<div class="line-block">
+<div class="line">exit 0</div>
+</div>
+<div class="line">fi</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="o">}</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="nv">INPUT</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="linenos"> 4</span><span class="nv">PRESEED</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="linenos"> 5</span><span class="nv">POSTINSTALL</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="linenos"> 6</span><span class="nv">MYPWD</span><span class="o">=</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>
+<span class="linenos"> 7</span><span class="nv">OUTPUT</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="linenos"> 8</span><span class="nv">XORRISO</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="linenos"> 9</span><span class="k">while</span> <span class="nb">getopts</span> <span class="s2">&quot;:i:o:p:s:xdgh&quot;</span> opt<span class="p">;</span> <span class="k">do</span>
+<span class="linenos">10</span><span class="k">case</span> <span class="nv">$opt</span> in
+<span class="linenos">11</span>i<span class="o">)</span>
+<span class="linenos">12</span><span class="nv">INPUT</span><span class="o">=</span><span class="nv">$OPTARG</span>
+<span class="linenos">13</span><span class="p">;;</span>
+<span class="linenos">14</span>o<span class="o">)</span>
+<span class="linenos">15</span><span class="nv">OUTPUT</span><span class="o">=</span><span class="nv">$OPTARG</span>
+<span class="linenos">16</span><span class="p">;;</span>
+<span class="linenos">17</span>p<span class="o">)</span>
+<span class="linenos">18</span><span class="nv">PRESEED</span><span class="o">=</span><span class="nv">$OPTARG</span>
 <span class="linenos">19</span><span class="p">;;</span>
-<span class="linenos">20</span>o<span class="o">)</span>
-<span class="linenos">21</span><span class="nv">OUTPUT</span><span class="o">=</span><span class="nv">$OPTARG</span>
+<span class="linenos">20</span>s<span class="o">)</span>
+<span class="linenos">21</span><span class="nv">POSTINSTALL</span><span class="o">=</span><span class="nv">$OPTARG</span>
 <span class="linenos">22</span><span class="p">;;</span>
-<span class="linenos">23</span>p<span class="o">)</span>
-<span class="linenos">24</span><span class="nv">PRESEED</span><span class="o">=</span><span class="nv">$OPTARG</span>
+<span class="linenos">23</span>x<span class="o">)</span>
+<span class="linenos">24</span><span class="nv">XORRISO</span><span class="o">=</span><span class="s1">&#39;yes&#39;</span>
 <span class="linenos">25</span><span class="p">;;</span>
-<span class="linenos">26</span>s<span class="o">)</span>
-<span class="linenos">27</span><span class="nv">POSTINSTALL</span><span class="o">=</span><span class="nv">$OPTARG</span>
-<span class="linenos">28</span><span class="p">;;</span>
-<span class="linenos">29</span>x<span class="o">)</span>
-<span class="linenos">30</span><span class="nv">XORRISO</span><span class="o">=</span><span class="s1">&#39;yes&#39;</span>
-<span class="linenos">31</span><span class="p">;;</span>
-<span class="linenos">32</span>d<span class="o">)</span>
-<span class="linenos">33</span><span class="nb">echo</span> <span class="s2">&quot;Downloading latest Debian amd64 netinst ISO image\r\n&quot;</span>
-<span class="linenos">34</span>download_latest_iso <span class="m">1</span>
+<span class="linenos">26</span>d<span class="o">)</span>
+<span class="linenos">27</span><span class="nb">echo</span> <span class="s2">&quot;Downloading latest Debian amd64 netinst ISO image\r\n&quot;</span>
+<span class="linenos">28</span>download_latest_iso <span class="m">1</span>
+<span class="linenos">29</span><span class="p">;;</span>
+<span class="linenos">30</span>g<span class="o">)</span>
+<span class="linenos">31</span><span class="nb">echo</span> <span class="s2">&quot;Downloading latest Debian stable example preseed file into preseed_example.cfg\r\n&quot;</span>
+<span class="linenos">32</span>wget -q http://www.debian.org/releases/stable/example-preseed.txt -O preseed_example.cfg
+<span class="linenos">33</span><span class="nb">echo</span> <span class="s2">&quot;Done\r\n&quot;</span>
+<span class="linenos">34</span><span class="nb">exit</span>
 <span class="linenos">35</span><span class="p">;;</span>
-<span class="linenos">36</span>g<span class="o">)</span>
-<span class="linenos">37</span><span class="nb">echo</span> <span class="s2">&quot;Downloading latest Debian stable example preseed file into preseed_example.cfg\r\n&quot;</span>
-<span class="linenos">38</span>wget -q http://www.debian.org/releases/stable/example-preseed.txt -O preseed_example.cfg
-<span class="linenos">39</span><span class="nb">echo</span> <span class="s2">&quot;Done\r\n&quot;</span>
-<span class="linenos">40</span><span class="nb">exit</span>
-<span class="linenos">41</span><span class="p">;;</span>
-<span class="linenos">42</span>h<span class="o">)</span>
-<span class="linenos">43</span>usage
-<span class="linenos">44</span><span class="p">;;</span>
-<span class="linenos">45</span><span class="se">\?</span><span class="o">)</span>
-<span class="linenos">46</span><span class="nb">echo</span> <span class="s2">&quot;Invalid option: -</span><span class="nv">$OPTARG</span><span class="s2">\r\n&quot;</span> &gt;<span class="p">&amp;</span><span class="m">2</span>
-<span class="linenos">47</span>usage
-<span class="linenos">48</span><span class="p">;;</span>
-<span class="linenos">49</span><span class="k">esac</span>
-<span class="linenos">50</span><span class="k">done</span>
-<span class="linenos">51</span>
-<span class="linenos">52</span>rm -Rf <span class="s2">&quot;</span><span class="si">${</span><span class="nv">MYPWD</span><span class="si">}</span><span class="s2">/preseed_creator/irmod&quot;</span>
-<span class="linenos">53</span>rm -Rf <span class="s2">&quot;</span><span class="si">${</span><span class="nv">MYPWD</span><span class="si">}</span><span class="s2">/preseed_creator/cd&quot;</span>
+<span class="linenos">36</span>h<span class="o">)</span>
+<span class="linenos">37</span>usage
+<span class="linenos">38</span><span class="p">;;</span>
+<span class="linenos">39</span><span class="se">\?</span><span class="o">)</span>
+<span class="linenos">40</span><span class="nb">echo</span> <span class="s2">&quot;Invalid option: -</span><span class="nv">$OPTARG</span><span class="s2">\r\n&quot;</span> &gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="linenos">41</span>usage
+<span class="linenos">42</span><span class="p">;;</span>
+<span class="linenos">43</span><span class="k">esac</span>
+<span class="linenos">44</span><span class="k">done</span>
+<span class="linenos">45</span>
+<span class="linenos">46</span>rm -Rf <span class="s2">&quot;</span><span class="si">${</span><span class="nv">MYPWD</span><span class="si">}</span><span class="s2">/preseed_creator/irmod&quot;</span>
+<span class="linenos">47</span>rm -Rf <span class="s2">&quot;</span><span class="si">${</span><span class="nv">MYPWD</span><span class="si">}</span><span class="s2">/preseed_creator/cd&quot;</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -521,13 +526,45 @@
 <div class="line-block">
 <div class="line">genisoimage -quiet -o $OUTPUT -r -J -no-emul-boot -boot-load-size 4 -boot-info-table -b isolinux/isolinux.bin -c isolinux/boot.cat ./cd &gt; /dev/null 2&gt;&amp;1 -f</div>
 </div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>genisoimage -o <span class="nv">$OUTPUT</span> -r -J -no-emul-boot -boot-load-size <span class="m">4</span> -boot-info-table -b isolinux/isolinux.bin -c isolinux/boot.cat ./cd &gt; /dev/null <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">else</span>
+<span class="linenos"> 4</span><span class="nb">echo</span> -ne <span class="s1">&#39;Create iso by xorriso -as mkisofs tool\r&#39;</span>
+<span class="linenos"> 5</span>        xorriso -as mkisofs <span class="se">\</span>
+<span class="linenos"> 6</span>                -quiet <span class="se">\</span>
+<span class="linenos"> 7</span>                -o <span class="nv">$OUTPUT</span> <span class="se">\</span>
+<span class="linenos"> 8</span>                -isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin <span class="se">\</span>
+<span class="linenos"> 9</span>                -c isolinux/boot.cat <span class="se">\</span>
+<span class="linenos">10</span>                -b isolinux/isolinux.bin <span class="se">\</span>
+<span class="linenos">11</span>                -no-emul-boot -boot-load-size <span class="m">4</span> -boot-info-table <span class="se">\</span>
+<span class="linenos">12</span>                -eltorito-alt-boot <span class="se">\</span>
+<span class="linenos">13</span>                -e boot/grub/efi.img <span class="se">\</span>
+<span class="linenos">14</span>                -no-emul-boot <span class="se">\</span>
+<span class="linenos">15</span>                -isohybrid-gpt-basdat <span class="se">\</span>
+<span class="linenos">16</span>                ./cd /dev/null <span class="m">2</span>&gt;<span class="nv">$1</span>
+<span class="linenos">17</span><span class="k">fi</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne <span class="m">0</span> <span class="o">]</span>
+<span class="linenos">20</span><span class="k">then</span>
+<span class="linenos">21</span><span class="nb">echo</span> <span class="s2">&quot;Error while creating the preseeded ISO image. Aborting&quot;</span>
+<span class="linenos">22</span><span class="nb">exit</span> <span class="m">1</span>
+<span class="linenos">23</span><span class="k">fi</span>
+<span class="linenos">24</span>
+<span class="linenos">25</span>rm -rf <span class="nb">cd</span>
+<span class="linenos">26</span>rm -rf loopdir
+<span class="linenos">27</span>
+<span class="linenos">28</span><span class="nb">echo</span> -ne <span class="s1">&#39;Preseeded ISO image created [==============================](100%)\r&#39;</span>
+<span class="linenos">29</span><span class="nb">echo</span> -e <span class="s2">&quot;\nYour preseeded ISO image is located at </span><span class="nv">$OUTPUT</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
         <a href="nav_r.html" class="btn btn-neutral float-left" title="1. Навигация" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
-        <a href="cut_discr_pii2.html" class="btn btn-neutral float-right" title="2. 01 AUTO POSTINSTALL" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="cut_discr_preseed.html" class="btn btn-neutral float-right" title="3. Preseed Cut Discr" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3. check debconf-set-selections -c preseed &mdash; документация BilSrvStation_Server_PC 1.0.2a</title>
+  <title>3. Preseed Cut Discr &mdash; документация BilSrvStation_Server_PC 1.0.2a</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -20,8 +20,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Алфавитный указатель" href="genindex.html" />
     <link rel="search" title="Поиск" href="search.html" />
-    <link rel="next" title="4. Полное описание конфигурации сервера" href="full_discr.html" />
-    <link rel="prev" title="2. 01 AUTO POSTINSTALL" href="cut_discr_pii2.html" /> 
+    <link rel="next" title="4. AutoInstall Cut Discr" href="cut_discr_pii2.html" />
+    <link rel="prev" title="2. ISO InstallDeb Cut Discr" href="cut_discr_pc.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,12 +42,65 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="nav_r.html">1. Навигация</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2.html">2. 01      AUTO POSTINSTALL</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">3. check debconf-set-selections -c preseed</a></li>
-<li class="toctree-l1"><a class="reference internal" href="full_discr.html">4. Полное описание конфигурации сервера</a></li>
-<li class="toctree-l1"><a class="reference internal" href="structure.html">5. Структура</a></li>
-<li class="toctree-l1"><a class="reference internal" href="build_doc.html">6. Построение этой документации</a></li>
-<li class="toctree-l1"><a class="reference internal" href="note.html">7. Заметки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_pc.html">2. ISO InstallDeb Cut Discr</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Preseed Cut Discr</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#preseed-file-for-install-debian-server">3.1. Preseed file for install Debian Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#contents-of-the-preconfiguration-file">3.2. Contents of the preconfiguration file</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#localization">3.2.1. Localization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-values-can-also-be-preseeded-individually-for-greater-flexibility">3.2.1.1. The values can also be preseeded individually for greater flexibility</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#keyboard-selection">3.2.2. Keyboard selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#network-configuration">3.2.3. Network configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#static-network-configuration">3.2.3.1. Static network configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#network-console">3.2.3.2. Network console</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mirror-settings">3.2.3.3. Mirror settings</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#suite-to-install">3.2.4. Suite to install</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#account-setup">3.2.4.1. Account setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#root-password">3.2.4.2. Root password</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#to-create-a-normal-user-account">3.2.4.3. To create a normal user account</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#normal-user">3.2.4.4. Normal user</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#clock-and-time-zone-setup">3.2.5. Clock and time zone setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#time-zone">3.2.5.1. Time/zone</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ntp-setup">3.2.5.2. NTP-setup</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#partitioning">3.2.6. Partitioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#partman-auto-disk">3.2.6.1. Partman-auto/disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lvm-configuration">3.2.6.2. LVM configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#you-can-choose-one-of-the-three-predefined-partitioning-recipes">3.2.6.3. You can choose one of the three predefined partitioning recipes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#or-provide-a-recipe-of-your-own">3.2.6.4. Or provide a recipe of your own</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partitioning-using-raid">3.2.6.5. Partitioning using RAID</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partman-automatically-partition-without-confirmation">3.2.6.6. Partman automatically partition without confirmation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#controlling-how-partitions-are-mounted">3.2.6.7. Controlling how partitions are mounted</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#base-system-installation">3.2.7. Base system installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#uncomment-this-if-you-don">3.2.7.1. Uncomment this if you don</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#additional-repositories">3.2.7.2. Additional repositories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#package-selection">3.2.7.3. Package selection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#individual-additional-packages-to-install">3.2.7.4. Individual additional packages to install</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#boot-loader-installation">3.2.7.5. Boot loader installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#optional-password-for-grub">3.2.7.6. Optional password for grub</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#finishing-up-the-installation">3.2.7.7. Finishing up the installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avoid-that-last-message-about-the-install-being-complete">3.2.7.8. Avoid that last message about the install being complete</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preseeding-other-packages">3.2.7.9. Preseeding other packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#advanced-options">3.2.7.10. Advanced options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2.html">4. AutoInstall Cut Discr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="full_discr.html">5. Полное описание конфигурации сервера</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structure.html">6. Структура</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_doc.html">7. Построение этой документации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="note.html">8. Заметки</a></li>
 </ul>
 
         </div>
@@ -64,7 +117,7 @@
           <div role="navigation" aria-label="Навигация по страницам">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li><span class="section-number">3. </span>check debconf-set-selections -c preseed</li>
+      <li><span class="section-number">3. </span>Preseed Cut Discr</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/cut_discr_preseed.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
       </li>
@@ -74,14 +127,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="line-block">
-<div class="line">BilSrvStation Cut Discr</div>
+  <div class="section" id="preseed-cut-discr">
+<h1><span class="section-number">3. </span>Preseed Cut Discr<a class="headerlink" href="#preseed-cut-discr" title="Ссылка на этот заголовок"></a></h1>
+<div class="line-block">
+<div class="line">Published by <a href="#id1"><span class="problematic" id="id2">|author|</span></a></div>
+<div class="line">Date: <em>|date|</em> Time <em>|time|</em></div>
 </div>
-<div class="section" id="check-debconf-set-selections-c-preseed">
-<h1><span class="section-number">3. </span>check debconf-set-selections -c preseed<a class="headerlink" href="#check-debconf-set-selections-c-preseed" title="Ссылка на этот заголовок"></a></h1>
+<div class="section" id="preseed-file-for-install-debian-server">
+<h2><span class="section-number">3.1. </span>Preseed file for install Debian Server<a class="headerlink" href="#preseed-file-for-install-debian-server" title="Ссылка на этот заголовок"></a></h2>
 <div class="line-block">
+<div class="line">check debconf-set-selections -c preseed.cfg</div>
 <div class="line"><br /></div>
-<div class="line-block">
 <div class="line-block">
 <div class="line"><a class="reference external" href="https://wiki.debian.org/DebianInstaller/Preseed">https://wiki.debian.org/DebianInstaller/Preseed</a></div>
 <div class="line"><a class="reference external" href="https://www.debian.org/releases/stretch/mips/apbs04.html.ru">https://www.debian.org/releases/stretch/mips/apbs04.html.ru</a></div>
@@ -91,8 +147,13 @@
 <div class="line"><a class="reference external" href="https://itdraft.ru/2019/12/17/avtomaticheskaya-ustanovka-debian-pri-pomoshhi-preseed/">https://itdraft.ru/2019/12/17/avtomaticheskaya-ustanovka-debian-pri-pomoshhi-preseed/</a></div>
 <div class="line"><a class="reference external" href="https://www.debian.org/releases/stretch/example-preseed.txt">https://www.debian.org/releases/stretch/example-preseed.txt</a></div>
 </div>
-<div class="line">|       |        Contents of the preconfiguration file (for stretch)</div>
-<div class="line">|       |        Localization</div>
+</div>
+</div>
+<div class="section" id="contents-of-the-preconfiguration-file">
+<h2><span class="section-number">3.2. </span>Contents of the preconfiguration file<a class="headerlink" href="#contents-of-the-preconfiguration-file" title="Ссылка на этот заголовок"></a></h2>
+<div class="section" id="localization">
+<h3><span class="section-number">3.2.1. </span>Localization<a class="headerlink" href="#localization" title="Ссылка на этот заголовок"></a></h3>
+<div class="line-block">
 <div class="line-block">
 <div class="line">Preseeding only locale sets language, country and locale.</div>
 </div>
@@ -119,13 +180,11 @@
 <div class="line">keymap  keyboard-configuration/xkb-keymap</div>
 <div class="line">preseed-md5     preseed/file/checksum</div>
 </div>
-</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line">The values can also be preseeded individually for greater flexibility.</div>
-</div>
+<div class="section" id="the-values-can-also-be-preseeded-individually-for-greater-flexibility">
+<h4><span class="section-number">3.2.1.1. </span>The values can also be preseeded individually for greater flexibility<a class="headerlink" href="#the-values-can-also-be-preseeded-individually-for-greater-flexibility" title="Ссылка на этот заголовок"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>d-i debian-installer/language string ru
 <span class="linenos">2</span>d-i debian-installer/country string RU
 <span class="linenos">3</span>d-i debian-installer/locale string ru_RU.UTF-8
@@ -137,8 +196,11 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>d-i localechooser/supported-locales multiselect en_US.UTF-8, ru_RU.UTF-8
 </pre></div>
 </div>
+</div>
+</div>
+<div class="section" id="keyboard-selection">
+<h3><span class="section-number">3.2.2. </span>Keyboard selection<a class="headerlink" href="#keyboard-selection" title="Ссылка на этот заголовок"></a></h3>
 <div class="line-block">
-<div class="line">Keyboard selection.</div>
 <div class="line"><a class="reference external" href="https://wiki.archlinux.org/title/Xorg/Keyboard_configuration">https://wiki.archlinux.org/title/Xorg/Keyboard_configuration</a></div>
 <div class="line">/etc/X11/xorg.conf.d/00-keyboard.conf</div>
 <div class="line">/usr/share/X11/xkb/rules/base.lst</div>
@@ -168,13 +230,13 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line">|       |        Network configuration</div>
+</div>
+<div class="section" id="network-configuration">
+<h3><span class="section-number">3.2.3. </span>Network configuration<a class="headerlink" href="#network-configuration" title="Ссылка на этот заголовок"></a></h3>
 <div class="line-block">
 <div class="line">Disable network configuration entirely. This is useful for cdrom</div>
 <div class="line">installations on non-networked devices where the network questions,</div>
 <div class="line">warning and long timeouts are a nuisance.</div>
-</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>d-i hw-detect/load_firmware boolean <span class="nb">true</span>
 <span class="linenos">2</span>
@@ -241,10 +303,12 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>d-i netcfg/dhcp_options <span class="k">select</span> auto
 </pre></div>
 </div>
+<div class="section" id="static-network-configuration">
+<h4><span class="section-number">3.2.3.1. </span>Static network configuration<a class="headerlink" href="#static-network-configuration" title="Ссылка на этот заголовок"></a></h4>
 <div class="line-block">
-<div class="line-block">
-<div class="line">Static network configuration.</div>
 <div class="line"><br /></div>
+<div class="line-block">
+<div class="line-block">
 <div class="line">IPv4 example</div>
 </div>
 <div class="line">d-i netcfg/get_ipaddress string 192.168.1.42</div>
@@ -261,6 +325,7 @@
 <div class="line">d-i netcfg/get_gateway string fc00::1</div>
 <div class="line">d-i netcfg/get_nameservers string fc00::1</div>
 <div class="line">d-i netcfg/confirm_static boolean true</div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
@@ -310,8 +375,10 @@
 <span class="linenos">5</span>d-i netcfg/disable_dhcp boolean <span class="nb">false</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="network-console">
+<h4><span class="section-number">3.2.3.2. </span>Network console<a class="headerlink" href="#network-console" title="Ссылка на этот заголовок"></a></h4>
 <div class="line-block">
-<div class="line">|       |        Network console</div>
 <div class="line-block">
 <div class="line">Use the following settings if you wish to make use of the network-console</div>
 <div class="line">component for remote installation over SSH. This only makes sense if you</div>
@@ -325,8 +392,10 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="mirror-settings">
+<h4><span class="section-number">3.2.3.3. </span>Mirror settings<a class="headerlink" href="#mirror-settings" title="Ссылка на этот заголовок"></a></h4>
 <div class="line-block">
-<div class="line">|       |        Mirror settings</div>
 <div class="line-block">
 <div class="line">If you select ftp, the mirror/country string does not need to be set.</div>
 </div>
@@ -338,9 +407,10 @@
 <span class="linenos">4</span>d-i mirror/http/proxy string
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line">Suite to install.</div>
 </div>
+</div>
+<div class="section" id="suite-to-install">
+<h3><span class="section-number">3.2.4. </span>Suite to install<a class="headerlink" href="#suite-to-install" title="Ссылка на этот заголовок"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>d-i mirror/suite string main
 </pre></div>
 </div>
@@ -353,12 +423,11 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line">|       |        Account setup</div>
+<div class="section" id="account-setup">
+<h4><span class="section-number">3.2.4.1. </span>Account setup<a class="headerlink" href="#account-setup" title="Ссылка на этот заголовок"></a></h4>
 <div class="line-block">
 <div class="line">Skip creation of a root account (normal user account will be able to</div>
 <div class="line">use sudo).</div>
-</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>d-i passwd/root-login boolean <span class="nb">true</span>
 </pre></div>
@@ -369,10 +438,10 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>d-i passwd/make-user boolean <span class="nb">false</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line-block">
-<div class="line">Root password, either in clear text</div>
 </div>
+<div class="section" id="root-password">
+<h4><span class="section-number">3.2.4.2. </span>Root password<a class="headerlink" href="#root-password" title="Ссылка на этот заголовок"></a></h4>
+<div class="line-block">
 <div class="line">d-i passwd/root-password password r</div>
 <div class="line">d-i passwd/root-password-again password r</div>
 <div class="line-block">
@@ -383,15 +452,17 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>d-i passwd/root-password-crypted password <span class="nv">$1$7</span>xORR8sC<span class="nv">$l1HxV</span>/t6fFCHlYzoobBl./
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line-block">
-<div class="line">To create a normal user account.</div>
 </div>
+<div class="section" id="to-create-a-normal-user-account">
+<h4><span class="section-number">3.2.4.3. </span>To create a normal user account<a class="headerlink" href="#to-create-a-normal-user-account" title="Ссылка на этот заголовок"></a></h4>
+<div class="line-block">
 <div class="line">d-i passwd/user-fullname string Debian User</div>
 <div class="line">d-i passwd/username string debian</div>
-<div class="line-block">
-<div class="line">Normal user’s password, either in clear text</div>
 </div>
+</div>
+<div class="section" id="normal-user">
+<h4><span class="section-number">3.2.4.4. </span>Normal user<a class="headerlink" href="#normal-user" title="Ссылка на этот заголовок"></a></h4>
+<div class="line-block">
 <div class="line">d-i passwd/user-password password insecure</div>
 <div class="line">d-i passwd/user-password-again password insecure</div>
 <div class="line-block">
@@ -415,15 +486,18 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line">|       |        Clock and time zone setup</div>
+</div>
+</div>
+<div class="section" id="clock-and-time-zone-setup">
+<h3><span class="section-number">3.2.5. </span>Clock and time zone setup<a class="headerlink" href="#clock-and-time-zone-setup" title="Ссылка на этот заголовок"></a></h3>
 <div class="line-block">
 <div class="line">Controls whether or not the hardware clock is set to UTC.</div>
-</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>d-i clock-setup/utc boolean <span class="nb">true</span>
 </pre></div>
 </div>
+<div class="section" id="time-zone">
+<h4><span class="section-number">3.2.5.1. </span>Time/zone<a class="headerlink" href="#time-zone" title="Ссылка на этот заголовок"></a></h4>
 <div class="line-block">
 <div class="line">You may set this to any valid setting for $TZ; see the contents of</div>
 <div class="line">/usr/share/zoneinfo/ for valid values.</div>
@@ -431,6 +505,9 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>d-i time/zone string Europe/Saratov
 </pre></div>
 </div>
+</div>
+<div class="section" id="ntp-setup">
+<h4><span class="section-number">3.2.5.2. </span>NTP-setup<a class="headerlink" href="#ntp-setup" title="Ссылка на этот заголовок"></a></h4>
 <div class="line-block">
 <div class="line">Controls whether to use NTP to set the clock during the install</div>
 </div>
@@ -446,8 +523,11 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
 </div>
+</div>
+</div>
+<div class="section" id="partitioning">
+<h3><span class="section-number">3.2.6. </span>Partitioning<a class="headerlink" href="#partitioning" title="Ссылка на этот заголовок"></a></h3>
 <div class="line-block">
-<div class="line">|       |        Partitioning</div>
 <div class="line">|        Partitioning example</div>
 <div class="line-block">
 <div class="line">If the system has free space you can choose to only partition that space.</div>
@@ -457,6 +537,8 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>d-i partman-auto/init_automatically_partition <span class="k">select</span> biggest_free
 </pre></div>
 </div>
+<div class="section" id="partman-auto-disk">
+<h4><span class="section-number">3.2.6.1. </span>Partman-auto/disk<a class="headerlink" href="#partman-auto-disk" title="Ссылка на этот заголовок"></a></h4>
 <div class="line-block">
 <div class="line">Alternatively, you may specify a disk to partition. If the system has only</div>
 <div class="line">one disk the installer will default to using that, but otherwise the device</div>
@@ -477,6 +559,9 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>d-i partman-auto/method string regular
 </pre></div>
 </div>
+</div>
+<div class="section" id="lvm-configuration">
+<h4><span class="section-number">3.2.6.2. </span>LVM configuration<a class="headerlink" href="#lvm-configuration" title="Ссылка на этот заголовок"></a></h4>
 <div class="line-block">
 <div class="line">If one of the disks that are going to be automatically partitioned</div>
 <div class="line">contains an old LVM configuration, the user will normally receive a</div>
@@ -509,8 +594,10 @@
 <span class="linenos">6</span>d-i partman/default_label string gpt
 </pre></div>
 </div>
+</div>
+<div class="section" id="you-can-choose-one-of-the-three-predefined-partitioning-recipes">
+<h4><span class="section-number">3.2.6.3. </span>You can choose one of the three predefined partitioning recipes<a class="headerlink" href="#you-can-choose-one-of-the-three-predefined-partitioning-recipes" title="Ссылка на этот заголовок"></a></h4>
 <div class="line-block">
-<div class="line">You can choose one of the three predefined partitioning recipes:</div>
 <div class="line">- atomic: all files in one partition</div>
 <div class="line">- home:   separate /home partition</div>
 <div class="line">- multi:  separate /home, /var, and /tmp partitions</div>
@@ -518,9 +605,11 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>d-i partman-auto/choose_recipe <span class="k">select</span> atomic
 </pre></div>
 </div>
+</div>
+<div class="section" id="or-provide-a-recipe-of-your-own">
+<h4><span class="section-number">3.2.6.4. </span>Or provide a recipe of your own<a class="headerlink" href="#or-provide-a-recipe-of-your-own" title="Ссылка на этот заголовок"></a></h4>
 <div class="line-block">
 <div class="line-block">
-<div class="line">Or provide a recipe of your own…</div>
 <div class="line">If you have a way to get a recipe file into the d-i environment, you can</div>
 <div class="line">just point at it.</div>
 </div>
@@ -529,8 +618,10 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="partitioning-using-raid">
+<h4><span class="section-number">3.2.6.5. </span>Partitioning using RAID<a class="headerlink" href="#partitioning-using-raid" title="Ссылка на этот заголовок"></a></h4>
 <div class="line-block">
-<div class="line">|        Partitioning using RAID</div>
 <div class="line-block">
 <div class="line">The method should be set to «raid».</div>
 </div>
@@ -685,6 +776,9 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="partman-automatically-partition-without-confirmation">
+<h4><span class="section-number">3.2.6.6. </span>Partman automatically partition without confirmation<a class="headerlink" href="#partman-automatically-partition-without-confirmation" title="Ссылка на этот заголовок"></a></h4>
 <div class="line-block">
 <div class="line">This makes partman automatically partition without confirmation, provided</div>
 <div class="line">that you told it what to do using one of the methods above.</div>
@@ -710,8 +804,10 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="controlling-how-partitions-are-mounted">
+<h4><span class="section-number">3.2.6.7. </span>Controlling how partitions are mounted<a class="headerlink" href="#controlling-how-partitions-are-mounted" title="Ссылка на этот заголовок"></a></h4>
 <div class="line-block">
-<div class="line">|        Controlling how partitions are mounted</div>
 <div class="line-block">
 <div class="line">The default is to mount by UUID, but you can also choose «traditional» to</div>
 <div class="line">use traditional device names, or «label» to try filesystem labels before</div>
@@ -722,13 +818,14 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line">|       |        Base system installation</div>
+</div>
+</div>
+<div class="section" id="base-system-installation">
+<h3><span class="section-number">3.2.7. </span>Base system installation<a class="headerlink" href="#base-system-installation" title="Ссылка на этот заголовок"></a></h3>
 <div class="line-block">
 <div class="line">Configure APT to not install recommended packages by default. Use of this</div>
 <div class="line">option can result in an incomplete system and should only be used by very</div>
 <div class="line">experienced users.</div>
-</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>d-i base-installer/install-recommends boolean <span class="nb">false</span>
 </pre></div>
@@ -740,23 +837,17 @@
 </div>
 <div class="line">d-i base-installer/kernel/image string linux-image-686</div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
-</pre></div>
-</div>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">linenos</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<p>d-i apt-setup/non-free boolean true
+d-i apt-setup/contrib boolean true</p>
+</div></blockquote>
+<div class="section" id="uncomment-this-if-you-don">
+<h4><span class="section-number">3.2.7.1. </span>Uncomment this if you don<a class="headerlink" href="#uncomment-this-if-you-don" title="Ссылка на этот заголовок"></a></h4>
 <div class="line-block">
-<div class="line">|       |        Apt setup</div>
-<div class="line-block">
-<div class="line">You can choose to install non-free and contrib software.</div>
-</div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>d-i apt-setup/non-free boolean <span class="nb">true</span>
-<span class="linenos">2</span>d-i apt-setup/contrib boolean <span class="nb">true</span>
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line-block">
-<div class="line">Uncomment this if you don’t want to use a network mirror.</div>
-</div>
 <div class="line">d-i apt-setup/use_mirror boolean false</div>
 <div class="line-block">
 <div class="line">Select which update services to use; define the mirrors to be used.</div>
@@ -777,10 +868,10 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>popularity-contest popularity-contest/participate boolean <span class="nb">false</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line-block">
-<div class="line">Additional repositories, local[0-9] available</div>
 </div>
+<div class="section" id="additional-repositories">
+<h4><span class="section-number">3.2.7.2. </span>Additional repositories<a class="headerlink" href="#additional-repositories" title="Ссылка на этот заголовок"></a></h4>
+<div class="line-block">
 <div class="line">d-i apt-setup/local0/repository string </div>
 <div class="line-block">
 <div class="line"><a class="reference external" href="http://local.server/debian">http://local.server/debian</a> stable main</div>
@@ -820,16 +911,16 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line">|       |        Package selection</div>
 </div>
+<div class="section" id="package-selection">
+<h4><span class="section-number">3.2.7.3. </span>Package selection<a class="headerlink" href="#package-selection" title="Ссылка на этот заголовок"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>tasksel tasksel/first multiselect none
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line-block">
-<div class="line">Individual additional packages to install</div>
 </div>
+<div class="section" id="individual-additional-packages-to-install">
+<h4><span class="section-number">3.2.7.4. </span>Individual additional packages to install<a class="headerlink" href="#individual-additional-packages-to-install" title="Ссылка на этот заголовок"></a></h4>
+<div class="line-block">
 <div class="line">d-i pkgsel/include string openssh-server build-essential</div>
 <div class="line-block">
 <div class="line">Whether to upgrade packages after debootstrap.</div>
@@ -851,8 +942,10 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="boot-loader-installation">
+<h4><span class="section-number">3.2.7.5. </span>Boot loader installation<a class="headerlink" href="#boot-loader-installation" title="Ссылка на этот заголовок"></a></h4>
 <div class="line-block">
-<div class="line">|       |        Boot loader installation</div>
 <div class="line-block">
 <div class="line">Grub is the default boot loader (for x86). If you want lilo installed</div>
 <div class="line">instead, uncomment this:</div>
@@ -913,10 +1006,10 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line-block">
-<div class="line">Optional password for grub, either in clear text</div>
 </div>
+<div class="section" id="optional-password-for-grub">
+<h4><span class="section-number">3.2.7.6. </span>Optional password for grub<a class="headerlink" href="#optional-password-for-grub" title="Ссылка на этот заголовок"></a></h4>
+<div class="line-block">
 <div class="line">d-i grub-installer/password password r00tme</div>
 <div class="line">d-i grub-installer/password-again password r00tme</div>
 <div class="line-block">
@@ -935,8 +1028,10 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>d-i debian-installer/add-kernel-opts string nousb
 </pre></div>
 </div>
+</div>
+<div class="section" id="finishing-up-the-installation">
+<h4><span class="section-number">3.2.7.7. </span>Finishing up the installation<a class="headerlink" href="#finishing-up-the-installation" title="Ссылка на этот заголовок"></a></h4>
 <div class="line-block">
-<div class="line">|       |        Finishing up the installation</div>
 <div class="line-block">
 <div class="line">During installations from serial console, the regular virtual consoles</div>
 <div class="line">(VT1-VT6) are normally disabled in /etc/inittab. Uncomment the next</div>
@@ -947,10 +1042,10 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line-block">
-<div class="line">Avoid that last message about the install being complete.</div>
 </div>
+<div class="section" id="avoid-that-last-message-about-the-install-being-complete">
+<h4><span class="section-number">3.2.7.8. </span>Avoid that last message about the install being complete<a class="headerlink" href="#avoid-that-last-message-about-the-install-being-complete" title="Ссылка на этот заголовок"></a></h4>
+<div class="line-block">
 <div class="line">d-i finish-install/reboot_in_progress note</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
@@ -980,8 +1075,9 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line">|       |        Preseeding other packages</div>
+</div>
+<div class="section" id="preseeding-other-packages">
+<h4><span class="section-number">3.2.7.9. </span>Preseeding other packages<a class="headerlink" href="#preseeding-other-packages" title="Ссылка на этот заголовок"></a></h4>
 <div class="line-block">
 <div class="line">Depending on what software you choose to install, or if things go wrong</div>
 <div class="line">during the installation process, it’s possible that other questions may</div>
@@ -993,13 +1089,14 @@
 <div class="line">debconf-get-selections &gt;&gt; file</div>
 </div>
 </div>
-</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>d-i finish-install/reboot_in_progress note
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line">|       |       |        Advanced options</div>
-<div class="line">|       |        Running custom commands during the installation</div>
+</div>
+<div class="section" id="advanced-options">
+<h4><span class="section-number">3.2.7.10. </span>Advanced options<a class="headerlink" href="#advanced-options" title="Ссылка на этот заголовок"></a></h4>
+<div class="section" id="running-custom-commands-during-the-installation">
+<h5><span class="section-number">3.2.7.10.1. </span>Running custom commands during the installation<a class="headerlink" href="#running-custom-commands-during-the-installation" title="Ссылка на этот заголовок"></a></h5>
 <div class="line-block">
 <div class="line">d-i preseeding is inherently not secure. Nothing in the installer checks</div>
 <div class="line">for attempts at buffer overflows or other exploits of the values of a</div>
@@ -1007,7 +1104,6 @@
 <div class="line">trusted locations! To drive that home, and because it’s generally useful,</div>
 <div class="line">here’s a way to run any shell command you’d like inside the installer,</div>
 <div class="line">automatically.</div>
-</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
@@ -1063,9 +1159,9 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line">|       |        Certificate</div>
 </div>
+<div class="section" id="certificate-and-postinstall">
+<h5><span class="section-number">3.2.7.10.2. </span>Certificate and postinstall<a class="headerlink" href="#certificate-and-postinstall" title="Ссылка на этот заголовок"></a></h5>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>d-i preseed/late_command string mkdir -p /target/install/<span class="p">;</span> cp -Rf /install/* /target/install/<span class="p">;</span>cp -Rf /cdrom/install_ext/* /target/install/<span class="p">;</span>
 </pre></div>
 </div>
@@ -1076,14 +1172,50 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
 </div>
+<div class="line-block">
+<div class="line">chmod +x /target/install/pii2.sh; cp /target/install/pii2.sh /target/etc/init.d/;  chkconfig –add /target/install/pii2.sh; update-rc.d pii2.sh defaults;</div>
+<div class="line">d-i preseed/late_command </div>
+<div class="line">in-target chmod +x /install/postinstall.sh</div>
+<div class="line">chroot /target; chmod +x /install/postinstall.sh</div>
+<div class="line"></div>
+<div class="line-block">
+<div class="line">in-target mkdir -p /root/.ssh; </div>
+<div class="line">in-target chmod 700 /root/.ssh; </div>
+<div class="line">in-target chmod 600 /root/.ssh/authorized_keys; </div>
+<div class="line">in-target mkdir -p /home/myuser/.ssh; </div>
+<div class="line">in-target chmod 700 /home/myuser/.ssh; </div>
+<div class="line">in-target chmod 600 /home/myuser/.ssh/authorized_keys; </div>
+<div class="line">in-target chown -R myuser:myuser /home/myuser/.ssh/; </div>
+<div class="line">in-target mkdir -p /install/; </div>
+<div class="line-block">
+<div class="line">cp -R /cdrom/install/* /install/;</div>
+</div>
+<div class="line">in-target chroot /install; </div>
+<div class="line">in-target chmod +x /install/postinstall.sh</div>
+<div class="line">in-target chroot /install; </div>
+</div>
+<div class="line">d-i preseed/late_command string </div>
+<div class="line">in-target sh /install/postinstall.sh</div>
+<div class="line">d-i preseed/late_command string </div>
+<div class="line-block">
+<div class="line">in-target echo -e «onnnpn1nnnw» | fdisk /dev/sdb1 ; </div>
+<div class="line">in-target mkfs.ext4 /dev/sdb1 ; </div>
+<div class="line">in-target echo «/dev/sdb1  /srv  ext4  nodiratime  0  2» &gt;&gt; /etc/fstab</div>
+</div>
+<div class="line">&lt;==—END—==&gt;</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
-        <a href="cut_discr_pii2.html" class="btn btn-neutral float-left" title="2. 01 AUTO POSTINSTALL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
-        <a href="full_discr.html" class="btn btn-neutral float-right" title="4. Полное описание конфигурации сервера" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="cut_discr_pc.html" class="btn btn-neutral float-left" title="2. ISO InstallDeb Cut Discr" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="cut_discr_pii2.html" class="btn btn-neutral float-right" title="4. AutoInstall Cut Discr" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

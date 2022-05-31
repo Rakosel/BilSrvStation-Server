@@ -44,12 +44,13 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="nav_r.html">1. Навигация</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2.html">2. 01      AUTO POSTINSTALL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cut_discr_preseed.html">3. check debconf-set-selections -c preseed</a></li>
-<li class="toctree-l1"><a class="reference internal" href="full_discr.html">4. Полное описание конфигурации сервера</a></li>
-<li class="toctree-l1"><a class="reference internal" href="structure.html">5. Структура</a></li>
-<li class="toctree-l1"><a class="reference internal" href="build_doc.html">6. Построение этой документации</a></li>
-<li class="toctree-l1"><a class="reference internal" href="note.html">7. Заметки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_pc.html">2. ISO InstallDeb Cut Discr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_preseed.html">3. Preseed Cut Discr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2.html">4. AutoInstall Cut Discr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="full_discr.html">5. Полное описание конфигурации сервера</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structure.html">6. Структура</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_doc.html">7. Построение этой документации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="note.html">8. Заметки</a></li>
 </ul>
 
         </div>
@@ -82,51 +83,111 @@
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="nav_r.html">1. Навигация</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2.html">2. 01      AUTO POSTINSTALL</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="cut_discr_pii2.html#pre-install-emv-and-settings">2.1. 01.01   PRE-INSTALL EMV AND SETTINGS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cut_discr_pii2.html#check-root-privilege">2.2. 01.02   CHECK ROOT PRIVILEGE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cut_discr_pii2.html#settings-etc-network-interfaces-interface-sh">2.3. 01.03   SETTINGS /ETC/NETWORK -&gt; INTERFACES [interface_sh]</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#settings-network-interfaces">2.3.1. 01.03.01        SETTINGS NETWORK/INTERFACES</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#search-interfaces">2.3.2. 01.03.02        SEARCH INTERFACES</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#restart-service">2.3.3. 01.03.02        restart service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_pc.html">2. ISO InstallDeb Cut Discr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_preseed.html">3. Preseed Cut Discr</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cut_discr_preseed.html#preseed-file-for-install-debian-server">3.1. Preseed file for install Debian Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cut_discr_preseed.html#contents-of-the-preconfiguration-file">3.2. Contents of the preconfiguration file</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_preseed.html#localization">3.2.1. Localization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#the-values-can-also-be-preseeded-individually-for-greater-flexibility">3.2.1.1. The values can also be preseeded individually for greater flexibility</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cut_discr_pii2.html#update-distribution">2.4. 01.04           Update distribution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cut_discr_pii2.html#install-drivers">2.5. 01.05           Install drivers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#install-selinux-utils-acl">2.5.1. 01.05.01        Install SElinux utils &amp; acl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#reboot">2.5.2. 01.05.02        Reboot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_preseed.html#keyboard-selection">3.2.2. Keyboard selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_preseed.html#network-configuration">3.2.3. Network configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#static-network-configuration">3.2.3.1. Static network configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#network-console">3.2.3.2. Network console</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#mirror-settings">3.2.3.3. Mirror settings</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cut_discr_pii2.html#install-git-nanorc-step-three">2.6. 01.06           Install git &amp;&amp; nanorc [step_three]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cut_discr_pii2.html#copy-dir">2.7. 01.07           Copy dir</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cut_discr_pii2.html#install-utils-step-five">2.8. 01.08           Install utils [step_five]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cut_discr_pii2.html#install-driver-opt-and-acc-step-six">2.9. 01.09           Install driver opt and acc [step_six]</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#create-disk-opt">2.9.1. 01.09.01        create disk /opt/</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#search-dev-s">2.9.2. 01.09.02        search /dev/s**</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#mount-dev-s">2.9.3. 01.09.03        mount /dev/s**</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_preseed.html#suite-to-install">3.2.4. Suite to install</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#account-setup">3.2.4.1. Account setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#root-password">3.2.4.2. Root password</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#to-create-a-normal-user-account">3.2.4.3. To create a normal user account</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#normal-user">3.2.4.4. Normal user</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cut_discr_pii2.html#create-users-and-groups">2.10. 01.10           Create users and groups</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#id7">2.10.1. 01.10.01                Create users and groups</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#create-ssh-ssl">2.10.2. 01.10.02                Create ssh_ssl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#install-ssh-settings">2.10.3. 01.10.03        Install ssh settings</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#create-users-ssh">2.10.4. 01.10.04        Create users ssh</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#create-samba">2.10.5. 01.10.05        Create SAMBA</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#install-and-settings-firewall">2.10.6. 01.10.06        Install and settings firewall</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#install-other-soft">2.10.7. 01.10.07        Install other soft</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#extended-nano">2.10.8. 01.10.08        Extended nano</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#cp-ers">2.10.9. 01.10.09        cp ers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#install-vsftp">2.10.10. 01.10.10        Install vsftp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_preseed.html#clock-and-time-zone-setup">3.2.5. Clock and time zone setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#time-zone">3.2.5.1. Time/zone</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#ntp-setup">3.2.5.2. NTP-setup</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cut_discr_pii2.html#settings-permissive-selinux">2.11. 01.11   Settings permissive SELinux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_preseed.html#partitioning">3.2.6. Partitioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#partman-auto-disk">3.2.6.1. Partman-auto/disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#lvm-configuration">3.2.6.2. LVM configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#you-can-choose-one-of-the-three-predefined-partitioning-recipes">3.2.6.3. You can choose one of the three predefined partitioning recipes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#or-provide-a-recipe-of-your-own">3.2.6.4. Or provide a recipe of your own</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#partitioning-using-raid">3.2.6.5. Partitioning using RAID</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#partman-automatically-partition-without-confirmation">3.2.6.6. Partman automatically partition without confirmation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#controlling-how-partitions-are-mounted">3.2.6.7. Controlling how partitions are mounted</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="cut_discr_preseed.html">3. check debconf-set-selections -c preseed</a></li>
-<li class="toctree-l1"><a class="reference internal" href="full_discr.html">4. Полное описание конфигурации сервера</a></li>
-<li class="toctree-l1"><a class="reference internal" href="structure.html">5. Структура</a></li>
-<li class="toctree-l1"><a class="reference internal" href="build_doc.html">6. Построение этой документации</a></li>
-<li class="toctree-l1"><a class="reference internal" href="note.html">7. Заметки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_preseed.html#base-system-installation">3.2.7. Base system installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#uncomment-this-if-you-don">3.2.7.1. Uncomment this if you don</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#additional-repositories">3.2.7.2. Additional repositories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#package-selection">3.2.7.3. Package selection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#individual-additional-packages-to-install">3.2.7.4. Individual additional packages to install</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#boot-loader-installation">3.2.7.5. Boot loader installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#optional-password-for-grub">3.2.7.6. Optional password for grub</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#finishing-up-the-installation">3.2.7.7. Finishing up the installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#avoid-that-last-message-about-the-install-being-complete">3.2.7.8. Avoid that last message about the install being complete</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#preseeding-other-packages">3.2.7.9. Preseeding other packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#advanced-options">3.2.7.10. Advanced options</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="cut_discr_preseed.html#running-custom-commands-during-the-installation">3.2.7.10.1. Running custom commands during the installation</a></li>
+<li class="toctree-l5"><a class="reference internal" href="cut_discr_preseed.html#certificate-and-postinstall">3.2.7.10.2. Certificate and postinstall</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2.html">4. AutoInstall Cut Discr</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cut_discr_pii2.html#auto-postinstall">4.1. 01      AUTO POSTINSTALL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#pre-install-emv-and-settings">4.1.1. 01.01   PRE-INSTALL EMV AND SETTINGS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#check-root-privilege">4.1.2. 01.02   CHECK ROOT PRIVILEGE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#settings-etc-network-interfaces-interface-sh">4.1.3. 01.03   SETTINGS /ETC/NETWORK -&gt; INTERFACES [interface_sh]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#settings-network-interfaces">4.1.3.1. 01.03.01        SETTINGS NETWORK/INTERFACES</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#search-interfaces">4.1.3.2. 01.03.02        SEARCH INTERFACES</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#restart-service">4.1.3.3. 01.03.02        restart service</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#update-distribution">4.1.4. 01.04           Update distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#install-drivers">4.1.5. 01.05           Install drivers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#install-selinux-utils-acl">4.1.5.1. 01.05.01        Install SElinux utils &amp; acl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#reboot">4.1.5.2. 01.05.02        Reboot</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#install-git-nanorc-step-three">4.1.6. 01.06           Install git &amp;&amp; nanorc [step_three]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#copy-dir">4.1.7. 01.07           Copy dir</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#install-utils-step-five">4.1.8. 01.08           Install utils [step_five]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#install-driver-opt-and-acc-step-six">4.1.9. 01.09           Install driver opt and acc [step_six]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#create-disk-opt">4.1.9.1. 01.09.01        create disk /opt/</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#search-dev-s">4.1.9.2. 01.09.02        search /dev/s**</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#mount-dev-s">4.1.9.3. 01.09.03        mount /dev/s**</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#create-users-and-groups">4.1.10. 01.10           Create users and groups</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#id7">4.1.10.1. 01.10.01                Create users and groups</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#create-ssh-ssl">4.1.10.2. 01.10.02                Create ssh_ssl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#install-ssh-settings">4.1.10.3. 01.10.03        Install ssh settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#create-users-ssh">4.1.10.4. 01.10.04        Create users ssh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#create-samba">4.1.10.5. 01.10.05        Create SAMBA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#install-and-settings-firewall">4.1.10.6. 01.10.06        Install and settings firewall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#install-other-soft">4.1.10.7. 01.10.07        Install other soft</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#extended-nano">4.1.10.8. 01.10.08        Extended nano</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#cp-ers">4.1.10.9. 01.10.09        cp ers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#install-vsftp">4.1.10.10. 01.10.10        Install vsftp</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#settings-permissive-selinux">4.1.11. 01.11   Settings permissive SELinux</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="full_discr.html">5. Полное описание конфигурации сервера</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structure.html">6. Структура</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_doc.html">7. Построение этой документации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="note.html">8. Заметки</a></li>
 </ul>
 </div>
 </div>

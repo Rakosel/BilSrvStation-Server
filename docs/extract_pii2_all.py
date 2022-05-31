@@ -235,7 +235,7 @@ str_comm_end="";
 
 linep_out=[""]*int(len(linep)*10);
 #print(linep); re.sub('^#!\/bin\/(.*).*', '|\t', linep[POS_0])
-linep_out[k]="|	BilSrvStation Cut Discr\n*************************\n"
+linep_out[k]="AutoInstall Cut Discr\n*************************\n"
 k+=1;
 linep_out[k]="| Published by |author|\n"
 k+=1;

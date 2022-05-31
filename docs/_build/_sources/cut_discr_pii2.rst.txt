@@ -1,4 +1,4 @@
-|	BilSrvStation Cut Discr
+AutoInstall Cut Discr
 *************************
 | Published by |author|
 | Date: *|date|* Time *|time|*

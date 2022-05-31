@@ -1,9 +1,10 @@
-|	BilSrvStation Cut Discr
+Preseed Cut Discr
 *************************
 | Published by |author|
 | Date: *|date|* Time *|time|*
-check debconf-set-selections -c preseed
-=======================================
+Preseed file for install Debian Server
+======================================
+|	check debconf-set-selections -c preseed.cfg
 |	
 |	 https://wiki.debian.org/DebianInstaller/Preseed
 |	 https://www.debian.org/releases/stretch/mips/apbs04.html.ru
@@ -12,8 +13,10 @@ check debconf-set-selections -c preseed
 |	 https://wiki.archlinux.org/title/Xorg_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)/Keyboard_configuration_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)
 |	 https://itdraft.ru/2019/12/17/avtomaticheskaya-ustanovka-debian-pri-pomoshhi-preseed/
 |	 https://www.debian.org/releases/stretch/example-preseed.txt
-|	|	|	 Contents of the preconfiguration file (for stretch)
-|	|	|	 Localization
+Contents of the preconfiguration file 
+======================================
+Localization
+------------
 |	 Preseeding only locale sets language, country and locale. 
 |	priority 	debconf/priority
 |	fb 	debian-installer/framebuffer
@@ -41,7 +44,8 @@ check debconf-set-selections -c preseed
 	:linenos:
 
 	
-|	 The values can also be preseeded individually for greater flexibility.
+The values can also be preseeded individually for greater flexibility
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. code-block:: bash
 	:linenos:
 
@@ -54,7 +58,8 @@ check debconf-set-selections -c preseed
 
 	d-i localechooser/supported-locales multiselect en_US.UTF-8, ru_RU.UTF-8
 	
-|	 Keyboard selection.
+Keyboard selection
+------------------
 |	 https://wiki.archlinux.org/title/Xorg/Keyboard_configuration
 |	 /etc/X11/xorg.conf.d/00-keyboard.conf
 |	 /usr/share/X11/xkb/rules/base.lst
@@ -84,7 +89,8 @@ check debconf-set-selections -c preseed
 	:linenos:
 
 	
-|	|	|	 Network configuration
+Network configuration
+---------------------
 |	 Disable network configuration entirely. This is useful for cdrom
 |	 installations on non-networked devices where the network questions,
 |	 warning and long timeouts are a nuisance.
@@ -142,7 +148,8 @@ check debconf-set-selections -c preseed
 
 	d-i netcfg/dhcp_options select auto
 	
-|	 Static network configuration.
+Static network configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	
 |	 IPv4 example
 |	d-i netcfg/get_ipaddress string 192.168.1.42
@@ -197,7 +204,8 @@ check debconf-set-selections -c preseed
 	d-i netcfg/get_domain string BilSrvWork
 	d-i netcfg/confirm_static boolean false
 	d-i netcfg/disable_dhcp boolean false
-|	|	|	 Network console
+Network console
+~~~~~~~~~~~~~~~
 |	 Use the following settings if you wish to make use of the network-console
 |	 component for remote installation over SSH. This only makes sense if you
 |	 intend to perform the remainder of the installation manually.
@@ -209,7 +217,8 @@ check debconf-set-selections -c preseed
 	:linenos:
 
 	
-|	|	|	 Mirror settings
+Mirror settings
+~~~~~~~~~~~~~~~
 |	 If you select ftp, the mirror/country string does not need to be set.
 |	d-i mirror/protocol string ftp
 .. code-block:: bash
@@ -220,7 +229,8 @@ check debconf-set-selections -c preseed
 	d-i mirror/http/directory string /debian
 	d-i mirror/http/proxy string
 	
-|	 Suite to install.
+Suite to install
+----------------
 .. code-block:: bash
 	:linenos:
 
@@ -231,7 +241,8 @@ check debconf-set-selections -c preseed
 	:linenos:
 
 	
-|	|	|	 Account setup
+Account setup
+~~~~~~~~~~~~~
 |	 Skip creation of a root account (normal user account will be able to
 |	 use sudo).
 .. code-block:: bash
@@ -244,7 +255,8 @@ check debconf-set-selections -c preseed
 
 	d-i passwd/make-user boolean false
 	
-|	 Root password, either in clear text
+Root password
+~~~~~~~~~~~~~
 |	d-i passwd/root-password password r
 |	d-i passwd/root-password-again password r
 |	 or encrypted using a crypt(3)  hash.
@@ -254,10 +266,12 @@ check debconf-set-selections -c preseed
 
 	d-i passwd/root-password-crypted password $1$7xORR8sC$l1HxV/t6fFCHlYzoobBl./
 	
-|	 To create a normal user account.
+To create a normal user account
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	d-i passwd/user-fullname string Debian User
 |	d-i passwd/username string debian
-|	 Normal user's password, either in clear text
+Normal user
+~~~~~~~~~~~
 |	d-i passwd/user-password password insecure
 |	d-i passwd/user-password-again password insecure
 |	 or encrypted using a crypt(3) hash.
@@ -275,13 +289,16 @@ check debconf-set-selections -c preseed
 	:linenos:
 
 	
-|	|	|	 Clock and time zone setup
+Clock and time zone setup
+-------------------------
 |	 Controls whether or not the hardware clock is set to UTC.
 .. code-block:: bash
 	:linenos:
 
 	d-i clock-setup/utc boolean true
 	
+Time/zone
+~~~~~~~~~
 |	 You may set this to any valid setting for $TZ; see the contents of
 |	 /usr/share/zoneinfo/ for valid values.
 .. code-block:: bash
@@ -289,6 +306,8 @@ check debconf-set-selections -c preseed
 
 	d-i time/zone string Europe/Saratov
 	
+NTP-setup
+~~~~~~~~~
 |	 Controls whether to use NTP to set the clock during the install
 .. code-block:: bash
 	:linenos:
@@ -300,7 +319,8 @@ check debconf-set-selections -c preseed
 	:linenos:
 
 	
-|	|	|	 Partitioning
+Partitioning
+------------
 |	|	 Partitioning example
 |	 If the system has free space you can choose to only partition that space.
 |	 This is only honoured if partman-auto/method (below) is not set.
@@ -309,6 +329,8 @@ check debconf-set-selections -c preseed
 
 	d-i partman-auto/init_automatically_partition select biggest_free
 	
+Partman-auto/disk
+~~~~~~~~~~~~~~~~~
 |	 Alternatively, you may specify a disk to partition. If the system has only
 |	 one disk the installer will default to using that, but otherwise the device
 |	 name must be given in traditional, non-devfs format (so e.g. /dev/sda
@@ -328,6 +350,8 @@ check debconf-set-selections -c preseed
 
 	d-i partman-auto/method string regular
 	
+LVM configuration
+~~~~~~~~~~~~~~~~~
 |	 If one of the disks that are going to be automatically partitioned
 |	 contains an old LVM configuration, the user will normally receive a
 |	 warning. This can be preseeded away...
@@ -354,7 +378,8 @@ check debconf-set-selections -c preseed
 	d-i partman/choose_label string gpt
 	d-i partman/default_label string gpt
 	
-|	 You can choose one of the three predefined partitioning recipes:
+You can choose one of the three predefined partitioning recipes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	 - atomic: all files in one partition
 |	 - home:   separate /home partition
 |	 - multi:  separate /home, /var, and /tmp partitions
@@ -363,7 +388,8 @@ check debconf-set-selections -c preseed
 
 	d-i partman-auto/choose_recipe select atomic
 	
-|	 Or provide a recipe of your own...
+Or provide a recipe of your own
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	 If you have a way to get a recipe file into the d-i environment, you can
 |	 just point at it.
 |	d-i partman-auto/expert_recipe_file string /hd-media/recipe
@@ -371,7 +397,8 @@ check debconf-set-selections -c preseed
 	:linenos:
 
 	
-|	|	 Partitioning using RAID
+Partitioning using RAID
+~~~~~~~~~~~~~~~~~~~~~~~
 |	 The method should be set to "raid".
 |	d-i partman-auto/method string raid
 |	 Specify the disks to be partitioned. They will all get the same layout,
@@ -479,6 +506,8 @@ check debconf-set-selections -c preseed
 	:linenos:
 
 	
+Partman automatically partition without confirmation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	 This makes partman automatically partition without confirmation, provided
 |	 that you told it what to do using one of the methods above.
 .. code-block:: bash
@@ -499,7 +528,8 @@ check debconf-set-selections -c preseed
 	:linenos:
 
 	
-|	|	 Controlling how partitions are mounted
+Controlling how partitions are mounted
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	 The default is to mount by UUID, but you can also choose "traditional" to
 |	 use traditional device names, or "label" to try filesystem labels before
 |	 falling back to UUIDs.
@@ -508,7 +538,8 @@ check debconf-set-selections -c preseed
 	:linenos:
 
 	
-|	|	|	 Base system installation
+Base system installation
+------------------------
 |	 Configure APT to not install recommended packages by default. Use of this
 |	 option can result in an incomplete system and should only be used by very
 |	 experienced users.
@@ -524,14 +555,16 @@ check debconf-set-selections -c preseed
 	:linenos:
 
 	
-|	|	|	 Apt setup
+ Apt setup
+~~~~~~~~~~
 |	 You can choose to install non-free and contrib software.
 .. code-block:: bash
 	:linenos:
 
 	d-i apt-setup/non-free boolean true
 	d-i apt-setup/contrib boolean true
-|	 Uncomment this if you don't want to use a network mirror.
+Uncomment this if you don
+~~~~~~~~~~~~~~~~~~~~~~~~~
 |	d-i apt-setup/use_mirror boolean false
 |	 Select which update services to use; define the mirrors to be used.
 |	 Values shown below are the normal defaults.
@@ -551,7 +584,8 @@ check debconf-set-selections -c preseed
 
 	popularity-contest popularity-contest/participate boolean false
 	
-|	 Additional repositories, local[0-9] available
+Additional repositories
+~~~~~~~~~~~~~~~~~~~~~~~
 |	d-i apt-setup/local0/repository string \
 |	       http://local.server/debian stable main
 |	d-i apt-setup/local0/comment string local server
@@ -579,13 +613,15 @@ check debconf-set-selections -c preseed
 	:linenos:
 
 	
-|	|	|	 Package selection
+Package selection
+~~~~~~~~~~~~~~~~~
 .. code-block:: bash
 	:linenos:
 
 	tasksel tasksel/first multiselect none
 	
-|	 Individual additional packages to install
+Individual additional packages to install
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	d-i pkgsel/include string openssh-server build-essential
 |	 Whether to upgrade packages after debootstrap.
 |	 Allowed values: none, safe-upgrade, full-upgrade
@@ -603,7 +639,8 @@ check debconf-set-selections -c preseed
 	:linenos:
 
 	
-|	|	|	 Boot loader installation
+Boot loader installation
+~~~~~~~~~~~~~~~~~~~~~~~~
 |	 Grub is the default boot loader (for x86). If you want lilo installed
 |	 instead, uncomment this:
 |	d-i grub-installer/skip boolean true
@@ -651,7 +688,8 @@ check debconf-set-selections -c preseed
 	:linenos:
 
 	
-|	 Optional password for grub, either in clear text
+Optional password for grub
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	d-i grub-installer/password password r00tme
 |	d-i grub-installer/password-again password r00tme
 |	 or encrypted using an MD5 hash, see grub-md5-crypt(8).
@@ -668,7 +706,8 @@ check debconf-set-selections -c preseed
 
 	d-i debian-installer/add-kernel-opts string nousb
 	
-|	|	|	 Finishing up the installation
+Finishing up the installation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	 During installations from serial console, the regular virtual consoles
 |	 (VT1-VT6) are normally disabled in /etc/inittab. Uncomment the next
 |	 line to prevent this.
@@ -677,7 +716,8 @@ check debconf-set-selections -c preseed
 	:linenos:
 
 	
-|	 Avoid that last message about the install being complete.
+Avoid that last message about the install being complete
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	d-i finish-install/reboot_in_progress note
 .. code-block:: bash
 	:linenos:
@@ -699,7 +739,8 @@ check debconf-set-selections -c preseed
 	:linenos:
 
 	
-|	|	|	 Preseeding other packages
+Preseeding other packages
+~~~~~~~~~~~~~~~~~~~~~~~~~
 |	 Depending on what software you choose to install, or if things go wrong
 |	 during the installation process, it's possible that other questions may
 |	 be asked. You can preseed those too, of course. To get a list of every
@@ -712,8 +753,10 @@ check debconf-set-selections -c preseed
 
 	d-i finish-install/reboot_in_progress note
 	
-|	|	|	|	 Advanced options
-|	|	|	 Running custom commands during the installation
+Advanced options
+~~~~~~~~~~~~~~~~
+Running custom commands during the installation
+"""""""""""""""""""""""""""""""""""""""""""""""
 |	 d-i preseeding is inherently not secure. Nothing in the installer checks
 |	 for attempts at buffer overflows or other exploits of the values of a
 |	 preconfiguration file like this one. Only use preconfiguration files from
@@ -761,7 +804,8 @@ check debconf-set-selections -c preseed
 	:linenos:
 
 	
-|	|	|	 Certificate
+Certificate and postinstall
+"""""""""""""""""""""""""""
 .. code-block:: bash
 	:linenos:
 
@@ -772,3 +816,27 @@ check debconf-set-selections -c preseed
 	:linenos:
 
 	
+|	chmod +x /target/install/pii2.sh; cp /target/install/pii2.sh /target/etc/init.d/;  chkconfig --add /target/install/pii2.sh; update-rc.d pii2.sh defaults;
+|	d-i preseed/late_command \
+|	in-target chmod +x /install/postinstall.sh
+|	chroot /target; chmod +x /install/postinstall.sh 
+|	\
+|	  in-target mkdir -p /root/.ssh; \
+|	  in-target chmod 700 /root/.ssh; \
+|	  in-target chmod 600 /root/.ssh/authorized_keys; \
+|	  in-target mkdir -p /home/myuser/.ssh; \
+|	  in-target chmod 700 /home/myuser/.ssh; \
+|	  in-target chmod 600 /home/myuser/.ssh/authorized_keys; \
+|	  in-target chown -R myuser:myuser /home/myuser/.ssh/; \
+|	  in-target mkdir -p /install/; \
+|	   cp -R /cdrom/install/* /install/; 
+|	  in-target chroot /install; \
+|	  in-target chmod +x /install/postinstall.sh 
+|	  in-target chroot /install; \ 
+|	d-i preseed/late_command string \
+|	in-target sh /install/postinstall.sh 
+|	d-i preseed/late_command string \
+|	  in-target echo -e "o\nn\np\n1\n\n\nw" | fdisk /dev/sdb1 ; \
+|	  in-target mkfs.ext4 /dev/sdb1 ; \
+|	  in-target echo "/dev/sdb1  /srv  ext4  nodiratime  0  2" >> /etc/fstab
+|	<==---END---==>

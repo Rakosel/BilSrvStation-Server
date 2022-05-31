@@ -1,6 +1,6 @@
 ﻿#!/usr/bin/python3
 # -*- coding: utf-8 -*-
-# pii2_extract version v.0.6a
+# extract_pc_all version v.0.1a
 # https://en.wikipedia.org/wiki/Shebang_(Unix) #!/usr/bin/env python3\
 import sys,os,re,math;
 from array import *

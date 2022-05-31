@@ -1,6 +1,6 @@
 ﻿#!/usr/bin/python3
 # -*- coding: utf-8 -*-
-# pii2_extract version v.0.6a
+# extract_pc_all version v.0.1a
 # https://en.wikipedia.org/wiki/Shebang_(Unix) #!/usr/bin/env python3\
 import sys,os,re,math;
 from array import *
@@ -233,7 +233,7 @@ str_search="";
 str_comm_0="";
 str_comm_end="";
 
-linep_out=[""]*int(len(linep)*10;
+linep_out=[""]*int(len(linep)*10);
 #print(linep); re.sub('^#!\/bin\/(.*).*', '|\t', linep[POS_0])
 linep_out[k]="|	BilSrvStation Preseed Creator \n*************************\n"
 k+=1;

@@ -57,6 +57,8 @@ Features
 |
 - **15.05.2022-10.06.2022**
 |
+- Add script `extract_preseed_all.py' v.0.1a generator from pc.sh to 'cut_discr_preseed' /docs/cut_discr_preseed.rst
+- Add script `extract_pc_all.py' v.0.1a generator from pc.sh to 'cut_discr_pii2' /docs/cut_discr_pii2.rst
 - Add script `extract_pii2.py' v.0.5a generator from pii2.sh to 'cut_info' /docs/cut_discr.rst
 - Add script `extract_pii2.py' v.0.4a build list from pii2.sh
 - Add script `copy.py' for copy content from work directory in `git`

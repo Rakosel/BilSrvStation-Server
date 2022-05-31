@@ -50,10 +50,12 @@ Look how easy it is to use:
 |    import project
 |    # Get your stuff done
 
+.. |Product| replace:: SoftTech Analyzer
 Features
 --------
+|	|Product|
 |
-|	- In script `extract_pii2.py' want 'danger!!!' with capabilites info packages and policies
+|	- In script `extract_pii2.py' capabilites info packages and policies
 |
 - **15.05.2022-10.06.2022**
 |

@@ -8,7 +8,7 @@
 
 .. toctree::
    :maxdepth: 8
-   :caption: Contents:
+   :caption: Содержание:
    :numbered:
    
    nav_r

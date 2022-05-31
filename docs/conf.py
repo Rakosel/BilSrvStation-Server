@@ -16,12 +16,12 @@
 # sys.path.insert(0, os.path.abspath('.'))
 import sys, os
 sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(1, os.path.abspath('../'))
 import sphinx_rtd_theme
 
 # adding Folder_2 to the system path
 
-#sys.path.insert(0, '/opt/SAMBA_SHARE/git/BilSrvStation_Server_PC')
-#import extract_pii2_all
+import extract_pii2_all,extract_pc_all
 
 #import django
 

@@ -10,10 +10,10 @@
    :maxdepth: 8
    :caption: Contents:
    :numbered:
-   :hidden:
    
    nav_r
-   cut_discr
+   cut_discr_pc
+   cut_discr_pii2
    full_discr
    structure
    build_doc

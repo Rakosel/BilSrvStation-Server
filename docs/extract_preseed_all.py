@@ -397,7 +397,7 @@ for i in linep_out:
         break;
 j=0;
 
-pdir=''.join([os.path.abspath('../'),"/docs/cut_discr_pii2.rst"]);
+pdir=''.join([os.path.abspath('../'),"/docs/cut_discr_preseed.rst"]);
 #pdir="/opt/SAMBA_SHARE/git/BilSrvStation_Server_PC/docs/cut_discr.rst";
 with open(pdir,"wt",encoding='utf-8') as fpii2:
     for i in linep_out:

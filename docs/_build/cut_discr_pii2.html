@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>01 AUTO POSTINSTALL &mdash; документация BilSrvStation_Server_PC 1.0.2a</title>
+  <title>2. 01 AUTO POSTINSTALL &mdash; документация BilSrvStation_Server_PC 1.0.2a</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -19,7 +19,9 @@
         <script src="_static/translations.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Алфавитный указатель" href="genindex.html" />
-    <link rel="search" title="Поиск" href="search.html" /> 
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="3. check debconf-set-selections -c preseed" href="cut_discr_preseed.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="cut_discr_pc.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -38,13 +40,53 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="nav_r.html">1. Навигация</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2.html">2. 01      AUTO POSTINSTALL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="full_discr.html">3. Полное описание конфигурации сервера</a></li>
-<li class="toctree-l1"><a class="reference internal" href="structure.html">4. Структура</a></li>
-<li class="toctree-l1"><a class="reference internal" href="build_doc.html">5. Построение этой документации</a></li>
-<li class="toctree-l1"><a class="reference internal" href="note.html">6. Заметки</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. 01      AUTO POSTINSTALL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pre-install-emv-and-settings">2.1. 01.01   PRE-INSTALL EMV AND SETTINGS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#check-root-privilege">2.2. 01.02   CHECK ROOT PRIVILEGE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#settings-etc-network-interfaces-interface-sh">2.3. 01.03   SETTINGS /ETC/NETWORK -&gt; INTERFACES [interface_sh]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#settings-network-interfaces">2.3.1. 01.03.01        SETTINGS NETWORK/INTERFACES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#search-interfaces">2.3.2. 01.03.02        SEARCH INTERFACES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#restart-service">2.3.3. 01.03.02        restart service</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#update-distribution">2.4. 01.04           Update distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-drivers">2.5. 01.05           Install drivers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-selinux-utils-acl">2.5.1. 01.05.01        Install SElinux utils &amp; acl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reboot">2.5.2. 01.05.02        Reboot</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#install-git-nanorc-step-three">2.6. 01.06           Install git &amp;&amp; nanorc [step_three]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#copy-dir">2.7. 01.07           Copy dir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-utils-step-five">2.8. 01.08           Install utils [step_five]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-driver-opt-and-acc-step-six">2.9. 01.09           Install driver opt and acc [step_six]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-disk-opt">2.9.1. 01.09.01        create disk /opt/</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#search-dev-s">2.9.2. 01.09.02        search /dev/s**</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mount-dev-s">2.9.3. 01.09.03        mount /dev/s**</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#create-users-and-groups">2.10. 01.10           Create users and groups</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">2.10.1. 01.10.01                Create users and groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-ssh-ssl">2.10.2. 01.10.02                Create ssh_ssl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-ssh-settings">2.10.3. 01.10.03        Install ssh settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-users-ssh">2.10.4. 01.10.04        Create users ssh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-samba">2.10.5. 01.10.05        Create SAMBA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-and-settings-firewall">2.10.6. 01.10.06        Install and settings firewall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-other-soft">2.10.7. 01.10.07        Install other soft</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extended-nano">2.10.8. 01.10.08        Extended nano</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cp-ers">2.10.9. 01.10.09        cp ers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-vsftp">2.10.10. 01.10.10        Install vsftp</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#settings-permissive-selinux">2.11. 01.11   Settings permissive SELinux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_preseed.html">3. check debconf-set-selections -c preseed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="full_discr.html">4. Полное описание конфигурации сервера</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structure.html">5. Структура</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_doc.html">6. Построение этой документации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="note.html">7. Заметки</a></li>
 </ul>
 
         </div>
@@ -61,9 +103,9 @@
           <div role="navigation" aria-label="Навигация по страницам">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>01      AUTO POSTINSTALL</li>
+      <li><span class="section-number">2. </span>01      AUTO POSTINSTALL</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/cut_discr.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+            <a href="_sources/cut_discr_pii2.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
       </li>
   </ul>
   <hr/>
@@ -72,7 +114,7 @@
            <div itemprop="articleBody">
              
   <div class="line-block">
-<div class="line">BilSrvStation Cut Discr postinstall</div>
+<div class="line">BilSrvStation Cut Discr</div>
 </div>
 <div class="line-block">
 <div class="line">Type script: <em>bash</em></div>
@@ -90,7 +132,7 @@
 <div class="line">fi</div>
 <div class="line-block">
 <div class="line">user add</div>
-<div class="line">echo «<strong>****</strong>» | mkpasswd -s -H MD5</div>
+<div class="line">echo <strong>****</strong> | mkpasswd -s -H MD5</div>
 <div class="line">sudo usermod -p $(echo «» | mkpasswd -s -H MD5) test1</div>
 <div class="line">sudo usermod -p $S test1</div>
 <div class="line">su -p test1</div>
@@ -100,7 +142,7 @@
 </div>
 </div>
 <div class="section" id="auto-postinstall">
-<h1>01      AUTO POSTINSTALL<a class="headerlink" href="#auto-postinstall" title="Ссылка на этот заголовок"></a></h1>
+<h1><span class="section-number">2. </span>01      AUTO POSTINSTALL<a class="headerlink" href="#auto-postinstall" title="Ссылка на этот заголовок"></a></h1>
 <div class="line-block">
 <div class="line">octanovilca na SSL + po4initb script cmd</div>
 </div>
@@ -112,7 +154,7 @@
 <div class="line"><br /></div>
 </div>
 <div class="section" id="pre-install-emv-and-settings">
-<h2>01.01   PRE-INSTALL EMV AND SETTINGS<a class="headerlink" href="#pre-install-emv-and-settings" title="Ссылка на этот заголовок"></a></h2>
+<h2><span class="section-number">2.1. </span>01.01   PRE-INSTALL EMV AND SETTINGS<a class="headerlink" href="#pre-install-emv-and-settings" title="Ссылка на этот заголовок"></a></h2>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line-block">
@@ -208,7 +250,7 @@
 </div>
 </div>
 <div class="section" id="check-root-privilege">
-<h2>01.02   CHECK ROOT PRIVILEGE<a class="headerlink" href="#check-root-privilege" title="Ссылка на этот заголовок"></a></h2>
+<h2><span class="section-number">2.2. </span>01.02   CHECK ROOT PRIVILEGE<a class="headerlink" href="#check-root-privilege" title="Ссылка на этот заголовок"></a></h2>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -331,7 +373,7 @@
 </div>
 </div>
 <div class="section" id="settings-etc-network-interfaces-interface-sh">
-<h2>01.03   SETTINGS /ETC/NETWORK -&gt; INTERFACES [interface_sh]<a class="headerlink" href="#settings-etc-network-interfaces-interface-sh" title="Ссылка на этот заголовок"></a></h2>
+<h2><span class="section-number">2.3. </span>01.03   SETTINGS /ETC/NETWORK -&gt; INTERFACES [interface_sh]<a class="headerlink" href="#settings-etc-network-interfaces-interface-sh" title="Ссылка на этот заголовок"></a></h2>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -346,7 +388,7 @@
 <div class="line"><br /></div>
 </div>
 <div class="section" id="settings-network-interfaces">
-<h3>01.03.01        SETTINGS NETWORK/INTERFACES<a class="headerlink" href="#settings-network-interfaces" title="Ссылка на этот заголовок"></a></h3>
+<h3><span class="section-number">2.3.1. </span>01.03.01        SETTINGS NETWORK/INTERFACES<a class="headerlink" href="#settings-network-interfaces" title="Ссылка на этот заголовок"></a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
@@ -359,7 +401,7 @@
 </div>
 </div>
 <div class="section" id="search-interfaces">
-<h3>01.03.02        SEARCH INTERFACES<a class="headerlink" href="#search-interfaces" title="Ссылка на этот заголовок"></a></h3>
+<h3><span class="section-number">2.3.2. </span>01.03.02        SEARCH INTERFACES<a class="headerlink" href="#search-interfaces" title="Ссылка на этот заголовок"></a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line-block">
@@ -730,7 +772,7 @@
 </div>
 </div>
 <div class="section" id="restart-service">
-<h3>01.03.02        restart service<a class="headerlink" href="#restart-service" title="Ссылка на этот заголовок"></a></h3>
+<h3><span class="section-number">2.3.3. </span>01.03.02        restart service<a class="headerlink" href="#restart-service" title="Ссылка на этот заголовок"></a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -747,7 +789,7 @@
 </div>
 </div>
 <div class="section" id="update-distribution">
-<h2>01.04           Update distribution<a class="headerlink" href="#update-distribution" title="Ссылка на этот заголовок"></a></h2>
+<h2><span class="section-number">2.4. </span>01.04           Update distribution<a class="headerlink" href="#update-distribution" title="Ссылка на этот заголовок"></a></h2>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -863,7 +905,7 @@
 </div>
 </div>
 <div class="section" id="install-drivers">
-<h2>01.05           Install drivers<a class="headerlink" href="#install-drivers" title="Ссылка на этот заголовок"></a></h2>
+<h2><span class="section-number">2.5. </span>01.05           Install drivers<a class="headerlink" href="#install-drivers" title="Ссылка на этот заголовок"></a></h2>
 <div class="line-block">
 <div class="line">??? do make analys „lspci“ and install autochoose driver</div>
 <div class="line"><br /></div>
@@ -901,7 +943,7 @@
 <div class="line"><br /></div>
 </div>
 <div class="section" id="install-selinux-utils-acl">
-<h3>01.05.01        Install SElinux utils &amp; acl<a class="headerlink" href="#install-selinux-utils-acl" title="Ссылка на этот заголовок"></a></h3>
+<h3><span class="section-number">2.5.1. </span>01.05.01        Install SElinux utils &amp; acl<a class="headerlink" href="#install-selinux-utils-acl" title="Ссылка на этот заголовок"></a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -936,7 +978,7 @@
 </div>
 </div>
 <div class="section" id="reboot">
-<h3>01.05.02        Reboot<a class="headerlink" href="#reboot" title="Ссылка на этот заголовок"></a></h3>
+<h3><span class="section-number">2.5.2. </span>01.05.02        Reboot<a class="headerlink" href="#reboot" title="Ссылка на этот заголовок"></a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -950,7 +992,7 @@
 </div>
 </div>
 <div class="section" id="install-git-nanorc-step-three">
-<h2>01.06           Install git &amp;&amp; nanorc [step_three]<a class="headerlink" href="#install-git-nanorc-step-three" title="Ссылка на этот заголовок"></a></h2>
+<h2><span class="section-number">2.6. </span>01.06           Install git &amp;&amp; nanorc [step_three]<a class="headerlink" href="#install-git-nanorc-step-three" title="Ссылка на этот заголовок"></a></h2>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -1060,7 +1102,7 @@
 </div>
 </div>
 <div class="section" id="copy-dir">
-<h2>01.07           Copy dir<a class="headerlink" href="#copy-dir" title="Ссылка на этот заголовок"></a></h2>
+<h2><span class="section-number">2.7. </span>01.07           Copy dir<a class="headerlink" href="#copy-dir" title="Ссылка на этот заголовок"></a></h2>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
@@ -1109,7 +1151,7 @@
 </div>
 </div>
 <div class="section" id="install-utils-step-five">
-<h2>01.08           Install utils [step_five]<a class="headerlink" href="#install-utils-step-five" title="Ссылка на этот заголовок"></a></h2>
+<h2><span class="section-number">2.8. </span>01.08           Install utils [step_five]<a class="headerlink" href="#install-utils-step-five" title="Ссылка на этот заголовок"></a></h2>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -1333,7 +1375,7 @@
 </div>
 </div>
 <div class="section" id="install-driver-opt-and-acc-step-six">
-<h2>01.09           Install driver opt and acc [step_six]<a class="headerlink" href="#install-driver-opt-and-acc-step-six" title="Ссылка на этот заголовок"></a></h2>
+<h2><span class="section-number">2.9. </span>01.09           Install driver opt and acc [step_six]<a class="headerlink" href="#install-driver-opt-and-acc-step-six" title="Ссылка на этот заголовок"></a></h2>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -1346,13 +1388,13 @@
 <div class="line"><br /></div>
 </div>
 <div class="section" id="create-disk-opt">
-<h3>01.09.01        create disk /opt/<a class="headerlink" href="#create-disk-opt" title="Ссылка на этот заголовок"></a></h3>
+<h3><span class="section-number">2.9.1. </span>01.09.01        create disk /opt/<a class="headerlink" href="#create-disk-opt" title="Ссылка на этот заголовок"></a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 </div>
 <div class="section" id="search-dev-s">
-<h3>01.09.02        search /dev/s**<a class="headerlink" href="#search-dev-s" title="Ссылка на этот заголовок"></a></h3>
+<h3><span class="section-number">2.9.2. </span>01.09.02        search /dev/s**<a class="headerlink" href="#search-dev-s" title="Ссылка на этот заголовок"></a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line-block">
@@ -1389,7 +1431,7 @@
 </div>
 </div>
 <div class="section" id="mount-dev-s">
-<h3>01.09.03        mount /dev/s**<a class="headerlink" href="#mount-dev-s" title="Ссылка на этот заголовок"></a></h3>
+<h3><span class="section-number">2.9.3. </span>01.09.03        mount /dev/s**<a class="headerlink" href="#mount-dev-s" title="Ссылка на этот заголовок"></a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -1494,7 +1536,7 @@
 </div>
 </div>
 <div class="section" id="create-users-and-groups">
-<h2>01.10           Create users and groups<a class="headerlink" href="#create-users-and-groups" title="Ссылка на этот заголовок"></a></h2>
+<h2><span class="section-number">2.10. </span>01.10           Create users and groups<a class="headerlink" href="#create-users-and-groups" title="Ссылка на этот заголовок"></a></h2>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -1511,7 +1553,7 @@
 </div>
 </div>
 <div class="section" id="id7">
-<h3>01.10.01                Create users and groups<a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h3>
+<h3><span class="section-number">2.10.1. </span>01.10.01                Create users and groups<a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line-block">
@@ -1591,7 +1633,7 @@
 </div>
 </div>
 <div class="section" id="create-ssh-ssl">
-<h3>01.10.02                Create ssh_ssl<a class="headerlink" href="#create-ssh-ssl" title="Ссылка на этот заголовок"></a></h3>
+<h3><span class="section-number">2.10.2. </span>01.10.02                Create ssh_ssl<a class="headerlink" href="#create-ssh-ssl" title="Ссылка на этот заголовок"></a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line-block">
@@ -1601,7 +1643,7 @@
 </div>
 </div>
 <div class="section" id="install-ssh-settings">
-<h3>01.10.03        Install ssh settings<a class="headerlink" href="#install-ssh-settings" title="Ссылка на этот заголовок"></a></h3>
+<h3><span class="section-number">2.10.3. </span>01.10.03        Install ssh settings<a class="headerlink" href="#install-ssh-settings" title="Ссылка на этот заголовок"></a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -1825,7 +1867,7 @@
 </div>
 </div>
 <div class="section" id="create-users-ssh">
-<h3>01.10.04        Create users ssh<a class="headerlink" href="#create-users-ssh" title="Ссылка на этот заголовок"></a></h3>
+<h3><span class="section-number">2.10.4. </span>01.10.04        Create users ssh<a class="headerlink" href="#create-users-ssh" title="Ссылка на этот заголовок"></a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
@@ -1840,7 +1882,7 @@
 </div>
 </div>
 <div class="section" id="create-samba">
-<h3>01.10.05        Create SAMBA<a class="headerlink" href="#create-samba" title="Ссылка на этот заголовок"></a></h3>
+<h3><span class="section-number">2.10.5. </span>01.10.05        Create SAMBA<a class="headerlink" href="#create-samba" title="Ссылка на этот заголовок"></a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
@@ -1864,21 +1906,21 @@
 </div>
 </div>
 <div class="section" id="install-and-settings-firewall">
-<h3>01.10.06        Install and settings firewall<a class="headerlink" href="#install-and-settings-firewall" title="Ссылка на этот заголовок"></a></h3>
+<h3><span class="section-number">2.10.6. </span>01.10.06        Install and settings firewall<a class="headerlink" href="#install-and-settings-firewall" title="Ссылка на этот заголовок"></a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
 </div>
 <div class="section" id="install-other-soft">
-<h3>01.10.07        Install other soft<a class="headerlink" href="#install-other-soft" title="Ссылка на этот заголовок"></a></h3>
+<h3><span class="section-number">2.10.7. </span>01.10.07        Install other soft<a class="headerlink" href="#install-other-soft" title="Ссылка на этот заголовок"></a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
 </div>
 <div class="section" id="extended-nano">
-<h3>01.10.08        Extended nano<a class="headerlink" href="#extended-nano" title="Ссылка на этот заголовок"></a></h3>
+<h3><span class="section-number">2.10.8. </span>01.10.08        Extended nano<a class="headerlink" href="#extended-nano" title="Ссылка на этот заголовок"></a></h3>
 <div class="line-block">
 <div class="line">cp /install/nanorc /etc/nanorc</div>
 <div class="line"><br /></div>
@@ -1887,7 +1929,7 @@
 </div>
 </div>
 <div class="section" id="cp-ers">
-<h3>01.10.09        cp ers<a class="headerlink" href="#cp-ers" title="Ссылка на этот заголовок"></a></h3>
+<h3><span class="section-number">2.10.9. </span>01.10.09        cp ers<a class="headerlink" href="#cp-ers" title="Ссылка на этот заголовок"></a></h3>
 <div class="line-block">
 <div class="line">cp /install/ers /etc/ers</div>
 <div class="line"><br /></div>
@@ -1901,7 +1943,7 @@
 </div>
 </div>
 <div class="section" id="install-vsftp">
-<h3>01.10.10        Install vsftp<a class="headerlink" href="#install-vsftp" title="Ссылка на этот заголовок"></a></h3>
+<h3><span class="section-number">2.10.10. </span>01.10.10        Install vsftp<a class="headerlink" href="#install-vsftp" title="Ссылка на этот заголовок"></a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -2317,7 +2359,7 @@
 </div>
 </div>
 <div class="section" id="settings-permissive-selinux">
-<h2>01.11   Settings permissive SELinux<a class="headerlink" href="#settings-permissive-selinux" title="Ссылка на этот заголовок"></a></h2>
+<h2><span class="section-number">2.11. </span>01.11   Settings permissive SELinux<a class="headerlink" href="#settings-permissive-selinux" title="Ссылка на этот заголовок"></a></h2>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line-block">
@@ -2719,7 +2761,10 @@
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="cut_discr_pc.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="cut_discr_preseed.html" class="btn btn-neutral float-right" title="3. check debconf-set-selections -c preseed" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

@@ -14,6 +14,7 @@
    nav_r
    cut_discr_pc
    cut_discr_pii2
+   cut_discr_preseed
    full_discr
    structure
    build_doc

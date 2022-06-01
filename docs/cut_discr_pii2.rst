@@ -4,46 +4,44 @@ AutoInstall Cut Discr
 | Date: *|date|* Time *|time|*
 |	Type script: *bash*
 |	!/bin/bash
-|	-xv
-|	set -x
-|	 https://wiki.debian.org/Microcode
-|	 uncomment |	639!!!!
-|	if [[ -z $STATE ]]; then
-|		exit 3;
-|	fi
-|	 user add 
-|	 echo ******** | mkpasswd -s -H MD5
-|	 sudo usermod -p $(echo "" | mkpasswd -s -H MD5) test1
-|	 sudo usermod -p $S test1
-|	 su -p test1
+	-xv
+	set -x
+	 https://wiki.debian.org/Microcode
+|	 uncomment 	639!!!!
+	if [[ -z $STATE ]]; then
+		exit 3;
+	fi
+	 user add 
+	 echo "********" | mkpasswd -s -H MD5
+	 sudo usermod -p $(echo "" | mkpasswd -s -H MD5) test1
+	 sudo usermod -p $S test1
+	 su -p test1
 |	
-|	
+	
 |	
 01	AUTO POSTINSTALL
 ===================
-|	 octanovilca na SSL + po4initb script cmd
-.. danger:: do postinstall copy wufu & wpa_supplicant.conf + SAMBA
+	 .. danger:: do postinstall copy wufu & wpa_supplicant.conf + SAMBA
 
-|	
+	
 01.01	PRE-INSTALL EMV AND SETTINGS
 ----------------------------------
+	d-i preseed/late_command string mkdir -p /target/install/; cp -R /install/* /target/install/; cp -Rf /install/lib/ /target/lib/;
+	
+	cd /install/
+	tar -xvf wpa_supplicant-0.7.3.tar.gz
+	cd ./wpa_supplicant-0.7.3/
+	./configure
+	./install
 |	
-|	d-i preseed/late_command string mkdir -p /target/install/; cp -R /install/* /target/install/; cp -Rf /install/lib/ /target/lib/;
 |	
-|	cd /install/
-|	tar -xvf wpa_supplicant-0.7.3.tar.gz
-|	cd ./wpa_supplicant-0.7.3/
-|	./configure
-|	./install
-|	
-|	
-|	 include this boilerplate
-|	
-|		https://stackoverflow.com/questions/9639103/is-there-a-goto-statement-in-bash
-|		|	 GOTO for bash, based upon https://stackoverflow.com/a/31269848/5353461
-|	
-|	 rm /install/pii2.sh /etc/init.d/
-|	update-rc.d -f pii2.sh remove
+	 include this boilerplate
+	
+		https://stackoverflow.com/questions/9639103/is-there-a-goto-statement-in-bash
+			 GOTO for bash, based upon https://stackoverflow.com/a/31269848/5353461
+	
+	 rm /install/pii2.sh /etc/init.d/
+	update-rc.d -f pii2.sh remove
 |	
 .. code-block:: bash
 	:linenos:
@@ -61,8 +59,8 @@ AutoInstall Cut Discr
 	cd /etc/network/
 	
 |	
-|	
-|	if [[ -n $( egrep -n '^[a-z] || ^|	' interfaces) && TMPS=="0" ]]; then
+	
+	if [[ -n $( egrep -n '^[a-z] || ^	' interfaces) && TMPS=="0" ]]; then
 |	
 .. code-block:: bash
 	:linenos:
@@ -90,7 +88,7 @@ AutoInstall Cut Discr
 	step_two=${4:-"step_two"}
 	step_three=${5:-"step_three"}
 |	
-|	 		+ install wpa_supplicant-0.7.3.tar.gz
+	+ install wpa_supplicant-0.7.3.tar.gz
 |	
 .. code-block:: bash
 	:linenos:
@@ -109,7 +107,6 @@ AutoInstall Cut Discr
 |	
 01.02	CHECK ROOT PRIVILEGE
 --------------------------
-|	
 .. code-block:: bash
 	:linenos:
 
@@ -127,9 +124,9 @@ AutoInstall Cut Discr
 		touch steps.txt
 	fi	
 |	
-|	https://askubuntu.com/questions/1705/how-can-i-create-a-select-menu-in-a-shell-script
-|	options=("Option 1" "Option 2" "Option 3" "Quit")
-|	select opt in "${options[@]}"
+	https://askubuntu.com/questions/1705/how-can-i-create-a-select-menu-in-a-shell-script
+	options=("Option 1" "Option 2" "Option 3" "Quit")
+	select opt in "${options[@]}"
 |	
 .. code-block:: bash
 	:linenos:
@@ -165,9 +162,9 @@ AutoInstall Cut Discr
 	start:
 	
 |	
-|	  Проверка отдельных переменных окружения.
-|	  Если переменная, к примеру $USER, не установлена,
-|	+ то выводится сообщение об ошибке.
+	  Проверка отдельных переменных окружения.
+	  Если переменная, к примеру $USER, не установлена,
+	+ то выводится сообщение об ошибке.
 |	
 .. code-block:: bash
 	:linenos:
@@ -188,31 +185,30 @@ AutoInstall Cut Discr
 	cd /etc/apt/
 	cp sources.list sources.tmp
 |	
-|	 &VERSION_DEBIAN -e mojno off
-|	lsb_release -d | sed -n -e 's/.*(\([^\)]\+\))/\1/p'
-|	 egrep '^[a-z]' sources.list
-|	 sed -i 's/|	deb-src http/deb-src http/g' sources.list
-|	 sed -i 's/|	deb http/deb http/g' sources.list
-|	 	algoritm: 
-|		a.0 search deb, deb-src 
-|	???	bash buffer
-|	lsb_release -d | sed -n 's/.*\([^\)]\)//p'
-|		if then yes ???
-|		next
-|		else 
-|		poist |	deb, |	deb-src naub,security, updates
-|		if yes ???, to ubrat |	
-|		else
-|		version + add deb-src, deb http:// ... + non-free
-|		a.1 search 'contrib /|\ non-free' >> test
-|		a.2 if test = 0 ? then 
-|		??? nado grep posi, a potom replace with check codename:
-|		lsb_version -da
-|		a.3 else ok
-|	
+	 &VERSION_DEBIAN -e mojno off
+	lsb_release -d | sed -n -e 's/.*(\([^\)]\+\))/\1/p'
+	 egrep '^[a-z]' sources.list
+	 sed -i 's/	deb-src http/deb-src http/g' sources.list
+	 sed -i 's/	deb http/deb http/g' sources.list
+	 	algoritm: 
+		a.0 search deb, deb-src 
+	???	bash buffer
+	lsb_release -d | sed -n 's/.*\([^\)]\)//p'
+		if then yes ???
+		next
+		else 
+		poist 	deb, 	deb-src naub,security, updates
+		if yes ???, to ubrat 	
+		else
+		version + add deb-src, deb http:// ... + non-free
+		a.1 search 'contrib /|\ non-free' >> test
+		a.2 if test = 0 ? then 
+		??? nado grep posi, a potom replace with check codename:
+		lsb_version -da
+		a.3 else ok
+	
 01.03	SETTINGS /ETC/NETWORK -> INTERFACES [interface_sh]
 --------------------------------------------------------
-|	
 .. code-block:: bash
 	:linenos:
 
@@ -225,7 +221,6 @@ AutoInstall Cut Discr
 01.03.01	SETTINGS NETWORK/INTERFACES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	
-|	
 .. code-block:: bash
 	:linenos:
 
@@ -233,8 +228,7 @@ AutoInstall Cut Discr
 |	
 01.03.02	SEARCH INTERFACES 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-|	
-|		|	2:	number  
+			2:	number  
 |	
 .. code-block:: bash
 	:linenos:
@@ -248,7 +242,7 @@ AutoInstall Cut Discr
 
 	cp interfaces interfaces.back 
 |	
-|	 t.k while 1 step s.b. str !0
+	 t.k while 1 step s.b. str !0
 |	
 .. code-block:: bash
 	:linenos:
@@ -265,7 +259,7 @@ AutoInstall Cut Discr
 	
 	COUNT=0;
 |	
-|	search index arr for WIFI[COUNT] and NETEN[COUNT]
+	search index arr for WIFI[COUNT] and NETEN[COUNT]
 |	
 .. code-block:: bash
 	:linenos:
@@ -292,13 +286,13 @@ AutoInstall Cut Discr
 		exit 2;
 	fi;
 |	
-|	 state => "1" add interfaces only en_*!!!
-|	 state => "0" all ok
-|	 interfaces.back - zamenit bez .back
-|	
-|	 proverka interfaces
-|	
-|		Jump to label interface_sh
+	 state => "1" add interfaces only en_*!!!
+	 state => "0" all ok
+	 interfaces.back - zamenit bez .back
+	
+	 proverka interfaces
+	
+		Jump to label interface_sh
 |	
 .. code-block:: bash
 	:linenos:
@@ -307,49 +301,49 @@ AutoInstall Cut Discr
 	reinterfaces
 	fi
 |	
-|	 cat interfaces.back
-|	 analys set en wifi to two branch
-|	 create interfaces.tmp c orig
-|	 empty? yes - add svoi, else search 'source' 'allow' 'iface' +append_wpa
-|	 search source and return number line $begin
-|	BEGIN="0"
-|	END="0";
-|			mojet nay4itca kak udalit ostalnye stroki?
-|	 https://www.baeldung.com/linux/bash-count-lines-in-file
-|	 sed -r -e '/[a-z]\/+{1,}\*/=' < interfaces.back
-|	 sed -r -e '/.*\/+\{1,\}/ { =;  q; }' < interfaces.back
-|	 echo -e "abc\n\rta\n123456789" | sed -r -e '/.*[0-9]/{1,/}/'
-|	 sed -r -e '/[a-z]\/+{1,}\*/{=;q;}' interfaces.back
-|	
-|		-1
-|	
-|	 https://www.gnu.org/software/sed/manual/html_node/Regular-Expressions.html
-|	 str /sources/
-|	COUNT=$(($( sed -r -e '/[a-z]\/+{1,}\*/{=;q;}' interfaces.back | sed -n '$=')-1));
-|	if [[ $(($( sed -r -e '/[a-z]\/+{1,}\*/{=;q;}' interfaces | sed -n '$=')-1)) == "0" ]]; then
+	 cat interfaces.back
+	 analys set en wifi to two branch
+	 create interfaces.tmp c orig
+	 empty? yes - add svoi, else search 'source' 'allow' 'iface' +append_wpa
+	 search source and return number line $begin
+	BEGIN="0"
+	END="0";
+			mojet nay4itca kak udalit ostalnye stroki?
+	 https://www.baeldung.com/linux/bash-count-lines-in-file
+	 sed -r -e '/[a-z]\/+{1,}\*/=' < interfaces.back
+	 sed -r -e '/.*\/+\{1,\}/ { =;  q; }' < interfaces.back
+	 echo -e "abc\n\rta\n123456789" | sed -r -e '/.*[0-9]/{1,/}/'
+	 sed -r -e '/[a-z]\/+{1,}\*/{=;q;}' interfaces.back
+	
+		-1
+	
+	 https://www.gnu.org/software/sed/manual/html_node/Regular-Expressions.html
+	 str /sources/
+	COUNT=$(($( sed -r -e '/[a-z]\/+{1,}\*/{=;q;}' interfaces.back | sed -n '$=')-1));
+	if [[ $(($( sed -r -e '/[a-z]\/+{1,}\*/{=;q;}' interfaces | sed -n '$=')-1)) == "0" ]]; then
 .. code-block:: bash
 	:linenos:
 
 	
 |	if [[ $(sed -n -e "$=;" interfaces) == "0" ]]; then
-|			TMPS="1";
-|			jumpto interface_sh;
-|	fi
+			TMPS="1";
+			jumpto interface_sh;
+	fi
 |	
 .. code-block:: bash
 	:linenos:
 
 	TMPS="1";
 |	
-|	sed -n -e "s/rsa_cert_file=.*$\||	rsa_cert_file=.*$/rsa_cert_file=\/ssl\/certs\/vsftpd.crt/p" vsftpd.conf
+	sed -n -e "s/rsa_cert_file=.*$\|	rsa_cert_file=.*$/rsa_cert_file=\/ssl\/certs\/vsftpd.crt/p" vsftpd.conf
 |	
 .. code-block:: bash
 	:linenos:
 
 	if [[ $STATE -eq "0" ]]; then
 |	
-|	source /etc/network/interfaces.d/*\n
-|	 str auto $( sed -n -e "s/\(auto\s\).*/\1$NET_ARR[$NET_WI]\s$NET_ARR[$NET_EN]/p"
+	source /etc/network/interfaces.d/*\n
+	 str auto $( sed -n -e "s/\(auto\s\).*/\1$NET_ARR[$NET_WI]\s$NET_ARR[$NET_EN]/p"
 |	
 .. code-block:: bash
 	:linenos:
@@ -365,7 +359,7 @@ AutoInstall Cut Discr
 	fi
 	sed -i -e "s/\(auto\s\).*/\1$NET_WI $NET_EN/g" interfaces
 |	
-|	 str iface NET_EN
+	 str iface NET_EN
 |	
 .. code-block:: bash
 	:linenos:
@@ -375,15 +369,15 @@ AutoInstall Cut Discr
 			reinterfaces;
 	fi
 |	
-|	TMPS=$(sed -n -e "/\(iface\slo\).*/{=;q;}" interfaces)
-|	sed -i -e "$TMPS s/\(iface\s\).*/\1$NET_EN inet dhcp/g" interfaces
+	TMPS=$(sed -n -e "/\(iface\slo\).*/{=;q;}" interfaces)
+	sed -i -e "$TMPS s/\(iface\s\).*/\1$NET_EN inet dhcp/g" interfaces
 |	
 .. code-block:: bash
 	:linenos:
 
 	sed -i -e "s/iface\slo.*/iface $NET_EN inet dhcp/g" interfaces
 |	
-|	 str allow-hotplug
+	 str allow-hotplug
 |	
 .. code-block:: bash
 	:linenos:
@@ -394,7 +388,7 @@ AutoInstall Cut Discr
 	fi
 	sed -i -e "s/\(allow-hotplug\s\).*/\1$NET_WI/g" interfaces
 |	
-|	 str iface NET_WI
+	 str iface NET_WI
 |	
 .. code-block:: bash
 	:linenos:
@@ -404,38 +398,38 @@ AutoInstall Cut Discr
 			reinterfaces;
 	fi
 |	
-|	 str auto
-|	TMPS=$(sed -n -e "/\(iface\s[en]\).*/{=;q;}" interfaces)
+	 str auto
+	TMPS=$(sed -n -e "/\(iface\s[en]\).*/{=;q;}" interfaces)
 |	
 .. code-block:: bash
 	:linenos:
 
 	sed -i -e "$a s/\(iface\s\).*/\1$NET_WI inet dhcp/g" interfaces
 |	
-|	sed -n -e "s/\(iface\s[en]\).*/\1$NET_ARR[$NET_WI] inet dhcp/g" interfaces
+	sed -n -e "s/\(iface\s[en]\).*/\1$NET_ARR[$NET_WI] inet dhcp/g" interfaces
 |	
 .. code-block:: bash
 	:linenos:
 
 	sed '$a	wpa-conf \/home\/rootsu\/wpa_supplicant.conf' interfaces >> interfaces;
 |	
-|	if [[-z $( sed -n -e "s/\(auto\s\).*/\1/p" interfaces) ]]; then
-|		jumpto interface_sh;
-|	fi
-|	systemctl restart wpa_supplicant@$NET_ARR[$NET_WI]
+	if [[-z $( sed -n -e "s/\(auto\s\).*/\1/p" interfaces) ]]; then
+		jumpto interface_sh;
+	fi
+	systemctl restart wpa_supplicant@$NET_ARR[$NET_WI]
 |	
 .. code-block:: bash
 	:linenos:
 
 	systemctl restart wpa_supplicant
 |	
-|	sed -n -e "s/\(auto\s\).*/\1$NET_ARR[$NET_WI]\s$NET_ARR[$NET_EN]/g" interfaces
-|	 str iface NET_EN
-|	if [[-z $( sed -n -e "s/\(iface\s\).*/\1/p" interfaces) ]]; then
-|			jumpto interface_sh;
-|	fi
-|	sed -n -e "s/\(iface\s\).*/\1$NET_ARR[$NET_WI] inet dhcp/g" interfaces
-|	 str allow-hotplug
+	sed -n -e "s/\(auto\s\).*/\1$NET_ARR[$NET_WI]\s$NET_ARR[$NET_EN]/g" interfaces
+	 str iface NET_EN
+	if [[-z $( sed -n -e "s/\(iface\s\).*/\1/p" interfaces) ]]; then
+			jumpto interface_sh;
+	fi
+	sed -n -e "s/\(iface\s\).*/\1$NET_ARR[$NET_WI] inet dhcp/g" interfaces
+	 str allow-hotplug
 |	
 .. code-block:: bash
 	:linenos:
@@ -447,7 +441,7 @@ AutoInstall Cut Discr
 			reinterfaces;
 	fi
 |	
-|	 str auto $( sed -n -e "s/\(auto\s\).*/\1$NET_ARR[$NET_WI]\s$NET_ARR[$NET_EN]/p"
+	 str auto $( sed -n -e "s/\(auto\s\).*/\1$NET_ARR[$NET_WI]\s$NET_ARR[$NET_EN]/p"
 |	
 .. code-block:: bash
 	:linenos:
@@ -458,7 +452,7 @@ AutoInstall Cut Discr
 	fi
 	sed -i -e "s/\(auto\s\).*/\1$NET_EN/g" interfaces
 |	
-|	 str iface NET_EN
+	 str iface NET_EN
 |	
 .. code-block:: bash
 	:linenos:
@@ -469,7 +463,7 @@ AutoInstall Cut Discr
 	fi
 	sed -i -e "s/iface\slo.*/iface $NET_EN inet dhcp/g" interfaces
 |	
-|	 str allow-hotplug
+	 str allow-hotplug
 |	
 .. code-block:: bash
 	:linenos:
@@ -480,7 +474,7 @@ AutoInstall Cut Discr
 	fi
 	sed -i -e "s/\(allow-hotplug\s\).*/\1$NET_EN/g" interfaces
 |	
-|	 str iface NET_WI
+	 str iface NET_WI
 |	
 .. code-block:: bash
 	:linenos:
@@ -490,18 +484,18 @@ AutoInstall Cut Discr
 			reinterfaces;
 	fi
 |	
-|	TMPS=$(sed -n -e "/\(iface\s[en]\).*/{=;q;}" interfaces);
+	TMPS=$(sed -n -e "/\(iface\s[en]\).*/{=;q;}" interfaces);
 |	
 .. code-block:: bash
 	:linenos:
 
 	sed -i -e "$a s/\(iface\s\).*/\1$NET_EN inet dhcp/g" interfaces
 |	
-|	sed -n -e "s/\(iface\s[en]\).*/\1$NET_ARR[$NET_WI] inet dhcp/g" interfaces
-|	sed '$a	wpa-conf \/home\/rootsu\/wpa_supplicant.conf' interfaces >> interfaces;
-|	sed -n -e "s/\(allow.*\s\).*/\1$NET_ARR[$NET_WIFI]\sinet\sdhcp/g" interfaces
-|	
-|	 if [[ $STATE -eq "0" ]]; then fi
+	sed -n -e "s/\(iface\s[en]\).*/\1$NET_ARR[$NET_WI] inet dhcp/g" interfaces
+	sed '$a	wpa-conf \/home\/rootsu\/wpa_supplicant.conf' interfaces >> interfaces;
+	sed -n -e "s/\(allow.*\s\).*/\1$NET_ARR[$NET_WIFI]\sinet\sdhcp/g" interfaces
+	
+	 if [[ $STATE -eq "0" ]]; then fi
 |	
 .. code-block:: bash
 	:linenos:
@@ -510,7 +504,6 @@ AutoInstall Cut Discr
 |	
 01.03.02	restart service
 ~~~~~~~~~~~~~~~~~~~~~~~~
-|	
 .. code-block:: bash
 	:linenos:
 
@@ -523,7 +516,6 @@ AutoInstall Cut Discr
 |	
 01.04		Update distribution 
 ---------------------------
-|	
 .. code-block:: bash
 	:linenos:
 
@@ -535,7 +527,7 @@ AutoInstall Cut Discr
 	cd /etc/apt/
 	if [[ -z $( lsb_release -d | sed -n -e 's/.*(\([^\)]\+\))/\1/p') ]]; then
 |	
-|		echo "Error: not defined version DebianOS, wait 3 sec";
+		echo "Error: not defined version DebianOS, wait 3 sec";
 |	
 .. code-block:: bash
 	:linenos:
@@ -546,16 +538,16 @@ AutoInstall Cut Discr
 		DEB_VER=$( lsb_release -d | sed -n -e 's/.*(\([^\)]\+\))/\1/p')
 	fi;
 |	
-|	cd /etc/apt/;
-|	 rm sources.tmp;
-|	touch sources.tmp
-|	
-|	main, contrib, non-free
-|	main — здесь находятся пакеты соответствующие DFSG-compliant (Debian Free Software Guidelines) не требуют дополнительное ПО из других источников. Это часть дистрибутива Debian. Полностью свободны для любого использования.
-|	contrib — смешанные пакеты которые содержат не только свободные пакеты DFSG-compliant но и пакеты из других веток например non-free.
-|	non-free — не свободное программное обеспечение. Не соответствует DFSG.
-|	check null string		???? 		dob add usloviya proverki ft http
-|	
+	cd /etc/apt/;
+	 rm sources.tmp;
+	touch sources.tmp
+	
+	main, contrib, non-free
+	main — здесь находятся пакеты соответствующие DFSG-compliant (Debian Free Software Guidelines) не требуют дополнительное ПО из других источников. Это часть дистрибутива Debian. Полностью свободны для любого использования.
+	contrib — смешанные пакеты которые содержат не только свободные пакеты DFSG-compliant но и пакеты из других веток например non-free.
+	non-free — не свободное программное обеспечение. Не соответствует DFSG.
+	check null string		???? 		dob add usloviya proverki ft http
+	
 |	
 .. code-block:: bash
 	:linenos:
@@ -564,7 +556,7 @@ AutoInstall Cut Discr
 	STATE="1";
 	rm sources.list;
 |	
-|	 touch sources.tmp;
+	 touch sources.tmp;
 |	
 .. code-block:: bash
 	:linenos:
@@ -582,18 +574,18 @@ AutoInstall Cut Discr
 	echo "Info: sources.list is null";
 	sleep 1; 
 |	 
-|	 Waits 5 seconds.
-|	 sed -i '34s/AAA/BBB/' file_name
+	 Waits 5 seconds.
+	 sed -i '34s/AAA/BBB/' file_name
 |	
 .. code-block:: bash
 	:linenos:
 
 	else
 |	 
-|	The first part of it is an "address", i.e. the following command only applies to lines matching it. The ! negates the condition, i.e. the command will only be applied to lines not matching the address. So, in other words, Replace Hello by Hello world! on lines that don't contain Hello world!.
-|	 sed -n -e 's/.*bullseye\-[a-z]\(.\)/\1/p' sources.tmp
-|	The pattern [a-z]* matches zero or more characters in the range a to z (the actual characters are dependent on the current locale). There are zero such characters at the very start of the string 123 abc (i.e. the pattern matches), and also four of them at the start of this is a line.
-|	If you need at least one match, then use [a-z][a-z]* or [a-z]\{1,\}, or enable extended regular expressions with sed -E and use [a-z]+.
+	The first part of it is an "address", i.e. the following command only applies to lines matching it. The ! negates the condition, i.e. the command will only be applied to lines not matching the address. So, in other words, Replace Hello by Hello world! on lines that don't contain Hello world!.
+	 sed -n -e 's/.*bullseye\-[a-z]\(.\)/\1/p' sources.tmp
+	The pattern [a-z]* matches zero or more characters in the range a to z (the actual characters are dependent on the current locale). There are zero such characters at the very start of the string 123 abc (i.e. the pattern matches), and also four of them at the start of this is a line.
+	If you need at least one match, then use [a-z][a-z]* or [a-z]\{1,\}, or enable extended regular expressions with sed -E and use [a-z]+.
 |	
 .. code-block:: bash
 	:linenos:
@@ -617,7 +609,6 @@ AutoInstall Cut Discr
 |	
 01.05		Install drivers
 ----------------------
-|	 ??? do make analys 'lspci' and install autochoose driver
 |	
 .. code-block:: bash
 	:linenos:
@@ -634,7 +625,7 @@ AutoInstall Cut Discr
 		echo -e "y\n" | apt-get install nvidia-driver firmware-misc-nonfree nvidia-settings
 	fi
 |	
-|	apt-get install firmware-linux | apt-get install firmware-linux-nonfree | apt-get install firmware-linux | apt-get install firmware-realtek | apt-get install libdrm-amdgpu1 | apt-get install xserver-xorg-video-amdgpu  | apt-get install man 
+	apt-get install firmware-linux | apt-get install firmware-linux-nonfree | apt-get install firmware-linux | apt-get install firmware-realtek | apt-get install libdrm-amdgpu1 | apt-get install xserver-xorg-video-amdgpu  | apt-get install man 
 |	
 .. code-block:: bash
 	:linenos:
@@ -649,7 +640,6 @@ AutoInstall Cut Discr
 |	
 01.05.01	Install SElinux utils & acl
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-|	
 .. code-block:: bash
 	:linenos:
 
@@ -660,7 +650,7 @@ AutoInstall Cut Discr
 	sudo systemctl enable auditd
 	sudo systemctl start auditd
 |	
-|	policycoreutils-gui
+	policycoreutils-gui
 |	
 .. code-block:: bash
 	:linenos:
@@ -677,7 +667,6 @@ AutoInstall Cut Discr
 |	
 01.05.02	Reboot
 ~~~~~~~~~~~~~~~
-|	
 .. code-block:: bash
 	:linenos:
 
@@ -686,15 +675,14 @@ AutoInstall Cut Discr
 |	
 01.06		Install git && nanorc [step_three]
 -----------------------------------------
-|	
 .. code-block:: bash
 	:linenos:
 
 	
 	if [[ -z $(sed -n -e "s/^\(3_nanorc\).*/\1/p" steps.txt) ]]; then
 |	
-|	 nano /etc/rc.local
-|	setupcon
+	 nano /etc/rc.local
+	setupcon
 |	
 .. code-block:: bash
 	:linenos:
@@ -708,64 +696,64 @@ AutoInstall Cut Discr
 	cd /install
 	git clone git://git.savannah.gnu.org/nano.git; cd nano;./autogen.sh;./configure; make install 
 |	
-|	rm -Rf /nano/
-|	rmdir /nano/
-|	git clone https://github.com/nanorc/nanorc.git
-|	cd nanorc
-|	make install
-|	exit 1;
-|	 make list all autogen
-|	cat ~/.nano/syntax/ALL.nanorc
-|	rm ~/.nanorc
-|	touch ~/.nanorc
-|	echo -e 'include ~/.nano/syntax/ALL.nanorc' >> ~/.nanorc
-|	|	 TeX
-|	echo -e 'include "/usr/share/nano/patch.nanorc\' >> ~/.nanorc
-|	|	 POV-Ray
-|	echo -e 'include "/usr/share/nano/pov.nanorc\' >> ~/.nanorc
-|	|	 Perl
-|	echo -e 'include "/usr/share/nano/perl.nanorc\' >> ~/.nanorc
-|	|	 Nanorc files
-|	echo -e 'include "/usr/share/nano/nanorc.nanorc\' >> ~/.nanorc
-|	|	 Python
-|	echo -e 'include "/usr/share/nano/python.nanorc\' >> ~/.nanorc
-|	|	 C/C++
-|	echo -e 'include "/usr/share/nano/c.nanorc\' >> ~/.nanorc
-|	|	 Groff
-|	echo -e 'include "/usr/share/nano/groff.nanorc' >> ~/.nanorc
-|	|	 Assembler
-|	echo -e 'include "/usr/share/nano/asm.nanorc' >> ~/.nanorc
-|	|	 Ruby
-|	echo -e 'include "/usr/share/nano/ruby.nanorc' >> ~/.nanorc
-|	|	 Manpages
-|	echo -e 'include "/usr/share/nano/man.nanorc' >> ~/.nanorc
-|	|	 HTML
-|	echo -e 'include "/usr/share/nano/html.nanorc' >> ~/.nanorc
-|	|	 Bourne shell scripts
-|	echo -e 'include "/usr/share/nano/sh.nanorc' >> ~/.nanorc
-|	|	 Sun Java
-|	echo -e 'include "/usr/share/nano/java.nanorc' >> ~/.nanorc
-|	|	 Sun php
-|	echo -e 'include "/usr/share/nano/php.nanorc' >> ~/.nanorc
-|	|	 Sun perl
-|	echo -e 'include "/usr/share/nano/perl.nanorc' >> ~/.nanorc
-|	|	 sql
-|	echo -e 'include "/usr/share/nano/sql.nanorc' >> ~/.nanorc
-|	|	 asm
-|	echo -e 'include "/usr/share/nano/asm.nanorc' >> ~/.nanorc
-|	include "/usr/share/nano/*.nanorc"
+	rm -Rf /nano/
+	rmdir /nano/
+	git clone https://github.com/nanorc/nanorc.git
+	cd nanorc
+	make install
+	exit 1;
+	 make list all autogen
+	cat ~/.nano/syntax/ALL.nanorc
+	rm ~/.nanorc
+	touch ~/.nanorc
+	echo -e 'include ~/.nano/syntax/ALL.nanorc' >> ~/.nanorc
+		 TeX
+	echo -e 'include "/usr/share/nano/patch.nanorc\' >> ~/.nanorc
+		 POV-Ray
+	echo -e 'include "/usr/share/nano/pov.nanorc\' >> ~/.nanorc
+		 Perl
+	echo -e 'include "/usr/share/nano/perl.nanorc\' >> ~/.nanorc
+		 Nanorc files
+	echo -e 'include "/usr/share/nano/nanorc.nanorc\' >> ~/.nanorc
+		 Python
+	echo -e 'include "/usr/share/nano/python.nanorc\' >> ~/.nanorc
+		 C/C++
+	echo -e 'include "/usr/share/nano/c.nanorc\' >> ~/.nanorc
+		 Groff
+	echo -e 'include "/usr/share/nano/groff.nanorc' >> ~/.nanorc
+		 Assembler
+	echo -e 'include "/usr/share/nano/asm.nanorc' >> ~/.nanorc
+		 Ruby
+	echo -e 'include "/usr/share/nano/ruby.nanorc' >> ~/.nanorc
+		 Manpages
+	echo -e 'include "/usr/share/nano/man.nanorc' >> ~/.nanorc
+		 HTML
+	echo -e 'include "/usr/share/nano/html.nanorc' >> ~/.nanorc
+		 Bourne shell scripts
+	echo -e 'include "/usr/share/nano/sh.nanorc' >> ~/.nanorc
+		 Sun Java
+	echo -e 'include "/usr/share/nano/java.nanorc' >> ~/.nanorc
+		 Sun php
+	echo -e 'include "/usr/share/nano/php.nanorc' >> ~/.nanorc
+		 Sun perl
+	echo -e 'include "/usr/share/nano/perl.nanorc' >> ~/.nanorc
+		 sql
+	echo -e 'include "/usr/share/nano/sql.nanorc' >> ~/.nanorc
+		 asm
+	echo -e 'include "/usr/share/nano/asm.nanorc' >> ~/.nanorc
+	include "/usr/share/nano/*.nanorc"
 |	
 .. code-block:: bash
 	:linenos:
 
 	find /usr/share/nano -name '*.nanorc' -printf "include %p\n" > ~/.nanorc
 |	
-|	for i in `ls /usr/share/nano`
-|	  do
-|	    echo "include /usr/share/nano/$i" >> ~/.nanorc
-|	  done
-|	rm -Rf /nanorc/
-|	rmdir /nanorc/
+	for i in `ls /usr/share/nano`
+	  do
+	    echo "include /usr/share/nano/$i" >> ~/.nanorc
+	  done
+	rm -Rf /nanorc/
+	rmdir /nanorc/
 |	
 .. code-block:: bash
 	:linenos:
@@ -776,8 +764,7 @@ AutoInstall Cut Discr
 |	
 01.07		Copy dir 
 ----------------
-|	
-|	
+	
 .. code-block:: bash
 	:linenos:
 
@@ -795,8 +782,8 @@ AutoInstall Cut Discr
 	cp -Rf /install/home/rootsu/* ~root
 	chmod ug+rwx -Rf ~root
 |	
-|	 cp -Rf /install/home/admin/.bashrc /root/
-|	cp /etc/nanorc ~/.nanorc
+	 cp -Rf /install/home/admin/.bashrc /root/
+	cp /etc/nanorc ~/.nanorc
 |	
 .. code-block:: bash
 	:linenos:
@@ -804,14 +791,13 @@ AutoInstall Cut Discr
 	echo -e "4_copy_sh" >> steps.txt
 	fi
 |	
-|	exit 1;
-|	cp -Rf /install/home/ /home/ |	 -> rootsu, admin
-|	 https://superuser.com/questions/904001/how-to-install-tar-xz-file-in-ubuntu
+	exit 1;
+	cp -Rf /install/home/ /home/ 	 -> rootsu, admin
+	 https://superuser.com/questions/904001/how-to-install-tar-xz-file-in-ubuntu
 |	
 |	
 01.08		Install utils [step_five]
 --------------------------------
-|	
 .. code-block:: bash
 	:linenos:
 
@@ -828,9 +814,9 @@ AutoInstall Cut Discr
 	
 	add-apt-repository-get ppa:ubuntu-toolchain-r/test && apt update
 |	
-|	https://pcp.io/docs/guide.html
-|	apt-get install gcc-snapshot && apt-get install gcc-11g++-11
-|	update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 60 --slave /usr/bin/g++ g++ /usr/bin/g++-9
+	https://pcp.io/docs/guide.html
+	apt-get install gcc-snapshot && apt-get install gcc-11g++-11
+	update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 60 --slave /usr/bin/g++ g++ /usr/bin/g++-9
 |	
 .. code-block:: bash
 	:linenos:
@@ -893,9 +879,9 @@ AutoInstall Cut Discr
 	echo -e "y\n" | apt-get install python3-sphinx
 	pip install --upgrade myst-parser
 |	
-|	pip install mkdocs
-|	pip install -U mkdocs
-|	pip install mkdocs-rtd-dropdown
+	pip install mkdocs
+	pip install -U mkdocs
+	pip install mkdocs-rtd-dropdown
 |	
 .. code-block:: bash
 	:linenos:
@@ -919,16 +905,16 @@ AutoInstall Cut Discr
 
 	systemctl enable cron
 |	systemctl enable anacron
-|	echo -e "y\n" | apt-get install postfix
-|	 Nmap Ngrep VnStat Iptraf-ng NetHogs Iotop dd dh netcat
+	echo -e "y\n" | apt-get install postfix
+	 Nmap Ngrep VnStat Iptraf-ng NetHogs Iotop dd dh netcat
 .. code-block:: bash
 	:linenos:
 
 	systemctl enable autofs
 |	systemctl start autofs
-|	echo -e "y\n" | apt-get install selinux-basics selinux-policy-default auditd
-|	echo -e "y\n" | apt-get install setools policycoreutils selinux-basics selinux-utils selinux-policy-default selinux-policy-mls  auditd policycoreutils-python-utils semanage-utils 
-|	setroubleshoot selinux-policy-targeted
+	echo -e "y\n" | apt-get install selinux-basics selinux-policy-default auditd
+	echo -e "y\n" | apt-get install setools policycoreutils selinux-basics selinux-utils selinux-policy-default selinux-policy-mls  auditd policycoreutils-python-utils semanage-utils 
+	setroubleshoot selinux-policy-targeted
 .. code-block:: bash
 	:linenos:
 
@@ -940,10 +926,10 @@ AutoInstall Cut Discr
 	fi
 	
 |	exit 1;
-|	
-|		Update settings LOCALE
-|	
-|		locale -a
+	
+		Update settings LOCALE
+	
+		locale -a
 .. code-block:: bash
 	:linenos:
 
@@ -962,51 +948,50 @@ AutoInstall Cut Discr
 	echo -e "5_install_util_wd" >> steps.txt
 	
 |	exit 1;
-|	
-|	echo "Press ESC key to quit and reboot"
-|	 read a single character
-|	while read -r -n1 key
-|	do
-|	 if input == ESC key
-|	if [[ $key == $'\e' ]];
-|	then
-|		reboot;
-|	fi
-|	done
+	
+	echo "Press ESC key to quit and reboot"
+	 read a single character
+	while read -r -n1 key
+	do
+	 if input == ESC key
+	if [[ $key == $'\e' ]];
+	then
+		reboot;
+	fi
+	done
 .. code-block:: bash
 	:linenos:
 
 	
 	fi
 |	dpkg -i xz-utils_5.2.4-1_amd64.deb
-|	tar -xvf wpa_supplicant-0.7.3.tar.gz
-|	cd ./wpa_supplicant-0.7.3/
-|	mv /install/.config /install/wpa_supplicant-0.7.3/wpa_supplicant/
-|	bash make
-|	exit 1;
-|	tar -xvf console-setup_1.205.tar.xz
-|	cd ./console-setup-1.205.tar.xz/
-|	./configure
-|	./install
-|	cp -Rf /install/etc/default/console-setup /etc/default/
-|	
-|	
-|	if [ -f /etc/resolv.conf ]; then
-|		jumpto STEP_TWO_AFTER;
-|	fi
+	tar -xvf wpa_supplicant-0.7.3.tar.gz
+	cd ./wpa_supplicant-0.7.3/
+	mv /install/.config /install/wpa_supplicant-0.7.3/wpa_supplicant/
+	bash make
+	exit 1;
+	tar -xvf console-setup_1.205.tar.xz
+	cd ./console-setup-1.205.tar.xz/
+	./configure
+	./install
+	cp -Rf /install/etc/default/console-setup /etc/default/
+	
+	
+	if [ -f /etc/resolv.conf ]; then
+		jumpto STEP_TWO_AFTER;
+	fi
 .. code-block:: bash
 	:linenos:
 
 	step_three:
 	
 |	Search 
-|	 add-apt-repository ppa:un-brice/ppa
-|	 apt-get update
-|	 apt-get install shake-fs
+	 add-apt-repository ppa:un-brice/ppa
+	 apt-get update
+	 apt-get install shake-fs
 |	
 01.09		Install driver opt and acc [step_six]
 --------------------------------------------
-|	
 .. code-block:: bash
 	:linenos:
 
@@ -1016,33 +1001,30 @@ AutoInstall Cut Discr
 |	
 01.09.01	create disk /opt/
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-|	
 01.09.02	search /dev/s**
 ~~~~~~~~~~~~~~~~~~~~~~~~
-|	
-|	touch fdiskhdd.txt;
-|	fdisk -l > fdiskhdd.txt
-|	STATE=$(sed -n -e "s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p" fdiskhdd.txt);
-|	if [[ -z $(sed -n -e "s/.*\(\/dev\/s[a-z]*\).*/\1/p" fdiskhdd.txt) ]]; then
-|		STATE=$(sed -n -e "s/.*\(\/dev\/s[a-z]*\).*/\1/p" fdiskhdd.txt);
-|	fi
-|	
-|		OPTIONS: g , w
-|	
-|	echo "\ng\nn\n1\n2048\n\nw" |  fdisk $STATE --wipe AUTO 
+	touch fdiskhdd.txt;
+	fdisk -l > fdiskhdd.txt
+	STATE=$(sed -n -e "s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p" fdiskhdd.txt);
+	if [[ -z $(sed -n -e "s/.*\(\/dev\/s[a-z]*\).*/\1/p" fdiskhdd.txt) ]]; then
+		STATE=$(sed -n -e "s/.*\(\/dev\/s[a-z]*\).*/\1/p" fdiskhdd.txt);
+	fi
+	
+		OPTIONS: g , w
+	
+	echo "\ng\nn\n1\n2048\n\nw" |  fdisk $STATE --wipe AUTO 
 .. code-block:: bash
 	:linenos:
 
 	
 |	
-|		Create fs
-|	
-|	mkfs.ext4 $STATE /opt
+		Create fs
+	
+	mkfs.ext4 $STATE /opt
 |	
 |	
 01.09.03	mount /dev/s**
 ~~~~~~~~~~~~~~~~~~~~~~~
-|	
 .. code-block:: bash
 	:linenos:
 
@@ -1061,13 +1043,13 @@ AutoInstall Cut Discr
 	
 	sudo mount -a
 |	if [[ -z $STATE ]]; then
-|		exit 3;
-|	fi
-|			1_1_3_2 create disk /dev/s**
-|	
-|	 https://www.computerhope.com/unix/fdisk.htm
-|	 https://superuser.com/questions/332252/how-to-create-and-format-a-partition-using-a-bash-script
-|	
+		exit 3;
+	fi
+			1_1_3_2 create disk /dev/s**
+	
+	 https://www.computerhope.com/unix/fdisk.htm
+	 https://superuser.com/questions/332252/how-to-create-and-format-a-partition-using-a-bash-script
+	
 .. code-block:: bash
 	:linenos:
 
@@ -1079,43 +1061,42 @@ AutoInstall Cut Discr
 
 	cd /install/
 |	
-|	|	  in-target mkfs.ext4 /dev/sdb1 ; \
-|	  in-target echo "/dev/sdb1  /srv  ext4  nodiratime  0  2" >> /etc/fstab
-|				???
-|		fdisk
-|		mkfs
-|	
-|	
-|			1_1_4	editor /etc/apt/sources.list
-|			add info ro "contrib non-free|
-|		
-|			copy sources.list -> sources.tmp
-|	
+		  in-target mkfs.ext4 /dev/sdb1 ; \
+	  in-target echo "/dev/sdb1  /srv  ext4  nodiratime  0  2" >> /etc/fstab
+				???
+		fdisk
+		mkfs
+	
+	
+			1_1_4	editor /etc/apt/sources.list
+			add info ro "contrib non-free|
+		
+			copy sources.list -> sources.tmp
+	
 .. code-block:: bash
 	:linenos:
 
 	
 |		https://www.baeldung.com/linux/run-script-on-startup
-|	
-|	cp /install/pii2.sh /etc/init.d/
-|	chkconfig --add pii2.sh
-|	update-rc.d pii2.sh defaults
-|	
-|	touch /install/step_two.txt
-|	
-|		Posle del!!!
-|	 https://serverfault.com/questions/32438/disable-a-service-from-starting-at-all-runlevels
+	
+	cp /install/pii2.sh /etc/init.d/
+	chkconfig --add pii2.sh
+	update-rc.d pii2.sh defaults
+	
+	touch /install/step_two.txt
+	
+		Posle del!!!
+	 https://serverfault.com/questions/32438/disable-a-service-from-starting-at-all-runlevels
 .. code-block:: bash
 	:linenos:
 
 	
 |	
-|		Jump to label interface_sh
-|	
+		Jump to label interface_sh
+	
 |	
 01.10		Create users and groups
 ------------------------------
-|	
 .. code-block:: bash
 	:linenos:
 
@@ -1125,16 +1106,15 @@ AutoInstall Cut Discr
 	STEP_TWO_AFTER:
 	
 |	
-|		 cp sources.tmp sources.list;
+		 cp sources.tmp sources.list;
 |	
 01.10.01		Create users and groups
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-|	
-|	cp -Rf /install/home/rootsu/.cmd_shell.sh ~/.cmd_shell.sh
-|	cp -Rf /install/home/rootsu/.bashrc ~/.bashrc
-|	cp -Rf /install/home/rootsu/.bashrc /home/admin/
-|	cp -Rf /install/home/rootsu/.cmd_shell.sh /home/admin/
-|	В
+	cp -Rf /install/home/rootsu/.cmd_shell.sh ~/.cmd_shell.sh
+	cp -Rf /install/home/rootsu/.bashrc ~/.bashrc
+	cp -Rf /install/home/rootsu/.bashrc /home/admin/
+	cp -Rf /install/home/rootsu/.cmd_shell.sh /home/admin/
+	В
 .. code-block:: bash
 	:linenos:
 
@@ -1145,9 +1125,9 @@ AutoInstall Cut Discr
 	 groupadd -g 5000 technics
 	 groupadd -g 6000 ps_users
 	 groupadd -g 7000 others
-	 useradd -u 1100 -g admins -c "admin" -s /bin/bash -p $(echo "vkd174asqd" | mkpasswd -s -H MD5) -m admin
+	 useradd -u 1100 -g admins -c "admin" -s /bin/bash -p $(echo "********" | mkpasswd -s -H MD5) -m admin
 	 
-	 useradd -u 1200 -g admins -c "admin" -s /bin/bash -p $(echo "vkd174asqd" | mkpasswd -s -H MD5) -m admin_tech
+	 useradd -u 1200 -g admins -c "admin" -s /bin/bash -p $(echo "********" | mkpasswd -s -H MD5) -m admin_tech
 	usermod -aG sudo,technics,root admin
 	usermod -aG sudo,technics,root admin_tech
 	 
@@ -1155,29 +1135,29 @@ AutoInstall Cut Discr
 	cp /install/home/rootsu/.profile /home/admin/
 	cp /install/home/rootsu/.cmd_shell.sh /home/admin/
 	
-	 useradd -u 2100 -g exp_users -s /bin/bash -c "far_exp" -p $(echo "vkd174asqd" | mkpasswd -s -H MD5) -m far_exp
-	 useradd -u 3100 -g pro_users -s /bin/bash -c "far_pro" -p $(echo "vkd174asqd" | mkpasswd -s -H MD5) -m far_pro
-	 useradd -u 4100 -g moderators -s /bin/bash -c "far_moderator" -p $(echo "vkd174asqd" | mkpasswd -s -H MD5) -m far_mod
-	 useradd -u 5100 -g technics -d /opt/SAMBA_SHARE/ -s /bin/false -c "technical admin_share" -p $(echo "vkd174" | mkpasswd -s -H MD5) admin_share
-	 useradd -u 5200 -g technics -d /opt/SAMBA_SHARE/ -s /bin/false -c "technical pub_share" -p $(echo "vkd174" | mkpasswd -s -H MD5) pub_share
-	 useradd -u 6100 -g ps_users -s /bin/bash -c "far_user" -p $(echo "vkd174asqd" | mkpasswd -s -H MD5) -m far_user
+	 useradd -u 2100 -g exp_users -s /bin/bash -c "far_exp" -p $(echo "********" | mkpasswd -s -H MD5) -m far_exp
+	 useradd -u 3100 -g pro_users -s /bin/bash -c "far_pro" -p $(echo "********" | mkpasswd -s -H MD5) -m far_pro
+	 useradd -u 4100 -g moderators -s /bin/bash -c "far_moderator" -p $(echo "********" | mkpasswd -s -H MD5) -m far_mod
+	 useradd -u 5100 -g technics -d /opt/SAMBA_SHARE/ -s /bin/false -c "technical admin_share" -p $(echo "********" | mkpasswd -s -H MD5) admin_share
+	 useradd -u 5200 -g technics -d /opt/SAMBA_SHARE/ -s /bin/false -c "technical pub_share" -p $(echo "********" | mkpasswd -s -H MD5) pub_share
+	 useradd -u 6100 -g ps_users -s /bin/bash -c "far_user" -p $(echo "********" | mkpasswd -s -H MD5) -m far_user
 |	 useradd -u 6100 -g users -s /bin/bash -c "test" -p "" -m test
 .. code-block:: bash
 	:linenos:
 
-	useradd -g ps_users -c "tom" -s /bin/bash -p $(echo "vkd174" | mkpasswd -s -H MD5) -m tom
+	useradd -g ps_users -c "tom" -s /bin/bash -p $(echo "********" | mkpasswd -s -H MD5) -m tom
 |	smbpasswd -a -w "" admin_share
 .. code-block:: bash
 	:linenos:
 
-	echo -e "vkd174\nvkd174" | smbpasswd -a admin_share
-	echo -e "vkd174\nvkd174" | smbpasswd -a pub_share
+	echo -e "********\n********" | smbpasswd -a admin_share
+	echo -e "********\n********" | smbpasswd -a pub_share
 	smbpasswd -e admin_share
 	smbpasswd -e pub_share
 |	smbpasswd -a -w "" pub_share
-|	if [ $? -ne 0 ]; then********
-|		
-|	fi
+	if [ $? -ne 0 ]; then********
+		
+	fi
 .. code-block:: bash
 	:linenos:
 
@@ -1200,12 +1180,10 @@ AutoInstall Cut Discr
 |	
 01.10.02		Create ssh_ssl
 ~~~~~~~~~~~~~~~~~~~~~~~~
-|	
-|			https://www.cyberciti.biz/tips/checking-openssh-sshd-configuration-syntax-errors.html
+			https://www.cyberciti.biz/tips/checking-openssh-sshd-configuration-syntax-errors.html
 |	
 01.10.03	Install ssh settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-|	
 .. code-block:: bash
 	:linenos:
 
@@ -1213,150 +1191,150 @@ AutoInstall Cut Discr
 	
 	cp sshd_config sshd_config.tmp
 |	
-|	 |	Port 22
-|	
+	 	Port 22
+	
 .. code-block:: bash
 	:linenos:
 
 	 sed -i -e "s/#Port\s.*$\|Port\s.*$/Port $PORT_SSH/g" sshd_config
 |	
-|	 HostKey
-|	
+	 HostKey
+	
 .. code-block:: bash
 	:linenos:
 
 	 sed -i -e "s/#HostKey/HostKey/g" sshd_config
 |	
-|	 PubkeyAuthentification
-|	
+	 PubkeyAuthentification
+	
 .. code-block:: bash
 	:linenos:
 
 	 sed -i -e "s/#PubkeyAuthentication\s.*$\|PubkeyAuthentication\s.*$/PubkeyAuthentication yes/g" sshd_config
 |	
-|	 |	SysLogFacility
-|	
+	 	SysLogFacility
+	
 .. code-block:: bash
 	:linenos:
 
 	 sed -i -e "s/#SysLogFacility\s.*$\|SysLogFacility\s.*$/SysLogFacility AUTHPRIV/g" sshd_config
 |	
-|	 |	LogLevel
-|	
+	 	LogLevel
+	
 .. code-block:: bash
 	:linenos:
 
 	 sed -i -e "s/#LogLevel\s.*$\|LogLevel\s.*$/#LogLevel INFO/g" sshd_config
 |	
-|	 |	LogLevel
-|	
+	 	LogLevel
+	
 .. code-block:: bash
 	:linenos:
 
 	 sed -i -e "s/#LoginGraceTime\s.*$\|LoginGraceTime\s.*$/LoginGraceTime 2m/g" sshd_config
 |	
-|	 |	PermitRootLogin
-|	
+	 	PermitRootLogin
+	
 .. code-block:: bash
 	:linenos:
 
 	 sed -i -e "s/#PermitRootLogin\s.*$\|PermitRootLogin\s.*$/PermitRootLogin yes/g" sshd_config
 |	
-|	 |	StrictModes
-|	
+	 	StrictModes
+	
 .. code-block:: bash
 	:linenos:
 
 	 sed -i -e "s/#StrictModes\s.*$\|StrictModes\s.*$/StrictModes no/g" sshd_config
 |	
-|	 |	MaxAuthTries
-|	
+	 	MaxAuthTries
+	
 .. code-block:: bash
 	:linenos:
 
 	 sed -i -e "s/#MaxAuthTries\s.*$\|MaxAuthTries\s.*$/MaxAuthTries 3/g" sshd_config
 |	
-|	 |	MaxAuthTries
-|	
+	 	MaxAuthTries
+	
 .. code-block:: bash
 	:linenos:
 
 	 sed -i -e "s/#MaxSessions\s.*$\|MaxSessions\s.*$/MaxSessions 3/g" sshd_config
 |	
-|	
-|	 |	AuthorizedKeysFile
-|	
+	
+	 	AuthorizedKeysFile
+	
 .. code-block:: bash
 	:linenos:
 
 	 sed -i -e "s/#AuthorizedKeysFile\s.*$\|AuthorizedKeysFile\s.*$/AuthorizedKeysFile \/home\/rootsu\/.ssh\/authorized_keys \/home\/%u\/.ssh\/authorized_keys/g" sshd_config
 |	
-|	 |	PasswordAuthentication no
-|	
+	 	PasswordAuthentication no
+	
 .. code-block:: bash
 	:linenos:
 
 	 sed -i -e "s/#PasswordAuthentication\s.*$\|PasswordAuthentication\s.*$/PasswordAuthentication no/g" sshd_config
 |	
-|	 |	PermitEmptyPasswords no
-|	
+	 	PermitEmptyPasswords no
+	
 .. code-block:: bash
 	:linenos:
 
 	 sed -i -e "s/#PermitEmptyPasswords\s.*$\|PermitEmptyPasswords\s.*$/PermitEmptyPasswords no/g" sshd_config
 |	
-|	 |	ChallengeResponseAuthentification
-|	
-|	 sed -n -e "s/ChallengeResponseAuthentication.*$\||	ChallengeResponseAuthentication.*$/ChallengeResponseAuthentification yes/p" sshd_config.tmp
+	 	ChallengeResponseAuthentification
+	
+	 sed -n -e "s/ChallengeResponseAuthentication.*$\|	ChallengeResponseAuthentication.*$/ChallengeResponseAuthentification yes/p" sshd_config.tmp
 .. code-block:: bash
 	:linenos:
 
 	 sed -i -e "s/ChallengeResponseAuthentication.*$\|#ChallengeResponseAuthentication.*$/ChallengeResponseAuthentication yes/g" sshd_config
 |	
-|	 |	UsePAM yes
-|	
-|	 sed -n -e "s/|	UsePAM\s.*$\|UsePAM\s.*$/UsePAM yes/p" sshd_config.tmp
+	 	UsePAM yes
+	
+	 sed -n -e "s/	UsePAM\s.*$\|UsePAM\s.*$/UsePAM yes/p" sshd_config.tmp
 .. code-block:: bash
 	:linenos:
 
 	 sed -i -e "s/#UsePAM\s.*$\|UsePAM\s.*$/UsePAM yes/g" sshd_config
 |	
-|	 |	AllowTcpForwarding yes
-|	
+	 	AllowTcpForwarding yes
+	
 .. code-block:: bash
 	:linenos:
 
 	 sed -i -e "s/#AllowTcpForwarding\s.*$\|AllowTcpForwarding\s.*$/AllowTcpForwarding yes/g" sshd_config
 |	
-|	 |	X11Forwarding yes
-|	
+	 	X11Forwarding yes
+	
 .. code-block:: bash
 	:linenos:
 
 	 sed -i -e "s/#X11Forwarding\s.*$\|X11Forwarding\s.*$/X11Forwarding yes/g" sshd_config
 |	
-|	 |	X11DisplayOffset yes
-|	
+	 	X11DisplayOffset yes
+	
 .. code-block:: bash
 	:linenos:
 
 	 sed -i -e "s/#X11DisplayOffset\s.*$\|X11DisplayOffset\s.*$/X11DisplayOffset 10/g" sshd_config
 |	
-|	 |	PrintMotd no
-|	
+	 	PrintMotd no
+	
 .. code-block:: bash
 	:linenos:
 
 	 sed -i -e "s/#PrintMotd\s.*$\|PrintMotd\s.*$/PrintMotd yes/g" sshd_config
 |	
-|	 |	 Subsystem 
-|	
+	 	 Subsystem 
+	
 .. code-block:: bash
 	:linenos:
 
 	 sed -i -e "s/Subsystem\s/#Subsystem\s/g" sshd_config
 |	
-|	
+	
 .. code-block:: bash
 	:linenos:
 
@@ -1364,8 +1342,7 @@ AutoInstall Cut Discr
 |	
 01.10.04	Create users ssh
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-|	
-|	
+	
 .. code-block:: bash
 	:linenos:
 
@@ -1375,9 +1352,8 @@ AutoInstall Cut Discr
 |	
 01.10.05	Create SAMBA
 ~~~~~~~~~~~~~~~~~~~~~
-|	
-|	
-|	
+	
+	
 .. code-block:: bash
 	:linenos:
 
@@ -1398,20 +1374,16 @@ AutoInstall Cut Discr
 01.10.06	Install and settings firewall 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	
-|	
 01.10.07	Install other soft
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	
-|	
 01.10.08	Extended nano 
 ~~~~~~~~~~~~~~~~~~~~~~~
-|	cp /install/nanorc /etc/nanorc
 |	
-|	
+	
 |	
 01.10.09	cp ers 
 ~~~~~~~~~~~~~~~~
-|	cp /install/ers /etc/ers
 |	
 .. code-block:: bash
 	:linenos:
@@ -1421,7 +1393,6 @@ AutoInstall Cut Discr
 |	
 01.10.10	Install vsftp
 ~~~~~~~~~~~~~~~~~~~~~~
-|	
 .. code-block:: bash
 	:linenos:
 
@@ -1491,8 +1462,8 @@ AutoInstall Cut Discr
 
 	sed -i -e "s/#ftpd_banner=.*$\|ftpd_banner=.*$/ftpd_banner=Welcome to $HOSTNAME!!!/g" vsftpd.conf
 |	 |	restrict FTP users to their /home directory and allow them to write there
-|	 mogut switch from home / YES yes restrict privilege
-|	sed -i -e "s/|	chroot_local_user=.*$\|chroot_local_user=.*$/chroot_local_user=YES/g" vsftpd.conf
+	 mogut switch from home / YES yes restrict privilege
+	sed -i -e "s/	chroot_local_user=.*$\|chroot_local_user=.*$/chroot_local_user=YES/g" vsftpd.conf
 .. code-block:: bash
 	:linenos:
 
@@ -1523,8 +1494,8 @@ AutoInstall Cut Discr
 
 	sed -i -e "s/rsa_cert_file=.*$\|#rsa_cert_file=.*$/rsa_cert_file=\/etc\/ssl\/certs\/vsftpd.crt/g" vsftpd.conf
 |	 This option specifies the location of the RSA certificate to use for SSL
-|	 encrypted connections.
-|	rsa_private_key_file=
+	 encrypted connections.
+	rsa_private_key_file=
 .. code-block:: bash
 	:linenos:
 
@@ -1540,10 +1511,10 @@ AutoInstall Cut Discr
 
 	sed -i -e "$ a force_dot_files=YES" vsftpd.conf
 |	background=YES
-|	pasv_port
-|	sed -i -e "$ a pasv_min_port=49000" vsftpd.conf
-|	sed -i -e "$ a pasv_max_port=55000" vsftpd.conf
-|		allow_anon_ssl=NO
+	pasv_port
+	sed -i -e "$ a pasv_min_port=49000" vsftpd.conf
+	sed -i -e "$ a pasv_max_port=55000" vsftpd.conf
+		allow_anon_ssl=NO
 .. code-block:: bash
 	:linenos:
 
@@ -1559,24 +1530,24 @@ AutoInstall Cut Discr
 
 	sed -i -e "$ a force_local_logins_ssl=YES" vsftpd.conf
 |		ssl_tlsv1_1=YES
-|	sed -i -e "$ a ssl_tlsv1_1=YES" vsftpd.conf
-|		ssl_tlsv1_2=YES
+	sed -i -e "$ a ssl_tlsv1_1=YES" vsftpd.conf
+		ssl_tlsv1_2=YES
 .. code-block:: bash
 	:linenos:
 
 	sed -i -e "$ a ssl_sslv3=YES" vsftpd.conf
 |	ssl_tlsv1_1=NO
-|	ssl_tlsv1_2=YES
-|	ssl_tlsv1=NO
-|	ssl_sslv2=NO
-|	ssl_sslv3=NO
-|		ssl_tlsv1=NO
-|	sed -i -e "$ a ssl_tlsv1=NO" vsftpd.conf
-|		ssl_tlsv2=NO
-|	sed -i -e "$ a ssl_sslv2=NO" vsftpd.conf
-|		ssl_sslv3=NO
-|	sed -i -e "$ a ssl_sslv3=NO" vsftpd.conf
-|		require_ssl_reuse=YES
+	ssl_tlsv1_2=YES
+	ssl_tlsv1=NO
+	ssl_sslv2=NO
+	ssl_sslv3=NO
+		ssl_tlsv1=NO
+	sed -i -e "$ a ssl_tlsv1=NO" vsftpd.conf
+		ssl_tlsv2=NO
+	sed -i -e "$ a ssl_sslv2=NO" vsftpd.conf
+		ssl_sslv3=NO
+	sed -i -e "$ a ssl_sslv3=NO" vsftpd.conf
+		require_ssl_reuse=YES
 .. code-block:: bash
 	:linenos:
 
@@ -1628,10 +1599,10 @@ AutoInstall Cut Discr
 
 	sed -i -e "$ a chown_username=nobody" vsftpd.conf
 |	 Запретить /etc/vsftpd.userlist вход в список пользователей
-|	userlist_enable=YES
-|	userlist_deny=YES
-|	userlist_file=/etc/vsftpd.user_list
-|	 set it to YES to turn on TCP wappers
+	userlist_enable=YES
+	userlist_deny=YES
+	userlist_file=/etc/vsftpd.user_list
+	 set it to YES to turn on TCP wappers
 .. code-block:: bash
 	:linenos:
 
@@ -1657,8 +1628,8 @@ AutoInstall Cut Discr
 
 	sed -i -e "$ a virtual_use_local_privs=YES" vsftpd.conf
 |	 Allow virtual users to use the same privileges as local users
-|	sed -i -e "$ a pam_service_name=vsftpd" vsftpd.conf
-|	 FTP port 21
+	sed -i -e "$ a pam_service_name=vsftpd" vsftpd.conf
+	 FTP port 21
 .. code-block:: bash
 	:linenos:
 
@@ -1670,9 +1641,9 @@ AutoInstall Cut Discr
 	cd /etc/pam.d/
 	sed -i -e "s/auth	required	pam_shells.so.*$\|#auth	required	pam_shells.so.*$/#auth	required	pam_shells.so/g" vsftpd
 |	echo -e "RU\nRussia\nSaratov\n$HOSTNAME Ltd.\n\nadmin\n\n" | openssl req -x509 -nodes -days 365 -newkey rsa:4096 -keyout /etc/ssl/private/vsftpd.key -out /etc/ssl/certs/vsftpd.crt
-|	 bag 500 OOPS: priv_sock_get_int.
-|	 echo 'seccomp_sandbox=NO' >> /etc/vsftpd/vsftpd.conf
-|	$ sudo openssl req -x509 -nodes -days 365 -newkey rsa:4095 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem
+	 bag 500 OOPS: priv_sock_get_int.
+	 echo 'seccomp_sandbox=NO' >> /etc/vsftpd/vsftpd.conf
+	$ sudo openssl req -x509 -nodes -days 365 -newkey rsa:4095 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem
 .. code-block:: bash
 	:linenos:
 
@@ -1683,57 +1654,57 @@ AutoInstall Cut Discr
 	chmod 750 -R /home/rootsu
 	
 |	 List of FTP commands
-|	
-|	 ABOR - Abort an active file transfer.
-|	 ACCT - Account information.
-|	 ADAT - Authentication/Security Data (RFC 2228)
-|	 ALLO - Allocate sufficient disk space to receive a file.
-|	 APPE - Append.
-|	 AUTH - Authentication/Security Mechanism (RFC 2228)
-|	 CCC  - Clear Command Channel (RFC 2228)
-|	 CDUP - Change to Parent Directory.
-|	 CONF - Confidentiality Protection Command (RFC 697)
-|	 CWD  - Change working directory.
-|	 DELE - Delete file.
-|	 ENC  - Privacy Protected Channel (RFC 2228)
-|	 EPRT - Specifies an extended address and port to which the server should connect. (RFC 2428)
-|	 EPSV - Enter extended passive mode. (RFC 2428)
-|	 FEAT - Get the feature list implemented by the server. (RFC 2389)
-|	 HELP - Returns usage documentation on a command if specified, else a general help document is returned.
-|	 LAND - Language Negotiation (RFC 2640)
-|	 LIST - Returns information of a file or directory if specified, else information of the current working directory is returned.
-|	 LPRT - Specifies a long address and port to which the server should connect. (RFC 1639)
-|	 LPSV - Enter long passive mode. (RFC 1639)
-|	 MDTM - Return the last-modified time of a specified file. (RFC 3659)
-|	 MIC  - Integrity Protected Command (RFC 2228)
-|	 MKD  - Make directory.
-|	 MLST - Lists the contents of a directory if a directory is named. (RFC 3659)
-|	 MODE - Sets the transfer mode (Stream, Block, or Compressed).
-|	 NLST - Returns a list of file names in a specified directory.
-|	 NOOP - No operation (dummy packet; used mostly on keepalives).
-|	 OPTS - Select options for a feature. (RFC 2389)
-|	 PASS - Authentication password.
-|	 PASV - Enter passive mode.
-|	 PBSZ - Protection Buffer Size (RFC 2228)
-|	 PORT - Specifies an address and port to which the server should connect.
-|	 PWD  - Print working directory. Returns the current directory of the host.
-|	 QUIT - Disconnect.
-|	 REIN - Re initializes the connection.
-|	 REST - Restart transfer from the specified point.
-|	 RETR - Retrieve (download) a remote file.
-|	 RMD  - Remove a directory.
-|	 RNFR - Rename from.
-|	 RNTO - Rename to.
-|	 SITE - Sends site specific commands to remote server.
-|	 SIZE - Return the size of a file. (RFC 3659)
-|	 SMNT - Mount file structure.
-|	 STAT - Returns the current status.
-|	 STOR - Store (upload) a file.
-|	 STOU - Store file uniquely.
-|	 STRU - Set file transfer structure.
-|	 SYST - Return system type.
-|	 TYPE - Sets the transfer mode (ASCII/Binary).
-|	 USER - Authentication username. 
+	
+	 ABOR - Abort an active file transfer.
+	 ACCT - Account information.
+	 ADAT - Authentication/Security Data (RFC 2228)
+	 ALLO - Allocate sufficient disk space to receive a file.
+	 APPE - Append.
+	 AUTH - Authentication/Security Mechanism (RFC 2228)
+	 CCC  - Clear Command Channel (RFC 2228)
+	 CDUP - Change to Parent Directory.
+	 CONF - Confidentiality Protection Command (RFC 697)
+	 CWD  - Change working directory.
+	 DELE - Delete file.
+	 ENC  - Privacy Protected Channel (RFC 2228)
+	 EPRT - Specifies an extended address and port to which the server should connect. (RFC 2428)
+	 EPSV - Enter extended passive mode. (RFC 2428)
+	 FEAT - Get the feature list implemented by the server. (RFC 2389)
+	 HELP - Returns usage documentation on a command if specified, else a general help document is returned.
+	 LAND - Language Negotiation (RFC 2640)
+	 LIST - Returns information of a file or directory if specified, else information of the current working directory is returned.
+	 LPRT - Specifies a long address and port to which the server should connect. (RFC 1639)
+	 LPSV - Enter long passive mode. (RFC 1639)
+	 MDTM - Return the last-modified time of a specified file. (RFC 3659)
+	 MIC  - Integrity Protected Command (RFC 2228)
+	 MKD  - Make directory.
+	 MLST - Lists the contents of a directory if a directory is named. (RFC 3659)
+	 MODE - Sets the transfer mode (Stream, Block, or Compressed).
+	 NLST - Returns a list of file names in a specified directory.
+	 NOOP - No operation (dummy packet; used mostly on keepalives).
+	 OPTS - Select options for a feature. (RFC 2389)
+	 PASS - Authentication password.
+	 PASV - Enter passive mode.
+	 PBSZ - Protection Buffer Size (RFC 2228)
+	 PORT - Specifies an address and port to which the server should connect.
+	 PWD  - Print working directory. Returns the current directory of the host.
+	 QUIT - Disconnect.
+	 REIN - Re initializes the connection.
+	 REST - Restart transfer from the specified point.
+	 RETR - Retrieve (download) a remote file.
+	 RMD  - Remove a directory.
+	 RNFR - Rename from.
+	 RNTO - Rename to.
+	 SITE - Sends site specific commands to remote server.
+	 SIZE - Return the size of a file. (RFC 3659)
+	 SMNT - Mount file structure.
+	 STAT - Returns the current status.
+	 STOR - Store (upload) a file.
+	 STOU - Store file uniquely.
+	 STRU - Set file transfer structure.
+	 SYST - Return system type.
+	 TYPE - Sets the transfer mode (ASCII/Binary).
+	 USER - Authentication username. 
 .. code-block:: bash
 	:linenos:
 
@@ -1742,7 +1713,7 @@ AutoInstall Cut Discr
 	sudo systemctl enable vsftpd
 	iptables –F
 |	sudo ufw allow 20/tcp
-|	sudo ufw allow 21/tcp
+	sudo ufw allow 21/tcp
 .. code-block:: bash
 	:linenos:
 
@@ -1761,8 +1732,7 @@ AutoInstall Cut Discr
 |	
 01.11	Settings permissive SELinux
 ---------------------------------
-|	
-|	 seinfo -t
+	 seinfo -t
 .. code-block:: bash
 	:linenos:
 
@@ -1798,7 +1768,7 @@ AutoInstall Cut Discr
 	
 	setsebool -P ssh_sysadm_login on
 |	setsebool -P allow_use_cifs on
-|	setsebool -P allow_use_nfs on
+	setsebool -P allow_use_nfs on
 .. code-block:: bash
 	:linenos:
 
@@ -1833,8 +1803,8 @@ AutoInstall Cut Discr
 	semanage permissive -a boot_t 
 	
 |	setsebool -P allow_execmem 1
-|	setsebool -P allow_execheap 1
-|	setsebool -P allow_user_mysql_connect 1
+	setsebool -P allow_execheap 1
+	setsebool -P allow_user_mysql_connect 1
 .. code-block:: bash
 	:linenos:
 
@@ -1927,14 +1897,14 @@ AutoInstall Cut Discr
 	
 	chmod o-x "/etc/systemd/system.conf";
 |	rm /install/pii2.sh /etc/init.d/
-|	update-rc.d -f pii2.sh remove
-|	chmod o-rw -R "/etc/";
+	update-rc.d -f pii2.sh remove
+	chmod o-rw -R "/etc/";
 .. code-block:: bash
 	:linenos:
 
 	chmod o-rwx -R "/boot/";
 |	chmod o-rwx "/var/";
-|	chmod o-rwx "/sys/";
+	chmod o-rwx "/sys/";
 .. code-block:: bash
 	:linenos:
 
@@ -1949,15 +1919,15 @@ AutoInstall Cut Discr
 	chmod o-rwx -R "/tmp/";
 	chmod o-rwx "/media/";
 |	chmod o-rw "/dev/";
-|	chmod o+r "/etc/profile";
-|	chmod o+rx -R "/etc/profile.d/";
-|	chmod o+rx "/etc/bash.bashrc";
-|	chmod o+r "/etc/nanorc";
-|	chmod o+r "/etc/passwd";
-|	chmod o+r "/etc/passwd-";
-|	chmod o+r "/etc/group";
-|	chmod o+r "/etc/hostname";
-|	chmod o+rx "/etc/console-setup";
+	chmod o+r "/etc/profile";
+	chmod o+rx -R "/etc/profile.d/";
+	chmod o+rx "/etc/bash.bashrc";
+	chmod o+r "/etc/nanorc";
+	chmod o+r "/etc/passwd";
+	chmod o+r "/etc/passwd-";
+	chmod o+r "/etc/group";
+	chmod o+r "/etc/hostname";
+	chmod o+rx "/etc/console-setup";
 .. code-block:: bash
 	:linenos:
 
@@ -1974,8 +1944,8 @@ AutoInstall Cut Discr
 	echo "deb https:\\\download.webmin.com\download\repository sarge contrib" >> /etc/apt/sources.list
 	
 |	apt-get update
-|	dpkg --configure -a
-|	apt-get dist-upgrade
+	dpkg --configure -a
+	apt-get dist-upgrade
 .. code-block:: bash
 	:linenos:
 
@@ -1991,9 +1961,9 @@ AutoInstall Cut Discr
 
 	cd ~
 |	grep AVC /var/log/audit/audit.log | audit2allow -m loaderlocalv4 > loaderlocalv4.te
-|	grep AVC altlog.log | audit2allow -m loaderlocalv4 > loaderlocalv4.te
-|	checkmodule -M -m -o loaderlocalv1.mod loaderlocalv1.te
-|	semodule_package -o loaderlocalv1.pp -m loaderlocalv1.mod
+	grep AVC altlog.log | audit2allow -m loaderlocalv4 > loaderlocalv4.te
+	checkmodule -M -m -o loaderlocalv1.mod loaderlocalv1.te
+	semodule_package -o loaderlocalv1.pp -m loaderlocalv1.mod
 .. code-block:: bash
 	:linenos:
 
@@ -2004,7 +1974,7 @@ AutoInstall Cut Discr
 	semodule -i loaderlocalv4.pp
 	
 |	sudo apt-get install
-|	sudo apt-get automount
+	sudo apt-get automount
 .. code-block:: bash
 	:linenos:
 
@@ -2020,10 +1990,10 @@ AutoInstall Cut Discr
 	semodule -i sphinxtev1.pp
 	
 |	touch log.log
-|	journalctl -xe >> log.log
-|	grep AVC log.log | audit2allow -m sudotev1 > sudotev1.te
-|	checkmodule -M -m -o sudotev1.mod sudotev1.te
-|	semodule_package -o sudotev1.pp -m sudotev1.mod
+	journalctl -xe >> log.log
+	grep AVC log.log | audit2allow -m sudotev1 > sudotev1.te
+	checkmodule -M -m -o sudotev1.mod sudotev1.te
+	semodule_package -o sudotev1.pp -m sudotev1.mod
 .. code-block:: bash
 	:linenos:
 
@@ -2049,8 +2019,8 @@ AutoInstall Cut Discr
 	semanage fcontext -a -t tmp_t "/var/webmin/.webmin";
 	chcon -Rv -t tmp_t "/var/webmin/.webmin";
 |	echo -e "y\n" | apt-get install apt-transport-https
-|	echo -e "y\n" | apt-get update
-|	echo -e "y\n" | apt-get install webmin
+	echo -e "y\n" | apt-get update
+	echo -e "y\n" | apt-get install webmin
 .. code-block:: bash
 	:linenos:
 
@@ -2060,14 +2030,17 @@ AutoInstall Cut Discr
 	systemctl enable webmin
 	systemctl start webmin
 	
-	semanage permissive -a boot_t
+|	semanage permissive -a boot_t
+.. code-block:: bash
+	:linenos:
+
 	semanage permissive -a crond_t
 	semanage permissive -a crontab_t
 	semanage permissive -a system_crontab_t
 	semanage module -d permissive_boot_t
 |	semanage module -r permissive_boot_t
-|	semanage user -m -R "system_r sysadm_r staff_r" -r "s0-s0:c0.c1023" sysadm_u
-|	semanage user -m -R "system_r" -r "s0-s0:c0.c1023" system_u
+	semanage user -m -R "system_r sysadm_r staff_r" -r "s0-s0:c0.c1023" sysadm_u
+	semanage user -m -R "system_r" -r "s0-s0:c0.c1023" system_u
 .. code-block:: bash
 	:linenos:
 
@@ -2075,39 +2048,39 @@ AutoInstall Cut Discr
 	semanage login -a -s root -r "s0-s0:c0.c1023" admin_tech
 	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" %admins
 |	semanage login -m -s sysadm_u -r "s0-s0:c0.c1023" root
-|	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" %root
+	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" %root
 .. code-block:: bash
 	:linenos:
 
 	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" %sudo
 	semanage login -a -s user_u tom
 |	sudo chmod o-rwx -R "/etc/";
-|	sudo chmod o-rwx -R "/boot/";
-|	sudo chmod o-rwx -R "/var/";
-|	sudo chmod o+rwx "/sys/";
-|	sudo chmod o+rwx -R "/srv/";
-|	sudo chmod o+rwx -R "/mnt/";
-|	sudo chmod o+rwx "/proc/";
-|	sudo chmod o+rwx -R "/tmp/";
-|	sudo chmod o+rwx "/media/";
-|	sudo chmod o+rwx "/dev/";
-|	chmod o+rx "/etc/profile";
-|	chmod o+rx "/etc/bash.bashrc";
-|	chmod o+rx "/etc/nanorc";
-|	chmod o+rx "/etc/passwd";
+	sudo chmod o-rwx -R "/boot/";
+	sudo chmod o-rwx -R "/var/";
+	sudo chmod o+rwx "/sys/";
+	sudo chmod o+rwx -R "/srv/";
+	sudo chmod o+rwx -R "/mnt/";
+	sudo chmod o+rwx "/proc/";
+	sudo chmod o+rwx -R "/tmp/";
+	sudo chmod o+rwx "/media/";
+	sudo chmod o+rwx "/dev/";
+	chmod o+rx "/etc/profile";
+	chmod o+rx "/etc/bash.bashrc";
+	chmod o+rx "/etc/nanorc";
+	chmod o+rx "/etc/passwd";
 .. code-block:: bash
 	:linenos:
 
 	
 |		Display manager: gdm3 sddm
-|		GDM KDM LightDM LXDM МДМ SLIM XDM
-|	
-|		sudo systemctl disable mdm.service 
-|		sudo systemctl enable sddm.service
-|	
-|		kde-full
-|		
-|		sudo tasksel install kde-desktop
+		GDM KDM LightDM LXDM МДМ SLIM XDM
+	
+		sudo systemctl disable mdm.service 
+		sudo systemctl enable sddm.service
+	
+		kde-full
+		
+		sudo tasksel install kde-desktop
 .. code-block:: bash
 	:linenos:
 
@@ -2131,7 +2104,7 @@ AutoInstall Cut Discr
 	fi
 	done;
 |	set +x
-|	ls -la
+	ls -la
 .. code-block:: bash
 	:linenos:
 

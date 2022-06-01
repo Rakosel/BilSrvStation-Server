@@ -179,10 +179,12 @@ for i in linep:
 #   search comment #
         #print(POS_LIST[k]);[a-zA-Z0-9\t\n$\[\]/_\ ] [a-zA-Z0-9\t\n$\[\]/_\ ]
     if ((''.join(re.findall("^[^\#]*", linep[j])))!=""):
+        linep[j] = re.sub("vkd174asqd", '********', linep[j])
+        linep[j] = re.sub("vkd174", '********', linep[j])
+        #linep[j] = re.sub("vkd174asqd", '********', linep[j])
         if((trig_search_code & 0x04) == 0x04):
             trig_search_code&=~0x04;
         trig_search_code|=0x01;
-        
         if(trig_search_code == 0x01):
             POS_0=j;
             trig_search_code|=0x02;
@@ -197,7 +199,8 @@ for i in linep:
         k+=1;
         
     if((''.join(re.findall("^#", linep[j]))).strip()!=""):
-        linep[j] = re.sub("vkd174asqd|vkd174|\"vkd174asqd\"", '********', linep[j])
+        linep[j] = re.sub("vkd174asqd", '********', linep[j])
+        linep[j] = re.sub("vkd174", '********', linep[j])
         #linep[j] = strToList("{0}".format(''.join(linep[j]).replace("vkd174asqd","********")));
         if((trig_search_comm & 0x08) == 0x08):
             trig_search_comm&=~0x08;
@@ -281,12 +284,23 @@ print("+_++++++++++++++++++++++++++")
 s0="";
 s1="";
 s2="";
+stmp="";
+strapt="";
+strpip="";
+strsemodule="";
+strsepolicy="";
+strsepermissive=""
+strsebool=""
+strseport=""
+strsecontext=""
+trig_search_comm=0;
 #print(POS_LIST)
 #https://pyneng.readthedocs.io/ru/latest/book/15_module_re/
 for i in linep_out:
     if(''.join(POS_LIST[j])[0]=="#"):
         POS_0=int((''.join(POS_LIST[j]).split(' ')[1]),10);
         POS_END=int((''.join(POS_LIST[j]).split(' ')[2]),10);
+        trig_search_comm=0;
         while(POS_0<=POS_END):
             #print(linep[POS_0])
             s0=''.join(re.findall("#\t\t\t(\d\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
@@ -314,10 +328,12 @@ for i in linep_out:
                 #print("{0} {1}".format(POS_0,POS_END))
             if(s0=="" and s1=="" and s2==""):
                 linep[POS_0] = re.sub('#<--!|#!-->', '|\t', linep[POS_0])
-                linep[POS_0] = re.sub('#', '|\t', linep[POS_0])
+                if (trig_search_comm==0):
+                    linep[POS_0] = re.sub('#', '|\t', linep[POS_0]);trig_search_comm=1;
+                else:
+                    linep[POS_0] = re.sub('#', '\t', linep[POS_0])
                 #linep[POS_0] = re.sub('|    danger!!!', '.. danger::', linep[POS_0])
                 linep_out[k] = re.sub('^ ', '', linep[POS_0])
-                POS_0=POS_0+1;
             #if(POS_0==18): print(linep[POS_0]);
             #if(''.join(re.findall("^|\t ([a-zA-Z!]*)", linep_out[k]))=="danger!!!"):
             #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
@@ -325,48 +341,51 @@ for i in linep_out:
             #    linep_out[k] = strToList("{0}\n".format(s0));
                 #linep_out[k] = re.sub('#<--!|#!-->', '', linep[POS_0]);
                 #linep_out[k] = linep[POS_0];
-            if(''.join(re.findall("^|\t ([a-zA-Z!]*)", linep_out[k]))=="attention!!!"):
+                #print(''.join(re.findall(".*([vkd174]*)", linep_out[k])))
+            if(''.join(re.findall("^\t ([a-zA-Z!]*)", linep_out[k]))=="attention!!!"):
             #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("|\t attention!!!",".. attention::");
+                s0=''.join(linep_out[k]).replace("attention!!!",".. attention::");
                 linep_out[k] = strToList("{0}\n".format(s0));
-            if(''.join(re.findall("^|\t ([a-zA-Z!]*)", linep_out[k]))=="caution!!!"):
+            if(''.join(re.findall("^\t ([a-zA-Z!]*)", linep_out[k]))=="caution!!!"):
             #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("|\t caution!!!",".. caution::");
+                s0=''.join(linep_out[k]).replace("caution!!!",".. caution::");
                 linep_out[k] = strToList("{0}\n".format(s0));
-            if(''.join(re.findall("^|\t ([a-zA-Z!]*)", linep_out[k]))=="error!!!"):
+            if(''.join(re.findall("^\t ([a-zA-Z!]*)", linep_out[k]))=="error!!!"):
             #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("|\t error!!!",".. error::");
+                s0=''.join(linep_out[k]).replace("error!!!",".. error::");
                 linep_out[k] = strToList("{0}\n".format(s0));
-            if(''.join(re.findall("^|\t ([a-zA-Z!]*)", linep_out[k]))=="hint!!!"):
+            if(''.join(re.findall("^\t ([a-zA-Z!]*)", linep_out[k]))=="hint!!!"):
             #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("|\t hint!!!",".. hint::");
+                s0=''.join(linep_out[k]).replace("hint!!!",".. hint::");
                 linep_out[k] = strToList("{0}\n".format(s0));
-            if(''.join(re.findall("^|\t ([a-zA-Z!]*)", linep_out[k]))=="important!!!"):
+            if(''.join(re.findall("^\t ([a-zA-Z!]*)", linep_out[k]))=="important!!!"):
             #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("|\t important!!!",".. important::");
+                s0=''.join(linep_out[k]).replace("important!!!",".. important::");
                 linep_out[k] = strToList("{0}\n".format(s0));
-            if(''.join(re.findall("^|\t ([a-zA-Z!]*)", linep_out[k]))=="warning!!!"):
+            if(''.join(re.findall("^\t ([a-zA-Z!]*)", linep_out[k]))=="warning!!!"):
             #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("|\t warning!!!",".. warning::");
+                s0=''.join(linep_out[k]).replace("warning!!!",".. warning::");
                 linep_out[k] = strToList("{0}\n".format(s0));
-            if(''.join(re.findall("^|\t ([a-zA-Z!]*)", linep_out[k]))=="tip!!!"):
+            if(''.join(re.findall("^\t ([a-zA-Z!]*)", linep_out[k]))=="tip!!!"):
             #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("|\t tip!!!",".. tip::");
+                s0=''.join(linep_out[k]).replace("tip!!!",".. tip::");
                 linep_out[k] = strToList("{0}\n".format(s0));
-            if(''.join(re.findall("^|\t ([a-zA-Z!]*)", linep_out[k]))=="note!!!"):
+            if(''.join(re.findall("^\t ([a-zA-Z!]*)", linep_out[k]))=="note!!!"):
             #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("|\t note!!!",".. note::");
+                s0=''.join(linep_out[k]).replace("note!!!",".. note::");
                 linep_out[k] = strToList("{0}\n".format(s0));
-            if(''.join(re.findall("^|\t ([a-zA-Z!]*)", linep_out[k]))=="rubric!!!"):
+            if(''.join(re.findall("^\t ([a-zA-Z!]*)", linep_out[k]))=="rubric!!!"):
             #    print(''.join(re.findall("^|    rubric([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("|\t rubric!!!",".. rubric::");
+                s0=''.join(linep_out[k]).replace("rubric!!!",".. rubric::");
                 linep_out[k] = strToList("{0}\n".format(s0));
-            if(''.join(re.findall("^|\t ([a-zA-Z!]*)", linep_out[k]))=="danger!!!"):
+            if(''.join(re.findall("^\t ([a-zA-Z!]*)", linep_out[k]))=="danger!!!"):
             #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("|\t danger!!!",".. danger::");
+                s0=''.join(linep_out[k]).replace("danger!!!",".. danger::");
                 linep_out[k] = strToList("{0}\n".format(s0));
-#
-#
+            POS_0=POS_0+1;
+            #linep_out[k] = strToList("{0}".format(''.join(linep_out[j]).replace("vkd174asqd","********")));
+        #linep[j] = strToList("{0}".format(''.join(linep[j]).replace("vkd174asqd","********")));
+            #int((''.join(POS_LIST[j]).split(' ')[2]),10);
             k+=1;
     if (''.join(POS_LIST[j])[0]=="$"):
         POS_0=int((''.join(POS_LIST[j]).split(' ')[1]),10);
@@ -375,13 +394,24 @@ for i in linep_out:
         linep_out[k]=strToList("{0}\n".format(s0));
         k+=1;
         while(POS_0<=POS_END):
-            #s1=''.join(re.findall("#\t\t\t(\d.\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
-            #s2=''.join(re.findall("#\t\t\t(\d.\d.\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
-            #s0='\t'.join(linep[POS_0]);
-            #linep_out[k] = strToList("{0}".format(''.join(s0)));
-                #linep_out[k] = re.sub('#<--!|#!-->', '', linep[POS_0]);
-            #linep_out[k] = strToList("{0}\n".format(s0));
             linep_out[k] = strToList("\t{0}".format(''.join(linep[POS_0])));
+            #print(''.join(re.findall("^|.*apt\-get install( [a-zA-Z/_\-&><=$%\[\] ]*)", linep[k])))
+            if(''.join(re.findall("apt", linep[POS_0]))=="apt"):
+                strapt+=''.join(re.findall("^.*apt\-get install( [a-zA-Z0-9/_\-&><=$%\[\]* ]*)", linep[POS_0]))
+                strapt+=''.join(re.findall("^.*sudo apt install( [a-zA-Z0-9/_\-&><=$%\[\]* ]*)", linep[POS_0]))
+                #strapt+=''.join(re.findall("^.*apt install( [a-zA-Z0-9/_\-&><=$%\[\]* ]*)", linep[POS_0]))
+            if(''.join(re.findall("semodule", linep[POS_0]))=="semodule"):
+                strsemodule+=''.join(linep[POS_0]).split(' ')[0]+' '+''.join(linep[POS_0]).split(' ')[2];
+            if(''.join(re.findall("setsebool", linep[POS_0]))=="setsebool"):
+                strsebool+=''.join(linep[POS_0]).split(' ')[0]+' '+''.join(linep[POS_0]).split(' ')[2]+' '+''.join(linep[POS_0]).split(' ')[3];
+            if(''.join(re.findall("semanage permissive", linep[POS_0]))=="semanage permissive"):
+                strsepermissive+=''.join(linep[POS_0]).split(' ')[1]+' '+''.join(linep[POS_0]).split(' ')[2]+' '+''.join(linep[POS_0]).split(' ')[3]+'\n';
+            if(''.join(re.findall("semanage port", linep[POS_0]))=="semanage port"):
+                strseport+=''.join(linep[POS_0]).split(' ')[1]+' '+''.join(linep[POS_0]).split(' ')[4]+' '+''.join(linep[POS_0]).split(' ')[6]+' '+''.join(linep[POS_0]).split(' ')[7];
+            if(''.join(re.findall("semanage fcontext", linep[POS_0]))=="semanage fcontext"):
+                strsecontext+=''.join(linep[POS_0]).split(' ')[1]+' '+''.join(linep[POS_0]).split(' ')[4]+' '+''.join(linep[POS_0]).split(' ')[5];
+            if(''.join(re.findall("pip", linep[POS_0]))=="pip"):
+                strpip+=''.join(re.findall("^.*pip install( [a-zA-Z0-9/_\-&><=$%\[\]* ]*)", linep[POS_0]));
             k+=1;
             POS_0=POS_0+1;
     j+=1;
@@ -389,6 +419,29 @@ for i in linep_out:
     if((''.join(POS_LIST[j])[0])== "S"):
         break;
 j=0;
+print(strapt)
+print("___________")
+print(strpip)
+print("___________")
+print(strselogin)
+print("___________")
+print(strseuser)
+print("___________")
+print(strsemodule)
+print("___________")
+print(strsebool)
+print("___________")
+print(strsepermissive)
+print("___________")
+print(strsecontext)
+print("___________")
+print(strseport)
+            #s1=''.join(re.findall("#\t\t\t(\d.\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
+            #s2=''.join(re.findall("#\t\t\t(\d.\d.\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
+            #s0='\t'.join(linep[POS_0]);
+            #linep_out[k] = strToList("{0}".format(''.join(s0)));
+                #linep_out[k] = re.sub('#<--!|#!-->', '', linep[POS_0]);
+            #linep_out[k] = strToList("{0}\n".format(s0));
 
 pdir=''.join([os.path.abspath('../'),"/docs/cut_discr_pii2.rst"]);
 #pdir="/opt/SAMBA_SHARE/git/BilSrvStation_Server_PC/docs/cut_discr.rst";

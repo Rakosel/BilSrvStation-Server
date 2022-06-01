@@ -29,16 +29,17 @@ import extract_pii2_all,extract_pc_all,extract_preseed_all
 #sys.path.insert(0, pathlib.Path(__file__).parents[2].resolve().as_posix())
 # General
 #sys.path.insert(0, os.path.abspath('../..'))
-exclude_patterns = ['zzz']
+#exclude_patterns = ['zzz']
 
 numfig = True
-
-today = ''
+# time.strtime
+today = '%d.%m.%Y'
 today_fmt = '%B %d, %Y'
 
 # -- Project information -----------------------------------------------------
 
 project = 'BilSrvStation_Server_PC'
+project_copyright = 'BilSrvStation_Server_PC'
 copyright = '2022, BiLymo iOT corp'
 author = 'BiLymo F@rid'
 
@@ -81,7 +82,11 @@ templates_path = ['_templates']
 # You can specify multiple suffix as a list of string:
 #
 # source_suffix = ['.rst', '.md']
-source_suffix = '.rst'
+source_suffix = {
+	'.rst': 'restructuredtext',
+	'.txt': 'restructuredtext',
+	'.md': 'markdown'.
+}
 
 man_pages = [
     (
@@ -166,7 +171,7 @@ add_module_names = True
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = 'ru'
+language = 'ru,en'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.

@@ -293,6 +293,8 @@ strsepermissive=""
 strsebool=""
 strseport=""
 strsecontext=""
+strselogin=""
+strseuser=""
 trig_search_comm=0;
 #print(POS_LIST)
 #https://pyneng.readthedocs.io/ru/latest/book/15_module_re/

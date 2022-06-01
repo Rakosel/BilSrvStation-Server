@@ -88,7 +88,7 @@ AutoInstall Cut Discr
 	step_two=${4:-"step_two"}
 	step_three=${5:-"step_three"}
 |	
-	+ install wpa_supplicant-0.7.3.tar.gz
+	 		+ install wpa_supplicant-0.7.3.tar.gz
 |	
 .. code-block:: bash
 	:linenos:
@@ -2030,10 +2030,7 @@ AutoInstall Cut Discr
 	systemctl enable webmin
 	systemctl start webmin
 	
-|	semanage permissive -a boot_t
-.. code-block:: bash
-	:linenos:
-
+	semanage permissive -a boot_t
 	semanage permissive -a crond_t
 	semanage permissive -a crontab_t
 	semanage permissive -a system_crontab_t

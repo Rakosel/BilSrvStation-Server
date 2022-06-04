@@ -16,6 +16,7 @@
    cut_discr_preseed
    cut_discr_pii2
    cut_discr_pii2_pack
+   cut_discr_cmd_shell
    full_discr
    structure
    build_doc

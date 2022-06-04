@@ -21,7 +21,7 @@ import sphinx_rtd_theme
 
 # adding Folder_2 to the system path
 
-import extract_pii2_all,extract_pc_all,extract_preseed_all
+import extract_pii2_all,extract_pc_all,extract_preseed_all,extract_cmd_shell_all
 
 #import django
 

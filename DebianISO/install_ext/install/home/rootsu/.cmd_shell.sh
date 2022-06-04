@@ -2,6 +2,7 @@
 #
 set -x
 #
+#			01	User script generator
 #   Version 1.1.10a
 #
 #
@@ -20,7 +21,7 @@ set -x
 # cmd -umod [-mu] XXX -umod [-mg] XXX 
 #user_exists(){ id "$1" &>/dev/null; }
 #set -x
-
+#			01.01	Mode
 USER_ADD="";
 GROUP_ADD="";
 UROUP_ID="";
@@ -32,11 +33,8 @@ HOME_PATH="";
 PWD_USER="";
 COMMENT_USER="";
 PARAMETER="";
-
-
 #	https://www.golinuxcloud.com/bash-split-string-into-array-linux/
 #	https://superuser.com/questions/461981/how-do-i-convert-a-bash-array-variable-to-a-string-delimited-with-newlines
-
 #  username="admin"
 #  groups username | sed -n -e "s/^\(.*\)\:.*/\1/p"
 # 
@@ -44,9 +42,6 @@ PARAMETER="";
 #  grarr=($psarr)
 # 
 # echo "arr: ${grarr[1]}"
-
-
-
 #LOG_DIR=/var/log
 ROOT_UID=0     # ������ ������������ � $UID 0 ����� ���������� root.
 #LINES=50       # ���������� ����������� ����� ��-���������.

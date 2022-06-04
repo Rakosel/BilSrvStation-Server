@@ -125,8 +125,8 @@ if not (os.path.exists(pdir)):
 #Section Title
 #^^^^^^^^^^^^^
 
-print("_______________")
-print("_______________")
+#print("_______________")
+#print("_______________")
 
 #print(re.findall("#\t\t\t(\d.\d+\t+[a-zA-Z/_\-& ]*)", linep[20]))
 #print(re.findall("#\t\t\t(\d.\d.\d+\t+[a-zA-Z/_\-& ]*)", linep[193]))
@@ -143,7 +143,7 @@ with open(pdir,"rt",encoding='utf-8') as fpii2:
 fpii2.close();
 
 
-print("_____________________________________________")
+#print("_____________________________________________")
 
 #print(linep)
 
@@ -226,8 +226,8 @@ while(k<=(j+10)):
 POS_LIST[k]=strToList("S 0 0");
 #print(POS_LIST)
 
-print(k)
-print;("_____________________________________________")
+#print(k)
+#print;("_____________________________________________")
 
 j=0; k=0;
 str_search="";
@@ -261,7 +261,7 @@ k+=1;
 #fpii2.close();
 #print(POS_LIST[362])
 #print(POS_LIST[363])
-print("+_++++++++++++++++++++++++++")
+#print("+_++++++++++++++++++++++++++")
 
 #print(linep[18])
 #print(''.join(re.findall("(\d.\d\d.\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[802])))
@@ -437,8 +437,8 @@ fpii2.close();
 #print(re.findall("^#<--!\(.*\)$", linep[4]));    
 
 #rint(linep[2])
-print(" ");
-print(" ");
+#print(" ");
+#print(" ");
 #p = re.search('\bclass\b')
 #______SEARCH Commentary pii2.sh______
 #

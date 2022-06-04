@@ -15,6 +15,7 @@
    cut_discr_pc
    cut_discr_preseed
    cut_discr_pii2
+   cut_discr_pii2_pack
    full_discr
    structure
    build_doc
@@ -30,7 +31,6 @@ Indices and tables
 .. |date| date:: %d.%m.%Y
 .. |time| time:: %H.%M.%s
 .. |author| replace:: BiLymo F@rid
-
 .. |copy| unicode:: 0xA9
 .. |---| unicode:: U+02014
 

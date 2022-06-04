@@ -69,7 +69,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#create-users-and-groups">4.1.10. 01.10           Create users and groups</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id5">4.1.10.1. 01.10.01                Create users and groups</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">4.1.10.1. 01.10.01                Create users and groups</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#create-ssh-ssl">4.1.10.2. 01.10.02                Create ssh_ssl</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#install-ssh-settings">4.1.10.3. 01.10.03        Install ssh settings</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#create-users-ssh">4.1.10.4. 01.10.04        Create users ssh</a></li>
@@ -119,66 +119,63 @@
   <div class="section" id="autoinstall-cut-discr">
 <h1><span class="section-number">4. </span>AutoInstall Cut Discr<a class="headerlink" href="#autoinstall-cut-discr" title="Permalink to this headline"></a></h1>
 <div class="line-block">
-<div class="line">Published by <a href="#id6"><span class="problematic" id="id7">|author|</span></a></div>
+<div class="line">Published by <a href="#id9"><span class="problematic" id="id10">|author|</span></a></div>
 <div class="line">Date: <em>|date|</em> Time <em>|time|</em></div>
 <div class="line-block">
 <div class="line">Type script: <em>bash</em></div>
-<div class="line">!/bin/bash
--xv
-set -x
- <a class="reference external" href="https://wiki.debian.org/Microcode">https://wiki.debian.org/Microcode</a></div>
+<div class="line">!/bin/bash</div>
+<div class="line">-xv</div>
+<div class="line">set -x</div>
 <div class="line-block">
-<div class="line">uncomment      639!!!!
-if [[ -z $STATE ]]; then
-        exit 3;
-fi
- user add
- echo &quot;<strong>****</strong>&quot; | mkpasswd -s -H MD5
- sudo usermod -p $(echo &quot;&quot; | mkpasswd -s -H MD5) test1
- sudo usermod -p $S test1
- su -p test1</div>
+<div class="line"><a class="reference external" href="https://wiki.debian.org/Microcode">https://wiki.debian.org/Microcode</a></div>
+<div class="line">uncomment |    639!!!!</div>
+</div>
+<div class="line">if [[ -z $STATE ]]; then</div>
+<div class="line-block">
+<div class="line">exit 3;</div>
+</div>
+<div class="line">fi</div>
+<div class="line-block">
+<div class="line">user add</div>
+<div class="line">echo &quot;<strong>****</strong>&quot; | mkpasswd -s -H MD5</div>
+<div class="line">sudo usermod -p $(echo &quot;&quot; | mkpasswd -s -H MD5) test1</div>
+<div class="line">sudo usermod -p $S test1</div>
+<div class="line">su -p test1</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
 </div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
 </div>
 <div class="section" id="auto-postinstall">
 <h2><span class="section-number">4.1. </span>01      AUTO POSTINSTALL<a class="headerlink" href="#auto-postinstall" title="Permalink to this headline"></a></h2>
-<blockquote>
-<div><div class="admonition danger">
-<p class="admonition-title">Danger</p>
-<p>do postinstall copy wufu &amp; wpa_supplicant.conf + SAMBA</p>
+<div class="line-block">
+<div class="line">danger!!! do postinstall copy wufu &amp; wpa_supplicant.conf + SAMBA</div>
+<div class="line"><br /></div>
 </div>
-</div></blockquote>
 <div class="section" id="pre-install-emv-and-settings">
 <h3><span class="section-number">4.1.1. </span>01.01   PRE-INSTALL EMV AND SETTINGS<a class="headerlink" href="#pre-install-emv-and-settings" title="Permalink to this headline"></a></h3>
-<blockquote>
-<div><p>d-i preseed/late_command string mkdir -p /target/install/; cp -R /install/* /target/install/; cp -Rf /install/lib/ /target/lib/;</p>
-<p>cd /install/
-tar -xvf wpa_supplicant-0.7.3.tar.gz
-cd ./wpa_supplicant-0.7.3/
-./configure
-./install</p>
-</div></blockquote>
 <div class="line-block">
+<div class="line">d-i preseed/late_command string mkdir -p /target/install/; cp -R /install/* /target/install/; cp -Rf /install/lib/ /target/lib/;</div>
 <div class="line"><br /></div>
-<div class="line">include this boilerplate</div>
-</div>
-<blockquote>
-<div><blockquote>
-<div><blockquote>
-<div><dl class="simple">
-<dt><a class="reference external" href="https://stackoverflow.com/questions/9639103/is-there-a-goto-statement-in-bash">https://stackoverflow.com/questions/9639103/is-there-a-goto-statement-in-bash</a></dt><dd><p>GOTO for bash, based upon <a class="reference external" href="https://stackoverflow.com/a/31269848/5353461">https://stackoverflow.com/a/31269848/5353461</a></p>
-</dd>
-</dl>
-</div></blockquote>
-<p>rm /install/pii2.sh /etc/init.d/</p>
-</div></blockquote>
-<p>update-rc.d -f pii2.sh remove</p>
-</div></blockquote>
+<div class="line">cd /install/</div>
+<div class="line">tar -xvf wpa_supplicant-0.7.3.tar.gz</div>
+<div class="line">cd ./wpa_supplicant-0.7.3/</div>
+<div class="line">./configure</div>
+<div class="line">./install</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
 <div class="line-block">
+<div class="line">include this boilerplate</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://stackoverflow.com/questions/9639103/is-there-a-goto-statement-in-bash">https://stackoverflow.com/questions/9639103/is-there-a-goto-statement-in-bash</a></div>
+<div class="line">|        GOTO for bash, based upon <a class="reference external" href="https://stackoverflow.com/a/31269848/5353461">https://stackoverflow.com/a/31269848/5353461</a></div>
+<div class="line"><br /></div>
+</div>
+<div class="line">rm /install/pii2.sh /etc/init.d/</div>
+</div>
+<div class="line">update-rc.d -f pii2.sh remove</div>
 <div class="line"><br /></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">function</span> jumpto
@@ -195,12 +192,11 @@ cd ./wpa_supplicant-0.7.3/
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
-</div>
-<blockquote>
-<div><p>if [[ -n $( egrep -n '^[a-z] || ^       ' interfaces) &amp;&amp; TMPS==&quot;0&quot; ]]; then</p>
-</div></blockquote>
-<div class="line-block">
 <div class="line"><br /></div>
+<div class="line-block">
+<div class="line">if [[ -n $( egrep -n '^[a-z] || ^|      ' interfaces) &amp;&amp; TMPS==&quot;0&quot; ]]; then</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nv">BUF</span><span class="o">=</span><span class="s2">&quot;# This file describes the network interfaces available on your system\n</span>
 <span class="linenos"> 2</span><span class="s2">        # and how to activate them. For more information, see interfaces(5).\n</span>
@@ -227,8 +223,11 @@ cd ./wpa_supplicant-0.7.3/
 </pre></div>
 </div>
 <div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
 <div class="line">+ install wpa_supplicant-0.7.3.tar.gz</div>
 <div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nb">export</span> <span class="nv">LC_ALL</span><span class="o">=</span>ru_RU.UTF-8
 <span class="linenos"> 2</span><span class="nv">FILES</span><span class="o">=</span><span class="s2">&quot;steps.txt&quot;</span>
@@ -264,10 +263,13 @@ cd ./wpa_supplicant-0.7.3/
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line"><a class="reference external" href="https://askubuntu.com/questions/1705/how-can-i-create-a-select-menu-in-a-shell-script">https://askubuntu.com/questions/1705/how-can-i-create-a-select-menu-in-a-shell-script</a>
-options=(&quot;Option 1&quot; &quot;Option 2&quot; &quot;Option 3&quot; &quot;Quit&quot;)
-select opt in &quot;${options[&#64;]}&quot;</div>
 <div class="line"><br /></div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://askubuntu.com/questions/1705/how-can-i-create-a-select-menu-in-a-shell-script">https://askubuntu.com/questions/1705/how-can-i-create-a-select-menu-in-a-shell-script</a></div>
+<div class="line">options=(&quot;Option 1&quot; &quot;Option 2&quot; &quot;Option 3&quot; &quot;Quit&quot;)</div>
+<div class="line">select opt in &quot;${options[&#64;]}&quot;</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">select</span> opt in Auto PoluAuto Hands Exit<span class="p">;</span> <span class="k">do</span>
 <span class="linenos"> 2</span><span class="k">case</span> <span class="nv">$opt</span> in
@@ -301,10 +303,15 @@ select opt in &quot;${options[&#64;]}&quot;</div>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">  Проверка отдельных переменных окружения.
-  Если переменная, к примеру $USER, не установлена,
-+ то выводится сообщение об ошибке.</div>
 <div class="line"><br /></div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">Проверка отдельных переменных окружения.</div>
+<div class="line">Если переменная, к примеру $USER, не установлена,</div>
+</div>
+<div class="line">+ то выводится сообщение об ошибке.</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>: <span class="si">${</span><span class="nv">HOSTNAME</span><span class="p">?</span><span class="si">}</span> <span class="si">${</span><span class="nv">USER</span><span class="p">?</span><span class="si">}</span> <span class="si">${</span><span class="nv">HOME</span><span class="p">?</span><span class="si">}</span> <span class="si">${</span><span class="nv">MAIL</span><span class="p">?</span><span class="si">}</span>
 <span class="linenos"> 2</span><span class="nb">echo</span>
@@ -324,27 +331,39 @@ select opt in &quot;${options[&#64;]}&quot;</div>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line"> &amp;VERSION_DEBIAN -e mojno off
-lsb_release -d | sed -n -e 's/.*(([^)]+))/1/p'
- egrep '^[a-z]' sources.list
- sed -i 's/     deb-src http/deb-src http/g' sources.list
- sed -i 's/     deb http/deb http/g' sources.list
-        algoritm:
-        a.0 search deb, deb-src
-???     bash buffer
-lsb_release -d | sed -n 's/.*([^)])//p'
-        if then yes ???
-        next
-        else
-        poist   deb,    deb-src naub,security, updates
-        if yes ???, to ubrat
-        else
-        version + add deb-src, deb <a class="reference external" href="http://">http://</a> ... + non-free
-        a.1 search 'contrib /<a href="#id1"><span class="problematic" id="id2">|</span></a>non-free' &gt;&gt; test
-        a.2 if test = 0 ? then
-        ??? nado grep posi, a potom replace with check codename:
-        lsb_version -da
-        a.3 else ok</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">&amp;VERSION_DEBIAN -e mojno off</div>
+</div>
+<div class="line">lsb_release -d | sed -n -e 's/.*(([^)]+))/1/p'</div>
+<div class="line-block">
+<div class="line">egrep '^[a-z]' sources.list</div>
+<div class="line">sed -i 's/|    deb-src http/deb-src http/g' sources.list</div>
+<div class="line">sed -i 's/|    deb http/deb http/g' sources.list</div>
+<div class="line-block">
+<div class="line">algoritm:</div>
+<div class="line">a.0 search deb, deb-src</div>
+</div>
+</div>
+<div class="line">???     bash buffer</div>
+<div class="line">lsb_release -d | sed -n 's/.*([^)])//p'</div>
+<div class="line-block">
+<div class="line">if then yes ???</div>
+<div class="line">next</div>
+<div class="line">else</div>
+<div class="line">poist | deb, |  deb-src naub,security, updates</div>
+<div class="line">if yes ???, to ubrat |</div>
+<div class="line">else</div>
+<div class="line">version + add deb-src, deb <a class="reference external" href="http://">http://</a> ... + non-free</div>
+<div class="line">a.1 search 'contrib /<a href="#id1"><span class="problematic" id="id2">|</span></a>non-free' &gt;&gt; test</div>
+<div class="line">a.2 if test = 0 ? then</div>
+<div class="line">??? nado grep posi, a potom replace with check codename:</div>
+<div class="line">lsb_version -da</div>
+<div class="line">a.3 else ok</div>
+<div class="line"><br /></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="settings-etc-network-interfaces-interface-sh">
@@ -373,10 +392,8 @@ lsb_release -d | sed -n 's/.*([^)])//p'
 </div>
 <div class="section" id="search-interfaces">
 <h4><span class="section-number">4.1.3.2. </span>01.03.02        SEARCH INTERFACES<a class="headerlink" href="#search-interfaces" title="Permalink to this headline"></a></h4>
-<blockquote>
-<div><p>2:      number</p>
-</div></blockquote>
 <div class="line-block">
+<div class="line">|       2:      number</div>
 <div class="line"><br /></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="o">[[</span> ! -f /etc/network/interfaces <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
@@ -391,8 +408,11 @@ lsb_release -d | sed -n 's/.*([^)])//p'
 </pre></div>
 </div>
 <div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
 <div class="line">t.k while 1 step s.b. str !0</div>
 <div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nv">COUNT</span><span class="o">=</span><span class="m">1</span><span class="p">;</span>
 <span class="linenos"> 2</span><span class="nv">NET_EN</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
@@ -408,8 +428,11 @@ lsb_release -d | sed -n 's/.*([^)])//p'
 </pre></div>
 </div>
 <div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
 <div class="line">search index arr for WIFI[COUNT] and NETEN[COUNT]</div>
 <div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">for</span> COUNT in <span class="si">${</span><span class="nv">NET_ARR</span><span class="p">[@]</span><span class="si">}</span>
 <span class="linenos"> 2</span><span class="k">do</span>
@@ -435,18 +458,19 @@ lsb_release -d | sed -n 's/.*([^)])//p'
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">state =&gt; &quot;1&quot; add interfaces only en_*!!!
-state =&gt; &quot;0&quot; all ok
-interfaces.back - zamenit bez .back</div>
-</div>
-<blockquote>
-<div><p>proverka interfaces</p>
-<blockquote>
-<div><p>Jump to label interface_sh</p>
-</div></blockquote>
-</div></blockquote>
-<div class="line-block">
 <div class="line"><br /></div>
+<div class="line-block">
+<div class="line">state =&gt; &quot;1&quot; add interfaces only en_*!!!</div>
+<div class="line">state =&gt; &quot;0&quot; all ok</div>
+<div class="line">interfaces.back - zamenit bez .back</div>
+<div class="line"><br /></div>
+<div class="line">proverka interfaces</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">Jump to label interface_sh</div>
+<div class="line"><br /></div>
+</div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="o">[[</span> -z <span class="k">$(</span> egrep -n <span class="s1">&#39;^[a-z] || ^#&#39;</span> interfaces<span class="k">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$TMPS</span> -eq <span class="s2">&quot;0&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 <span class="linenos">2</span>reinterfaces
@@ -454,55 +478,72 @@ interfaces.back - zamenit bez .back</div>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line"> cat interfaces.back
- analys set en wifi to two branch
- create interfaces.tmp c orig
- empty? yes - add svoi, else search 'source' 'allow' 'iface' +append_wpa
- search source and return number line $begin
-BEGIN=&quot;0&quot;
-END=&quot;0&quot;;
-                mojet nay4itca kak udalit ostalnye stroki?
- <a class="reference external" href="https://www.baeldung.com/linux/bash-count-lines-in-file">https://www.baeldung.com/linux/bash-count-lines-in-file</a>
- sed -r -e '/[a-z]/+{1,}*/=' &lt; interfaces.back
- sed -r -e '/.*/+{1,}/ { =;  q; }' &lt; interfaces.back
- echo -e &quot;abcnrtan123456789&quot; | sed -r -e '/.*[0-9]/{1,/}/'
- sed -r -e '/[a-z]/+{1,}*/{=;q;}' interfaces.back</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">cat interfaces.back</div>
+<div class="line">analys set en wifi to two branch</div>
+<div class="line">create interfaces.tmp c orig</div>
+<div class="line">empty? yes - add svoi, else search 'source' 'allow' 'iface' +append_wpa</div>
+<div class="line">search source and return number line $begin</div>
 </div>
-<blockquote>
-<div><blockquote>
-<div><blockquote>
-<div><p>-1</p>
-</div></blockquote>
-<p><a class="reference external" href="https://www.gnu.org/software/sed/manual/html_node/Regular-Expressions.html">https://www.gnu.org/software/sed/manual/html_node/Regular-Expressions.html</a>
-str /sources/</p>
-</div></blockquote>
-<p>COUNT=$(($( sed -r -e '/[a-z]/+{1,}*/{=;q;}' interfaces.back | sed -n '$=')-1));
-if [[ $(($( sed -r -e '/[a-z]/+{1,}*/{=;q;}' interfaces | sed -n '$=')-1)) == &quot;0&quot; ]]; then</p>
-</div></blockquote>
+<div class="line">BEGIN=&quot;0&quot;</div>
+<div class="line">END=&quot;0&quot;;</div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">mojet nay4itca kak udalit ostalnye stroki?</div>
+</div>
+<div class="line"><a class="reference external" href="https://www.baeldung.com/linux/bash-count-lines-in-file">https://www.baeldung.com/linux/bash-count-lines-in-file</a></div>
+<div class="line">sed -r -e '/[a-z]/+{1,}*/=' &lt; interfaces.back</div>
+<div class="line">sed -r -e '/.*/+{1,}/ { =;  q; }' &lt; interfaces.back</div>
+<div class="line">echo -e &quot;abcnrtan123456789&quot; | sed -r -e '/.*[0-9]/{1,/}/'</div>
+<div class="line">sed -r -e '/[a-z]/+{1,}*/{=;q;}' interfaces.back</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">-1</div>
+<div class="line"><br /></div>
+</div>
+<div class="line"><a class="reference external" href="https://www.gnu.org/software/sed/manual/html_node/Regular-Expressions.html">https://www.gnu.org/software/sed/manual/html_node/Regular-Expressions.html</a></div>
+<div class="line">str /sources/</div>
+</div>
+<div class="line">COUNT=$(($( sed -r -e '/[a-z]/+{1,}*/{=;q;}' interfaces.back | sed -n '$=')-1));</div>
+<div class="line">if [[ $(($( sed -r -e '/[a-z]/+{1,}*/{=;q;}' interfaces | sed -n '$=')-1)) == &quot;0&quot; ]]; then</div>
+</div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">if [[ $(sed -n -e &quot;$=;&quot; interfaces) == &quot;0&quot; ]]; then
-                TMPS=&quot;1&quot;;
-                jumpto interface_sh;
-fi</div>
+<div class="line">if [[ $(sed -n -e &quot;$=;&quot; interfaces) == &quot;0&quot; ]]; then</div>
+<div class="line-block">
+<div class="line">TMPS=&quot;1&quot;;</div>
+<div class="line">jumpto interface_sh;</div>
+</div>
+<div class="line">fi</div>
 <div class="line"><br /></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nv">TMPS</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">sed -n -e &quot;s/rsa_cert_file=.*$|        rsa_cert_file=.*$/rsa_cert_file=/ssl/certs/vsftpd.crt/p&quot; vsftpd.conf</div>
 <div class="line"><br /></div>
+<div class="line-block">
+<div class="line">sed -n -e &quot;s/rsa_cert_file=.*$||       rsa_cert_file=.*$/rsa_cert_file=/ssl/certs/vsftpd.crt/p&quot; vsftpd.conf</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="o">[[</span> <span class="nv">$STATE</span> -eq <span class="s2">&quot;0&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">source /etc/network/interfaces.d/<em>n
- str auto $( sed -n -e &quot;s/(autos).</em>/1$NET_ARR[$NET_WI]s$NET_ARR[$NET_EN]/p&quot;</div>
 <div class="line"><br /></div>
+<div class="line-block">
+<div class="line">source /etc/network/interfaces.d/<a href="#id3"><span class="problematic" id="id4">*</span></a>n</div>
+<div class="line-block">
+<div class="line">str auto $( sed -n -e &quot;s/(autos).*/1$NET_ARR[$NET_WI]s$NET_ARR[$NET_EN]/p&quot;</div>
+<div class="line"><br /></div>
+</div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">if</span> <span class="o">[[</span> -z <span class="k">$(</span>sed -n -e <span class="s2">&quot;s/\(source \/etc\/network\/interfaces/\\).*/\1/p&quot;</span> interfaces<span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 <span class="linenos"> 2</span>                <span class="nv">TMPS</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">;</span>
@@ -517,8 +558,11 @@ fi</div>
 </pre></div>
 </div>
 <div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
 <div class="line">str iface NET_EN</div>
 <div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="o">[[</span> -z <span class="k">$(</span> sed -n -e <span class="s2">&quot;s/\(iface\slo\).*/\1/p&quot;</span> interfaces<span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 <span class="linenos">2</span>                <span class="nv">TMPS</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">;</span>
@@ -527,16 +571,22 @@ fi</div>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">TMPS=$(sed -n -e &quot;/(ifaceslo).*/{=;q;}&quot; interfaces)
-sed -i -e &quot;$TMPS s/(ifaces).*/1$NET_EN inet dhcp/g&quot; interfaces</div>
 <div class="line"><br /></div>
+<div class="line-block">
+<div class="line">TMPS=$(sed -n -e &quot;/(ifaceslo).*/{=;q;}&quot; interfaces)</div>
+<div class="line">sed -i -e &quot;$TMPS s/(ifaces).*/1$NET_EN inet dhcp/g&quot; interfaces</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sed -i -e <span class="s2">&quot;s/iface\slo.*/iface </span><span class="nv">$NET_EN</span><span class="s2"> inet dhcp/g&quot;</span> interfaces
 </pre></div>
 </div>
 <div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
 <div class="line">str allow-hotplug</div>
 <div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="o">[[</span> -z <span class="k">$(</span> sed -n -e <span class="s2">&quot;s/\(allow-hotplug\s\).*/\1/p&quot;</span> interfaces<span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 <span class="linenos">2</span>                <span class="nv">TMPS</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">;</span>
@@ -546,8 +596,11 @@ sed -i -e &quot;$TMPS s/(ifaces).*/1$NET_EN inet dhcp/g&quot; interfaces</div>
 </pre></div>
 </div>
 <div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
 <div class="line">str iface NET_WI</div>
 <div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="o">[[</span> -z <span class="k">$(</span> sed -n -e <span class="s2">&quot;s/\(iface\s\).*/\1/p&quot;</span> interfaces<span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 <span class="linenos">2</span>                <span class="nv">TMPS</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">;</span>
@@ -556,39 +609,61 @@ sed -i -e &quot;$TMPS s/(ifaces).*/1$NET_EN inet dhcp/g&quot; interfaces</div>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line"> str auto
-TMPS=$(sed -n -e &quot;/(ifaces[en]).*/{=;q;}&quot; interfaces)</div>
 <div class="line"><br /></div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">str auto</div>
+</div>
+<div class="line">TMPS=$(sed -n -e &quot;/(ifaces[en]).*/{=;q;}&quot; interfaces)</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sed -i -e <span class="s2">&quot;</span><span class="nv">$a</span><span class="s2"> s/\(iface\s\).*/\1</span><span class="nv">$NET_WI</span><span class="s2"> inet dhcp/g&quot;</span> interfaces
 </pre></div>
 </div>
 <div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
 <div class="line">sed -n -e &quot;s/(ifaces[en]).*/1$NET_ARR[$NET_WI] inet dhcp/g&quot; interfaces</div>
 <div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sed <span class="s1">&#39;$a wpa-conf \/home\/rootsu\/wpa_supplicant.conf&#39;</span> interfaces &gt;&gt; interfaces<span class="p">;</span>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">if [[-z $( sed -n -e &quot;s/(autos).*/1/p&quot; interfaces) ]]; then
-        jumpto interface_sh;
-fi
-systemctl restart wpa_supplicant&#64;$NET_ARR[$NET_WI]</div>
 <div class="line"><br /></div>
+<div class="line-block">
+<div class="line">if [[-z $( sed -n -e &quot;s/(autos).*/1/p&quot; interfaces) ]]; then</div>
+<div class="line-block">
+<div class="line">jumpto interface_sh;</div>
+</div>
+<div class="line">fi</div>
+<div class="line">systemctl restart wpa_supplicant&#64;$NET_ARR[$NET_WI]</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>systemctl restart wpa_supplicant
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">sed -n -e &quot;s/(autos).*/1$NET_ARR[$NET_WI]s$NET_ARR[$NET_EN]/g&quot; interfaces
- str iface NET_EN
-if [[-z $( sed -n -e &quot;s/(ifaces).*/1/p&quot; interfaces) ]]; then
-                jumpto interface_sh;
-fi
-sed -n -e &quot;s/(ifaces).*/1$NET_ARR[$NET_WI] inet dhcp/g&quot; interfaces
- str allow-hotplug</div>
 <div class="line"><br /></div>
+<div class="line-block">
+<div class="line">sed -n -e &quot;s/(autos).*/1$NET_ARR[$NET_WI]s$NET_ARR[$NET_EN]/g&quot; interfaces</div>
+<div class="line-block">
+<div class="line">str iface NET_EN</div>
+</div>
+<div class="line">if [[-z $( sed -n -e &quot;s/(ifaces).*/1/p&quot; interfaces) ]]; then</div>
+<div class="line-block">
+<div class="line">jumpto interface_sh;</div>
+</div>
+<div class="line">fi</div>
+<div class="line">sed -n -e &quot;s/(ifaces).*/1$NET_ARR[$NET_WI] inet dhcp/g&quot; interfaces</div>
+<div class="line-block">
+<div class="line">str allow-hotplug</div>
+<div class="line"><br /></div>
+</div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">else</span>
 <span class="linenos">2</span>
@@ -599,8 +674,11 @@ sed -n -e &quot;s/(ifaces).*/1$NET_ARR[$NET_WI] inet dhcp/g&quot; interfaces
 </pre></div>
 </div>
 <div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
 <div class="line">str auto $( sed -n -e &quot;s/(autos).*/1$NET_ARR[$NET_WI]s$NET_ARR[$NET_EN]/p&quot;</div>
 <div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="o">[[</span> -z <span class="k">$(</span>sed -n -e <span class="s2">&quot;s/\(auto\slo\).*/\1/p&quot;</span> interfaces<span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 <span class="linenos">2</span>                <span class="nv">TMPS</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">;</span>
@@ -610,8 +688,11 @@ sed -n -e &quot;s/(ifaces).*/1$NET_ARR[$NET_WI] inet dhcp/g&quot; interfaces
 </pre></div>
 </div>
 <div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
 <div class="line">str iface NET_EN</div>
 <div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="o">[[</span> -z <span class="k">$(</span>sed -n -e <span class="s2">&quot;s/\(iface\slo\).*/\1/p&quot;</span> interfaces<span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 <span class="linenos">2</span>                <span class="nv">TMPS</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">;</span>
@@ -621,8 +702,11 @@ sed -n -e &quot;s/(ifaces).*/1$NET_ARR[$NET_WI] inet dhcp/g&quot; interfaces
 </pre></div>
 </div>
 <div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
 <div class="line">str allow-hotplug</div>
 <div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="o">[[</span> -z <span class="k">$(</span>sed -n -e <span class="s2">&quot;s/\(allow-hotplug\s\).*/\1/p&quot;</span> interfaces<span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 <span class="linenos">2</span>                <span class="nv">TMPS</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">;</span>
@@ -632,8 +716,11 @@ sed -n -e &quot;s/(ifaces).*/1$NET_ARR[$NET_WI] inet dhcp/g&quot; interfaces
 </pre></div>
 </div>
 <div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
 <div class="line">str iface NET_WI</div>
 <div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="o">[[</span> -z <span class="k">$(</span>sed -n -e <span class="s2">&quot;s/\(iface\s\).*/\1/p&quot;</span> interfaces<span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 <span class="linenos">2</span>                <span class="nv">TMPS</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">;</span>
@@ -642,22 +729,27 @@ sed -n -e &quot;s/(ifaces).*/1$NET_ARR[$NET_WI] inet dhcp/g&quot; interfaces
 </pre></div>
 </div>
 <div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
 <div class="line">TMPS=$(sed -n -e &quot;/(ifaces[en]).*/{=;q;}&quot; interfaces);</div>
 <div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sed -i -e <span class="s2">&quot;</span><span class="nv">$a</span><span class="s2"> s/\(iface\s\).*/\1</span><span class="nv">$NET_EN</span><span class="s2"> inet dhcp/g&quot;</span> interfaces
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">sed -n -e &quot;s/(ifaces[en]).*/1$NET_ARR[$NET_WI] inet dhcp/g&quot; interfaces
-sed '$a wpa-conf /home/rootsu/wpa_supplicant.conf' interfaces &gt;&gt; interfaces;
-sed -n -e &quot;s/(allow.*s).*/1$NET_ARR[$NET_WIFI]sinetsdhcp/g&quot; interfaces</div>
-</div>
-<blockquote>
-<div><p>if [[ $STATE -eq &quot;0&quot; ]]; then fi</p>
-</div></blockquote>
-<div class="line-block">
 <div class="line"><br /></div>
+<div class="line-block">
+<div class="line">sed -n -e &quot;s/(ifaces[en]).*/1$NET_ARR[$NET_WI] inet dhcp/g&quot; interfaces</div>
+<div class="line">sed '$a wpa-conf /home/rootsu/wpa_supplicant.conf' interfaces &gt;&gt; interfaces;</div>
+<div class="line">sed -n -e &quot;s/(allow.*s).*/1$NET_ARR[$NET_WIFI]sinetsdhcp/g&quot; interfaces</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">if [[ $STATE -eq &quot;0&quot; ]]; then fi</div>
+<div class="line"><br /></div>
+</div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">fi</span>
 </pre></div>
@@ -692,8 +784,11 @@ sed -n -e &quot;s/(allow.*s).*/1$NET_ARR[$NET_WIFI]sinetsdhcp/g&quot; interfaces
 </pre></div>
 </div>
 <div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
 <div class="line">echo &quot;Error: not defined version DebianOS, wait 3 sec&quot;;</div>
 <div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>        <span class="nv">DEB_VER</span><span class="o">=</span><span class="k">$(</span>cat /etc/os-release <span class="p">|</span> sed -n -e <span class="s2">&quot;s/.*(\([^\)].*\))\&quot;</span>$<span class="s2">/\1/p&quot;</span><span class="k">)</span><span class="p">;</span>
 <span class="linenos">2</span>        <span class="nv">DEB_VER</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$DEB_VER</span> <span class="p">|</span> sed -n -e <span class="s2">&quot;s/\([a-z]*\)</span>$<span class="s2">//p&quot;</span><span class="k">)</span>
@@ -703,19 +798,22 @@ sed -n -e &quot;s/(allow.*s).*/1$NET_ARR[$NET_WIFI]sinetsdhcp/g&quot; interfaces
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">cd /etc/apt/;
- rm sources.tmp;
-touch sources.tmp</div>
-</div>
-<blockquote>
-<div><p>main, contrib, non-free
-main — здесь находятся пакеты соответствующие DFSG-compliant (Debian Free Software Guidelines) не требуют дополнительное ПО из других источников. Это часть дистрибутива Debian. Полностью свободны для любого использования.
-contrib — смешанные пакеты которые содержат не только свободные пакеты DFSG-compliant но и пакеты из других веток например non-free.
-non-free — не свободное программное обеспечение. Не соответствует DFSG.
-check null string               ????            dob add usloviya proverki ft http</p>
-</div></blockquote>
-<div class="line-block">
 <div class="line"><br /></div>
+<div class="line-block">
+<div class="line">cd /etc/apt/;</div>
+<div class="line-block">
+<div class="line">rm sources.tmp;</div>
+</div>
+<div class="line">touch sources.tmp</div>
+<div class="line"><br /></div>
+<div class="line">main, contrib, non-free</div>
+<div class="line">main — здесь находятся пакеты соответствующие DFSG-compliant (Debian Free Software Guidelines) не требуют дополнительное ПО из других источников. Это часть дистрибутива Debian. Полностью свободны для любого использования.</div>
+<div class="line">contrib — смешанные пакеты которые содержат не только свободные пакеты DFSG-compliant но и пакеты из других веток например non-free.</div>
+<div class="line">non-free — не свободное программное обеспечение. Не соответствует DFSG.</div>
+<div class="line">check null string               ????            dob add usloviya proverki ft http</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="o">[[</span> -n <span class="k">$(</span>egrep -n <span class="s1">&#39;^[a-z] &amp;&amp; ^#&#39;</span> sources.list<span class="k">)</span> <span class="o">&amp;&amp;</span> -n <span class="k">$(</span> sed -n -e <span class="s2">&quot;s/^deb http:\/\/ftp//p&quot;</span> sources.list<span class="k">)</span> <span class="o">&amp;&amp;</span> -n <span class="k">$(</span> sed -n -e <span class="s2">&quot;s/^deb-src http:\/\/ftp//p&quot;</span> sources.list<span class="k">)</span> <span class="o">&amp;&amp;</span> -n <span class="k">$(</span> sed -n -e <span class="s2">&quot;s/^deb http:\/\/deb//p&quot;</span> sources.list<span class="k">)</span> <span class="o">&amp;&amp;</span> -n <span class="k">$(</span> sed -n -e <span class="s2">&quot;s/^deb-src http:\/\/deb//p&quot;</span> sources.list<span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 <span class="linenos">2</span><span class="nv">STATE</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">;</span>
@@ -723,8 +821,11 @@ check null string               ????            dob add usloviya proverki ft htt
 </pre></div>
 </div>
 <div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
 <div class="line">touch sources.tmp;</div>
 <div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nv">BUF</span><span class="o">=</span><span class="s2">&quot;#deb cdrom:[Debian GNU/Linux _*_ - Official amd64 NETINST 20210814-10:07]/ * main\ndeb http://ftp.debian.org/debian/ </span><span class="nv">$DEB_VER</span><span class="s2"> main non-free contrib\ndeb-src http://ftp.debian.org/debian/ </span><span class="nv">$DEB_VER</span><span class="s2"> main non-free contrib\n</span>
 <span class="linenos"> 2</span><span class="s2">\ndeb http://security.debian.org/debian-security/ </span><span class="nv">$DEB_VER</span><span class="s2">-security main contrib non-free \ndeb-src http://security.debian.org/debian-security/ </span><span class="nv">$DEB_VER</span><span class="s2">-security main contrib non-free \n</span>
@@ -741,19 +842,27 @@ check null string               ????            dob add usloviya proverki ft htt
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">Waits 5 seconds.
-sed -i '34s/AAA/BBB/' file_name</div>
 <div class="line"><br /></div>
+<div class="line-block">
+<div class="line">Waits 5 seconds.</div>
+<div class="line">sed -i '34s/AAA/BBB/' file_name</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">else</span>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">The first part of it is an &quot;address&quot;, i.e. the following command only applies to lines matching it. The ! negates the condition, i.e. the command will only be applied to lines not matching the address. So, in other words, Replace Hello by Hello world! on lines that don't contain Hello world!.
- sed -n -e 's/.*bullseye-[a-z](.)/1/p' sources.tmp
-The pattern [a-z]* matches zero or more characters in the range a to z (the actual characters are dependent on the current locale). There are zero such characters at the very start of the string 123 abc (i.e. the pattern matches), and also four of them at the start of this is a line.
-If you need at least one match, then use [a-z][a-z]* or [a-z]{1,}, or enable extended regular expressions with sed -E and use [a-z]+.</div>
 <div class="line"><br /></div>
+<div class="line-block">
+<div class="line">The first part of it is an &quot;address&quot;, i.e. the following command only applies to lines matching it. The ! negates the condition, i.e. the command will only be applied to lines not matching the address. So, in other words, Replace Hello by Hello world! on lines that don't contain Hello world!.</div>
+<div class="line-block">
+<div class="line">sed -n -e 's/.*bullseye-[a-z](.)/1/p' sources.tmp</div>
+</div>
+<div class="line">The pattern [a-z]* matches zero or more characters in the range a to z (the actual characters are dependent on the current locale). There are zero such characters at the very start of the string 123 abc (i.e. the pattern matches), and also four of them at the start of this is a line.</div>
+<div class="line">If you need at least one match, then use [a-z][a-z]* or [a-z]{1,}, or enable extended regular expressions with sed -E and use [a-z]+.</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span> sed -i -e <span class="s2">&quot;s/</span><span class="nv">$DEB_VER</span><span class="s2">\s.*</span>$<span class="s2">/</span><span class="nv">$DEB_VER</span><span class="s2"> main contrib non-free/g&quot;</span> sources.list
 <span class="linenos"> 2</span> sed -i -e <span class="s2">&quot;s/\(\/\s</span><span class="nv">$DEB_VER</span><span class="s2">\-[a-z]*\).*/\1 main contrib non-free/g&quot;</span> sources.list
@@ -795,8 +904,11 @@ If you need at least one match, then use [a-z][a-z]* or [a-z]{1,}, or enable ext
 </pre></div>
 </div>
 <div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
 <div class="line">apt-get install firmware-linux | apt-get install firmware-linux-nonfree | apt-get install firmware-linux | apt-get install firmware-realtek | apt-get install libdrm-amdgpu1 | apt-get install xserver-xorg-video-amdgpu  | apt-get install man</div>
 <div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install firmware-linux
 <span class="linenos">2</span>
@@ -821,8 +933,11 @@ If you need at least one match, then use [a-z][a-z]* or [a-z]{1,}, or enable ext
 </pre></div>
 </div>
 <div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
 <div class="line">policycoreutils-gui</div>
 <div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>touch /.autorelabel
 <span class="linenos">2</span>selinux-activate
@@ -856,9 +971,14 @@ If you need at least one match, then use [a-z][a-z]* or [a-z]{1,}, or enable ext
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line"> nano /etc/rc.local
-setupcon</div>
 <div class="line"><br /></div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">nano /etc/rc.local</div>
+</div>
+<div class="line">setupcon</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install git
 <span class="linenos">2</span><span class="k">if</span> <span class="o">[</span>
@@ -871,65 +991,77 @@ setupcon</div>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">rm -Rf /nano/
-rmdir /nano/
-git clone <a class="reference external" href="https://github.com/nanorc/nanorc.git">https://github.com/nanorc/nanorc.git</a>
-cd nanorc
-make install
-exit 1;
- make list all autogen
-cat ~/.nano/syntax/ALL.nanorc
-rm ~/.nanorc
-touch ~/.nanorc
-echo -e 'include ~/.nano/syntax/ALL.nanorc' &gt;&gt; ~/.nanorc
-         TeX
-echo -e 'include &quot;/usr/share/nano/patch.nanorc' &gt;&gt; ~/.nanorc
-         POV-Ray
-echo -e 'include &quot;/usr/share/nano/pov.nanorc' &gt;&gt; ~/.nanorc
-         Perl
-echo -e 'include &quot;/usr/share/nano/perl.nanorc' &gt;&gt; ~/.nanorc
-         Nanorc files
-echo -e 'include &quot;/usr/share/nano/nanorc.nanorc' &gt;&gt; ~/.nanorc
-         Python
-echo -e 'include &quot;/usr/share/nano/python.nanorc' &gt;&gt; ~/.nanorc
-         C/C++
-echo -e 'include &quot;/usr/share/nano/c.nanorc' &gt;&gt; ~/.nanorc
-         Groff
-echo -e 'include &quot;/usr/share/nano/groff.nanorc' &gt;&gt; ~/.nanorc
-         Assembler
-echo -e 'include &quot;/usr/share/nano/asm.nanorc' &gt;&gt; ~/.nanorc
-         Ruby
-echo -e 'include &quot;/usr/share/nano/ruby.nanorc' &gt;&gt; ~/.nanorc
-         Manpages
-echo -e 'include &quot;/usr/share/nano/man.nanorc' &gt;&gt; ~/.nanorc
-         HTML
-echo -e 'include &quot;/usr/share/nano/html.nanorc' &gt;&gt; ~/.nanorc
-         Bourne shell scripts
-echo -e 'include &quot;/usr/share/nano/sh.nanorc' &gt;&gt; ~/.nanorc
-         Sun Java
-echo -e 'include &quot;/usr/share/nano/java.nanorc' &gt;&gt; ~/.nanorc
-         Sun php
-echo -e 'include &quot;/usr/share/nano/php.nanorc' &gt;&gt; ~/.nanorc
-         Sun perl
-echo -e 'include &quot;/usr/share/nano/perl.nanorc' &gt;&gt; ~/.nanorc
-         sql
-echo -e 'include &quot;/usr/share/nano/sql.nanorc' &gt;&gt; ~/.nanorc
-         asm
-echo -e 'include &quot;/usr/share/nano/asm.nanorc' &gt;&gt; ~/.nanorc
-include &quot;/usr/share/nano/<a href="#id3"><span class="problematic" id="id4">*</span></a>.nanorc&quot;</div>
 <div class="line"><br /></div>
+<div class="line-block">
+<div class="line">rm -Rf /nano/</div>
+<div class="line">rmdir /nano/</div>
+<div class="line">git clone <a class="reference external" href="https://github.com/nanorc/nanorc.git">https://github.com/nanorc/nanorc.git</a></div>
+<div class="line">cd nanorc</div>
+<div class="line">make install</div>
+<div class="line">exit 1;</div>
+<div class="line-block">
+<div class="line">make list all autogen</div>
+</div>
+<div class="line">cat ~/.nano/syntax/ALL.nanorc</div>
+<div class="line">rm ~/.nanorc</div>
+<div class="line">touch ~/.nanorc</div>
+<div class="line">echo -e 'include ~/.nano/syntax/ALL.nanorc' &gt;&gt; ~/.nanorc</div>
+<div class="line">|        TeX</div>
+<div class="line">echo -e 'include &quot;/usr/share/nano/patch.nanorc' &gt;&gt; ~/.nanorc</div>
+<div class="line">|        POV-Ray</div>
+<div class="line">echo -e 'include &quot;/usr/share/nano/pov.nanorc' &gt;&gt; ~/.nanorc</div>
+<div class="line">|        Perl</div>
+<div class="line">echo -e 'include &quot;/usr/share/nano/perl.nanorc' &gt;&gt; ~/.nanorc</div>
+<div class="line">|        Nanorc files</div>
+<div class="line">echo -e 'include &quot;/usr/share/nano/nanorc.nanorc' &gt;&gt; ~/.nanorc</div>
+<div class="line">|        Python</div>
+<div class="line">echo -e 'include &quot;/usr/share/nano/python.nanorc' &gt;&gt; ~/.nanorc</div>
+<div class="line">|        C/C++</div>
+<div class="line">echo -e 'include &quot;/usr/share/nano/c.nanorc' &gt;&gt; ~/.nanorc</div>
+<div class="line">|        Groff</div>
+<div class="line">echo -e 'include &quot;/usr/share/nano/groff.nanorc' &gt;&gt; ~/.nanorc</div>
+<div class="line">|        Assembler</div>
+<div class="line">echo -e 'include &quot;/usr/share/nano/asm.nanorc' &gt;&gt; ~/.nanorc</div>
+<div class="line">|        Ruby</div>
+<div class="line">echo -e 'include &quot;/usr/share/nano/ruby.nanorc' &gt;&gt; ~/.nanorc</div>
+<div class="line">|        Manpages</div>
+<div class="line">echo -e 'include &quot;/usr/share/nano/man.nanorc' &gt;&gt; ~/.nanorc</div>
+<div class="line">|        HTML</div>
+<div class="line">echo -e 'include &quot;/usr/share/nano/html.nanorc' &gt;&gt; ~/.nanorc</div>
+<div class="line">|        Bourne shell scripts</div>
+<div class="line">echo -e 'include &quot;/usr/share/nano/sh.nanorc' &gt;&gt; ~/.nanorc</div>
+<div class="line">|        Sun Java</div>
+<div class="line">echo -e 'include &quot;/usr/share/nano/java.nanorc' &gt;&gt; ~/.nanorc</div>
+<div class="line">|        Sun php</div>
+<div class="line">echo -e 'include &quot;/usr/share/nano/php.nanorc' &gt;&gt; ~/.nanorc</div>
+<div class="line">|        Sun perl</div>
+<div class="line">echo -e 'include &quot;/usr/share/nano/perl.nanorc' &gt;&gt; ~/.nanorc</div>
+<div class="line">|        sql</div>
+<div class="line">echo -e 'include &quot;/usr/share/nano/sql.nanorc' &gt;&gt; ~/.nanorc</div>
+<div class="line">|        asm</div>
+<div class="line">echo -e 'include &quot;/usr/share/nano/asm.nanorc' &gt;&gt; ~/.nanorc</div>
+<div class="line">include &quot;/usr/share/nano/<a href="#id5"><span class="problematic" id="id6">*</span></a>.nanorc&quot;</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>find /usr/share/nano -name <span class="s1">&#39;*.nanorc&#39;</span> -printf <span class="s2">&quot;include %p\n&quot;</span> &gt; ~/.nanorc
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">for i in <cite>ls /usr/share/nano</cite>
-  do
-    echo &quot;include /usr/share/nano/$i&quot; &gt;&gt; ~/.nanorc
-  done
-rm -Rf /nanorc/
-rmdir /nanorc/</div>
 <div class="line"><br /></div>
+<div class="line-block">
+<div class="line">for i in <cite>ls /usr/share/nano</cite></div>
+<div class="line-block">
+<div class="line">do</div>
+<div class="line-block">
+<div class="line">echo &quot;include /usr/share/nano/$i&quot; &gt;&gt; ~/.nanorc</div>
+</div>
+<div class="line">done</div>
+</div>
+<div class="line">rm -Rf /nanorc/</div>
+<div class="line">rmdir /nanorc/</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">fi</span>
 <span class="linenos">2</span><span class="nb">echo</span> -e <span class="s2">&quot;3_nanorc&quot;</span> &gt;&gt; steps.txt
@@ -942,6 +1074,9 @@ rmdir /nanorc/</div>
 </div>
 <div class="section" id="copy-dir">
 <h3><span class="section-number">4.1.7. </span>01.07           Copy dir<a class="headerlink" href="#copy-dir" title="Permalink to this headline"></a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="o">[[</span> -z <span class="k">$(</span>sed -n -e <span class="s2">&quot;s/^\(4_copy_sh\).*/\1/p&quot;</span> steps.txt<span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 </pre></div>
 </div>
@@ -959,20 +1094,30 @@ rmdir /nanorc/</div>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line"> cp -Rf /install/home/admin/.bashrc /root/
-cp /etc/nanorc ~/.nanorc</div>
 <div class="line"><br /></div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">cp -Rf /install/home/admin/.bashrc /root/</div>
+</div>
+<div class="line">cp /etc/nanorc ~/.nanorc</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;4_copy_sh&quot;</span> &gt;&gt; steps.txt
 <span class="linenos">2</span><span class="k">fi</span>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">exit 1;
-cp -Rf /install/home/ /home/     -&gt; rootsu, admin
- <a class="reference external" href="https://superuser.com/questions/904001/how-to-install-tar-xz-file-in-ubuntu">https://superuser.com/questions/904001/how-to-install-tar-xz-file-in-ubuntu</a></div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">exit 1;</div>
+<div class="line">cp -Rf /install/home/ /home/ |   -&gt; rootsu, admin</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://superuser.com/questions/904001/how-to-install-tar-xz-file-in-ubuntu">https://superuser.com/questions/904001/how-to-install-tar-xz-file-in-ubuntu</a></div>
 <div class="line"><br /></div>
 <div class="line"><br /></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="install-utils-step-five">
@@ -993,10 +1138,13 @@ cp -Rf /install/home/ /home/     -&gt; rootsu, admin
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line"><a class="reference external" href="https://pcp.io/docs/guide.html">https://pcp.io/docs/guide.html</a>
-apt-get install gcc-snapshot &amp;&amp; apt-get install gcc-11g++-11
-update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 60 --slave /usr/bin/g++ g++ /usr/bin/g++-9</div>
 <div class="line"><br /></div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://pcp.io/docs/guide.html">https://pcp.io/docs/guide.html</a></div>
+<div class="line">apt-get install gcc-snapshot &amp;&amp; apt-get install gcc-11g++-11</div>
+<div class="line">update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 60 --slave /usr/bin/g++ g++ /usr/bin/g++-9</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install python
 <span class="linenos">2</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install python3
@@ -1060,10 +1208,13 @@ update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 60 --slave /usr/bi
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">pip install mkdocs
-pip install -U mkdocs
-pip install mkdocs-rtd-dropdown</div>
 <div class="line"><br /></div>
+<div class="line-block">
+<div class="line">pip install mkdocs</div>
+<div class="line">pip install -U mkdocs</div>
+<div class="line">pip install mkdocs-rtd-dropdown</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>pip install sphinx-autodocgen
 <span class="linenos">2</span>pip install Pygments
@@ -1088,18 +1239,20 @@ pip install mkdocs-rtd-dropdown</div>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">systemctl enable anacron
-echo -e &quot;yn&quot; | apt-get install postfix
- Nmap Ngrep VnStat Iptraf-ng NetHogs Iotop dd dh netcat</div>
+<div class="line">systemctl enable anacron</div>
+<div class="line">echo -e &quot;yn&quot; | apt-get install postfix</div>
+<div class="line-block">
+<div class="line">Nmap Ngrep VnStat Iptraf-ng NetHogs Iotop dd dh netcat</div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>systemctl <span class="nb">enable</span> autofs
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">systemctl start autofs
-echo -e &quot;yn&quot; | apt-get install selinux-basics selinux-policy-default auditd
-echo -e &quot;yn&quot; | apt-get install setools policycoreutils selinux-basics selinux-utils selinux-policy-default selinux-policy-mls  auditd policycoreutils-python-utils semanage-utils
-setroubleshoot selinux-policy-targeted</div>
+<div class="line">systemctl start autofs</div>
+<div class="line">echo -e &quot;yn&quot; | apt-get install selinux-basics selinux-policy-default auditd</div>
+<div class="line">echo -e &quot;yn&quot; | apt-get install setools policycoreutils selinux-basics selinux-utils selinux-policy-default selinux-policy-mls  auditd policycoreutils-python-utils semanage-utils</div>
+<div class="line">setroubleshoot selinux-policy-targeted</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>apt-get install openssh-server -y
 <span class="linenos">2</span><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
@@ -1110,11 +1263,13 @@ setroubleshoot selinux-policy-targeted</div>
 </div>
 <div class="line-block">
 <div class="line">exit 1;</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">Update settings LOCALE</div>
+<div class="line"><br /></div>
+<div class="line">locale -a</div>
 </div>
-<blockquote>
-<div><p>Update settings LOCALE</p>
-<p>locale -a</p>
-</div></blockquote>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>update-locale <span class="nv">LC_TIME</span><span class="o">=</span>ru_RU.UTF-8<span class="p">;</span>
 <span class="linenos"> 2</span>update-locale <span class="nv">LC_ALL</span><span class="o">=</span>ru_RU.UTF-8<span class="p">;</span>
 <span class="linenos"> 3</span>update-locale <span class="nv">LANG</span><span class="o">=</span>ru_RU.UTF-8<span class="p">;</span>
@@ -1132,57 +1287,58 @@ setroubleshoot selinux-policy-targeted</div>
 </div>
 <div class="line-block">
 <div class="line">exit 1;</div>
+<div class="line"><br /></div>
+<div class="line">echo &quot;Press ESC key to quit and reboot&quot;</div>
+<div class="line-block">
+<div class="line">read a single character</div>
 </div>
-<blockquote>
-<div><dl class="simple">
-<dt>echo &quot;Press ESC key to quit and reboot&quot;</dt><dd><p>read a single character</p>
-</dd>
-</dl>
-<p>while read -r -n1 key
-do</p>
-<blockquote>
-<div><p>if input == ESC key</p>
-</div></blockquote>
-<p>if [[ $key == $'e' ]];
-then</p>
-<blockquote>
-<div><p>reboot;</p>
-</div></blockquote>
-<p>fi
-done</p>
-</div></blockquote>
+<div class="line">while read -r -n1 key</div>
+<div class="line">do</div>
+<div class="line-block">
+<div class="line">if input == ESC key</div>
+</div>
+<div class="line">if [[ $key == $'e' ]];</div>
+<div class="line">then</div>
+<div class="line-block">
+<div class="line">reboot;</div>
+</div>
+<div class="line">fi</div>
+<div class="line">done</div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">fi</span>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">dpkg -i xz-utils_5.2.4-1_amd64.deb
-tar -xvf wpa_supplicant-0.7.3.tar.gz
-cd ./wpa_supplicant-0.7.3/
-mv /install/.config /install/wpa_supplicant-0.7.3/wpa_supplicant/
-bash make
-exit 1;
-tar -xvf console-setup_1.205.tar.xz
-cd ./console-setup-1.205.tar.xz/
-./configure
-./install
-cp -Rf /install/etc/default/console-setup /etc/default/</div>
+<div class="line">dpkg -i xz-utils_5.2.4-1_amd64.deb</div>
+<div class="line">tar -xvf wpa_supplicant-0.7.3.tar.gz</div>
+<div class="line">cd ./wpa_supplicant-0.7.3/</div>
+<div class="line">mv /install/.config /install/wpa_supplicant-0.7.3/wpa_supplicant/</div>
+<div class="line">bash make</div>
+<div class="line">exit 1;</div>
+<div class="line">tar -xvf console-setup_1.205.tar.xz</div>
+<div class="line">cd ./console-setup-1.205.tar.xz/</div>
+<div class="line">./configure</div>
+<div class="line">./install</div>
+<div class="line">cp -Rf /install/etc/default/console-setup /etc/default/</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line">if [ -f /etc/resolv.conf ]; then</div>
+<div class="line-block">
+<div class="line">jumpto STEP_TWO_AFTER;</div>
 </div>
-<blockquote>
-<div><dl class="simple">
-<dt>if [ -f /etc/resolv.conf ]; then</dt><dd><p>jumpto STEP_TWO_AFTER;</p>
-</dd>
-</dl>
-<p>fi</p>
-</div></blockquote>
+<div class="line">fi</div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>step_three:
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">Search
-add-apt-repository ppa:un-brice/ppa
-apt-get update
-apt-get install shake-fs</div>
+<div class="line">Search</div>
+<div class="line-block">
+<div class="line">add-apt-repository ppa:un-brice/ppa</div>
+<div class="line">apt-get update</div>
+<div class="line">apt-get install shake-fs</div>
 <div class="line"><br /></div>
+</div>
 </div>
 </div>
 <div class="section" id="install-driver-opt-and-acc-step-six">
@@ -1200,32 +1356,36 @@ apt-get install shake-fs</div>
 </div>
 <div class="section" id="search-dev-s">
 <h4><span class="section-number">4.1.9.2. </span>01.09.02        search /dev/s**<a class="headerlink" href="#search-dev-s" title="Permalink to this headline"></a></h4>
-<blockquote>
-<div><p>touch fdiskhdd.txt;
-fdisk -l &gt; fdiskhdd.txt
-STATE=$(sed -n -e &quot;s/.*(/dev/s[a-z]*[0-9]).*/1/p&quot; fdiskhdd.txt);
-if [[ -z $(sed -n -e &quot;s/.*(/dev/s[a-z]*).*/1/p&quot; fdiskhdd.txt) ]]; then</p>
-<blockquote>
-<div><p>STATE=$(sed -n -e &quot;s/.*(/dev/s[a-z]*).*/1/p&quot; fdiskhdd.txt);</p>
-</div></blockquote>
-<p>fi</p>
-<blockquote>
-<div><p>OPTIONS: g , w</p>
-</div></blockquote>
-<p>echo &quot;ngnnn1n2048nnw&quot; |  fdisk $STATE --wipe AUTO</p>
-</div></blockquote>
+<div class="line-block">
+<div class="line">touch fdiskhdd.txt;</div>
+<div class="line">fdisk -l &gt; fdiskhdd.txt</div>
+<div class="line">STATE=$(sed -n -e &quot;s/.*(/dev/s[a-z]*[0-9]).*/1/p&quot; fdiskhdd.txt);</div>
+<div class="line">if [[ -z $(sed -n -e &quot;s/.*(/dev/s[a-z]*).*/1/p&quot; fdiskhdd.txt) ]]; then</div>
+<div class="line-block">
+<div class="line">STATE=$(sed -n -e &quot;s/.*(/dev/s[a-z]*).*/1/p&quot; fdiskhdd.txt);</div>
+</div>
+<div class="line">fi</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">OPTIONS: g , w</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">echo &quot;ngnnn1n2048nnw&quot; |  fdisk $STATE --wipe AUTO</div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">Create fs</div>
-</div>
-<blockquote>
-<div><p>mkfs.ext4 $STATE /opt</p>
-</div></blockquote>
+<div class="line"><br /></div>
 <div class="line-block">
+<div class="line-block">
+<div class="line">Create fs</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">mkfs.ext4 $STATE /opt</div>
 <div class="line"><br /></div>
 <div class="line"><br /></div>
+</div>
 </div>
 </div>
 <div class="section" id="mount-dev-s">
@@ -1236,7 +1396,7 @@ if [[ -z $(sed -n -e &quot;s/.*(/dev/s[a-z]*).*/1/p&quot; fdiskhdd.txt) ]]; then
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">S1=$(sudo blkid | sed -n -e &quot;s/$shd:s(.*).*/1/p&quot; | sed -n -e &quot;s/$shd:s([=a-<a href="#id8"><span class="problematic" id="id9">zA-Z_</span></a>]*)/1/p;s/UUID=(.*)sB.*/1/p&quot; | sed 's/&quot;/\&quot;/g')</div>
+<div class="line">S1=$(sudo blkid | sed -n -e &quot;s/$shd:s(.*).*/1/p&quot; | sed -n -e &quot;s/$shd:s([=a-<a href="#id11"><span class="problematic" id="id12">zA-Z_</span></a>]*)/1/p;s/UUID=(.*)sB.*/1/p&quot; | sed 's/&quot;/\&quot;/g')</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nv">S1</span><span class="o">=</span><span class="k">$(</span>sudo blkid <span class="p">|</span> sed -n -e <span class="s2">&quot;s/</span><span class="nv">$shd</span><span class="s2">:\s\(.*\).*/\1/p&quot;</span> <span class="p">|</span> sed -n -e <span class="s2">&quot;s/UUID=\(.*\)\sB.*/\1/p&quot;</span> <span class="p">|</span> sed <span class="s1">&#39;s/\&quot;/\\&quot;/g&#39;</span><span class="k">)</span>
 <span class="linenos">2</span>
@@ -1246,15 +1406,21 @@ if [[ -z $(sed -n -e &quot;s/.*(/dev/s[a-z]*).*/1/p&quot; fdiskhdd.txt) ]]; then
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">if [[ -z $STATE ]]; then
-        exit 3;
-fi
-                1_1_3_2 create disk /dev/s**</div>
+<div class="line">if [[ -z $STATE ]]; then</div>
+<div class="line-block">
+<div class="line">exit 3;</div>
 </div>
-<blockquote>
-<div><p><a class="reference external" href="https://www.computerhope.com/unix/fdisk.htm">https://www.computerhope.com/unix/fdisk.htm</a>
-<a class="reference external" href="https://superuser.com/questions/332252/how-to-create-and-format-a-partition-using-a-bash-script">https://superuser.com/questions/332252/how-to-create-and-format-a-partition-using-a-bash-script</a></p>
-</div></blockquote>
+<div class="line">fi</div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">1_1_3_2 create disk /dev/s**</div>
+<div class="line"><br /></div>
+</div>
+<div class="line"><a class="reference external" href="https://www.computerhope.com/unix/fdisk.htm">https://www.computerhope.com/unix/fdisk.htm</a></div>
+<div class="line"><a class="reference external" href="https://superuser.com/questions/332252/how-to-create-and-format-a-partition-using-a-bash-script">https://superuser.com/questions/332252/how-to-create-and-format-a-partition-using-a-bash-script</a></div>
+<div class="line"><br /></div>
+</div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;7_driver_opt&quot;</span> &gt;&gt; steps.txt
 <span class="linenos">2</span><span class="k">fi</span>
 </pre></div>
@@ -1266,42 +1432,61 @@ fi
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">        in-target mkfs.ext4 /dev/sdb1 ; in-target echo &quot;/dev/sdb1  /srv  ext4  nodiratime  0  2&quot; &gt;&gt; /etc/fstab
-                      ???
-      fdisk
-      mkfs</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">|         in-target mkfs.ext4 /dev/sdb1 ; </div>
+<div class="line-block">
+<div class="line">in-target echo &quot;/dev/sdb1  /srv  ext4  nodiratime  0  2&quot; &gt;&gt; /etc/fstab</div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">???</div>
 </div>
-<blockquote>
-<div><p>1_1_4   editor /etc/apt/sources.list
-add info ro &quot;contrib non-free|</p>
-<p>copy sources.list -&gt; sources.tmp</p>
-</div></blockquote>
+<div class="line">fdisk</div>
+<div class="line">mkfs</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">1_1_4   editor /etc/apt/sources.list</div>
+<div class="line">add info ro &quot;contrib non-free|</div>
+<div class="line"><br /></div>
+<div class="line">copy sources.list -&gt; sources.tmp</div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
 </div>
+<div class="line-block">
 <div class="line-block">
 <div class="line"><a class="reference external" href="https://www.baeldung.com/linux/run-script-on-startup">https://www.baeldung.com/linux/run-script-on-startup</a></div>
+<div class="line"><br /></div>
 </div>
-<blockquote>
-<div><p>cp /install/pii2.sh /etc/init.d/
-chkconfig --add pii2.sh
-update-rc.d pii2.sh defaults</p>
-<p>touch /install/step_two.txt</p>
-<blockquote>
-<div><blockquote>
-<div><p>Posle del!!!</p>
-</div></blockquote>
-<p><a class="reference external" href="https://serverfault.com/questions/32438/disable-a-service-from-starting-at-all-runlevels">https://serverfault.com/questions/32438/disable-a-service-from-starting-at-all-runlevels</a></p>
-</div></blockquote>
-</div></blockquote>
+<div class="line">cp /install/pii2.sh /etc/init.d/</div>
+<div class="line">chkconfig --add pii2.sh</div>
+<div class="line">update-rc.d pii2.sh defaults</div>
+<div class="line"><br /></div>
+<div class="line">touch /install/step_two.txt</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">Posle del!!!</div>
+</div>
+<div class="line"><a class="reference external" href="https://serverfault.com/questions/32438/disable-a-service-from-starting-at-all-runlevels">https://serverfault.com/questions/32438/disable-a-service-from-starting-at-all-runlevels</a></div>
+</div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
-</div>
-<div class="line-block">
-<div class="line">Jump to label interface_sh</div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
+<div class="line-block">
+<div class="line">Jump to label interface_sh</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
 </div>
 </div>
 </div>
@@ -1313,18 +1498,21 @@ update-rc.d pii2.sh defaults</p>
 </pre></div>
 </div>
 <div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
 <div class="line">cp sources.tmp sources.list;</div>
 <div class="line"><br /></div>
 </div>
-<div class="section" id="id5">
-<h4><span class="section-number">4.1.10.1. </span>01.10.01                Create users and groups<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h4>
-<blockquote>
-<div><p>cp -Rf /install/home/rootsu/.cmd_shell.sh ~/.cmd_shell.sh
-cp -Rf /install/home/rootsu/.bashrc ~/.bashrc
-cp -Rf /install/home/rootsu/.bashrc /home/admin/
-cp -Rf /install/home/rootsu/.cmd_shell.sh /home/admin/
-В</p>
-</div></blockquote>
+</div>
+<div class="section" id="id7">
+<h4><span class="section-number">4.1.10.1. </span>01.10.01                Create users and groups<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h4>
+<div class="line-block">
+<div class="line">cp -Rf /install/home/rootsu/.cmd_shell.sh ~/.cmd_shell.sh</div>
+<div class="line">cp -Rf /install/home/rootsu/.bashrc ~/.bashrc</div>
+<div class="line">cp -Rf /install/home/rootsu/.bashrc /home/admin/</div>
+<div class="line">cp -Rf /install/home/rootsu/.cmd_shell.sh /home/admin/</div>
+<div class="line">В</div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span> groupadd -g <span class="m">1000</span> admins
 <span class="linenos"> 2</span> groupadd -g <span class="m">2000</span> exp_users
 <span class="linenos"> 3</span> groupadd -g <span class="m">3000</span> pro_users
@@ -1366,12 +1554,11 @@ cp -Rf /install/home/rootsu/.cmd_shell.sh /home/admin/
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">smbpasswd -a -w &quot;&quot; pub_share
-if [ $? -ne 0 ]; then********</div>
+<div class="line">smbpasswd -a -w &quot;&quot; pub_share</div>
+<div class="line">if [ $? -ne 0 ]; then********</div>
+<div class="line"><br /></div>
+<div class="line">fi</div>
 </div>
-<blockquote>
-<div><p>fi</p>
-</div></blockquote>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>mkdir /opt/SAMBA_SHARE
 <span class="linenos"> 2</span>mkdir /mnt/SMB
 <span class="linenos"> 3</span>mkdir /mnt/SMB/SOFT_2TBSEAGREEN
@@ -1396,10 +1583,8 @@ if [ $? -ne 0 ]; then********</div>
 </div>
 <div class="section" id="create-ssh-ssl">
 <h4><span class="section-number">4.1.10.2. </span>01.10.02                Create ssh_ssl<a class="headerlink" href="#create-ssh-ssl" title="Permalink to this headline"></a></h4>
-<blockquote>
-<div><p><a class="reference external" href="https://www.cyberciti.biz/tips/checking-openssh-sshd-configuration-syntax-errors.html">https://www.cyberciti.biz/tips/checking-openssh-sshd-configuration-syntax-errors.html</a></p>
-</div></blockquote>
 <div class="line-block">
+<div class="line"><a class="reference external" href="https://www.cyberciti.biz/tips/checking-openssh-sshd-configuration-syntax-errors.html">https://www.cyberciti.biz/tips/checking-openssh-sshd-configuration-syntax-errors.html</a></div>
 <div class="line"><br /></div>
 </div>
 </div>
@@ -1411,135 +1596,210 @@ if [ $? -ne 0 ]; then********</div>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">Port 22</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">|      Port 22</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> sed -i -e <span class="s2">&quot;s/#Port\s.*</span>$<span class="s2">\|Port\s.*</span>$<span class="s2">/Port </span><span class="nv">$PORT_SSH</span><span class="s2">/g&quot;</span> sshd_config
 </pre></div>
 </div>
 <div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
 <div class="line">HostKey</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> sed -i -e <span class="s2">&quot;s/#HostKey/HostKey/g&quot;</span> sshd_config
 </pre></div>
 </div>
 <div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
 <div class="line">PubkeyAuthentification</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> sed -i -e <span class="s2">&quot;s/#PubkeyAuthentication\s.*</span>$<span class="s2">\|PubkeyAuthentication\s.*</span>$<span class="s2">/PubkeyAuthentication yes/g&quot;</span> sshd_config
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">SysLogFacility</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">|      SysLogFacility</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> sed -i -e <span class="s2">&quot;s/#SysLogFacility\s.*</span>$<span class="s2">\|SysLogFacility\s.*</span>$<span class="s2">/SysLogFacility AUTHPRIV/g&quot;</span> sshd_config
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">LogLevel</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">|      LogLevel</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> sed -i -e <span class="s2">&quot;s/#LogLevel\s.*</span>$<span class="s2">\|LogLevel\s.*</span>$<span class="s2">/#LogLevel INFO/g&quot;</span> sshd_config
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">LogLevel</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">|      LogLevel</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> sed -i -e <span class="s2">&quot;s/#LoginGraceTime\s.*</span>$<span class="s2">\|LoginGraceTime\s.*</span>$<span class="s2">/LoginGraceTime 2m/g&quot;</span> sshd_config
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">PermitRootLogin</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">|      PermitRootLogin</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> sed -i -e <span class="s2">&quot;s/#PermitRootLogin\s.*</span>$<span class="s2">\|PermitRootLogin\s.*</span>$<span class="s2">/PermitRootLogin yes/g&quot;</span> sshd_config
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">StrictModes</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">|      StrictModes</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> sed -i -e <span class="s2">&quot;s/#StrictModes\s.*</span>$<span class="s2">\|StrictModes\s.*</span>$<span class="s2">/StrictModes no/g&quot;</span> sshd_config
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">MaxAuthTries</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">|      MaxAuthTries</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> sed -i -e <span class="s2">&quot;s/#MaxAuthTries\s.*</span>$<span class="s2">\|MaxAuthTries\s.*</span>$<span class="s2">/MaxAuthTries 3/g&quot;</span> sshd_config
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">MaxAuthTries</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">|      MaxAuthTries</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> sed -i -e <span class="s2">&quot;s/#MaxSessions\s.*</span>$<span class="s2">\|MaxSessions\s.*</span>$<span class="s2">/MaxSessions 3/g&quot;</span> sshd_config
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">|      AuthorizedKeysFile</div>
+<div class="line"><br /></div>
 </div>
-<blockquote>
-<div><p>AuthorizedKeysFile</p>
-</div></blockquote>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> sed -i -e <span class="s2">&quot;s/#AuthorizedKeysFile\s.*</span>$<span class="s2">\|AuthorizedKeysFile\s.*</span>$<span class="s2">/AuthorizedKeysFile \/home\/rootsu\/.ssh\/authorized_keys \/home\/%u\/.ssh\/authorized_keys/g&quot;</span> sshd_config
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">PasswordAuthentication no</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">|      PasswordAuthentication no</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> sed -i -e <span class="s2">&quot;s/#PasswordAuthentication\s.*</span>$<span class="s2">\|PasswordAuthentication\s.*</span>$<span class="s2">/PasswordAuthentication no/g&quot;</span> sshd_config
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">PermitEmptyPasswords no</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">|      PermitEmptyPasswords no</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> sed -i -e <span class="s2">&quot;s/#PermitEmptyPasswords\s.*</span>$<span class="s2">\|PermitEmptyPasswords\s.*</span>$<span class="s2">/PermitEmptyPasswords no/g&quot;</span> sshd_config
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">ChallengeResponseAuthentification</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">|      ChallengeResponseAuthentification</div>
+<div class="line"><br /></div>
+<div class="line">sed -n -e &quot;s/ChallengeResponseAuthentication.*$||     ChallengeResponseAuthentication.*$/ChallengeResponseAuthentification yes/p&quot; sshd_config.tmp</div>
 </div>
-<blockquote>
-<div><p>sed -n -e &quot;s/ChallengeResponseAuthentication.*$|      ChallengeResponseAuthentication.*$/ChallengeResponseAuthentification yes/p&quot; sshd_config.tmp</p>
-</div></blockquote>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> sed -i -e <span class="s2">&quot;s/ChallengeResponseAuthentication.*</span>$<span class="s2">\|#ChallengeResponseAuthentication.*</span>$<span class="s2">/ChallengeResponseAuthentication yes/g&quot;</span> sshd_config
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">UsePAM yes</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">|      UsePAM yes</div>
+<div class="line"><br /></div>
+<div class="line">sed -n -e &quot;s/| UsePAMs.*$|UsePAMs.*$/UsePAM yes/p&quot; sshd_config.tmp</div>
 </div>
-<blockquote>
-<div><p>sed -n -e &quot;s/  UsePAMs.*$|UsePAMs.*$/UsePAM yes/p&quot; sshd_config.tmp</p>
-</div></blockquote>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> sed -i -e <span class="s2">&quot;s/#UsePAM\s.*</span>$<span class="s2">\|UsePAM\s.*</span>$<span class="s2">/UsePAM yes/g&quot;</span> sshd_config
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">AllowTcpForwarding yes</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">|      AllowTcpForwarding yes</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> sed -i -e <span class="s2">&quot;s/#AllowTcpForwarding\s.*</span>$<span class="s2">\|AllowTcpForwarding\s.*</span>$<span class="s2">/AllowTcpForwarding yes/g&quot;</span> sshd_config
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">X11Forwarding yes</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">|      X11Forwarding yes</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> sed -i -e <span class="s2">&quot;s/#X11Forwarding\s.*</span>$<span class="s2">\|X11Forwarding\s.*</span>$<span class="s2">/X11Forwarding yes/g&quot;</span> sshd_config
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">X11DisplayOffset yes</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">|      X11DisplayOffset yes</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> sed -i -e <span class="s2">&quot;s/#X11DisplayOffset\s.*</span>$<span class="s2">\|X11DisplayOffset\s.*</span>$<span class="s2">/X11DisplayOffset 10/g&quot;</span> sshd_config
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">PrintMotd no</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">|      PrintMotd no</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> sed -i -e <span class="s2">&quot;s/#PrintMotd\s.*</span>$<span class="s2">\|PrintMotd\s.*</span>$<span class="s2">/PrintMotd yes/g&quot;</span> sshd_config
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">Subsystem</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">|       Subsystem</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> sed -i -e <span class="s2">&quot;s/Subsystem\s/#Subsystem\s/g&quot;</span> sshd_config
 </pre></div>
 </div>
 <div class="line-block">
+<div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>systemctl restart ssh
@@ -1551,6 +1811,9 @@ if [ $? -ne 0 ]; then********</div>
 </div>
 <div class="section" id="create-users-ssh">
 <h4><span class="section-number">4.1.10.4. </span>01.10.04        Create users ssh<a class="headerlink" href="#create-users-ssh" title="Permalink to this headline"></a></h4>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sudo bash ~/.cmd_shell.sh --mode <span class="s2">&quot;ssh_keygen&quot;</span> --uadd <span class="s2">&quot;tom&quot;</span> --gadd <span class="s2">&quot;ps_users&quot;</span> --pwd <span class="s2">&quot;debian&quot;</span>
 <span class="linenos">2</span>bash ~/.cmd_shell.sh --mode <span class="s2">&quot;ssh_keygen&quot;</span> --uadd <span class="s2">&quot;admin&quot;</span> --gadd <span class="s2">&quot;admins&quot;</span> --pwd <span class="s2">&quot;debian&quot;</span>
 </pre></div>
@@ -1562,6 +1825,10 @@ if [ $? -ne 0 ]; then********</div>
 </div>
 <div class="section" id="create-samba">
 <h4><span class="section-number">4.1.10.5. </span>01.10.05        Create SAMBA<a class="headerlink" href="#create-samba" title="Permalink to this headline"></a></h4>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>mount -v -t cifs //192.168.1.1/SOFT_2TBSEAGREEN//mnt/SMB/SOFT_2TBSEAGREEN -o <span class="nv">credentials</span><span class="o">=</span>/home/rootsu/.smbusers,defcontext<span class="o">=</span><span class="s2">&quot;system_u:object_r:samba_share_t:s0&quot;</span><span class="p">;</span>
 <span class="linenos"> 2</span>mount -v -t cifs //192.168.1.1/SOFT_3TBSEASYAN//mnt/SMB/SOFT_3TBSEASYAN -o <span class="nv">credentials</span><span class="o">=</span>/home/rootsu/.smbusers,defcontext<span class="o">=</span><span class="s2">&quot;system_u:object_r:samba_share_t:s0&quot;</span><span class="p">;</span>
 <span class="linenos"> 3</span>
@@ -1595,8 +1862,7 @@ if [ $? -ne 0 ]; then********</div>
 <h4><span class="section-number">4.1.10.8. </span>01.10.08        Extended nano<a class="headerlink" href="#extended-nano" title="Permalink to this headline"></a></h4>
 <div class="line-block">
 <div class="line"><br /></div>
-</div>
-<div class="line-block">
+<div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
 </div>
@@ -1694,9 +1960,11 @@ if [ $? -ne 0 ]; then********</div>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">|      restrict FTP users to their /home directory and allow them to write there
- mogut switch from home / YES yes restrict privilege
-sed -i -e &quot;s/   chroot_local_user=.*$|chroot_local_user=.*$/chroot_local_user=YES/g&quot; vsftpd.conf</div>
+<div class="line-block">
+<div class="line">|      restrict FTP users to their /home directory and allow them to write there</div>
+<div class="line">mogut switch from home / YES yes restrict privilege</div>
+</div>
+<div class="line">sed -i -e &quot;s/|  chroot_local_user=.*$|chroot_local_user=.*$/chroot_local_user=YES/g&quot; vsftpd.conf</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sed -i -e <span class="s2">&quot;0,/#chroot_local_user=.*</span>$<span class="s2">\|chroot_local_user=.*</span>$<span class="s2">/ s//chroot_local_user=YES/g&quot;</span> vsftpd.conf
 </pre></div>
@@ -1732,9 +2000,11 @@ sed -i -e &quot;s/   chroot_local_user=.*$|chroot_local_user=.*$/chroot_local_us
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">This option specifies the location of the RSA certificate to use for SSL
- encrypted connections.
-rsa_private_key_file=</div>
+<div class="line-block">
+<div class="line">This option specifies the location of the RSA certificate to use for SSL</div>
+<div class="line">encrypted connections.</div>
+</div>
+<div class="line">rsa_private_key_file=</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sed -i -e <span class="s2">&quot;s/rsa_private_key_file=.*</span>$<span class="s2">\|#rsa_private_key_file=.*</span>$<span class="s2">/rsa_private_key_file=\/etc\/ssl\/private\/vsftpd.key/g&quot;</span> vsftpd.conf
 </pre></div>
@@ -1752,11 +2022,13 @@ rsa_private_key_file=</div>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">background=YES
-pasv_port
-sed -i -e &quot;$ a pasv_min_port=49000&quot; vsftpd.conf
-sed -i -e &quot;$ a pasv_max_port=55000&quot; vsftpd.conf
-        allow_anon_ssl=NO</div>
+<div class="line">background=YES</div>
+<div class="line">pasv_port</div>
+<div class="line">sed -i -e &quot;$ a pasv_min_port=49000&quot; vsftpd.conf</div>
+<div class="line">sed -i -e &quot;$ a pasv_max_port=55000&quot; vsftpd.conf</div>
+<div class="line-block">
+<div class="line">allow_anon_ssl=NO</div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sed -i -e <span class="s2">&quot;</span>$<span class="s2"> a allow_anon_ssl=NO&quot;</span> vsftpd.conf
 </pre></div>
@@ -1774,26 +2046,38 @@ sed -i -e &quot;$ a pasv_max_port=55000&quot; vsftpd.conf
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">ssl_tlsv1_1=YES
-sed -i -e &quot;$ a ssl_tlsv1_1=YES&quot; vsftpd.conf
-        ssl_tlsv1_2=YES</div>
+<div class="line-block">
+<div class="line">ssl_tlsv1_1=YES</div>
+</div>
+<div class="line">sed -i -e &quot;$ a ssl_tlsv1_1=YES&quot; vsftpd.conf</div>
+<div class="line-block">
+<div class="line">ssl_tlsv1_2=YES</div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sed -i -e <span class="s2">&quot;</span>$<span class="s2"> a ssl_sslv3=YES&quot;</span> vsftpd.conf
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">ssl_tlsv1_1=NO
-ssl_tlsv1_2=YES
-ssl_tlsv1=NO
-ssl_sslv2=NO
-ssl_sslv3=NO
-        ssl_tlsv1=NO
-sed -i -e &quot;$ a ssl_tlsv1=NO&quot; vsftpd.conf
-        ssl_tlsv2=NO
-sed -i -e &quot;$ a ssl_sslv2=NO&quot; vsftpd.conf
-        ssl_sslv3=NO
-sed -i -e &quot;$ a ssl_sslv3=NO&quot; vsftpd.conf
-        require_ssl_reuse=YES</div>
+<div class="line">ssl_tlsv1_1=NO</div>
+<div class="line">ssl_tlsv1_2=YES</div>
+<div class="line">ssl_tlsv1=NO</div>
+<div class="line">ssl_sslv2=NO</div>
+<div class="line">ssl_sslv3=NO</div>
+<div class="line-block">
+<div class="line">ssl_tlsv1=NO</div>
+</div>
+<div class="line">sed -i -e &quot;$ a ssl_tlsv1=NO&quot; vsftpd.conf</div>
+<div class="line-block">
+<div class="line">ssl_tlsv2=NO</div>
+</div>
+<div class="line">sed -i -e &quot;$ a ssl_sslv2=NO&quot; vsftpd.conf</div>
+<div class="line-block">
+<div class="line">ssl_sslv3=NO</div>
+</div>
+<div class="line">sed -i -e &quot;$ a ssl_sslv3=NO&quot; vsftpd.conf</div>
+<div class="line-block">
+<div class="line">require_ssl_reuse=YES</div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sed -i -e <span class="s2">&quot;</span>$<span class="s2"> a require_ssl_reuse=YES&quot;</span> vsftpd.conf
 </pre></div>
@@ -1853,11 +2137,15 @@ sed -i -e &quot;$ a ssl_sslv3=NO&quot; vsftpd.conf
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">Запретить /etc/vsftpd.userlist вход в список пользователей
-userlist_enable=YES
-userlist_deny=YES
-userlist_file=/etc/vsftpd.user_list
- set it to YES to turn on TCP wappers</div>
+<div class="line-block">
+<div class="line">Запретить /etc/vsftpd.userlist вход в список пользователей</div>
+</div>
+<div class="line">userlist_enable=YES</div>
+<div class="line">userlist_deny=YES</div>
+<div class="line">userlist_file=/etc/vsftpd.user_list</div>
+<div class="line-block">
+<div class="line">set it to YES to turn on TCP wappers</div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sed -i -e <span class="s2">&quot;</span>$<span class="s2"> a tcp_wrappers=YES&quot;</span> vsftpd.conf
 </pre></div>
@@ -1887,9 +2175,13 @@ userlist_file=/etc/vsftpd.user_list
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">Allow virtual users to use the same privileges as local users
-sed -i -e &quot;$ a pam_service_name=vsftpd&quot; vsftpd.conf
- FTP port 21</div>
+<div class="line-block">
+<div class="line">Allow virtual users to use the same privileges as local users</div>
+</div>
+<div class="line">sed -i -e &quot;$ a pam_service_name=vsftpd&quot; vsftpd.conf</div>
+<div class="line-block">
+<div class="line">FTP port 21</div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sed -i -e <span class="s2">&quot;</span>$<span class="s2"> a listen_port=21&quot;</span> vsftpd.conf
 </pre></div>
@@ -1902,10 +2194,12 @@ sed -i -e &quot;$ a pam_service_name=vsftpd&quot; vsftpd.conf
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">echo -e &quot;RUnRussianSaratovn$HOSTNAME Ltd.nnadminnn&quot; | openssl req -x509 -nodes -days 365 -newkey rsa:4096 -keyout /etc/ssl/private/vsftpd.key -out /etc/ssl/certs/vsftpd.crt
- bag 500 OOPS: priv_sock_get_int.
- echo 'seccomp_sandbox=NO' &gt;&gt; /etc/vsftpd/vsftpd.conf
-$ sudo openssl req -x509 -nodes -days 365 -newkey rsa:4095 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem</div>
+<div class="line">echo -e &quot;RUnRussianSaratovn$HOSTNAME Ltd.nnadminnn&quot; | openssl req -x509 -nodes -days 365 -newkey rsa:4096 -keyout /etc/ssl/private/vsftpd.key -out /etc/ssl/certs/vsftpd.crt</div>
+<div class="line-block">
+<div class="line">bag 500 OOPS: priv_sock_get_int.</div>
+<div class="line">echo 'seccomp_sandbox=NO' &gt;&gt; /etc/vsftpd/vsftpd.conf</div>
+</div>
+<div class="line">$ sudo openssl req -x509 -nodes -days 365 -newkey rsa:4095 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;RU\nRussia\nSaratov\n</span><span class="nv">$HOSTNAME</span><span class="s2"> Ltd.\nWSB-IOT-Embedded\nadmin\nfar1803@ya.ru\n&quot;</span> <span class="p">|</span> openssl req -x509 -nodes -days <span class="m">365</span> -newkey rsa:4096 -keyout /etc/ssl/private/vsftpd.key -out /etc/ssl/certs/vsftpd.crt
 <span class="linenos">2</span>
@@ -1916,59 +2210,58 @@ $ sudo openssl req -x509 -nodes -days 365 -newkey rsa:4095 -keyout /etc/ssl/priv
 </div>
 <div class="line-block">
 <div class="line">List of FTP commands</div>
+<div class="line"><br /></div>
+<div class="line">ABOR - Abort an active file transfer.</div>
+<div class="line">ACCT - Account information.</div>
+<div class="line">ADAT - Authentication/Security Data (RFC 2228)</div>
+<div class="line">ALLO - Allocate sufficient disk space to receive a file.</div>
+<div class="line">APPE - Append.</div>
+<div class="line">AUTH - Authentication/Security Mechanism (RFC 2228)</div>
+<div class="line">CCC  - Clear Command Channel (RFC 2228)</div>
+<div class="line">CDUP - Change to Parent Directory.</div>
+<div class="line">CONF - Confidentiality Protection Command (RFC 697)</div>
+<div class="line">CWD  - Change working directory.</div>
+<div class="line">DELE - Delete file.</div>
+<div class="line">ENC  - Privacy Protected Channel (RFC 2228)</div>
+<div class="line">EPRT - Specifies an extended address and port to which the server should connect. (RFC 2428)</div>
+<div class="line">EPSV - Enter extended passive mode. (RFC 2428)</div>
+<div class="line">FEAT - Get the feature list implemented by the server. (RFC 2389)</div>
+<div class="line">HELP - Returns usage documentation on a command if specified, else a general help document is returned.</div>
+<div class="line">LAND - Language Negotiation (RFC 2640)</div>
+<div class="line">LIST - Returns information of a file or directory if specified, else information of the current working directory is returned.</div>
+<div class="line">LPRT - Specifies a long address and port to which the server should connect. (RFC 1639)</div>
+<div class="line">LPSV - Enter long passive mode. (RFC 1639)</div>
+<div class="line">MDTM - Return the last-modified time of a specified file. (RFC 3659)</div>
+<div class="line">MIC  - Integrity Protected Command (RFC 2228)</div>
+<div class="line">MKD  - Make directory.</div>
+<div class="line">MLST - Lists the contents of a directory if a directory is named. (RFC 3659)</div>
+<div class="line">MODE - Sets the transfer mode (Stream, Block, or Compressed).</div>
+<div class="line">NLST - Returns a list of file names in a specified directory.</div>
+<div class="line">NOOP - No operation (dummy packet; used mostly on keepalives).</div>
+<div class="line">OPTS - Select options for a feature. (RFC 2389)</div>
+<div class="line">PASS - Authentication password.</div>
+<div class="line">PASV - Enter passive mode.</div>
+<div class="line">PBSZ - Protection Buffer Size (RFC 2228)</div>
+<div class="line">PORT - Specifies an address and port to which the server should connect.</div>
+<div class="line">PWD  - Print working directory. Returns the current directory of the host.</div>
+<div class="line">QUIT - Disconnect.</div>
+<div class="line">REIN - Re initializes the connection.</div>
+<div class="line">REST - Restart transfer from the specified point.</div>
+<div class="line">RETR - Retrieve (download) a remote file.</div>
+<div class="line">RMD  - Remove a directory.</div>
+<div class="line">RNFR - Rename from.</div>
+<div class="line">RNTO - Rename to.</div>
+<div class="line">SITE - Sends site specific commands to remote server.</div>
+<div class="line">SIZE - Return the size of a file. (RFC 3659)</div>
+<div class="line">SMNT - Mount file structure.</div>
+<div class="line">STAT - Returns the current status.</div>
+<div class="line">STOR - Store (upload) a file.</div>
+<div class="line">STOU - Store file uniquely.</div>
+<div class="line">STRU - Set file transfer structure.</div>
+<div class="line">SYST - Return system type.</div>
+<div class="line">TYPE - Sets the transfer mode (ASCII/Binary).</div>
+<div class="line">USER - Authentication username.</div>
 </div>
-<blockquote>
-<div><p>ABOR - Abort an active file transfer.
-ACCT - Account information.
-ADAT - Authentication/Security Data (RFC 2228)
-ALLO - Allocate sufficient disk space to receive a file.
-APPE - Append.
-AUTH - Authentication/Security Mechanism (RFC 2228)
-CCC  - Clear Command Channel (RFC 2228)
-CDUP - Change to Parent Directory.
-CONF - Confidentiality Protection Command (RFC 697)
-CWD  - Change working directory.
-DELE - Delete file.
-ENC  - Privacy Protected Channel (RFC 2228)
-EPRT - Specifies an extended address and port to which the server should connect. (RFC 2428)
-EPSV - Enter extended passive mode. (RFC 2428)
-FEAT - Get the feature list implemented by the server. (RFC 2389)
-HELP - Returns usage documentation on a command if specified, else a general help document is returned.
-LAND - Language Negotiation (RFC 2640)
-LIST - Returns information of a file or directory if specified, else information of the current working directory is returned.
-LPRT - Specifies a long address and port to which the server should connect. (RFC 1639)
-LPSV - Enter long passive mode. (RFC 1639)
-MDTM - Return the last-modified time of a specified file. (RFC 3659)
-MIC  - Integrity Protected Command (RFC 2228)
-MKD  - Make directory.
-MLST - Lists the contents of a directory if a directory is named. (RFC 3659)
-MODE - Sets the transfer mode (Stream, Block, or Compressed).
-NLST - Returns a list of file names in a specified directory.
-NOOP - No operation (dummy packet; used mostly on keepalives).
-OPTS - Select options for a feature. (RFC 2389)
-PASS - Authentication password.
-PASV - Enter passive mode.
-PBSZ - Protection Buffer Size (RFC 2228)
-PORT - Specifies an address and port to which the server should connect.
-PWD  - Print working directory. Returns the current directory of the host.
-QUIT - Disconnect.
-REIN - Re initializes the connection.
-REST - Restart transfer from the specified point.
-RETR - Retrieve (download) a remote file.
-RMD  - Remove a directory.
-RNFR - Rename from.
-RNTO - Rename to.
-SITE - Sends site specific commands to remote server.
-SIZE - Return the size of a file. (RFC 3659)
-SMNT - Mount file structure.
-STAT - Returns the current status.
-STOR - Store (upload) a file.
-STOU - Store file uniquely.
-STRU - Set file transfer structure.
-SYST - Return system type.
-TYPE - Sets the transfer mode (ASCII/Binary).
-USER - Authentication username.</p>
-</div></blockquote>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>iptables -F
 <span class="linenos">2</span>sudo systemctl restart vsftpd
 <span class="linenos">3</span>sudo systemctl <span class="nb">enable</span> vsftpd
@@ -1976,8 +2269,8 @@ USER - Authentication username.</p>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">sudo ufw allow 20/tcp
-sudo ufw allow 21/tcp</div>
+<div class="line">sudo ufw allow 20/tcp</div>
+<div class="line">sudo ufw allow 21/tcp</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>cp -Rf /home/admin/.ssh/ /media/admin/ssh
 <span class="linenos">2</span>
@@ -2001,9 +2294,9 @@ sudo ufw allow 21/tcp</div>
 </div>
 <div class="section" id="settings-permissive-selinux">
 <h3><span class="section-number">4.1.11. </span>01.11   Settings permissive SELinux<a class="headerlink" href="#settings-permissive-selinux" title="Permalink to this headline"></a></h3>
-<blockquote>
-<div><p>seinfo -t</p>
-</div></blockquote>
+<div class="line-block">
+<div class="line">seinfo -t</div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">if</span> <span class="o">[[</span> -z <span class="k">$(</span>sed -n -e <span class="s2">&quot;s/^\(10_SELinux_settings\).*/\1/p&quot;</span> steps.txt<span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span>semanage fcontext -a -s system_u <span class="s2">&quot;/home/rootsu(/.*)?&quot;</span><span class="p">;</span>
@@ -2038,8 +2331,8 @@ sudo ufw allow 21/tcp</div>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">setsebool -P allow_use_cifs on
-setsebool -P allow_use_nfs on</div>
+<div class="line">setsebool -P allow_use_cifs on</div>
+<div class="line">setsebool -P allow_use_nfs on</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>setsebool -P httpd_use_cifs on
 <span class="linenos"> 2</span>setsebool -P allow_ftpd_use_nfs <span class="m">1</span>
@@ -2073,9 +2366,9 @@ setsebool -P allow_use_nfs on</div>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">setsebool -P allow_execmem 1
-setsebool -P allow_execheap 1
-setsebool -P allow_user_mysql_connect 1</div>
+<div class="line">setsebool -P allow_execmem 1</div>
+<div class="line">setsebool -P allow_execheap 1</div>
+<div class="line">setsebool -P allow_user_mysql_connect 1</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>setsebool -P cron_can_relabel <span class="m">1</span>
 <span class="linenos">2</span>setsebool -P fcron_crond <span class="m">1</span>
@@ -2170,16 +2463,16 @@ setsebool -P allow_user_mysql_connect 1</div>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">rm /install/pii2.sh /etc/init.d/
-update-rc.d -f pii2.sh remove
-chmod o-rw -R &quot;/etc/&quot;;</div>
+<div class="line">rm /install/pii2.sh /etc/init.d/</div>
+<div class="line">update-rc.d -f pii2.sh remove</div>
+<div class="line">chmod o-rw -R &quot;/etc/&quot;;</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>chmod o-rwx -R <span class="s2">&quot;/boot/&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">chmod o-rwx &quot;/var/&quot;;
-chmod o-rwx &quot;/sys/&quot;;</div>
+<div class="line">chmod o-rwx &quot;/var/&quot;;</div>
+<div class="line">chmod o-rwx &quot;/sys/&quot;;</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>chmod o-rwx -R <span class="s2">&quot;/srv/&quot;</span><span class="p">;</span>
 <span class="linenos">2</span>chmod o-rwx -R <span class="s2">&quot;/mnt/&quot;</span><span class="p">;</span>
@@ -2195,16 +2488,16 @@ chmod o-rwx &quot;/sys/&quot;;</div>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">chmod o-rw &quot;/dev/&quot;;
-chmod o+r &quot;/etc/profile&quot;;
-chmod o+rx -R &quot;/etc/profile.d/&quot;;
-chmod o+rx &quot;/etc/bash.bashrc&quot;;
-chmod o+r &quot;/etc/nanorc&quot;;
-chmod o+r &quot;/etc/passwd&quot;;
-chmod o+r &quot;/etc/passwd-&quot;;
-chmod o+r &quot;/etc/group&quot;;
-chmod o+r &quot;/etc/hostname&quot;;
-chmod o+rx &quot;/etc/console-setup&quot;;</div>
+<div class="line">chmod o-rw &quot;/dev/&quot;;</div>
+<div class="line">chmod o+r &quot;/etc/profile&quot;;</div>
+<div class="line">chmod o+rx -R &quot;/etc/profile.d/&quot;;</div>
+<div class="line">chmod o+rx &quot;/etc/bash.bashrc&quot;;</div>
+<div class="line">chmod o+r &quot;/etc/nanorc&quot;;</div>
+<div class="line">chmod o+r &quot;/etc/passwd&quot;;</div>
+<div class="line">chmod o+r &quot;/etc/passwd-&quot;;</div>
+<div class="line">chmod o+r &quot;/etc/group&quot;;</div>
+<div class="line">chmod o+r &quot;/etc/hostname&quot;;</div>
+<div class="line">chmod o+rx &quot;/etc/console-setup&quot;;</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>semanage fcontext -a -t system_cron_spool_t <span class="s2">&quot;/var/spool/cron(/.*)?&quot;</span>
 <span class="linenos">2</span>chcon -t system_cron_spool_t -Rv /var/spool/cron/
@@ -2220,9 +2513,9 @@ chmod o+rx &quot;/etc/console-setup&quot;;</div>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">apt-get update
-dpkg --configure -a
-apt-get dist-upgrade</div>
+<div class="line">apt-get update</div>
+<div class="line">dpkg --configure -a</div>
+<div class="line">apt-get dist-upgrade</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;\y\n&quot;</span> <span class="p">|</span> apt-get -f install
 </pre></div>
@@ -2240,10 +2533,10 @@ apt-get dist-upgrade</div>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">grep AVC /var/log/audit/audit.log | audit2allow -m loaderlocalv4 &gt; loaderlocalv4.te
-grep AVC altlog.log | audit2allow -m loaderlocalv4 &gt; loaderlocalv4.te
-checkmodule -M -m -o loaderlocalv1.mod loaderlocalv1.te
-semodule_package -o loaderlocalv1.pp -m loaderlocalv1.mod</div>
+<div class="line">grep AVC /var/log/audit/audit.log | audit2allow -m loaderlocalv4 &gt; loaderlocalv4.te</div>
+<div class="line">grep AVC altlog.log | audit2allow -m loaderlocalv4 &gt; loaderlocalv4.te</div>
+<div class="line">checkmodule -M -m -o loaderlocalv1.mod loaderlocalv1.te</div>
+<div class="line">semodule_package -o loaderlocalv1.pp -m loaderlocalv1.mod</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>semodule -i loaderlocalv1.pp
 <span class="linenos">2</span>semodule -i loaderlocalv2.pp
@@ -2252,8 +2545,8 @@ semodule_package -o loaderlocalv1.pp -m loaderlocalv1.mod</div>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">sudo apt-get install
-sudo apt-get automount</div>
+<div class="line">sudo apt-get install</div>
+<div class="line">sudo apt-get automount</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>semodule -i sudotev1.pp
 <span class="linenos"> 2</span>semodule -i sudotev2.pp
@@ -2268,11 +2561,11 @@ sudo apt-get automount</div>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">touch log.log
-journalctl -xe &gt;&gt; log.log
-grep AVC log.log | audit2allow -m sudotev1 &gt; sudotev1.te
-checkmodule -M -m -o sudotev1.mod sudotev1.te
-semodule_package -o sudotev1.pp -m sudotev1.mod</div>
+<div class="line">touch log.log</div>
+<div class="line">journalctl -xe &gt;&gt; log.log</div>
+<div class="line">grep AVC log.log | audit2allow -m sudotev1 &gt; sudotev1.te</div>
+<div class="line">checkmodule -M -m -o sudotev1.mod sudotev1.te</div>
+<div class="line">semodule_package -o sudotev1.pp -m sudotev1.mod</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
@@ -2298,9 +2591,9 @@ semodule_package -o sudotev1.pp -m sudotev1.mod</div>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">echo -e &quot;yn&quot; | apt-get install apt-transport-https
-echo -e &quot;yn&quot; | apt-get update
-echo -e &quot;yn&quot; | apt-get install webmin</div>
+<div class="line">echo -e &quot;yn&quot; | apt-get install apt-transport-https</div>
+<div class="line">echo -e &quot;yn&quot; | apt-get update</div>
+<div class="line">echo -e &quot;yn&quot; | apt-get install webmin</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>semanage port -a -t http_port_t -p tcp <span class="m">10000</span>
 <span class="linenos"> 2</span>semanage port -a -t http_port_t -p tcp <span class="m">20000</span>
@@ -2316,9 +2609,9 @@ echo -e &quot;yn&quot; | apt-get install webmin</div>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">semanage module -r permissive_boot_t
-semanage user -m -R &quot;system_r sysadm_r staff_r&quot; -r &quot;s0-s0:c0.c1023&quot; sysadm_u
-semanage user -m -R &quot;system_r&quot; -r &quot;s0-s0:c0.c1023&quot; system_u</div>
+<div class="line">semanage module -r permissive_boot_t</div>
+<div class="line">semanage user -m -R &quot;system_r sysadm_r staff_r&quot; -r &quot;s0-s0:c0.c1023&quot; sysadm_u</div>
+<div class="line">semanage user -m -R &quot;system_r&quot; -r &quot;s0-s0:c0.c1023&quot; system_u</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>semanage login -a -s sysadm_u -r <span class="s2">&quot;s0-s0:c0.c1023&quot;</span> admin
 <span class="linenos">2</span>semanage login -a -s root -r <span class="s2">&quot;s0-s0:c0.c1023&quot;</span> admin_tech
@@ -2326,42 +2619,43 @@ semanage user -m -R &quot;system_r&quot; -r &quot;s0-s0:c0.c1023&quot; system_u<
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">semanage login -m -s sysadm_u -r &quot;s0-s0:c0.c1023&quot; root
-semanage login -a -s sysadm_u -r &quot;s0-s0:c0.c1023&quot; %root</div>
+<div class="line">semanage login -m -s sysadm_u -r &quot;s0-s0:c0.c1023&quot; root</div>
+<div class="line">semanage login -a -s sysadm_u -r &quot;s0-s0:c0.c1023&quot; %root</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>semanage login -a -s sysadm_u -r <span class="s2">&quot;s0-s0:c0.c1023&quot;</span> %sudo
 <span class="linenos">2</span>semanage login -a -s user_u tom
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">sudo chmod o-rwx -R &quot;/etc/&quot;;
-sudo chmod o-rwx -R &quot;/boot/&quot;;
-sudo chmod o-rwx -R &quot;/var/&quot;;
-sudo chmod o+rwx &quot;/sys/&quot;;
-sudo chmod o+rwx -R &quot;/srv/&quot;;
-sudo chmod o+rwx -R &quot;/mnt/&quot;;
-sudo chmod o+rwx &quot;/proc/&quot;;
-sudo chmod o+rwx -R &quot;/tmp/&quot;;
-sudo chmod o+rwx &quot;/media/&quot;;
-sudo chmod o+rwx &quot;/dev/&quot;;
-chmod o+rx &quot;/etc/profile&quot;;
-chmod o+rx &quot;/etc/bash.bashrc&quot;;
-chmod o+rx &quot;/etc/nanorc&quot;;
-chmod o+rx &quot;/etc/passwd&quot;;</div>
+<div class="line">sudo chmod o-rwx -R &quot;/etc/&quot;;</div>
+<div class="line">sudo chmod o-rwx -R &quot;/boot/&quot;;</div>
+<div class="line">sudo chmod o-rwx -R &quot;/var/&quot;;</div>
+<div class="line">sudo chmod o+rwx &quot;/sys/&quot;;</div>
+<div class="line">sudo chmod o+rwx -R &quot;/srv/&quot;;</div>
+<div class="line">sudo chmod o+rwx -R &quot;/mnt/&quot;;</div>
+<div class="line">sudo chmod o+rwx &quot;/proc/&quot;;</div>
+<div class="line">sudo chmod o+rwx -R &quot;/tmp/&quot;;</div>
+<div class="line">sudo chmod o+rwx &quot;/media/&quot;;</div>
+<div class="line">sudo chmod o+rwx &quot;/dev/&quot;;</div>
+<div class="line">chmod o+rx &quot;/etc/profile&quot;;</div>
+<div class="line">chmod o+rx &quot;/etc/bash.bashrc&quot;;</div>
+<div class="line">chmod o+rx &quot;/etc/nanorc&quot;;</div>
+<div class="line">chmod o+rx &quot;/etc/passwd&quot;;</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">Display manager: gdm3 sddm
-GDM KDM LightDM LXDM МДМ SLIM XDM</div>
+<div class="line">Display manager: gdm3 sddm</div>
+<div class="line">GDM KDM LightDM LXDM МДМ SLIM XDM</div>
+<div class="line"><br /></div>
+<div class="line">sudo systemctl disable mdm.service</div>
+<div class="line">sudo systemctl enable sddm.service</div>
+<div class="line"><br /></div>
+<div class="line">kde-full</div>
+<div class="line"><br /></div>
+<div class="line">sudo tasksel install kde-desktop</div>
 </div>
-<blockquote>
-<div><p>sudo systemctl disable mdm.service
-sudo systemctl enable sddm.service</p>
-<p>kde-full</p>
-<p>sudo tasksel install kde-desktop</p>
-</div></blockquote>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>setenforce <span class="m">1</span>
 <span class="linenos">2</span><span class="nb">echo</span> -e <span class="s2">&quot;10_SELinux_settings&quot;</span> &gt;&gt; steps.txt
 <span class="linenos">3</span><span class="k">fi</span>
@@ -2386,12 +2680,256 @@ sudo systemctl enable sddm.service</p>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">set +x
-ls -la</div>
+<div class="line">set +x</div>
+<div class="line">ls -la</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">exit</span> <span class="m">0</span><span class="p">;</span>
 </pre></div>
 </div>
+<table class="colwidths-auto docutils align-default" id="id8">
+<caption><span class="caption-number">Table 4.1 </span><span class="caption-text">CSV-таблица</span><a class="headerlink" href="#id8" title="Permalink to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>#</p></th>
+<th class="head"><p>apt-get</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>console-setup</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>libdrm-amdgpu1</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>xserver-xorg-video-amdgpu</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>nvidia-driver</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>firmware-misc-nonfree</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>nvidia-settings</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>firmware-linux</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>firmware-realtek</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>firmware-linux-nonfree</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>man</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>acl</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>setools</p></td>
+</tr>
+<tr class="row-even"><td><p>14</p></td>
+<td><p>policycoreutils</p></td>
+</tr>
+<tr class="row-odd"><td><p>15</p></td>
+<td><p>selinux-basics</p></td>
+</tr>
+<tr class="row-even"><td><p>16</p></td>
+<td><p>selinux-utils</p></td>
+</tr>
+<tr class="row-odd"><td><p>17</p></td>
+<td><p>selinux-policy-default</p></td>
+</tr>
+<tr class="row-even"><td><p>18</p></td>
+<td><p>selinux-policy-mls</p></td>
+</tr>
+<tr class="row-odd"><td><p>19</p></td>
+<td><p>auditd</p></td>
+</tr>
+<tr class="row-even"><td><p>20</p></td>
+<td><p>policycoreutils-python-utils</p></td>
+</tr>
+<tr class="row-odd"><td><p>21</p></td>
+<td><p>semanage-utils</p></td>
+</tr>
+<tr class="row-even"><td><p>22</p></td>
+<td><p>audispd-plugins</p></td>
+</tr>
+<tr class="row-odd"><td><p>23</p></td>
+<td><p>mcstrans</p></td>
+</tr>
+<tr class="row-even"><td><p>24</p></td>
+<td><p>git</p></td>
+</tr>
+<tr class="row-odd"><td><p>25</p></td>
+<td><p>build-essential</p></td>
+</tr>
+<tr class="row-even"><td><p>26</p></td>
+<td><p>python</p></td>
+</tr>
+<tr class="row-odd"><td><p>27</p></td>
+<td><p>python3</p></td>
+</tr>
+<tr class="row-even"><td><p>28</p></td>
+<td><p>tmux</p></td>
+</tr>
+<tr class="row-odd"><td><p>29</p></td>
+<td><p>net-tools</p></td>
+</tr>
+<tr class="row-even"><td><p>30</p></td>
+<td><p>manpages-dev</p></td>
+</tr>
+<tr class="row-odd"><td><p>31</p></td>
+<td><p>wpa_supplicant</p></td>
+</tr>
+<tr class="row-even"><td><p>32</p></td>
+<td><p>mc</p></td>
+</tr>
+<tr class="row-odd"><td><p>33</p></td>
+<td><p>ncdu</p></td>
+</tr>
+<tr class="row-even"><td><p>34</p></td>
+<td><p>netdata</p></td>
+</tr>
+<tr class="row-odd"><td><p>35</p></td>
+<td><p>systat</p></td>
+</tr>
+<tr class="row-even"><td><p>36</p></td>
+<td><p>iftop</p></td>
+</tr>
+<tr class="row-odd"><td><p>37</p></td>
+<td><p>htop</p></td>
+</tr>
+<tr class="row-even"><td><p>38</p></td>
+<td><p>sudo</p></td>
+</tr>
+<tr class="row-odd"><td><p>39</p></td>
+<td><p>iptraf</p></td>
+</tr>
+<tr class="row-even"><td><p>40</p></td>
+<td><p>ntp</p></td>
+</tr>
+<tr class="row-odd"><td><p>41</p></td>
+<td><p>nmon</p></td>
+</tr>
+<tr class="row-even"><td><p>42</p></td>
+<td><p>nmap</p></td>
+</tr>
+<tr class="row-odd"><td><p>43</p></td>
+<td><p>safe-rm</p></td>
+</tr>
+<tr class="row-even"><td><p>44</p></td>
+<td><p>cifs-utils</p></td>
+</tr>
+<tr class="row-odd"><td><p>45</p></td>
+<td><p>samba</p></td>
+</tr>
+<tr class="row-even"><td><p>46</p></td>
+<td><p>smbfs</p></td>
+</tr>
+<tr class="row-odd"><td><p>47</p></td>
+<td><p>whois</p></td>
+</tr>
+<tr class="row-even"><td><p>48</p></td>
+<td><p>lsof</p></td>
+</tr>
+<tr class="row-odd"><td><p>49</p></td>
+<td><p>mkpasswd</p></td>
+</tr>
+<tr class="row-even"><td><p>50</p></td>
+<td><p>wget</p></td>
+</tr>
+<tr class="row-odd"><td><p>51</p></td>
+<td><p>tree</p></td>
+</tr>
+<tr class="row-even"><td><p>52</p></td>
+<td><p>autofs</p></td>
+</tr>
+<tr class="row-odd"><td><p>53</p></td>
+<td><p>gpg</p></td>
+</tr>
+<tr class="row-even"><td><p>54</p></td>
+<td><p>rsync</p></td>
+</tr>
+<tr class="row-odd"><td><p>55</p></td>
+<td><p>ca-certificates</p></td>
+</tr>
+<tr class="row-even"><td><p>56</p></td>
+<td><p>shared-mime-info</p></td>
+</tr>
+<tr class="row-odd"><td><p>57</p></td>
+<td><p>wget</p></td>
+</tr>
+<tr class="row-even"><td><p>58</p></td>
+<td><p>genisoimage</p></td>
+</tr>
+<tr class="row-odd"><td><p>59</p></td>
+<td><p>xorriso</p></td>
+</tr>
+<tr class="row-even"><td><p>60</p></td>
+<td><p>isolinux</p></td>
+</tr>
+<tr class="row-odd"><td><p>61</p></td>
+<td><p>hddtemp</p></td>
+</tr>
+<tr class="row-even"><td><p>62</p></td>
+<td><p>lm-sensors</p></td>
+</tr>
+<tr class="row-odd"><td><p>63</p></td>
+<td><p>at</p></td>
+</tr>
+<tr class="row-even"><td><p>64</p></td>
+<td><p>pip</p></td>
+</tr>
+<tr class="row-odd"><td><p>65</p></td>
+<td><p>xz-utils</p></td>
+</tr>
+<tr class="row-even"><td><p>66</p></td>
+<td><p>curl</p></td>
+</tr>
+<tr class="row-odd"><td><p>67</p></td>
+<td><p>python3-sphinx</p></td>
+</tr>
+<tr class="row-even"><td><p>68</p></td>
+<td><p>-y</p></td>
+</tr>
+<tr class="row-odd"><td><p>69</p></td>
+<td><p>build-essential</p></td>
+</tr>
+<tr class="row-even"><td><p>70</p></td>
+<td><p>libssl-dev</p></td>
+</tr>
+<tr class="row-odd"><td><p>71</p></td>
+<td><p>libffi-dev</p></td>
+</tr>
+<tr class="row-even"><td><p>72</p></td>
+<td><p>python3-dev</p></td>
+</tr>
+<tr class="row-odd"><td><p>73</p></td>
+<td><p>-y</p></td>
+</tr>
+<tr class="row-even"><td><p>74</p></td>
+<td><p>python3-venv</p></td>
+</tr>
+<tr class="row-odd"><td><p>75</p></td>
+<td><p>python3-sphinx</p></td>
+</tr>
+<tr class="row-even"><td><p>76</p></td>
+<td><p>openssh-server</p></td>
+</tr>
+<tr class="row-odd"><td><p>77</p></td>
+<td><p>-y</p></td>
+</tr>
+<tr class="row-even"><td><p>78</p></td>
+<td><p>ntfs-3g</p></td>
+</tr>
+<tr class="row-odd"><td><p>79</p></td>
+<td><p>vsftpd</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>

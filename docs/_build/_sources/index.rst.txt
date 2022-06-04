@@ -30,7 +30,6 @@ Indices and tables
 .. |date| date:: %d.%m.%Y
 .. |time| time:: %H.%M.%s
 .. |author| replace:: BiLymo F@rid
-
 .. |copy| unicode:: 0xA9
 .. |---| unicode:: U+02014
 

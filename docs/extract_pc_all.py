@@ -125,9 +125,6 @@ if not (os.path.exists(pdir)):
 #Section Title
 #^^^^^^^^^^^^^
 
-print("_______________")
-print("_______________")
-
 #print(re.findall("#\t\t\t(\d.\d+\t+[a-zA-Z/_\-& ]*)", linep[20]))
 #print(re.findall("#\t\t\t(\d.\d.\d+\t+[a-zA-Z/_\-& ]*)", linep[193]))
 #str = re.findall("#\t\t\t(.*)$", linep[22])
@@ -143,14 +140,12 @@ with open(pdir,"rt",encoding='utf-8') as fpii2:
 fpii2.close();
 
 
-print("_____________________________________________")
+#print("_____________________________________________")
 
 #print(linep)
 
 j=0;
-if(str(''.join(re.findall('^#!\/bin\/(.*).*', linep[j])).strip())=="bash"):
-        print("bash!")
-else:
+if(str(''.join(re.findall('^#!\/bin\/(.*).*', linep[j])).strip())!="bash"):
         print("Error: Unknown shell!")
         exit;
 j=0;k=0;
@@ -224,9 +219,9 @@ while(k<=(j+20)):
 	POS_LIST[k]=strToList("Z 0 0");
 	k+=1
 POS_LIST[k]=strToList("S 0 0");
-print(k)
+#print(k)
 
-print;("_____________________________________________")
+#print;("_____________________________________________")
 
 j=0; k=1;
 str_search="";
@@ -259,7 +254,7 @@ k+=1;
 #fpii2.close();
 #print(POS_LIST[362])
 #print(POS_LIST[363])
-print("+_++++++++++++++++++++++++++")
+#print("+_++++++++++++++++++++++++++")
 
 #print(linep[18])
 #print(''.join(re.findall("(\d.\d\d.\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[802])))

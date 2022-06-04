@@ -1,6 +1,6 @@
 ﻿#!/usr/bin/python3
 # -*- coding: utf-8 -*-
-# pii2_extract version v.0.6a
+# pii2_extract version v.0.8a
 # https://en.wikipedia.org/wiki/Shebang_(Unix) #!/usr/bin/env python3\
 import sys,os,re,math;
 from array import *
@@ -88,7 +88,7 @@ if not (os.path.exists(pdir)):
 #~~~~~~~~~~~~~~~~~~
 
 #h4
-""""""""""""""""""
+#""""""""""""""""""
 
 #===============
 #Section Title
@@ -125,8 +125,8 @@ if not (os.path.exists(pdir)):
 #Section Title
 #^^^^^^^^^^^^^
 
-print("_______________")
-print("_______________")
+#print("_______________")
+#print("_______________")
 
 #print(re.findall("#\t\t\t(\d.\d+\t+[a-zA-Z/_\-& ]*)", linep[20]))
 #print(re.findall("#\t\t\t(\d.\d.\d+\t+[a-zA-Z/_\-& ]*)", linep[193]))
@@ -135,22 +135,17 @@ print("_______________")
 #print(content)
 
 j=0;
-#,encoding='cp1251',errors='replace', newline=''
-with open(pdir,"rt",encoding='utf-8') as fpii2:
+#,encoding='cp1251',errors='replace', newline='',encoding='utf-8'
+with open(pdir,"rt") as fpii2:
         #s0=''.join(content[j]);
         linep=fpii2.readlines();
         #print(content[j])
 fpii2.close();
 
-
-print("_____________________________________________")
-
 #print(linep)
 
 j=0;
-if(str(''.join(re.findall('^#!\/bin\/(.*).*', linep[j])).strip())=="bash"):
-        print("bash!")
-else:
+if(str(''.join(re.findall('^#!\/bin\/(.*).*', linep[j])).strip())!="bash"):
         print("Error: Unknown shell!")
         exit;
 j=0;k=0;
@@ -227,16 +222,16 @@ while(k<=(j+20)):
 	POS_LIST[k]=strToList("Z 0 0");
 	k+=1
 POS_LIST[k]=strToList("S 0 0");
-print(k)
-
-print;("_____________________________________________")
+#print(k)
+#print;("_____________________________________________")
 
 j=0; k=1;
 str_search="";
 str_comm_0="";
 str_comm_end="";
 
-linep_out=[""]*int(len(linep)*10);
+linep_out=[""]*int(len(linep)*5);
+linep_out_pack=[""]*int(len(linep)*5);
 #print(linep); re.sub('^#!\/bin\/(.*).*', '|\t', linep[POS_0])
 linep_out[k]="AutoInstall Cut Discr\n*************************\n"
 k+=1;
@@ -262,7 +257,7 @@ k+=1;
 #fpii2.close();
 #print(POS_LIST[362])
 #print(POS_LIST[363])
-print("+_++++++++++++++++++++++++++")
+#print("+_++++++++++++++++++++++++++")
 
 #print(linep[18])
 #print(''.join(re.findall("(\d.\d\d.\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[802])))
@@ -294,6 +289,10 @@ strsebool=""
 strseport=""
 strsecontext=""
 strselogin=""
+strselogin_count=0;
+strsepermissive_count=0;
+strsebool_count=0;
+strseport_count=0;
 strseuser=""
 trig_search_comm=0;
 #print(POS_LIST)
@@ -309,31 +308,32 @@ for i in linep_out:
             s1=''.join(re.findall("#\t\t\t(\d\d.\d\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
             s2=''.join(re.findall("#\t\t\t(\d\d.\d\d.\d\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
             if(s0!=""):
-                h1=''.join(['=']*len(s0));
+                h1=''.join(['=']*(len(s0)+5));
                 linep_out[k] = strToList("{0}\n{1}\n".format(s0,h1));
                 k+=3;
                 POS_0=POS_0+1;
             #print(str(["="]*len(h1)));
             #content[k+1] = strToList("{0}\n".format(''.join(h1)));
             if(s1!=""):
-                h2=''.join(['-']*len(s1));
+                h2=''.join(['-']*(len(s1)+5));
                 linep_out[k] = strToList("{0}\n{1}\n".format(s1,h2));
                 k+=3;
                 POS_0=POS_0+1;
             #print(str(["-"]*len(h2)));
             #content[k+1] = strToList("{0}\n".format(''.join(h2)));
             if(s2!=""):
-                h3=''.join(["~"]*len(s2));
+                h3=''.join(["~"]*(len(s2)+5));
                 linep_out[k] = strToList("{0}\n{1}\n".format(s2,h3));
                 k+=3;
                 POS_0=POS_0+1;
                 #print("{0} {1}".format(POS_0,POS_END))
             if(s0=="" and s1=="" and s2==""):
                 linep[POS_0] = re.sub('#<--!|#!-->', '|\t', linep[POS_0])
-                if (trig_search_comm==0):
-                    linep[POS_0] = re.sub('#', '|\t', linep[POS_0]);trig_search_comm=1;
-                else:
-                    linep[POS_0] = re.sub('#', '\t', linep[POS_0])
+                #if (trig_search_comm==0):
+                linep[POS_0] = re.sub('#', '|\t', linep[POS_0]);
+                #    trig_search_comm=1;
+                #else:
+                #    linep[POS_0] = re.sub('#', '\t', linep[POS_0])
                 #linep[POS_0] = re.sub('|    danger!!!', '.. danger::', linep[POS_0])
                 linep_out[k] = re.sub('^ ', '', linep[POS_0])
             #if(POS_0==18): print(linep[POS_0]);
@@ -402,16 +402,30 @@ for i in linep_out:
                 strapt+=''.join(re.findall("^.*apt\-get install( [a-zA-Z0-9/_\-&><=$%\[\]* ]*)", linep[POS_0]))
                 strapt+=''.join(re.findall("^.*sudo apt install( [a-zA-Z0-9/_\-&><=$%\[\]* ]*)", linep[POS_0]))
                 #strapt+=''.join(re.findall("^.*apt install( [a-zA-Z0-9/_\-&><=$%\[\]* ]*)", linep[POS_0]))
+            if(''.join(re.findall("semanage login", linep[POS_0]))=="semanage login"):
+                #.split(' ')[1]+' '+''.join(linep[POS_0]).split(' ')[2]+' '+''.join(linep[POS_0]).split(' ')[3]+' '+''.join(linep[POS_0]).split(' ')[4]+''.join(linep[POS_0]).split(' ')[5]+' ';
+                strselogin+=''.join(linep_out[k]).replace("\"","").strip()+' ';
+                strselogin_count+=1;
+                #strselogin+=''.join(linep[POS_0]).split(' ')[1]+' '+''.join(linep[POS_0]).split(' ')[2]+' '+''.join(linep[POS_0]).split(' ')[3]+' '+''.join(linep[POS_0]).split(' ')[4]+''.join(linep[POS_0]).split(' ')[5]+' ';
             if(''.join(re.findall("semodule", linep[POS_0]))=="semodule"):
+                #''.join(linep[POS_0]).split(' ')[0]+' '+''.join(linep[POS_0]).split(' ')[2];
                 strsemodule+=''.join(linep[POS_0]).split(' ')[0]+' '+''.join(linep[POS_0]).split(' ')[2];
             if(''.join(re.findall("setsebool", linep[POS_0]))=="setsebool"):
-                strsebool+=''.join(linep[POS_0]).split(' ')[0]+' '+''.join(linep[POS_0]).split(' ')[2]+' '+''.join(linep[POS_0]).split(' ')[3];
+                #''.join(linep[POS_0]).split(' ')[0]+' '+''.join(linep[POS_0]).split(' ')[2]+' '+''.join(linep[POS_0]).split(' ')[3];
+                strsebool_count+=1;
+                strsebool+=''.join(linep[POS_0]).split(' ')[2]+' '+''.join(linep[POS_0]).split(' ')[3]+' ';
             if(''.join(re.findall("semanage permissive", linep[POS_0]))=="semanage permissive"):
-                strsepermissive+=''.join(linep[POS_0]).split(' ')[1]+' '+''.join(linep[POS_0]).split(' ')[2]+' '+''.join(linep[POS_0]).split(' ')[3]+'\n';
+                #''.join(linep[POS_0]).split(' ')[1]+' '+''.join(linep[POS_0]).split(' ')[2]+' '+''.join(linep[POS_0]).split(' ')[3]+'\n';
+                #print(''.join(linep[POS_0]).split(' ')[1].replace("\n","")+' '+''.join(linep[POS_0]).split(' ')[2].replace("\n","")+' '+''.join(linep[POS_0]).split(' ')[3].replace("\n","")+' ')
+                strsepermissive+=''.join(linep[POS_0]).split(' ')[1]+' '+''.join(linep[POS_0]).split(' ')[2]+' '+''.join(linep[POS_0]).split(' ')[3].replace("\n","")+' ';
+                strsepermissive_count+=1;
             if(''.join(re.findall("semanage port", linep[POS_0]))=="semanage port"):
-                strseport+=''.join(linep[POS_0]).split(' ')[1]+' '+''.join(linep[POS_0]).split(' ')[4]+' '+''.join(linep[POS_0]).split(' ')[6]+' '+''.join(linep[POS_0]).split(' ')[7];
-            if(''.join(re.findall("semanage fcontext", linep[POS_0]))=="semanage fcontext"):
-                strsecontext+=''.join(linep[POS_0]).split(' ')[1]+' '+''.join(linep[POS_0]).split(' ')[4]+' '+''.join(linep[POS_0]).split(' ')[5];
+                strseport_count+=1;
+                #''.join(linep[POS_0]).split(' ')[1]+' '+''.join(linep[POS_0]).split(' ')[4]+' '+''.join(linep[POS_0]).split(' ')[6]+' '+''.join(linep[POS_0]).split(' ')[7];
+                strseport+=''.join(linep[POS_0]).split(' ')[4]+' '+''.join(linep[POS_0]).split(' ')[2]+' '+''.join(linep[POS_0]).split(' ')[3]+' '+''.join(linep[POS_0]).split(' ')[6]+' '+''.join(linep[POS_0]).split(' ')[7]+' ';
+            #if(''.join(re.findall("semanage fcontext", linep[POS_0]))=="semanage fcontext"):
+                #''.join(linep[POS_0]).split(' ')[1]+' '+''.join(linep[POS_0]).split(' ')[4]+' '+''.join(linep[POS_0]).split(' ')[5];
+                #strsecontext+=''.join(linep[POS_0]).split(' ')
             if(''.join(re.findall("pip", linep[POS_0]))=="pip"):
                 strpip+=''.join(re.findall("^.*pip install( [a-zA-Z0-9/_\-&><=$%\[\]* ]*)", linep[POS_0]));
             k+=1;
@@ -421,45 +435,190 @@ for i in linep_out:
     if((''.join(POS_LIST[j])[0])== "S"):
         break;
 j=0;
-print(strapt)
-print("___________")
-print(strpip)
-print("___________")
-print(strselogin)
-print("___________")
-print(strseuser)
-print("___________")
-print(strsemodule)
-print("___________")
-print(strsebool)
-print("___________")
-print(strsepermissive)
-print("___________")
-print(strsecontext)
-print("___________")
-print(strseport)
-            #s1=''.join(re.findall("#\t\t\t(\d.\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
-            #s2=''.join(re.findall("#\t\t\t(\d.\d.\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
-            #s0='\t'.join(linep[POS_0]);
-            #linep_out[k] = strToList("{0}".format(''.join(s0)));
-                #linep_out[k] = re.sub('#<--!|#!-->', '', linep[POS_0]);
-            #linep_out[k] = strToList("{0}\n".format(s0));
+#print(strapt)
+#print("___________")
+#print(strpip)
+#print("___________")
+#print(strselogin)
+#print("___________")
+#print(strseuser)
+#print("___________")
+#print(strsemodule)
+#print("___________")
+#print(strsebool)
+#print("___________")
+#print(strsepermissive)
+#print("___________")
+#print(strsecontext)
+#print("___________")
+#print(strseport)
+k=0
+linep_out_pack[k]="AutoInstall Package List\n*************************\n"
+k+=1;
 
-pdir=''.join([os.path.abspath('../'),"/docs/cut_discr_pii2.rst"]);
-#pdir="/opt/SAMBA_SHARE/git/BilSrvStation_Server_PC/docs/cut_discr.rst";
-with open(pdir,"wt",encoding='utf-8') as fpii2:
-    for i in linep_out:
-        #s0=''.join(content[j]);
-        fpii2.write(''.join(linep_out[j]));
-        #print(content[j])
-        j=j+1;
-fpii2.close();
+#   apt-get list
+linep_out_pack[k]="\n.. csv-table:: apt-get list\n"
+k+=1;
+linep_out_pack[k]="\t:header: \"#\", \"apt-get\"\n"
+k+=1;
+linep_out_pack[k]="\t:widths: auto\n\n"
+k+=1;
+#j=k;
+z=0;
+#strToList("\t{0}".format(strapt.split(' ')[z]);len(strapt.split(' '))len(strapt.split(' ')
+j=k+len(strapt.split(' '))-1
+#linep_out[k]=strToList("{1} {0}\n".format(strapt.split(' ')[z]));
+#print("{0}\n".format(strapt.split(' ')[len(strapt.split(' '))-1]))
+#print("{0} {1}".format(k,j))
+while (j>=k):
+    if(strapt.split(' ')[z]!=""):
+        linep_out_pack[k]=strToList("\t\"{0}\", \"{1}\"\n".format(z,strapt.split(' ')[z]));
+    z+=1;k+=1;
 
-#print(linep[42])
-#print(linep[48])
-#print(linep[50])
-#print(linep[52])
-#print(linep[61])
+#   Module PIP list var:strpip
+linep_out_pack[k]="\n.. csv-table:: Python pip package\n"
+k+=1;
+linep_out_pack[k]="\t:header: \"#\", \"Module PIP\"\n"
+k+=1;
+linep_out_pack[k]="\t:widths: auto\n\n"
+k+=1;
+#j=k;
+z=0;
+#strToList("\t{0}".format(strapt.split(' ')[z]);len(strapt.split(' '))len(strapt.split(' ')
+j=k+len(strpip.split(' '))-1
+#linep_out[k]=strToList("{1} {0}\n".format(strapt.split(' ')[z]));
+#print("{0}\n".format(strapt.split(' ')[len(strapt.split(' '))-1]))
+#print("{0} {1}".format(k,j))
+while (j>=k):
+    if(strpip.split(' ')[z]!=""):
+        linep_out[k]=strToList("\t\"{0}\", \"{1}\"\n".format(z,strpip.split(' ')[z]));
+    z+=1;k+=1;
+
+#   apt-get list var:strapt
+linep_out_pack[k]="\n.. csv-table:: SEmanage login\n"
+k+=1;
+linep_out_pack[k]="\t:header: \"Semanage\", \"Options\", \"Group\", \"Role\", \"User\"\n"
+k+=1;
+linep_out_pack[k]="\t:widths: auto\n\n"
+k+=1;
+#j=k;
+z=0;
+#strToList("\t{0}".format(strapt.split(' ')[z]);len(strapt.split(' '))len(strapt.split(' ')
+j=k+strselogin_count
+#print(len(strselogin.split(' ')))
+
+#linep_out[k]=strToList("{1} {0}\n".format(strapt.split(' ')[z]));
+#print("{0}\n".format(strapt.split(' ')[len(strapt.split(' '))-1]))
+#print(j)
+c=0;
+
+#stmp="strselogin.split(' ')[z+1],strselogin.split(' ')[z+2],strselogin.split(' ')[z+3],strselogin.split(' ')[z+5],strselogin.split(' ')[z+4],strselogin.split(' ')[z+6],strselogin.split(' ')[z+7]"
+#print(strselogin.split(' ')[z+5])
+#print(strToList("\t\"{0}\", \"{1}, {2}\", \"{3}\", \"{4}\", \"{5}\"\n".format(strselogin.split(' ')[z+1],strselogin.split(' ')[z+2],strselogin.split(' ')[z+3],strselogin.split(' ')[z+4],strselogin.split(' ')[z+5],strselogin.split(' ')[z+7])))
+
+while (j>=k):
+    if(strselogin.split(' ')[z+5]=="-r"):
+        linep_out_pack[k]=strToList("\t\"{0}\", \"{1}, {2}, {3}\", \"{4}\", \"{5}\", \"{6}\"\n".format(strselogin.split(' ')[z+1],strselogin.split(' ')[z+2],strselogin.split(' ')[z+3],strselogin.split(' ')[z+5],strselogin.split(' ')[z+4],strselogin.split(' ')[z+6],strselogin.split(' ')[z+7]));
+    else:
+        linep_out_pack[k]=strToList("\t\"{0}\", \"{1}, {2}\", \"{3}\", \"{4}\", \"{5}\"\n".format(strselogin.split(' ')[z+1],strselogin.split(' ')[z+2],strselogin.split(' ')[z+3],strselogin.split(' ')[z+4],strselogin.split(' ')[z+6],strselogin.split(' ')[z+5]));
+    #print(linep_out[k])
+    k+=1;z+=8;
+    if((z+7)>=len(strselogin.split(' '))):
+        print(z)
+        c=len(strselogin.split(' '))-z+2;
+    #    formstr="";
+        for d in range(0,c):
+            strselogin+='-'+' '
+#print(strselogin)
+    
+#   apt-get list var:strselogin
+linep_out_pack[k]="\n.. csv-table:: SEmodules\n"
+k+=1;
+linep_out_pack[k]="\t:header: \"#\", \"SEmodule name\"\n"
+k+=1;
+linep_out_pack[k]="\t:widths: auto\n\n"
+k+=1;
+#j=k;
+z=0;
+j=k+len(strsemodule.split(' '))-1
+#linep_out[k]=strToList("{1} {0}\n".format(strapt.split(' ')[z]));
+#print("{0}\n".format(strapt.split(' ')[len(strapt.split(' '))-1]))
+#print("{0} {1}".format(k,j))
+while (j>=k):
+    if(strsemodule.split('\n')[z]!=""):
+        linep_out_pack[k]=strToList("\t\"{0}\", \"{1}\"\n".format(z,strsemodule.split('\n')[z].strip()));
+    z+=1;k+=1;
+
+#   apt-get list var:strsepermissive
+linep_out_pack[k]="\n.. csv-table:: Policy permissive\n"
+k+=1;
+linep_out_pack[k]="\t:header: \"Permissive name\", \"Permissive mode\"\n"
+k+=1;
+linep_out_pack[k]="\t:widths: auto\n\n"
+k+=1;
+#j=k;
+z=0;
+j=k+strsepermissive_count-1
+#print("\t\"{0}\", \"{1}\"\n".format(k,j))
+#print(strsepermissive_count)
+
+while (j>=k):
+    linep_out_pack[k]=strToList("\t\"{0}\", \"{1}\"\n".format(strsepermissive.split(' ')[z+1].strip(),strsepermissive.split(' ')[z+2].strip()));
+    z+=3;k+=1;
+    if(strsepermissive.split(' ')[z].strip()==""):
+        break;
+        
+        
+        
+#   apt-get list var:strsepermissive
+linep_out_pack[k]="\n.. csv-table:: SELinux setsebool\n"
+k+=1;
+linep_out_pack[k]="\t:header: \"SEbool var\", \"SEbool mode\"\n"
+k+=1;
+linep_out_pack[k]="\t:widths: auto\n\n"
+k+=1;
+#j=k;
+z=0;
+j=k+strsebool_count-1
+#print("\t\"{0}\", \"{1}\"\n".format(k,j))
+#print(strsepermissive_count)
+while (j>=k):
+    if(strsebool.split(' ')[z+2]!=""):
+        linep_out_pack[k]=strToList("\t\"{0}\", \"{1}\"\n".format(strsebool.split(' ')[z+1].strip(),strsebool.split(' ')[z+2].strip()));
+    z+=2;k+=1;
+
+        
+        
+ #   apt-get list var:strsepermissive
+linep_out_pack[k]="\n.. csv-table:: SELinux port\n"
+k+=1;
+linep_out_pack[k]="\t:header: \"Port name\", \"Parametr\", \"Port type\", \"Number port\"\n"
+k+=1;
+linep_out_pack[k]="\t:widths: auto\n\n"
+k+=1;
+#j=k;
+z=0;
+j=k+strseport_count-1
+#print("\t\"{0}\", \"{1}\"\n".format(k,j))
+#print(strsepermissive_count)
+
+while (j>=k):
+    linep_out_pack[k]=strToList("\t\"{0}\", \"{1}, {2}\", \"{3}\", \"{4}\"\n".format(strseport.split(' ')[z].strip(),strseport.split(' ')[z+1].strip(),strseport.split(' ')[z+2].strip(),strseport.split(' ')[z+3].strip(),strseport.split(' ')[z+4].strip()));
+    z+=5;k+=1;
+    #if(strsebool.split(' ')[z]==""):
+    #    break;
+
+#strToList("\t{0}".format(strapt.split(' ')[z]);len(strapt.split(' '))len(strapt.split(' ')
+#linep_out[k]=strToList("{1} {0}\n".format(strapt.split(' ')[z]));
+#print("{0}\n".format(strapt.split(' ')[len(strapt.split(' '))-1]))
+#print("{0} {1}".format(k,j))
+#j=k+len(strsepermissive.split(' '))-1
+#print(len(strsepermissive.split(' '))-1)
+#while (j>=k):
+#    linep_out[k]=strToList("\t\"{0}\", \"{0}\", \"{0}\"\n".format(z,strsepermissive.split(' ')[z+1].strip()));
+#    z+=1;k+=1;
+#    print(strsepermissive.split(' ')[z+1].strip())
+
 #.. code-block:: bash
 #   :caption: pii2 bash
 
@@ -471,7 +630,27 @@ fpii2.close();
 #       'Configuration/TypoScript',
 #       'Site Package'
 #   );
+j=0;
+pdir=''.join([os.path.abspath('../'),"/docs/cut_discr_pii2.rst"]);
+#pdir="/opt/SAMBA_SHARE/git/BilSrvStation_Server_PC/docs/cut_discr.rst";,encoding='utf-8'
+with open(pdir,"wt") as fpii2:
+    for i in linep_out:
+        #s0=''.join(content[j]);
+        fpii2.write(''.join(linep_out[j]));
+        #print(content[j])
+        j=j+1;
+fpii2.close();
 
+j=0;
+pdir=''.join([os.path.abspath('../'),"/docs/cut_discr_pii2_pack.rst"]);
+#pdir="/opt/SAMBA_SHARE/git/BilSrvStation_Server_PC/docs/cut_discr.rst";,encoding='utf-8'
+with open(pdir,"wt") as fpii2:
+    for i in linep_out_pack:
+        #s0=''.join(content[j]);
+        fpii2.write(''.join(linep_out_pack[j]));
+        #print(content[j])
+        j=j+1;
+fpii2.close();
 
 
 

@@ -98,7 +98,6 @@ AutoInstall Package List
 	"login", "-a, -s, -r", "sysadm_u", "s0-s0:c0.c1023", "%admins"
 	"login", "-a, -s, -r", "sysadm_u", "s0-s0:c0.c1023", "%sudo"
 	"login", "-a, -s", "user_u", "-", "tom"
-	"-", "-, -", "-", "-", "-"
 
 .. csv-table:: SEmodules
 	:header: "#", "SEmodule name"

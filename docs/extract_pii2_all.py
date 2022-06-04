@@ -504,7 +504,7 @@ k+=1;
 #j=k;
 z=0;
 #strToList("\t{0}".format(strapt.split(' ')[z]);len(strapt.split(' '))len(strapt.split(' ')
-j=k+strselogin_count
+j=k+strselogin_count-1
 #print(len(strselogin.split(' ')))
 
 #linep_out[k]=strToList("{1} {0}\n".format(strapt.split(' ')[z]));

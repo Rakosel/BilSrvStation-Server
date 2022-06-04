@@ -55,7 +55,7 @@ Features
 --------
 |	|Product|
 |
-|	- In script `extract_pii2.py' capabilites info packages and policies
+|	- In cross-reference link page to pages
 |
 - **15.05.2022-10.06.2022**
 |

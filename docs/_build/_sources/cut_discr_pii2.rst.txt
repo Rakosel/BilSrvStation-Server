@@ -21,7 +21,7 @@ AutoInstall Cut Discr
 |	
 01	AUTO POSTINSTALL
 ========================
-|	 danger!!! do postinstall copy wufu & wpa_supplicant.conf + SAMBA
+|	 warning!!! do postinstall copy wufu & wpa_supplicant.conf + SAMBA
 |	
 01.01	PRE-INSTALL EMV AND SETTINGS
 ---------------------------------------
@@ -1792,13 +1792,12 @@ AutoInstall Cut Discr
 	semanage interface -a -t netif_t -r s0-s0:c0.c1023 $( ip addr | sed -n -e "s/.*$COUNT\:\s\(.*\)\:\s<.*/\1/p")
 	((COUNT++));
 	done
-	
+|		danger!!! Set this is Settings to SELinux *boot_t* permissive for disabled boot DebianOS!!!
 |	semanage permissive -a sshd_t 
 .. code-block:: bash
 	:linenos:
 
 	semanage permissive -a boot_t 
-	
 |	setsebool -P allow_execmem 1
 |	setsebool -P allow_execheap 1
 |	setsebool -P allow_user_mysql_connect 1

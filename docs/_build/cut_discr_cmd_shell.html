@@ -46,10 +46,20 @@
 <li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2.html">4. AutoInstall Cut Discr</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2_pack.html">5. AutoInstall Package List</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">6. CMD_SHELL Cut Discr</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#https">6.1. https</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">6.2. https</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#sudo-touch-auth-user-add-group-add">6.3. sudo touch auth_$USER_ADD$GROUP_ADD</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#echo">6.4. echo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#user-script-generator-version">6.1. User script generator Version</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mode">6.1.1. Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#https">6.2. https</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">6.3. https</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#check-root-privilege">6.3.1. Check root privilege</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#menu-select">6.3.2. Menu SELECT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#check-users-and-groups">6.3.3. Check users and groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#process-generate-keys">6.3.4. Process generate keys</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#sudo-touch-auth-user-add-group-add">6.4. sudo touch auth_$USER_ADD$GROUP_ADD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#echo">6.5. echo</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="full_discr.html">7. Полное описание конфигурации сервера</a></li>
@@ -97,16 +107,13 @@
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
-<div class="line-block">
-<div class="line-block">
-<div class="line-block">
-<div class="line-block">
-<div class="line">01      User script generator</div>
 </div>
-<div class="line">Version 1.1.10a</div>
+<div class="section" id="user-script-generator-version">
+<h2><span class="section-number">6.1. </span>User script generator Version<a class="headerlink" href="#user-script-generator-version" title="Permalink to this headline"></a></h2>
+<div class="line-block">
 <div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
+<div class="line-block">
+<div class="line-block">
 <div class="line">$|      - counter arguments</div>
 <div class="line">$&#64; - listing arguments</div>
 <div class="line">[-z $1] - check string</div>
@@ -123,11 +130,10 @@
 </div>
 <div class="line">user_exists(){ id &quot;$1&quot; &amp;&gt;/dev/null; }</div>
 <div class="line">set -x</div>
-<div class="line-block">
-<div class="line">01.01   Mode</div>
 </div>
 </div>
-</div>
+<div class="section" id="mode">
+<h3><span class="section-number">6.1.1. </span>Mode<a class="headerlink" href="#mode" title="Permalink to this headline"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nv">USER_ADD</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">;</span>
 <span class="linenos"> 2</span><span class="nv">GROUP_ADD</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">;</span>
 <span class="linenos"> 3</span><span class="nv">UROUP_ID</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">;</span>
@@ -141,11 +147,13 @@
 <span class="linenos">11</span><span class="nv">PARAMETER</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
+</div>
+</div>
 <div class="section" id="https">
-<h2><span class="section-number">6.1. </span>https<a class="headerlink" href="#https" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">6.2. </span>https<a class="headerlink" href="#https" title="Permalink to this headline"></a></h2>
 </div>
 <div class="section" id="id1">
-<h2><span class="section-number">6.2. </span>https<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">6.3. </span>https<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <div class="line-block">
 <div class="line-block">
 <div class="line-block">
@@ -182,10 +190,11 @@
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
-<div class="line-block">
-<div class="line">1.1.1   Check root privilege</div>
-<div class="line"><br /></div>
 </div>
+<div class="section" id="check-root-privilege">
+<h3><span class="section-number">6.3.1. </span>Check root privilege<a class="headerlink" href="#check-root-privilege" title="Permalink to this headline"></a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="o">[[</span> <span class="nv">$EUID</span> -ne <span class="m">0</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 <span class="linenos">2</span>        <span class="k">if</span> <span class="o">[[</span> <span class="si">${</span><span class="nv">LANG</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">5</span><span class="si">}</span> -eq <span class="s1">&#39;ru_RU&#39;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
@@ -199,11 +208,13 @@
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
-<div class="line-block">
-<div class="line-block">
-<div class="line">1.2.1   Menu SELECT</div>
-<div class="line"><br /></div>
 </div>
+</div>
+<div class="section" id="menu-select">
+<h3><span class="section-number">6.3.2. </span>Menu SELECT<a class="headerlink" href="#menu-select" title="Permalink to this headline"></a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
 <div class="line">echo -n &quot;cmd $USER_ADD $GROUP_ADD $3 $4 $5 $6 $7 $8 $9 n&quot;;</div>
 </div>
 </div>
@@ -259,9 +270,9 @@
 </div>
 <div class="line">fi</div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
-</pre></div>
 </div>
+<div class="section" id="check-users-and-groups">
+<h3><span class="section-number">6.3.3. </span>Check users and groups<a class="headerlink" href="#check-users-and-groups" title="Permalink to this headline"></a></h3>
 <div class="line-block">
 <div class="line">echo $GROUPS</div>
 <div class="line-block">
@@ -284,21 +295,18 @@
 <div class="line">echo -e &quot;$USER_ADD not exist&quot;</div>
 <div class="line">exit 1;</div>
 <div class="line">fi</div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
-</pre></div>
-</div>
-<div class="line-block">
 <div class="line">if ! id -g &quot;$GROUP_ADD&quot; &gt;/dev/null 2&gt;&amp;1; then</div>
 <div class="line">echo -e &quot;$GROUP_ADD not exist&quot;</div>
 <div class="line">exit 1;</div>
+</div>
+</div>
+<div class="section" id="process-generate-keys">
+<h3><span class="section-number">6.3.4. </span>Process generate keys<a class="headerlink" href="#process-generate-keys" title="Permalink to this headline"></a></h3>
+<div class="line-block">
 <div class="line">fi</div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
-</pre></div>
-</div>
 <div class="line-block">
 <div class="line">-f auth_$USER$GROUPS</div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">if</span> <span class="o">[[</span> <span class="nv">$SH_MODE</span> <span class="o">==</span> <span class="si">${</span><span class="nv">cmd_mode</span><span class="p">[0]</span><span class="si">}</span> <span class="o">]]</span><span class="p">;</span>
 <span class="linenos"> 2</span><span class="k">then</span>
@@ -318,8 +326,9 @@
 </pre></div>
 </div>
 </div>
+</div>
 <div class="section" id="sudo-touch-auth-user-add-group-add">
-<h2><span class="section-number">6.3. </span>sudo touch auth_$USER_ADD$GROUP_ADD<a class="headerlink" href="#sudo-touch-auth-user-add-group-add" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">6.4. </span>sudo touch auth_$USER_ADD$GROUP_ADD<a class="headerlink" href="#sudo-touch-auth-user-add-group-add" title="Permalink to this headline"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nv">TMP</span><span class="o">=</span><span class="k">$(</span>date +<span class="s2">&quot;%m-%d-%Y+%T&quot;</span><span class="k">)</span><span class="p">;</span>
 <span class="linenos"> 2</span>        ssh-keygen -t <span class="nv">$sign</span> -b <span class="nv">$bits</span> -f /home/<span class="nv">$USER_ADD</span>/.ssh/auth_<span class="nv">$USER_ADD$GROUP_ADD</span> -N <span class="s2">&quot;</span><span class="nv">$PWD_USER</span><span class="s2">&quot;</span> -C <span class="s2">&quot;</span><span class="nv">$HOSTNAME</span><span class="s2"> </span><span class="nv">$USER_ADD</span><span class="s2">:</span><span class="nv">$GROUP_ADD</span><span class="s2"> </span><span class="nv">$TMP</span><span class="s2">&quot;</span>
 <span class="linenos"> 3</span>        sudo chmod <span class="m">640</span> authorized_keys
@@ -361,7 +370,7 @@
 </div>
 </div>
 <div class="section" id="echo">
-<h2><span class="section-number">6.4. </span>echo<a class="headerlink" href="#echo" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">6.5. </span>echo<a class="headerlink" href="#echo" title="Permalink to this headline"></a></h2>
 <div class="line-block">
 <div class="line">elif</div>
 <div class="line">fi</div>
@@ -369,6 +378,9 @@
 <div class="line-block">
 <div class="line">echo you have entered the text $TEXT</div>
 </div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">exit</span> <span class="m">0</span>
+</pre></div>
 </div>
 </div>
 </div>

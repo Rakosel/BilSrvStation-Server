@@ -2,9 +2,7 @@
 #
 set -x
 #
-#			01	User script generator
-#   Version 1.1.10a
-#
+#	User script generator Version 1.2.1a 
 #
 # $# - counter arguments
 # $@ - listing arguments
@@ -21,7 +19,7 @@ set -x
 # cmd -umod [-mu] XXX -umod [-mg] XXX 
 #user_exists(){ id "$1" &>/dev/null; }
 #set -x
-#			01.01	Mode
+#		Mode
 USER_ADD="";
 GROUP_ADD="";
 UROUP_ID="";
@@ -54,7 +52,7 @@ TMP=""
 cmd_usermod=("uadd" "gadd" "iu" "ig" "umod" "gmod" "mu" "mg" "sg" "su" "sb" "hd" "pwd" "cmt" "r");
 cmd_mode=("ssh_keygen" "ressh_host");
 #
-#		1.1.1	Check root privilege
+#		Check root privilege
 #
 if [[ $EUID -ne 0 ]]; then
 	if [[ ${LANG:0:5} -eq 'ru_RU' ]]; then
@@ -65,7 +63,7 @@ if [[ $EUID -ne 0 ]]; then
 	exit 1;
 fi
 #
-#		1.2.1	Menu SELECT
+#		Menu SELECT
 #
 #echo -n "cmd $USER_ADD $GROUP_ADD $3 $4 $5 $6 $7 $8 $9 \n";
 while [ -n "$1" ];
@@ -98,14 +96,13 @@ case $1 in
 esac
 shift
 done
-
 #echo -n "cmd $USER_ADD $GROUP_ADD $UROUP_ID $PWD_USER $COMMENT_USER\n";
 #if [ "$GID" -ne "$ROOT_GID" ]
 #then
 #  echo "��� ������ �������� ��������� ����� root."
 #  exit $E_NOTROOT
 #fi
-
+#		Check users and groups
 #echo $GROUPS
 # if [ -z $1 ]; then 
 #str = $groups | awk "{print $1}";
@@ -117,17 +114,15 @@ else
     echo User \`$USER_ADD\' does not belong to group \`$GROUP_ADD\';
 	exit 1;
 fi
-
 #if ! id -u "$USER_ADD" >/dev/null 2>&1; then
 #echo -e "$USER_ADD not exist"
 #exit 1;
 #fi
-
 #if ! id -g "$GROUP_ADD" >/dev/null 2>&1; then
 #echo -e "$GROUP_ADD not exist"
 #exit 1;
+#		Process generate keys
 #fi
-
 # -f auth_$USER$GROUPS 
 if [[ $SH_MODE == ${cmd_mode[0]} ]];
 then
@@ -181,3 +176,4 @@ fi
 #set +x
 # echo you have entered the text $TEXT
 exit 0
+# 

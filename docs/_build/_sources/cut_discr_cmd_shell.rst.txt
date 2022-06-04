@@ -9,9 +9,8 @@ CMD_SHELL Cut Discr
 
 	set -x
 |	
-|				01	User script generator
-|	   Version 1.1.10a
-|	
+User script generator Version 
+==============================
 |	
 |	 $|	 - counter arguments
 |	 $@ - listing arguments
@@ -28,7 +27,8 @@ CMD_SHELL Cut Discr
 |	 cmd -umod [-mu] XXX -umod [-mg] XXX 
 |	user_exists(){ id "$1" &>/dev/null; }
 |	set -x
-|				01.01	Mode
+Mode
+----
 .. code-block:: bash
 	:linenos:
 
@@ -75,7 +75,8 @@ https
 	cmd_usermod=("uadd" "gadd" "iu" "ig" "umod" "gmod" "mu" "mg" "sg" "su" "sb" "hd" "pwd" "cmt" "r");
 	cmd_mode=("ssh_keygen" "ressh_host");
 |	
-|			1.1.1	Check root privilege
+Check root privilege
+--------------------
 |	
 .. code-block:: bash
 	:linenos:
@@ -89,7 +90,8 @@ https
 		exit 1;
 	fi
 |	
-|			1.2.1	Menu SELECT
+Menu SELECT
+-----------
 |	
 |	echo -n "cmd $USER_ADD $GROUP_ADD $3 $4 $5 $6 $7 $8 $9 \n";
 .. code-block:: bash
@@ -131,17 +133,14 @@ https
 	esac
 	shift
 	done
-	
 |	echo -n "cmd $USER_ADD $GROUP_ADD $UROUP_ID $PWD_USER $COMMENT_USER\n";
 |	if [ "$GID" -ne "$ROOT_GID" ]
 |	then
 |	  echo "��� ������ �������� ��������� ����� root."
 |	  exit $E_NOTROOT
 |	fi
-.. code-block:: bash
-	:linenos:
-
-	
+Check users and groups
+----------------------
 |	echo $GROUPS
 |	 if [ -z $1 ]; then 
 |	str = $groups | awk "{print $1}";
@@ -156,23 +155,16 @@ https
 	echo User \`$USER_ADD\' does not belong to group \`$GROUP_ADD\';
 		exit 1;
 	fi
-	
 |	if ! id -u "$USER_ADD" >/dev/null 2>&1; then
 |	echo -e "$USER_ADD not exist"
 |	exit 1;
 |	fi
-.. code-block:: bash
-	:linenos:
-
-	
 |	if ! id -g "$GROUP_ADD" >/dev/null 2>&1; then
 |	echo -e "$GROUP_ADD not exist"
 |	exit 1;
+Process generate keys
+---------------------
 |	fi
-.. code-block:: bash
-	:linenos:
-
-	
 |	 -f auth_$USER$GROUPS 
 .. code-block:: bash
 	:linenos:
@@ -239,3 +231,7 @@ echo
 |	fi
 |	set +x
 |	 echo you have entered the text $TEXT
+.. code-block:: bash
+	:linenos:
+
+	exit 0

@@ -20,11 +20,11 @@ AutoInstall Cut Discr
 |	
 |	
 01	AUTO POSTINSTALL
-===================
+========================
 |	 danger!!! do postinstall copy wufu & wpa_supplicant.conf + SAMBA
 |	
 01.01	PRE-INSTALL EMV AND SETTINGS
-----------------------------------
+---------------------------------------
 |	d-i preseed/late_command string mkdir -p /target/install/; cp -R /install/* /target/install/; cp -Rf /install/lib/ /target/lib/;
 |	
 |	cd /install/
@@ -86,26 +86,24 @@ AutoInstall Cut Discr
 	step_one=${3:-"step_one"}
 	step_two=${4:-"step_two"}
 	step_three=${5:-"step_three"}
-|	
-|	 		+ install wpa_supplicant-0.7.3.tar.gz
-|	
-.. code-block:: bash
-	:linenos:
-
-	export LC_ALL=ru_RU.UTF-8
-	FILES="steps.txt"
-	BUF="";
-	TMPS="";
-	COUNT=0;
-	DEB_VER="";
-	NET_EN="";
+	"1", "--upgrade"
+	"2", "myst-parser"
+	"3", "sphinx-autodocgen"
+	"4", "Pygments"
+	"5", "sphinx-intl"
+	"6", "lumache"
+	"7", "django"
+	"8", "django-docs"
+	"9", "sphinxnotes-strike"
+	"10", "-U"
+	"11", "sphinx"
 	NET_WI="";
 	STATE="0";
 	PORT_SSH="4103"
 	NET_ARR=();
 |	
 01.02	CHECK ROOT PRIVILEGE
---------------------------
+-------------------------------
 .. code-block:: bash
 	:linenos:
 
@@ -207,7 +205,7 @@ AutoInstall Cut Discr
 |		a.3 else ok
 |	
 01.03	SETTINGS /ETC/NETWORK -> INTERFACES [interface_sh]
---------------------------------------------------------
+-------------------------------------------------------------
 .. code-block:: bash
 	:linenos:
 
@@ -218,7 +216,7 @@ AutoInstall Cut Discr
 	if [[ -z $(sed -n -e "s/^\(1_settings_interface_with_wifi\).*/\1/p" steps.txt) ]]; then
 |	
 01.03.01	SETTINGS NETWORK/INTERFACES
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	
 .. code-block:: bash
 	:linenos:
@@ -226,7 +224,7 @@ AutoInstall Cut Discr
 	cd /etc/network/
 |	
 01.03.02	SEARCH INTERFACES 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |		|	2:	number  
 |	
 .. code-block:: bash
@@ -502,7 +500,7 @@ AutoInstall Cut Discr
 	fi
 |	
 01.03.02	restart service
-~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. code-block:: bash
 	:linenos:
 
@@ -514,7 +512,7 @@ AutoInstall Cut Discr
 	fi
 |	
 01.04		Update distribution 
----------------------------
+--------------------------------
 .. code-block:: bash
 	:linenos:
 
@@ -607,7 +605,7 @@ AutoInstall Cut Discr
 	
 |	
 01.05		Install drivers
-----------------------
+---------------------------
 |	
 .. code-block:: bash
 	:linenos:
@@ -638,7 +636,7 @@ AutoInstall Cut Discr
 	echo -e "y\n" | apt-get install man 
 |	
 01.05.01	Install SElinux utils & acl
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. code-block:: bash
 	:linenos:
 
@@ -665,7 +663,7 @@ AutoInstall Cut Discr
 	echo -e "2_install_driver" >> steps.txt
 |	
 01.05.02	Reboot
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
 .. code-block:: bash
 	:linenos:
 
@@ -673,7 +671,7 @@ AutoInstall Cut Discr
 	fi
 |	
 01.06		Install git && nanorc [step_three]
------------------------------------------
+----------------------------------------------
 .. code-block:: bash
 	:linenos:
 
@@ -762,7 +760,7 @@ AutoInstall Cut Discr
 |	
 |	
 01.07		Copy dir 
-----------------
+---------------------
 |	
 .. code-block:: bash
 	:linenos:
@@ -796,7 +794,7 @@ AutoInstall Cut Discr
 |	
 |	
 01.08		Install utils [step_five]
---------------------------------
+-------------------------------------
 .. code-block:: bash
 	:linenos:
 
@@ -990,7 +988,7 @@ AutoInstall Cut Discr
 |	 apt-get install shake-fs
 |	
 01.09		Install driver opt and acc [step_six]
---------------------------------------------
+-------------------------------------------------
 .. code-block:: bash
 	:linenos:
 
@@ -999,9 +997,9 @@ AutoInstall Cut Discr
 	if [[ -z $(sed -n -e "s/^\(7_driver_opt\).*/\1/p" steps.txt) ]]; then
 |	
 01.09.01	create disk /opt/
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 01.09.02	search /dev/s**
-~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	touch fdiskhdd.txt;
 |	fdisk -l > fdiskhdd.txt
 |	STATE=$(sed -n -e "s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p" fdiskhdd.txt);
@@ -1023,7 +1021,7 @@ AutoInstall Cut Discr
 |	
 |	
 01.09.03	mount /dev/s**
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. code-block:: bash
 	:linenos:
 
@@ -1095,7 +1093,7 @@ AutoInstall Cut Discr
 |	
 |	
 01.10		Create users and groups
-------------------------------
+-----------------------------------
 .. code-block:: bash
 	:linenos:
 
@@ -1108,7 +1106,7 @@ AutoInstall Cut Discr
 |		 cp sources.tmp sources.list;
 |	
 01.10.01		Create users and groups
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	cp -Rf /install/home/rootsu/.cmd_shell.sh ~/.cmd_shell.sh
 |	cp -Rf /install/home/rootsu/.bashrc ~/.bashrc
 |	cp -Rf /install/home/rootsu/.bashrc /home/admin/
@@ -1178,11 +1176,11 @@ AutoInstall Cut Discr
 	
 |	
 01.10.02		Create ssh_ssl
-~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |			https://www.cyberciti.biz/tips/checking-openssh-sshd-configuration-syntax-errors.html
 |	
 01.10.03	Install ssh settings
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. code-block:: bash
 	:linenos:
 
@@ -1340,7 +1338,7 @@ AutoInstall Cut Discr
 	systemctl restart ssh
 |	
 01.10.04	Create users ssh
-~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	
 .. code-block:: bash
 	:linenos:
@@ -1350,7 +1348,7 @@ AutoInstall Cut Discr
 |	
 |	
 01.10.05	Create SAMBA
-~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	
 |	
 .. code-block:: bash
@@ -1371,18 +1369,18 @@ AutoInstall Cut Discr
 	
 |	
 01.10.06	Install and settings firewall 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	
 01.10.07	Install other soft
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	
 01.10.08	Extended nano 
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	
 |	
 |	
 01.10.09	cp ers 
-~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 |	
 .. code-block:: bash
 	:linenos:
@@ -1391,7 +1389,7 @@ AutoInstall Cut Discr
 |	exit 1;
 |	
 01.10.10	Install vsftp
-~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. code-block:: bash
 	:linenos:
 
@@ -1730,7 +1728,7 @@ AutoInstall Cut Discr
 	
 |	
 01.11	Settings permissive SELinux
----------------------------------
+--------------------------------------
 |	 seinfo -t
 .. code-block:: bash
 	:linenos:
@@ -2105,85 +2103,3 @@ AutoInstall Cut Discr
 	:linenos:
 
 	exit 0;
-.. csv-table:: CSV-таблица
-	:header: "#", "apt-get"
-	:widths: auto
-
-	"1", "console-setup"
-	"2", "libdrm-amdgpu1"
-	"3", "xserver-xorg-video-amdgpu"
-	"4", "nvidia-driver"
-	"5", "firmware-misc-nonfree"
-	"6", "nvidia-settings"
-	"7", "firmware-linux"
-	"8", "firmware-realtek"
-	"9", "firmware-linux-nonfree"
-	"10", "man"
-	"12", "acl"
-	"13", "setools"
-	"14", "policycoreutils"
-	"15", "selinux-basics"
-	"16", "selinux-utils"
-	"17", "selinux-policy-default"
-	"18", "selinux-policy-mls"
-	"19", "auditd"
-	"20", "policycoreutils-python-utils"
-	"21", "semanage-utils"
-	"22", "audispd-plugins"
-	"23", "mcstrans"
-	"24", "git"
-	"25", "build-essential"
-	"26", "python"
-	"27", "python3"
-	"28", "tmux"
-	"29", "net-tools"
-	"30", "manpages-dev"
-	"31", "wpa_supplicant"
-	"32", "mc"
-	"33", "ncdu"
-	"34", "netdata"
-	"35", "systat"
-	"36", "iftop"
-	"37", "htop"
-	"38", "sudo"
-	"39", "iptraf"
-	"40", "ntp"
-	"41", "nmon"
-	"42", "nmap"
-	"43", "safe-rm"
-	"44", "cifs-utils"
-	"45", "samba"
-	"46", "smbfs"
-	"47", "whois"
-	"48", "lsof"
-	"49", "mkpasswd"
-	"50", "wget"
-	"51", "tree"
-	"52", "autofs"
-	"53", "gpg"
-	"54", "rsync"
-	"55", "ca-certificates"
-	"56", "shared-mime-info"
-	"57", "wget"
-	"58", "genisoimage"
-	"59", "xorriso"
-	"60", "isolinux"
-	"61", "hddtemp"
-	"62", "lm-sensors"
-	"63", "at"
-	"64", "pip"
-	"65", "xz-utils"
-	"66", "curl"
-	"67", "python3-sphinx"
-	"68", "-y"
-	"69", "build-essential"
-	"70", "libssl-dev"
-	"71", "libffi-dev"
-	"72", "python3-dev"
-	"73", "-y"
-	"74", "python3-venv"
-	"75", "python3-sphinx"
-	"76", "openssh-server"
-	"77", "-y"
-	"78", "ntfs-3g"
-	"79", "vsftpd"

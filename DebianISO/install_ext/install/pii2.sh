@@ -2,6 +2,7 @@
 #-xv
 #set -x
 # https://wiki.debian.org/Microcode
+# http://hilite.me/ code->html
 #<--! uncomment #639!!!!
 #if [[ -z $STATE ]]; then
 #	exit 3;
@@ -12,7 +13,7 @@
 # sudo usermod -p $S test1
 # su -p test1
 #!-->
-#
+# 
 #<--!
 #			01	AUTO POSTINSTALL
 # octanovilca na SSL + po4initb script cmd
@@ -821,16 +822,35 @@ if [[ -z $(sed -n -e "s/^\(7_driver_opt\).*/\1/p" steps.txt) ]]; then
 #<--!
 #			01.09.03	mount /dev/s**
 #!-->
-mount -t ext4 $(sudo fdisk -l | sed -n -e "s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p") /opt
+#mount -t ext4 $(sudo fdisk -l | sed -n -e "s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p") /opt
 
-shd=$(sudo fdisk -l | sed -n -e "s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p" | sed 's/\//\\\//g')
+#shd=$(sudo fdisk -l | sed -n -e "s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p" | sed 's/\//\\\//g')
 
 #S1=$(sudo blkid | sed -n -e "s/$shd:\s\(.*\).*/\1/p" | sed -n -e "s/$shd:\s\([\=a-zA-Z_]*\)/\1/p;s/UUID=\(.*\)\sB.*/\1/p" | sed 's/\"/\\"/g')
 
-S1=$(sudo blkid | sed -n -e "s/$shd:\s\(.*\).*/\1/p" | sed -n -e "s/UUID=\(.*\)\sB.*/\1/p" | sed 's/\"/\\"/g')
+#S1=$(sudo blkid | sed -n -e "s/$shd:\s\(.*\).*/\1/p" | sed -n -e "s/UUID=\(.*\)\sB.*/\1/p" | sed 's/\"/\\"/g')
 
-sed -i -e "$ a UUID\=$S1	\/opt\/	ext4	defaults	0	2" /etc/fstab
+#sed -i -e "$ a UUID\=$S1	\/opt\/	ext4	defaults	0	2" /etc/fstab
+touch fdisk.txt
+fdisk -l | sed -n -e "s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p" > fdisk.txt
 
+filename='fdisk.txt'
+n=1
+while read line; do
+# reading each line
+shd=$(echo $line | sed 's/\//\\\//g')
+S1=$(blkid | sed -n -e "s/$shd:\s\(.*\).*/\1/p" | sed -n -e "s/.*UUID=\(.*\)\sB.*/\1/p" | sed 's/\"/\\"/g')
+TMPS=$(echo $line | sed -n -e "s/^\/dev\/\([a-z]*[0-9]\).*/\1/p")
+chown admin_share:technics -Rf "/mnt/$TMPS"
+semanage fcontext -a -t public_content_rw_t "/mnt/$TMPS(/.*)?"; 
+chcon -Rv -t public_content_rw_t "/mnt/$TMPS";
+setfacl -m u:admin:rwx,u:admin_share:rwx -R "/mnt/$TMPS";
+setfacl -m g:admins:rw -R "/mnt/$TMPS";
+chmod go-rwx -R "/mnt/$TMPS";
+if [[ -n $S1 ]]; then
+	sed -i -e "$ a UUID\=$S1	\/mnt\/$TMPS	ext4	defaults	0	2" /etc/fstab
+fi
+done < $filename
 sudo mount -a
 #if [[ -z $STATE ]]; then
 #	exit 3;

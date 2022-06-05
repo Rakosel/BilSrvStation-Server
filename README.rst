@@ -59,6 +59,7 @@ Features
 |
 - **15.05.2022-10.06.2022**
 |
+- Add script pii2.sh new generated /etc/fstab/
 - Add script `cut_discr_cmd_shell.py` v.0.1a generator from .cmd_shell.sh to 'cut_discr_cmd_shell' /docs/cut_discr_cmd_shell.rst
 - Add script `extract_preseed_all.py' v.0.8a add generate file 'cut_discr_pii2_pack' /docs/cut_discr_pii2_pack.rst
   for capabilites info packages and policies

@@ -130,6 +130,7 @@
 <div class="line">set -x</div>
 <div class="line-block">
 <div class="line"><a class="reference external" href="https://wiki.debian.org/Microcode">https://wiki.debian.org/Microcode</a></div>
+<div class="line"><a class="reference external" href="http://hilite.me/">http://hilite.me/</a> code-&gt;html</div>
 <div class="line">uncomment |    639!!!!</div>
 </div>
 <div class="line">if [[ -z $STATE ]]; then</div>
@@ -221,18 +222,18 @@
 <span class="linenos">19</span><span class="nv">interface_sh</span><span class="o">=</span><span class="si">${</span><span class="nv">2</span><span class="k">:-</span><span class="s2">&quot;interface_sh&quot;</span><span class="si">}</span>
 <span class="linenos">20</span><span class="nv">step_one</span><span class="o">=</span><span class="si">${</span><span class="nv">3</span><span class="k">:-</span><span class="s2">&quot;step_one&quot;</span><span class="si">}</span>
 <span class="linenos">21</span><span class="nv">step_two</span><span class="o">=</span><span class="si">${</span><span class="nv">4</span><span class="k">:-</span><span class="s2">&quot;step_two&quot;</span><span class="si">}</span>
-<span class="linenos">22</span><span class="nv">step_three</span><span class="o">=</span><span class="si">${</span><span class="nv">5</span><span class="k">:-</span><span class="s2">&quot;step_three&quot;</span><span class="si">}</span>
-<span class="linenos">23</span><span class="s2">&quot;1&quot;</span>, <span class="s2">&quot;--upgrade&quot;</span>
-<span class="linenos">24</span><span class="s2">&quot;2&quot;</span>, <span class="s2">&quot;myst-parser&quot;</span>
-<span class="linenos">25</span><span class="s2">&quot;3&quot;</span>, <span class="s2">&quot;sphinx-autodocgen&quot;</span>
-<span class="linenos">26</span><span class="s2">&quot;4&quot;</span>, <span class="s2">&quot;Pygments&quot;</span>
-<span class="linenos">27</span><span class="s2">&quot;5&quot;</span>, <span class="s2">&quot;sphinx-intl&quot;</span>
-<span class="linenos">28</span><span class="s2">&quot;6&quot;</span>, <span class="s2">&quot;lumache&quot;</span>
-<span class="linenos">29</span><span class="s2">&quot;7&quot;</span>, <span class="s2">&quot;django&quot;</span>
-<span class="linenos">30</span><span class="s2">&quot;8&quot;</span>, <span class="s2">&quot;django-docs&quot;</span>
-<span class="linenos">31</span><span class="s2">&quot;9&quot;</span>, <span class="s2">&quot;sphinxnotes-strike&quot;</span>
-<span class="linenos">32</span><span class="s2">&quot;10&quot;</span>, <span class="s2">&quot;-U&quot;</span>
-<span class="linenos">33</span><span class="s2">&quot;11&quot;</span>, <span class="s2">&quot;sphinx&quot;</span>
+<span class="linenos">22</span><span class="s2">&quot;1&quot;</span>, <span class="s2">&quot;--upgrade&quot;</span>
+<span class="linenos">23</span><span class="s2">&quot;2&quot;</span>, <span class="s2">&quot;myst-parser&quot;</span>
+<span class="linenos">24</span><span class="s2">&quot;3&quot;</span>, <span class="s2">&quot;sphinx-autodocgen&quot;</span>
+<span class="linenos">25</span><span class="s2">&quot;4&quot;</span>, <span class="s2">&quot;Pygments&quot;</span>
+<span class="linenos">26</span><span class="s2">&quot;5&quot;</span>, <span class="s2">&quot;sphinx-intl&quot;</span>
+<span class="linenos">27</span><span class="s2">&quot;6&quot;</span>, <span class="s2">&quot;lumache&quot;</span>
+<span class="linenos">28</span><span class="s2">&quot;7&quot;</span>, <span class="s2">&quot;django&quot;</span>
+<span class="linenos">29</span><span class="s2">&quot;8&quot;</span>, <span class="s2">&quot;django-docs&quot;</span>
+<span class="linenos">30</span><span class="s2">&quot;9&quot;</span>, <span class="s2">&quot;sphinxnotes-strike&quot;</span>
+<span class="linenos">31</span><span class="s2">&quot;10&quot;</span>, <span class="s2">&quot;-U&quot;</span>
+<span class="linenos">32</span><span class="s2">&quot;11&quot;</span>, <span class="s2">&quot;sphinx&quot;</span>
+<span class="linenos">33</span><span class="nv">NET_EN</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">;</span>
 <span class="linenos">34</span><span class="nv">NET_WI</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">;</span>
 <span class="linenos">35</span><span class="nv">STATE</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">;</span>
 <span class="linenos">36</span><span class="nv">PORT_SSH</span><span class="o">=</span><span class="s2">&quot;4103&quot;</span>
@@ -1387,19 +1388,58 @@
 </div>
 <div class="section" id="mount-dev-s">
 <h4><span class="section-number">4.1.9.3. </span>01.09.03        mount /dev/s**<a class="headerlink" href="#mount-dev-s" title="Permalink to this headline"></a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>mount -t ext4 <span class="k">$(</span>sudo fdisk -l <span class="p">|</span> sed -n -e <span class="s2">&quot;s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p&quot;</span><span class="k">)</span> /opt
-<span class="linenos">2</span>
-<span class="linenos">3</span><span class="nv">shd</span><span class="o">=</span><span class="k">$(</span>sudo fdisk -l <span class="p">|</span> sed -n -e <span class="s2">&quot;s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p&quot;</span> <span class="p">|</span> sed <span class="s1">&#39;s/\//\\\//g&#39;</span><span class="k">)</span>
+<div class="line-block">
+<div class="line">mount -t ext4 $(sudo fdisk -l | sed -n -e &quot;s/.*(/dev/s[a-z]*[0-9]).*/1/p&quot;) /opt</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">shd=$(sudo fdisk -l | sed -n -e &quot;s/.*(/dev/s[a-z]*[0-9]).*/1/p&quot; | sed 's///\//g')</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line">S1=$(sudo blkid | sed -n -e &quot;s/$shd:s(.*).*/1/p&quot; | sed -n -e &quot;s/$shd:s([=a-<a href="#id10"><span class="problematic" id="id11">zA-Z_</span></a>]*)/1/p;s/UUID=(.*)sB.*/1/p&quot; | sed 's/&quot;/\&quot;/g')</div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nv">S1</span><span class="o">=</span><span class="k">$(</span>sudo blkid <span class="p">|</span> sed -n -e <span class="s2">&quot;s/</span><span class="nv">$shd</span><span class="s2">:\s\(.*\).*/\1/p&quot;</span> <span class="p">|</span> sed -n -e <span class="s2">&quot;s/UUID=\(.*\)\sB.*/\1/p&quot;</span> <span class="p">|</span> sed <span class="s1">&#39;s/\&quot;/\\&quot;/g&#39;</span><span class="k">)</span>
-<span class="linenos">2</span>
-<span class="linenos">3</span>sed -i -e <span class="s2">&quot;</span>$<span class="s2"> a UUID\=</span><span class="nv">$S1</span><span class="s2">        \/opt\/ ext4    defaults        0       2&quot;</span> /etc/fstab
-<span class="linenos">4</span>
-<span class="linenos">5</span>sudo mount -a
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">S1=$(sudo blkid | sed -n -e &quot;s/$shd:s(.*).*/1/p&quot; | sed -n -e &quot;s/UUID=(.*)sB.*/1/p&quot; | sed 's/&quot;/\&quot;/g')</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">sed -i -e &quot;$ a UUID=$S1        /opt/ ext4    defaults        0       2&quot; /etc/fstab</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>touch fdisk.txt
+<span class="linenos">2</span>fdisk -l <span class="p">|</span> sed -n -e <span class="s2">&quot;s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p&quot;</span> &gt; fdisk.txt
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="nv">filename</span><span class="o">=</span><span class="s1">&#39;fdisk.txt&#39;</span>
+<span class="linenos">5</span><span class="nv">n</span><span class="o">=</span><span class="m">1</span>
+<span class="linenos">6</span><span class="k">while</span> <span class="nb">read</span> line<span class="p">;</span> <span class="k">do</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">reading each line</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nv">shd</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$line</span> <span class="p">|</span> sed <span class="s1">&#39;s/\//\\\//g&#39;</span><span class="k">)</span>
+<span class="linenos"> 2</span><span class="nv">S1</span><span class="o">=</span><span class="k">$(</span>blkid <span class="p">|</span> sed -n -e <span class="s2">&quot;s/</span><span class="nv">$shd</span><span class="s2">:\s\(.*\).*/\1/p&quot;</span> <span class="p">|</span> sed -n -e <span class="s2">&quot;s/.*UUID=\(.*\)\sB.*/\1/p&quot;</span> <span class="p">|</span> sed <span class="s1">&#39;s/\&quot;/\\&quot;/g&#39;</span><span class="k">)</span>
+<span class="linenos"> 3</span><span class="nv">TMPS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$line</span> <span class="p">|</span> sed -n -e <span class="s2">&quot;s/^\/dev\/\([a-z]*[0-9]\).*/\1/p&quot;</span><span class="k">)</span>
+<span class="linenos"> 4</span>chown admin_share:technics -Rf <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span>
+<span class="linenos"> 5</span>semanage fcontext -a -t public_content_rw_t <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">(/.*)?&quot;</span><span class="p">;</span>
+<span class="linenos"> 6</span>chcon -Rv -t public_content_rw_t <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="linenos"> 7</span>setfacl -m u:admin:rwx,u:admin_share:rwx -R <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="linenos"> 8</span>setfacl -m g:admins:rw -R <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="linenos"> 9</span>chmod go-rwx -R <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="linenos">10</span><span class="k">if</span> <span class="o">[[</span> -n <span class="nv">$S1</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+<span class="linenos">11</span>        sed -i -e <span class="s2">&quot;</span>$<span class="s2"> a UUID\=</span><span class="nv">$S1</span><span class="s2">        \/mnt\/</span><span class="nv">$TMPS</span><span class="s2">    ext4    defaults        0       2&quot;</span> /etc/fstab
+<span class="linenos">12</span><span class="k">fi</span>
+<span class="linenos">13</span><span class="k">done</span> &lt; <span class="nv">$filename</span>
+<span class="linenos">14</span>sudo mount -a
 </pre></div>
 </div>
 <div class="line-block">

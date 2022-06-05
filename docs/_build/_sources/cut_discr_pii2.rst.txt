@@ -7,6 +7,7 @@ AutoInstall Cut Discr
 |	-xv
 |	set -x
 |	 https://wiki.debian.org/Microcode
+|	 http://hilite.me/ code->html
 |	 uncomment |	639!!!!
 |	if [[ -z $STATE ]]; then
 |		exit 3;
@@ -17,7 +18,7 @@ AutoInstall Cut Discr
 |	 sudo usermod -p $S test1
 |	 su -p test1
 |	
-|	
+|	 
 |	
 01	AUTO POSTINSTALL
 ========================
@@ -85,7 +86,6 @@ AutoInstall Cut Discr
 	interface_sh=${2:-"interface_sh"}
 	step_one=${3:-"step_one"}
 	step_two=${4:-"step_two"}
-	step_three=${5:-"step_three"}
 	"1", "--upgrade"
 	"2", "myst-parser"
 	"3", "sphinx-autodocgen"
@@ -97,6 +97,7 @@ AutoInstall Cut Discr
 	"9", "sphinxnotes-strike"
 	"10", "-U"
 	"11", "sphinx"
+	NET_EN="";
 	NET_WI="";
 	STATE="0";
 	PORT_SSH="4103"
@@ -1022,22 +1023,53 @@ AutoInstall Cut Discr
 |	
 01.09.03	mount /dev/s**
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+|	mount -t ext4 $(sudo fdisk -l | sed -n -e "s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p") /opt
 .. code-block:: bash
 	:linenos:
 
-	mount -t ext4 $(sudo fdisk -l | sed -n -e "s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p") /opt
 	
-	shd=$(sudo fdisk -l | sed -n -e "s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p" | sed 's/\//\\\//g')
+|	shd=$(sudo fdisk -l | sed -n -e "s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p" | sed 's/\//\\\//g')
+.. code-block:: bash
+	:linenos:
+
 	
 |	S1=$(sudo blkid | sed -n -e "s/$shd:\s\(.*\).*/\1/p" | sed -n -e "s/$shd:\s\([\=a-zA-Z_]*\)/\1/p;s/UUID=\(.*\)\sB.*/\1/p" | sed 's/\"/\\"/g')
 .. code-block:: bash
 	:linenos:
 
 	
-	S1=$(sudo blkid | sed -n -e "s/$shd:\s\(.*\).*/\1/p" | sed -n -e "s/UUID=\(.*\)\sB.*/\1/p" | sed 's/\"/\\"/g')
+|	S1=$(sudo blkid | sed -n -e "s/$shd:\s\(.*\).*/\1/p" | sed -n -e "s/UUID=\(.*\)\sB.*/\1/p" | sed 's/\"/\\"/g')
+.. code-block:: bash
+	:linenos:
+
 	
-	sed -i -e "$ a UUID\=$S1	\/opt\/	ext4	defaults	0	2" /etc/fstab
+|	sed -i -e "$ a UUID\=$S1	\/opt\/	ext4	defaults	0	2" /etc/fstab
+.. code-block:: bash
+	:linenos:
+
+	touch fdisk.txt
+	fdisk -l | sed -n -e "s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p" > fdisk.txt
 	
+	filename='fdisk.txt'
+	n=1
+	while read line; do
+|	 reading each line
+.. code-block:: bash
+	:linenos:
+
+	shd=$(echo $line | sed 's/\//\\\//g')
+	S1=$(blkid | sed -n -e "s/$shd:\s\(.*\).*/\1/p" | sed -n -e "s/.*UUID=\(.*\)\sB.*/\1/p" | sed 's/\"/\\"/g')
+	TMPS=$(echo $line | sed -n -e "s/^\/dev\/\([a-z]*[0-9]\).*/\1/p")
+	chown admin_share:technics -Rf "/mnt/$TMPS"
+	semanage fcontext -a -t public_content_rw_t "/mnt/$TMPS(/.*)?"; 
+	chcon -Rv -t public_content_rw_t "/mnt/$TMPS";
+	setfacl -m u:admin:rwx,u:admin_share:rwx -R "/mnt/$TMPS";
+	setfacl -m g:admins:rw -R "/mnt/$TMPS";
+	chmod go-rwx -R "/mnt/$TMPS";
+	if [[ -n $S1 ]]; then
+		sed -i -e "$ a UUID\=$S1	\/mnt\/$TMPS	ext4	defaults	0	2" /etc/fstab
+	fi
+	done < $filename
 	sudo mount -a
 |	if [[ -z $STATE ]]; then
 |		exit 3;

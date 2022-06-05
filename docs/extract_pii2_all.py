@@ -344,45 +344,44 @@ for i in linep_out:
                 #linep_out[k] = re.sub('#<--!|#!-->', '', linep[POS_0]);
                 #linep_out[k] = linep[POS_0];
                 #print(''.join(re.findall(".*([vkd174]*)", linep_out[k])))
-            if(''.join(re.findall("^\t ([a-zA-Z!]*)", linep_out[k]))=="attention!!!"):
+            #print(''.join(re.findall("^|\t ([a-zA-Z!])*", linep_out[k])))
+            stmp=''.join(re.findall("^|\t ([a-zA-Z!]*)", linep_out[k]))
+            if (stmp == "attention!!!"):
             #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("attention!!!",".. attention::");
+                s0=''.join(linep_out[k]).replace("|	 attention!!!",".. attention::");
                 linep_out[k] = strToList("{0}\n".format(s0));
-            if(''.join(re.findall("^\t ([a-zA-Z!]*)", linep_out[k]))=="caution!!!"):
+            elif(stmp == "caution!!!"):
             #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("caution!!!",".. caution::");
+                s0=''.join(linep_out[k]).replace("|	 caution!!!",".. caution::");
                 linep_out[k] = strToList("{0}\n".format(s0));
-            if(''.join(re.findall("^\t ([a-zA-Z!]*)", linep_out[k]))=="error!!!"):
+            elif(stmp == "error!!!"):
             #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("error!!!",".. error::");
+                s0=''.join(linep_out[k]).replace("|	 error!!!",".. error::");
                 linep_out[k] = strToList("{0}\n".format(s0));
-            if(''.join(re.findall("^\t ([a-zA-Z!]*)", linep_out[k]))=="hint!!!"):
+            elif(stmp == "hint!!!"):
             #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("hint!!!",".. hint::");
+                s0=''.join(linep_out[k]).replace("|	 hint!!!",".. hint::");
                 linep_out[k] = strToList("{0}\n".format(s0));
-            if(''.join(re.findall("^\t ([a-zA-Z!]*)", linep_out[k]))=="important!!!"):
+            elif(stmp == "important!!!"):
             #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("important!!!",".. important::");
+                s0=''.join(linep_out[k]).replace("|	 important!!!",".. important::");
                 linep_out[k] = strToList("{0}\n".format(s0));
-            if(''.join(re.findall("^\t ([a-zA-Z!]*)", linep_out[k]))=="warning!!!"):
+            elif(stmp == "warning!!!"):
+                #print("warning!!!")
             #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("warning!!!",".. warning::");
+                s0=''.join(linep_out[k]).replace("|	 warning!!!",".. warning::");
                 linep_out[k] = strToList("{0}\n".format(s0));
-            if(''.join(re.findall("^\t ([a-zA-Z!]*)", linep_out[k]))=="tip!!!"):
-            #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("tip!!!",".. tip::");
+            elif(stmp == "tip!!!"):
+                s0=''.join(linep_out[k]).replace("|	 tip!!!",".. tip::");
                 linep_out[k] = strToList("{0}\n".format(s0));
-            if(''.join(re.findall("^\t ([a-zA-Z!]*)", linep_out[k]))=="note!!!"):
-            #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("note!!!",".. note::");
+            elif(stmp == "note!!!"):
+                s0=''.join(linep_out[k]).replace("|	 note!!!",".. note::");
                 linep_out[k] = strToList("{0}\n".format(s0));
-            if(''.join(re.findall("^\t ([a-zA-Z!]*)", linep_out[k]))=="rubric!!!"):
-            #    print(''.join(re.findall("^|    rubric([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("rubric!!!",".. rubric::");
+            elif(stmp == "rubric!!!"):
+                s0=''.join(linep_out[k]).replace("|	 rubric!!!",".. rubric::");
                 linep_out[k] = strToList("{0}\n".format(s0));
-            if(''.join(re.findall("^\t ([a-zA-Z!]*)", linep_out[k]))=="danger!!!"):
-            #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_out[k]).replace("danger!!!",".. danger::");
+            elif(stmp == "danger!!!"):
+                s0=''.join(linep_out[k]).replace("|	 danger!!!",".. danger::");
                 linep_out[k] = strToList("{0}\n".format(s0));
             POS_0=POS_0+1;
             #linep_out[k] = strToList("{0}".format(''.join(linep_out[j]).replace("vkd174asqd","********")));
@@ -524,7 +523,7 @@ while (j>=k):
     #print(linep_out[k])
     k+=1;z+=8;
     if((z+7)>=len(strselogin.split(' '))):
-        print(z)
+#        print(z)
         c=len(strselogin.split(' '))-z+2;
     #    formstr="";
         for d in range(0,c):

@@ -152,8 +152,11 @@
 </div>
 <div class="section" id="auto-postinstall">
 <h2><span class="section-number">4.1. </span>01      AUTO POSTINSTALL<a class="headerlink" href="#auto-postinstall" title="Permalink to this headline"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>do postinstall copy wufu &amp; wpa_supplicant.conf + SAMBA</p>
+</div>
 <div class="line-block">
-<div class="line">warning!!! do postinstall copy wufu &amp; wpa_supplicant.conf + SAMBA</div>
 <div class="line"><br /></div>
 </div>
 <div class="section" id="pre-install-emv-and-settings">
@@ -2396,10 +2399,11 @@
 <span class="linenos">23</span><span class="k">done</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line-block">
-<div class="line">danger!!! Set this is Settings to SELinux <em>boot_t</em> permissive for disabled boot DebianOS!!!</div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Set this is Settings to SELinux <em>boot_t</em> permissive for disabled boot DebianOS!!!</p>
 </div>
+<div class="line-block">
 <div class="line">semanage permissive -a sshd_t</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>semanage permissive -a boot_t

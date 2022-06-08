@@ -87,17 +87,19 @@ AutoInstall Cut Discr
 	interface_sh=${2:-"interface_sh"}
 	step_one=${3:-"step_one"}
 	step_two=${4:-"step_two"}
-	"1", "--upgrade"
-	"2", "myst-parser"
-	"3", "sphinx-autodocgen"
-	"4", "Pygments"
-	"5", "sphinx-intl"
-	"6", "lumache"
-	"7", "django"
-	"8", "django-docs"
-	"9", "sphinxnotes-strike"
-	"10", "-U"
-	"11", "sphinx"
+	step_three=${5:-"step_three"}
+|	
+|	 		+ install wpa_supplicant-0.7.3.tar.gz
+|	
+.. code-block:: bash
+	:linenos:
+
+	export LC_ALL=ru_RU.UTF-8
+	FILES="steps.txt"
+	BUF="";
+	TMPS="";
+	COUNT=0;
+	DEB_VER="";
 	NET_EN="";
 	NET_WI="";
 	STATE="0";
@@ -1064,7 +1066,7 @@ AutoInstall Cut Discr
 	chown admin_share:technics -Rf "/mnt/$TMPS"
 	semanage fcontext -a -t public_content_rw_t "/mnt/$TMPS(/.*)?"; 
 	chcon -Rv -t public_content_rw_t "/mnt/$TMPS";
-	setfacl -m u:admin:rwx,u:admin_share:rwx -R "/mnt/$TMPS";
+	setfacl -m u:admin:rwx,u:admin_share:rwx, pub_share:rwx -R "/mnt/$TMPS";
 	setfacl -m g:admins:rw -R "/mnt/$TMPS";
 	chmod go-rwx -R "/mnt/$TMPS";
 	if [[ -n $S1 ]]; then

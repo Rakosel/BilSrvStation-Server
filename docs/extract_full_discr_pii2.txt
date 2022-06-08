@@ -1,0 +1,41 @@
+	Full discr functions pii2.sh
+	
+In this article, we will learn what is strings in a programming language, how to create them, 
+and their uses. Further, we will study various operators to com are strings in python. 
+At last, we will study some Python strings comparison in brief along with its python code example and output. 
+So, let’s get started!
+..ch 10
+
+		What are Strings?
+
+A string is generally a sequence of characters. A character is a simple symbol. 
+For example, in 
+the English Language, we have 26 characters available. 
+The computer system does not understand characters and hence, 
+therefore, deal with binary numbers. 
+Even though we can see characters on our monitor screens, but internally it is 
+stored and manipulated as a combination of 0s and 1s. 
+The conversion of characters and the binary number is called encoding, 
+and the reverse of this is known as decoding.  
+Some of the popular encodings are ASCII and Unicode. In the Python programming 
+language, a string is a sequence of Unicode characters.
+
+..ch 2
+..ch 3
+..ch 4
+..ch 5
+
+		Python String Comparison operators
+		
+In python language, we can compare two strings such as identify whether the two strings are equivalent to each other 
+or not, or even which string is greater or smaller than each other. Let us check some of the string comparison operator 
+used for this purpose below:
+..ch 3
+
+==: This operator checks whether two strings are equal.
+!=: This operator checks whether two strings are not equal.
+<: This operator checks whether the string on the left side is smaller than the string on the right side.
+<=: This operator checks whether the string on the left side is smaller or equal to the string on the right side.
+>: This operator checks whether the string on the left side is greater than the string on the right side.
+>=: This operator checks whether the string on the left side is greater than the string on the right side.
+..ch400

@@ -470,7 +470,7 @@ j=k+len(strapt.split(' '))-1
 #print("{0}\n".format(strapt.split(' ')[len(strapt.split(' '))-1]))
 #print("{0} {1}".format(k,j))
 while (j>=k):
-    if(strapt.split(' ')[z]!=""):
+    if(strapt.split(' ')[z]!="" and strapt.split(' ')!="-y"):
         linep_out_pack[k]=strToList("\t\"{0}\", \"{1}\"\n".format(z,strapt.split(' ')[z]));
     z+=1;k+=1;
 
@@ -489,8 +489,8 @@ j=k+len(strpip.split(' '))-1
 #print("{0}\n".format(strapt.split(' ')[len(strapt.split(' '))-1]))
 #print("{0} {1}".format(k,j))
 while (j>=k):
-    if(strpip.split(' ')[z]!=""):
-        linep_out[k]=strToList("\t\"{0}\", \"{1}\"\n".format(z,strpip.split(' ')[z]));
+    if(strpip.split(' ')[z]!="" and strpip.split(' ')[z]!="-U"):
+        linep_out_pack[k]=strToList("\t\"{0}\", \"{1}\"\n".format(z,strpip.split(' ')[z]));
     z+=1;k+=1;
 
 #   apt-get list var:strapt
@@ -562,7 +562,7 @@ j=k+strsepermissive_count-1
 #print(strsepermissive_count)
 
 while (j>=k):
-    linep_out_pack[k]=strToList("\t\"{0}\", \"{1}\"\n".format(strsepermissive.split(' ')[z+1].strip(),strsepermissive.split(' ')[z+2].strip()));
+    linep_out_pack[k]=strToList("\t\"{0}\", \"{1}\"\n".format(strsepermissive.split(' ')[z+2].strip(),strsepermissive.split(' ')[z+1].strip()));
     z+=3;k+=1;
     if(strsepermissive.split(' ')[z].strip()==""):
         break;
@@ -572,7 +572,7 @@ while (j>=k):
 #   apt-get list var:strsepermissive
 linep_out_pack[k]="\n.. csv-table:: SELinux setsebool\n"
 k+=1;
-linep_out_pack[k]="\t:header: \"SEbool var\", \"SEbool mode\"\n"
+linep_out_pack[k]="\t:header: \"SEbool name\", \"SEbool mode\"\n"
 k+=1;
 linep_out_pack[k]="\t:widths: auto\n\n"
 k+=1;
@@ -583,7 +583,7 @@ j=k+strsebool_count-1
 #print(strsepermissive_count)
 while (j>=k):
     if(strsebool.split(' ')[z+2]!=""):
-        linep_out_pack[k]=strToList("\t\"{0}\", \"{1}\"\n".format(strsebool.split(' ')[z+1].strip(),strsebool.split(' ')[z+2].strip()));
+        linep_out_pack[k]=strToList("\t\"{0}\", \"{1}\"\n".format(strsebool.split(' ')[z+2].strip(),strsebool.split(' ')[z+1].strip()));
     z+=2;k+=1;
 
         

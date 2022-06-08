@@ -844,7 +844,7 @@ TMPS=$(echo $line | sed -n -e "s/^\/dev\/\([a-z]*[0-9]\).*/\1/p")
 chown admin_share:technics -Rf "/mnt/$TMPS"
 semanage fcontext -a -t public_content_rw_t "/mnt/$TMPS(/.*)?"; 
 chcon -Rv -t public_content_rw_t "/mnt/$TMPS";
-setfacl -m u:admin:rwx,u:admin_share:rwx -R "/mnt/$TMPS";
+setfacl -m u:admin:rwx,u:admin_share:rwx, pub_share:rwx -R "/mnt/$TMPS";
 setfacl -m g:admins:rw -R "/mnt/$TMPS";
 chmod go-rwx -R "/mnt/$TMPS";
 if [[ -n $S1 ]]; then

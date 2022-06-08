@@ -14,10 +14,11 @@
    sourcelink
    cut_discr_pc
    cut_discr_preseed
+   full_discr_pii2
+   only_code_pii2
    cut_discr_pii2
    cut_discr_pii2_pack
    cut_discr_cmd_shell
-   full_discr
    structure
    build_doc
    note

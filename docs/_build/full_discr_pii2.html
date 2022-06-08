@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru,en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4. Full discr functions pii &mdash; BilSrvStation_Server_PC 1.0.2a documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. Appendix Code chunck" href="only_code_pii2.html" />
+    <link rel="prev" title="3. Preseed Cut Discr" href="cut_discr_preseed.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> BilSrvStation_Server_PC
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="sourcelink.html">1. Навигация</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_pc.html">2. ISO InstallDeb Cut Discr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_preseed.html">3. Preseed Cut Discr</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Full discr functions pii</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-are-strings">4.1. What are Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#python-string-comparison-operators">4.2. Python String Comparison operators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="only_code_pii2.html">5. Appendix Code chunck</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2.html">6. AutoInstall Cut Discr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2_pack.html">7. AutoInstall Package List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_cmd_shell.html">8. CMD_SHELL Cut Discr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structure.html">9. Структура</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_doc.html">10. Построение этой документации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="note.html">11. Заметки</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BilSrvStation_Server_PC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><span class="section-number">4. </span>Full discr functions pii</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/full_discr_pii2.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="full-discr-functions-pii">
+<h1><span class="section-number">4. </span>Full discr functions pii<a class="headerlink" href="#full-discr-functions-pii" title="Permalink to this headline"></a></h1>
+<div class="line-block">
+<div class="line">In this article, we will learn what is strings in a programming language, how to create them,</div>
+<div class="line">At last, we will study some Python strings comparison in brief along with its python code example and output.</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>: <span class="si">${</span><span class="nv">HOSTNAME</span><span class="p">?</span><span class="si">}</span> <span class="si">${</span><span class="nv">USER</span><span class="p">?</span><span class="si">}</span> <span class="si">${</span><span class="nv">HOME</span><span class="p">?</span><span class="si">}</span> <span class="si">${</span><span class="nv">MAIL</span><span class="p">?</span><span class="si">}</span>
+<span class="linenos"> 2</span><span class="nb">echo</span>
+<span class="linenos"> 3</span><span class="nb">echo</span> <span class="s2">&quot;Имя машины: </span><span class="nv">$HOSTNAME</span><span class="s2">.&quot;</span>
+<span class="linenos"> 4</span><span class="nb">echo</span> <span class="s2">&quot;Ваше имя: </span><span class="nv">$USER</span><span class="s2">.&quot;</span>
+<span class="linenos"> 5</span><span class="nb">echo</span> <span class="s2">&quot;Ваш домашний каталог: </span><span class="nv">$HOME</span><span class="s2">.&quot;</span>
+<span class="linenos"> 6</span><span class="nb">echo</span> <span class="s2">&quot;Ваш почтовый ящик: </span><span class="nv">$MAIL</span><span class="s2">.&quot;</span>
+<span class="linenos"> 7</span><span class="nb">echo</span>
+<span class="linenos"> 8</span><span class="nb">echo</span> <span class="s2">&quot;Если перед Вами появилось это сообщение,&quot;</span>
+<span class="linenos"> 9</span><span class="nb">echo</span> <span class="s2">&quot;то это значит, что все критические переменные окружения установлены.&quot;</span>
+<span class="linenos">10</span><span class="nb">echo</span>
+<span class="linenos">11</span><span class="nb">echo</span> <span class="s2">&quot;Сейчас будет установлена postinstall настройка&quot;</span>
+<span class="linenos">12</span><span class="nb">echo</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="nb">cd</span> /etc/apt/
+<span class="linenos">15</span>cp sources.list sources.tmp
+</pre></div>
+</div>
+<div class="section" id="what-are-strings">
+<h2><span class="section-number">4.1. </span>What are Strings<a class="headerlink" href="#what-are-strings" title="Permalink to this headline"></a></h2>
+<div class="line-block">
+<div class="line">A string is generally a sequence of characters. A character is a simple symbol.</div>
+<div class="line">the English Language, we have 26 characters available.</div>
+<div class="line">therefore, deal with binary numbers.</div>
+<div class="line">stored and manipulated as a combination of 0s and 1s.</div>
+<div class="line">and the reverse of this is known as decoding.</div>
+<div class="line">language, a string is a sequence of Unicode characters.</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sed -i -e <span class="s2">&quot;</span><span class="nv">$a</span><span class="s2"> s/\(iface\s\).*/\1</span><span class="nv">$NET_WI</span><span class="s2"> inet dhcp/g&quot;</span> interfaces
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sed <span class="s1">&#39;$a wpa-conf \/home\/rootsu\/wpa_supplicant.conf&#39;</span> interfaces &gt;&gt; interfaces<span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>systemctl restart wpa_supplicant
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">else</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="k">if</span> <span class="o">[[</span> -z <span class="k">$(</span>sed -n -e <span class="s2">&quot;s/\(source \/etc\/network\/interfaces/\\).*/\1/p&quot;</span> interfaces<span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+<span class="linenos">4</span>                <span class="nv">TMPS</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">;</span>
+<span class="linenos">5</span>                reinterfaces<span class="p">;</span>
+<span class="linenos">6</span><span class="k">fi</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="python-string-comparison-operators">
+<h2><span class="section-number">4.2. </span>Python String Comparison operators<a class="headerlink" href="#python-string-comparison-operators" title="Permalink to this headline"></a></h2>
+<div class="line-block">
+<div class="line">In python language, we can compare two strings such as identify whether the two strings are equivalent to each other</div>
+<div class="line">used for this purpose below:</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>systemctl restart networking
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="nb">cd</span> /install/
+<span class="linenos">4</span><span class="nb">echo</span> -e <span class="s2">&quot;1_settings_interface_with_wifi&quot;</span> &gt;&gt; steps.txt
+<span class="linenos">5</span><span class="k">fi</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">==: This operator checks whether two strings are equal.</div>
+<div class="line">&lt;: This operator checks whether the string on the left side is smaller than the string on the right side.</div>
+<div class="line">&gt;: This operator checks whether the string on the left side is greater than the string on the right side.</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install firmware-linux
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="k">if</span> <span class="o">[[</span> <span class="k">$(</span>lspci <span class="p">|</span> grep Ethernet <span class="p">|</span> sed -n -e <span class="s2">&quot;s/.*ller:\s\([a-zA-Z]\+\s\).*/\1/p&quot;</span><span class="k">)</span> <span class="o">==</span> <span class="s2">&quot;Realtek&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+<span class="linenos">4</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install firmware-realtek
+<span class="linenos">5</span><span class="k">fi</span>
+<span class="linenos">6</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install firmware-linux-nonfree
+<span class="linenos">7</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install man
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cut_discr_preseed.html" class="btn btn-neutral float-left" title="3. Preseed Cut Discr" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="only_code_pii2.html" class="btn btn-neutral float-right" title="5. Appendix Code chunck" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, BiLymo iOT corp.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

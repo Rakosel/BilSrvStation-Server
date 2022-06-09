@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>8. CMD_SHELL Cut Discr &mdash; BilSrvStation_Server_PC 1.0.2a documentation</title>
+  <title>10. CMD_SHELL Cut Discr &mdash; BilSrvStation_Server_PC 1.0.2a documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -19,8 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="9. Структура" href="structure.html" />
-    <link rel="prev" title="7. AutoInstall Package List" href="cut_discr_pii2_pack.html" /> 
+    <link rel="next" title="11. Структура" href="structure.html" />
+    <link rel="prev" title="9. AutoInstall Package List" href="cut_discr_pii2_pack.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -43,30 +43,32 @@
 <li class="toctree-l1"><a class="reference internal" href="sourcelink.html">1. Навигация</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cut_discr_pc.html">2. ISO InstallDeb Cut Discr</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cut_discr_preseed.html">3. Preseed Cut Discr</a></li>
-<li class="toctree-l1"><a class="reference internal" href="full_discr_pii2.html">4. Full discr functions pii</a></li>
-<li class="toctree-l1"><a class="reference internal" href="only_code_pii2.html">5. Appendix Code chunck</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2.html">6. AutoInstall Cut Discr</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2_pack.html">7. AutoInstall Package List</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">8. CMD_SHELL Cut Discr</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#user-script-generator-version">8.1. User script generator Version</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#mode">8.1.1. Mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="full_discr_pii2.html">4. important</a></li>
+<li class="toctree-l1"><a class="reference internal" href="full_discr_pii2.html#addr-x">5. [addr]X</a></li>
+<li class="toctree-l1"><a class="reference internal" href="full_discr_pii2.html#regexp-x">6. /regexp/X</a></li>
+<li class="toctree-l1"><a class="reference internal" href="only_code_pii2.html">7. Appendix Code chunck</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2.html">8. AutoInstall Cut Discr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2_pack.html">9. AutoInstall Package List</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">10. CMD_SHELL Cut Discr</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#user-script-generator-version">10.1. User script generator Version</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mode">10.1.1. Mode</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#https">8.2. https</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">8.3. https</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#check-root-privilege">8.3.1. Check root privilege</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#menu-select">8.3.2. Menu SELECT</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#check-users-and-groups">8.3.3. Check users and groups</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#process-generate-keys">8.3.4. Process generate keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#https">10.2. https</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">10.3. https</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#check-root-privilege">10.3.1. Check root privilege</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#menu-select">10.3.2. Menu SELECT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#check-users-and-groups">10.3.3. Check users and groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#process-generate-keys">10.3.4. Process generate keys</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#sudo-touch-auth-user-add-group-add">8.4. sudo touch auth_$USER_ADD$GROUP_ADD</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#echo">8.5. echo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sudo-touch-auth-user-add-group-add">10.4. sudo touch auth_$USER_ADD$GROUP_ADD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#echo">10.5. echo</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="structure.html">9. Структура</a></li>
-<li class="toctree-l1"><a class="reference internal" href="build_doc.html">10. Построение этой документации</a></li>
-<li class="toctree-l1"><a class="reference internal" href="note.html">11. Заметки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structure.html">11. Структура</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_doc.html">12. Построение этой документации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="note.html">13. Заметки</a></li>
 </ul>
 
         </div>
@@ -83,7 +85,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li><span class="section-number">8. </span>CMD_SHELL Cut Discr</li>
+      <li><span class="section-number">10. </span>CMD_SHELL Cut Discr</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/cut_discr_cmd_shell.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -94,7 +96,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="cmd-shell-cut-discr">
-<h1><span class="section-number">8. </span>CMD_SHELL Cut Discr<a class="headerlink" href="#cmd-shell-cut-discr" title="Permalink to this headline"></a></h1>
+<h1><span class="section-number">10. </span>CMD_SHELL Cut Discr<a class="headerlink" href="#cmd-shell-cut-discr" title="Permalink to this headline"></a></h1>
 <div class="line-block">
 <div class="line">Published by <a href="#id2"><span class="problematic" id="id3">|author|</span></a></div>
 <div class="line">Date: <em>|date|</em> Time <em>|time|</em></div>
@@ -110,7 +112,7 @@
 <div class="line"><br /></div>
 </div>
 <div class="section" id="user-script-generator-version">
-<h2><span class="section-number">8.1. </span>User script generator Version<a class="headerlink" href="#user-script-generator-version" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">10.1. </span>User script generator Version<a class="headerlink" href="#user-script-generator-version" title="Permalink to this headline"></a></h2>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line-block">
@@ -134,7 +136,7 @@
 </div>
 </div>
 <div class="section" id="mode">
-<h3><span class="section-number">8.1.1. </span>Mode<a class="headerlink" href="#mode" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">10.1.1. </span>Mode<a class="headerlink" href="#mode" title="Permalink to this headline"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nv">USER_ADD</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">;</span>
 <span class="linenos"> 2</span><span class="nv">GROUP_ADD</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">;</span>
 <span class="linenos"> 3</span><span class="nv">UROUP_ID</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">;</span>
@@ -151,10 +153,10 @@
 </div>
 </div>
 <div class="section" id="https">
-<h2><span class="section-number">8.2. </span>https<a class="headerlink" href="#https" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">10.2. </span>https<a class="headerlink" href="#https" title="Permalink to this headline"></a></h2>
 </div>
 <div class="section" id="id1">
-<h2><span class="section-number">8.3. </span>https<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">10.3. </span>https<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <div class="line-block">
 <div class="line-block">
 <div class="line-block">
@@ -193,7 +195,7 @@
 <div class="line"><br /></div>
 </div>
 <div class="section" id="check-root-privilege">
-<h3><span class="section-number">8.3.1. </span>Check root privilege<a class="headerlink" href="#check-root-privilege" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">10.3.1. </span>Check root privilege<a class="headerlink" href="#check-root-privilege" title="Permalink to this headline"></a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -212,7 +214,7 @@
 </div>
 </div>
 <div class="section" id="menu-select">
-<h3><span class="section-number">8.3.2. </span>Menu SELECT<a class="headerlink" href="#menu-select" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">10.3.2. </span>Menu SELECT<a class="headerlink" href="#menu-select" title="Permalink to this headline"></a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line-block">
@@ -273,7 +275,7 @@
 </div>
 </div>
 <div class="section" id="check-users-and-groups">
-<h3><span class="section-number">8.3.3. </span>Check users and groups<a class="headerlink" href="#check-users-and-groups" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">10.3.3. </span>Check users and groups<a class="headerlink" href="#check-users-and-groups" title="Permalink to this headline"></a></h3>
 <div class="line-block">
 <div class="line">echo $GROUPS</div>
 <div class="line-block">
@@ -302,7 +304,7 @@
 </div>
 </div>
 <div class="section" id="process-generate-keys">
-<h3><span class="section-number">8.3.4. </span>Process generate keys<a class="headerlink" href="#process-generate-keys" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">10.3.4. </span>Process generate keys<a class="headerlink" href="#process-generate-keys" title="Permalink to this headline"></a></h3>
 <div class="line-block">
 <div class="line">fi</div>
 <div class="line-block">
@@ -329,7 +331,7 @@
 </div>
 </div>
 <div class="section" id="sudo-touch-auth-user-add-group-add">
-<h2><span class="section-number">8.4. </span>sudo touch auth_$USER_ADD$GROUP_ADD<a class="headerlink" href="#sudo-touch-auth-user-add-group-add" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">10.4. </span>sudo touch auth_$USER_ADD$GROUP_ADD<a class="headerlink" href="#sudo-touch-auth-user-add-group-add" title="Permalink to this headline"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nv">TMP</span><span class="o">=</span><span class="k">$(</span>date +<span class="s2">&quot;%m-%d-%Y+%T&quot;</span><span class="k">)</span><span class="p">;</span>
 <span class="linenos"> 2</span>        ssh-keygen -t <span class="nv">$sign</span> -b <span class="nv">$bits</span> -f /home/<span class="nv">$USER_ADD</span>/.ssh/auth_<span class="nv">$USER_ADD$GROUP_ADD</span> -N <span class="s2">&quot;</span><span class="nv">$PWD_USER</span><span class="s2">&quot;</span> -C <span class="s2">&quot;</span><span class="nv">$HOSTNAME</span><span class="s2"> </span><span class="nv">$USER_ADD</span><span class="s2">:</span><span class="nv">$GROUP_ADD</span><span class="s2"> </span><span class="nv">$TMP</span><span class="s2">&quot;</span>
 <span class="linenos"> 3</span>        sudo chmod <span class="m">640</span> authorized_keys
@@ -371,7 +373,7 @@
 </div>
 </div>
 <div class="section" id="echo">
-<h2><span class="section-number">8.5. </span>echo<a class="headerlink" href="#echo" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">10.5. </span>echo<a class="headerlink" href="#echo" title="Permalink to this headline"></a></h2>
 <div class="line-block">
 <div class="line">elif</div>
 <div class="line">fi</div>
@@ -390,8 +392,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="cut_discr_pii2_pack.html" class="btn btn-neutral float-left" title="7. AutoInstall Package List" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="structure.html" class="btn btn-neutral float-right" title="9. Структура" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="cut_discr_pii2_pack.html" class="btn btn-neutral float-left" title="9. AutoInstall Package List" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="structure.html" class="btn btn-neutral float-right" title="11. Структура" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

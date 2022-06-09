@@ -1,24 +1,55 @@
-	Full discr functions pii2.sh
+	Полное описание Сервера.
+    Данная статья рассматривает полное описание автономного сервера *BilSrvStation* на *Linux Debian10*
+by |author|. Основаня идея заключается в том, что бы обеспечить документирвоание 
+реального сервера/рабочего места, после "чистой", автоматической установки со всеми необходимыми настройками 
+и программами. В начале описывается структура файлов для формирования загрузочного диска, далее следует полное
+описание скриптового `*pii2.sh*` без 
+	 important!!! Перед установкой обязательно ознакомится с данной страницей!!!
+	 attention!!! Здесь и далее, дополнительный софт будет дополняться в файле pii2.sh, в разделе `01.12	Optional soft`, при этом описание будет дополняться в данной странице в разделе 'Опциональный софт`
+	 
+        Основные возможности
+        
+        - Сервер предварительно настроен предустановочным файлом '*preseed.cfg*'
+        - Не требуется вручную настраивать и конфигурировать пакеты
+        - Сервер защищён пакетом SELinux с настроенными политиками
+        - Локаничное описание, позволяющее сэкономить время на освоение
+        - Установленные все полезные утилиты, необходимые для удобного администрирования
+		- Данная установка универсальная для широкого спектра задач
+
+		Описание структуры сервера
+    Структура сервера состоит из следующих папок и файлов.
 	
-In this article, we will learn what is strings in a programming language, how to create them, 
-and their uses. Further, we will study various operators to com are strings in python. 
-At last, we will study some Python strings comparison in brief along with its python code example and output. 
-So, let’s get started!
-..ch 10
+		Разбор основного файла `*pii2.sh*'
+    Код начинается с функции `*jumpto*`, которая обеспечивает переход по меткам '*GOTO*'. В роли метки служит её объявление
+'*<name>=${<number>:-"<name>"}*'. Где `*<name>*` - название метки GOTO, <number> - номер метки. Т.е. переменной <name> присваивается структура из наименования
+метки с соответствующему номеру. После объявление метки в коде она используется '*<number>:*', а её вызов осуществляется через '*jumpto $<name>*'.
+Данная функция `*jumpto*` принимает два аргумента '*$0*' и '*$1*', которые соответствуют имени файла и названия метки.
+Рассмотрим строчку функции::
 
-		What are Strings?
+	'*cmd=$(sed -n "/$label:/{:a;n;p;ba};" $0 | grep -v ':$')*'. 
+	
+В документации в разделе '*6.4 Branching and Flow Control*' `SEDERE <https://www.gnu.org/software/sed/manual/sed.html>`_ указана адресация::
 
-A string is generally a sequence of characters. A character is a simple symbol. 
-For example, in 
-the English Language, we have 26 characters available. 
-The computer system does not understand characters and hence, 
-therefore, deal with binary numbers. 
-Even though we can see characters on our monitor screens, but internally it is 
-stored and manipulated as a combination of 0s and 1s. 
-The conversion of characters and the binary number is called encoding, 
-and the reverse of this is known as decoding.  
-Some of the popular encodings are ASCII and Unicode. In the Python programming 
-language, a string is a sequence of Unicode characters.
+	[addr]X
+	[addr]{ X ; X ; X }
+	/regexp/X
+	/regexp/{ X ; X ; X }
+
+``Addresses and regular expressions can be used as an if/then conditional: If [addr] matches the current pattern space, execute 
+the command(s). For example: The command /^#/d means: if the current pattern matches the regular expression ^# (a line starting with a hash), then execute 
+the d command: delete the line without printing it, and restart the program cycle immediately.``
+
+Эта запись говорит о том, что в фигурных скобках каждая команда (оператор) выполняется последовательно, при условии, если выполняется предыдущая.
+Краткое описание опреторов:
+- `*:a*` метка
+- `*-bX*`  ``branch unconditionally (that is: always jump to a label, skipping or repeating other commands, without restarting a new cycle).``. Это
+означает, что некандиционная ветвь, которая переходит на метку, пропуская или повторяя другую команду без возможности перезапуска и переходит на метку `X`
+- `*-n*`   ``commands first prints the content of the pattern space, empties the pattern space then reads the next input line. This command is useful to skip lines (e.g. process every Nth line).``
+Эта команда пропускает строку
+- `*-Xp*`   команда вывода строки Xp. Где X - омер строки. 
+- `*grep -v*`	``Invert the sense of matching, to select non-matching lines.``. Инвертирует чувствительность совпадений
+- `*:$*`	метка ``label`` в конце
+- `*eval*`
 
 ..ch 2
 ..ch 3

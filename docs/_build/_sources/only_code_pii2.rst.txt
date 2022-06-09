@@ -646,12 +646,12 @@ Chunck 56
 	echo -e "y\n" | sudo apt install -y python3-venv
 	python3 -m venv env
 	echo -e "y\n" | apt-get install python3-sphinx
-	pip install --upgrade myst-parser
 Chunck 57
 -------------
 .. code-block:: bash
 	:linenos:
 
+	pip install --upgrade myst-parser
 	pip install sphinx-autodocgen
 	pip install Pygments
 	pip install sphinx-intl
@@ -1493,7 +1493,6 @@ Chunck 162
 	
 	systemctl enable mcstrans
 	systemctl start mcstrans
-	
 	systemctl reenable fstrim.timer
 	systemctl reenable fstrim.timer
 	systemctl start fstrim.service
@@ -1567,26 +1566,13 @@ Chunck 170
 
 	
 	echo "deb https:\\\download.webmin.com\download\repository sarge contrib" >> /etc/apt/sources.list
-	
 Chunck 171
 --------------
 .. code-block:: bash
 	:linenos:
 
-	echo -e "\y\n" | apt-get -f install
-Chunck 172
---------------
-.. code-block:: bash
-	:linenos:
-
-	echo -e "y\n" | apt-get autoremove
-Chunck 173
---------------
-.. code-block:: bash
-	:linenos:
-
 	cd ~
-Chunck 174
+Chunck 172
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1597,7 +1583,7 @@ Chunck 174
 	semodule -i loaderlocalv3.pp
 	semodule -i loaderlocalv4.pp
 	
-Chunck 175
+Chunck 173
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1612,7 +1598,26 @@ Chunck 175
 	semodule -i sudotev70522v21.pp
 	semodule -i sudotevcrondv1.pp
 	semodule -i sphinxtev1.pp
-	
+	semanage permissive -a boot_t
+	semanage permissive -a crond_t
+	semanage permissive -a crontab_t
+	semanage permissive -a system_crontab_t
+	semanage module -d permissive_boot_t
+Chunck 174
+--------------
+.. code-block:: bash
+	:linenos:
+
+	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" admin
+	semanage login -a -s root -r "s0-s0:c0.c1023" admin_tech
+	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" %admins
+Chunck 175
+--------------
+.. code-block:: bash
+	:linenos:
+
+	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" %sudo
+	semanage login -a -s user_u tom
 Chunck 176
 --------------
 .. code-block:: bash
@@ -1651,33 +1656,19 @@ Chunck 178
 	systemctl enable webmin
 	systemctl start webmin
 	
-	semanage permissive -a boot_t
-	semanage permissive -a crond_t
-	semanage permissive -a crontab_t
-	semanage permissive -a system_crontab_t
-	semanage module -d permissive_boot_t
 Chunck 179
 --------------
 .. code-block:: bash
 	:linenos:
 
-	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" admin
-	semanage login -a -s root -r "s0-s0:c0.c1023" admin_tech
-	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" %admins
+	echo -e "\y\n" | apt-get -f install
 Chunck 180
 --------------
 .. code-block:: bash
 	:linenos:
 
-	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" %sudo
-	semanage login -a -s user_u tom
+	echo -e "y\n" | apt-get autoremove
 Chunck 181
---------------
-.. code-block:: bash
-	:linenos:
-
-	
-Chunck 182
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1686,14 +1677,14 @@ Chunck 182
 	echo -e "10_SELinux_settings" >> steps.txt
 	fi
 	echo "Press ESC key to quit"
-Chunck 183
+Chunck 182
 --------------
 .. code-block:: bash
 	:linenos:
 
 	while read -r -n1 key
 	do
-Chunck 184
+Chunck 183
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1703,7 +1694,7 @@ Chunck 184
 	break;
 	fi
 	done;
-Chunck 185
+Chunck 184
 --------------
 .. code-block:: bash
 	:linenos:

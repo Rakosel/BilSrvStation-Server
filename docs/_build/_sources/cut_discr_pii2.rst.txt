@@ -878,7 +878,6 @@ AutoInstall Cut Discr
 	echo -e "y\n" | sudo apt install -y python3-venv
 	python3 -m venv env
 	echo -e "y\n" | apt-get install python3-sphinx
-	pip install --upgrade myst-parser
 |	
 |	pip install mkdocs
 |	pip install -U mkdocs
@@ -887,6 +886,7 @@ AutoInstall Cut Discr
 .. code-block:: bash
 	:linenos:
 
+	pip install --upgrade myst-parser
 	pip install sphinx-autodocgen
 	pip install Pygments
 	pip install sphinx-intl
@@ -1896,7 +1896,6 @@ AutoInstall Cut Discr
 	
 	systemctl enable mcstrans
 	systemctl start mcstrans
-	
 	systemctl reenable fstrim.timer
 	systemctl reenable fstrim.timer
 	systemctl start fstrim.service
@@ -1974,19 +1973,6 @@ AutoInstall Cut Discr
 
 	
 	echo "deb https:\\\download.webmin.com\download\repository sarge contrib" >> /etc/apt/sources.list
-	
-|	apt-get update
-|	dpkg --configure -a
-|	apt-get dist-upgrade
-.. code-block:: bash
-	:linenos:
-
-	echo -e "\y\n" | apt-get -f install
-|	echo -e "y\n" | apt-get remove nvidia-*
-.. code-block:: bash
-	:linenos:
-
-	echo -e "y\n" | apt-get autoremove
 |	nvidia-uninstall
 .. code-block:: bash
 	:linenos:
@@ -2020,7 +2006,27 @@ AutoInstall Cut Discr
 	semodule -i sudotev70522v21.pp
 	semodule -i sudotevcrondv1.pp
 	semodule -i sphinxtev1.pp
-	
+	semanage permissive -a boot_t
+	semanage permissive -a crond_t
+	semanage permissive -a crontab_t
+	semanage permissive -a system_crontab_t
+	semanage module -d permissive_boot_t
+|	semanage module -r permissive_boot_t
+|	semanage user -m -R "system_r sysadm_r staff_r" -r "s0-s0:c0.c1023" sysadm_u
+|	semanage user -m -R "system_r" -r "s0-s0:c0.c1023" system_u
+.. code-block:: bash
+	:linenos:
+
+	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" admin
+	semanage login -a -s root -r "s0-s0:c0.c1023" admin_tech
+	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" %admins
+|	semanage login -m -s sysadm_u -r "s0-s0:c0.c1023" root
+|	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" %root
+.. code-block:: bash
+	:linenos:
+
+	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" %sudo
+	semanage login -a -s user_u tom
 |	touch log.log
 |	journalctl -xe >> log.log
 |	grep AVC log.log | audit2allow -m sudotev1 > sudotev1.te
@@ -2062,27 +2068,9 @@ AutoInstall Cut Discr
 	systemctl enable webmin
 	systemctl start webmin
 	
-	semanage permissive -a boot_t
-	semanage permissive -a crond_t
-	semanage permissive -a crontab_t
-	semanage permissive -a system_crontab_t
-	semanage module -d permissive_boot_t
-|	semanage module -r permissive_boot_t
-|	semanage user -m -R "system_r sysadm_r staff_r" -r "s0-s0:c0.c1023" sysadm_u
-|	semanage user -m -R "system_r" -r "s0-s0:c0.c1023" system_u
-.. code-block:: bash
-	:linenos:
-
-	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" admin
-	semanage login -a -s root -r "s0-s0:c0.c1023" admin_tech
-	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" %admins
-|	semanage login -m -s sysadm_u -r "s0-s0:c0.c1023" root
-|	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" %root
-.. code-block:: bash
-	:linenos:
-
-	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" %sudo
-	semanage login -a -s user_u tom
+|	
+01.12	Optional soft
+------------------------
 |	sudo chmod o-rwx -R "/etc/";
 |	sudo chmod o-rwx -R "/boot/";
 |	sudo chmod o-rwx -R "/var/";
@@ -2097,10 +2085,18 @@ AutoInstall Cut Discr
 |	chmod o+rx "/etc/bash.bashrc";
 |	chmod o+rx "/etc/nanorc";
 |	chmod o+rx "/etc/passwd";
+|	apt-get update
+|	dpkg --configure -a
+|	apt-get dist-upgrade
 .. code-block:: bash
 	:linenos:
 
-	
+	echo -e "\y\n" | apt-get -f install
+|	echo -e "y\n" | apt-get remove nvidia-*
+.. code-block:: bash
+	:linenos:
+
+	echo -e "y\n" | apt-get autoremove
 |		Display manager: gdm3 sddm
 |		GDM KDM LightDM LXDM МДМ SLIM XDM
 |	

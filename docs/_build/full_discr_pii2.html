@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>4. Full discr functions pii &mdash; BilSrvStation_Server_PC 1.0.2a documentation</title>
+  <title>4. important &mdash; BilSrvStation_Server_PC 1.0.2a documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="5. Appendix Code chunck" href="only_code_pii2.html" />
+    <link rel="next" title="7. Appendix Code chunck" href="only_code_pii2.html" />
     <link rel="prev" title="3. Preseed Cut Discr" href="cut_discr_preseed.html" /> 
 </head>
 
@@ -43,18 +43,19 @@
 <li class="toctree-l1"><a class="reference internal" href="sourcelink.html">1. Навигация</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cut_discr_pc.html">2. ISO InstallDeb Cut Discr</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cut_discr_preseed.html">3. Preseed Cut Discr</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Full discr functions pii</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#what-are-strings">4.1. What are Strings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#python-string-comparison-operators">4.2. Python String Comparison operators</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. important</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#addr-x">5. [addr]X</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#regexp-x">6. /regexp/X</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#python-string-comparison-operators">6.1. Python String Comparison operators</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="only_code_pii2.html">5. Appendix Code chunck</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2.html">6. AutoInstall Cut Discr</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2_pack.html">7. AutoInstall Package List</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cut_discr_cmd_shell.html">8. CMD_SHELL Cut Discr</a></li>
-<li class="toctree-l1"><a class="reference internal" href="structure.html">9. Структура</a></li>
-<li class="toctree-l1"><a class="reference internal" href="build_doc.html">10. Построение этой документации</a></li>
-<li class="toctree-l1"><a class="reference internal" href="note.html">11. Заметки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="only_code_pii2.html">7. Appendix Code chunck</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2.html">8. AutoInstall Cut Discr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2_pack.html">9. AutoInstall Package List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_cmd_shell.html">10. CMD_SHELL Cut Discr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structure.html">11. Структура</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_doc.html">12. Построение этой документации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="note.html">13. Заметки</a></li>
 </ul>
 
         </div>
@@ -71,7 +72,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li><span class="section-number">4. </span>Full discr functions pii</li>
+      <li><span class="section-number">4. </span>important</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/full_discr_pii2.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -81,68 +82,123 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="full-discr-functions-pii">
-<h1><span class="section-number">4. </span>Full discr functions pii<a class="headerlink" href="#full-discr-functions-pii" title="Permalink to this headline"></a></h1>
+  <div class="line-block">
 <div class="line-block">
-<div class="line">In this article, we will learn what is strings in a programming language, how to create them,</div>
-<div class="line">At last, we will study some Python strings comparison in brief along with its python code example and output.</div>
+<div class="line">Полное описание Сервера.</div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>: <span class="si">${</span><span class="nv">HOSTNAME</span><span class="p">?</span><span class="si">}</span> <span class="si">${</span><span class="nv">USER</span><span class="p">?</span><span class="si">}</span> <span class="si">${</span><span class="nv">HOME</span><span class="p">?</span><span class="si">}</span> <span class="si">${</span><span class="nv">MAIL</span><span class="p">?</span><span class="si">}</span>
-<span class="linenos"> 2</span><span class="nb">echo</span>
-<span class="linenos"> 3</span><span class="nb">echo</span> <span class="s2">&quot;Имя машины: </span><span class="nv">$HOSTNAME</span><span class="s2">.&quot;</span>
-<span class="linenos"> 4</span><span class="nb">echo</span> <span class="s2">&quot;Ваше имя: </span><span class="nv">$USER</span><span class="s2">.&quot;</span>
-<span class="linenos"> 5</span><span class="nb">echo</span> <span class="s2">&quot;Ваш домашний каталог: </span><span class="nv">$HOME</span><span class="s2">.&quot;</span>
-<span class="linenos"> 6</span><span class="nb">echo</span> <span class="s2">&quot;Ваш почтовый ящик: </span><span class="nv">$MAIL</span><span class="s2">.&quot;</span>
-<span class="linenos"> 7</span><span class="nb">echo</span>
-<span class="linenos"> 8</span><span class="nb">echo</span> <span class="s2">&quot;Если перед Вами появилось это сообщение,&quot;</span>
-<span class="linenos"> 9</span><span class="nb">echo</span> <span class="s2">&quot;то это значит, что все критические переменные окружения установлены.&quot;</span>
-<span class="linenos">10</span><span class="nb">echo</span>
-<span class="linenos">11</span><span class="nb">echo</span> <span class="s2">&quot;Сейчас будет установлена postinstall настройка&quot;</span>
-<span class="linenos">12</span><span class="nb">echo</span>
-<span class="linenos">13</span>
-<span class="linenos">14</span><span class="nb">cd</span> /etc/apt/
-<span class="linenos">15</span>cp sources.list sources.tmp
-</pre></div>
+<div class="line">by <a href="#id5"><span class="problematic" id="id6">|author|</span></a>. Основаня идея заключается в том, что бы обеспечить документирвоание</div>
+<div class="line">и программами. В начале описывается структура файлов для формирования загрузочного диска, далее следует полное</div>
 </div>
-<div class="section" id="what-are-strings">
-<h2><span class="section-number">4.1. </span>What are Strings<a class="headerlink" href="#what-are-strings" title="Permalink to this headline"></a></h2>
+<div class="section" id="important">
+<h1><span class="section-number">4. </span>important<a class="headerlink" href="#important" title="Permalink to this headline"></a></h1>
+<blockquote>
+<div><p>important!!! Перед установкой обязательно ознакомится с данной страницей!!!</p>
+</div></blockquote>
 <div class="line-block">
-<div class="line">A string is generally a sequence of characters. A character is a simple symbol.</div>
-<div class="line">the English Language, we have 26 characters available.</div>
-<div class="line">therefore, deal with binary numbers.</div>
-<div class="line">stored and manipulated as a combination of 0s and 1s.</div>
-<div class="line">and the reverse of this is known as decoding.</div>
-<div class="line">language, a string is a sequence of Unicode characters.</div>
+<div class="line-block">
+<div class="line">Основные возможности</div>
+<div class="line">- Сервер предварительно настроен предустановочным файлом '<em>preseed.cfg</em>'</div>
+<div class="line">- Сервер защищён пакетом SELinux с настроенными политиками</div>
+<div class="line">- Установленные все полезные утилиты, необходимые для удобного администрирования</div>
+<div class="line-block">
+<div class="line">Описание структуры сервера</div>
+<div class="line">Разбор основного файла <a href="#id1"><span class="problematic" id="id2">`</span></a><em>pii2.sh</em>'</div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sed -i -e <span class="s2">&quot;</span><span class="nv">$a</span><span class="s2"> s/\(iface\s\).*/\1</span><span class="nv">$NET_WI</span><span class="s2"> inet dhcp/g&quot;</span> interfaces
+</div>
+<div class="line">'<em>&lt;name&gt;=${&lt;number&gt;:-&quot;&lt;name&gt;&quot;}</em>'. Где <cite>*&lt;name&gt;*</cite> - название метки GOTO, &lt;number&gt; - номер метки. Т.е. переменной &lt;name&gt; присваивается структура из наименования</div>
+<div class="line">Данная функция <cite>*jumpto*</cite> принимает два аргумента '<em>$0</em>' и '<em>$1</em>', которые соответствуют имени файла и названия метки.</div>
+<div class="line-block">
+<div class="line">'<em>cmd=$(sed -n &quot;/$label:/{:a;n;p;ba};&quot; $0 | grep -v ':$')</em>'.</div>
+</div>
+<div class="line">В документации в разделе '<em>6.4 Branching and Flow Control</em>' <a class="reference external" href="https://www.gnu.org/software/sed/manual/sed.html">SEDERE</a> указана адресация::</div>
+</div>
+</div>
+<div class="section" id="addr-x">
+<h1><span class="section-number">5. </span>[addr]X<a class="headerlink" href="#addr-x" title="Permalink to this headline"></a></h1>
+</div>
+<div class="section" id="regexp-x">
+<h1><span class="section-number">6. </span>/regexp/X<a class="headerlink" href="#regexp-x" title="Permalink to this headline"></a></h1>
+<div class="line-block">
+<div class="line"><a href="#id3"><span class="problematic" id="id4">``</span></a>Addresses and regular expressions can be used as an if/then conditional: If [addr] matches the current pattern space, execute</div>
+<div class="line">the d command: delete the line without printing it, and restart the program cycle immediately.``</div>
+<div class="line">Эта запись говорит о том, что в фигурных скобках каждая команда (оператор) выполняется последовательно, при условии, если выполняется предыдущая.</div>
+<div class="line">- <cite>*:a*</cite> метка</div>
+<div class="line">означает, что некандиционная ветвь, которая переходит на метку, пропуская или повторяя другую команду без возможности перезапуска и переходит на метку <cite>X</cite></div>
+<div class="line">Эта команда пропускает строку</div>
+<div class="line">- <cite>*grep -v*</cite>   <code class="docutils literal notranslate"><span class="pre">Invert</span> <span class="pre">the</span> <span class="pre">sense</span> <span class="pre">of</span> <span class="pre">matching,</span> <span class="pre">to</span> <span class="pre">select</span> <span class="pre">non-matching</span> <span class="pre">lines.</span></code>. Инвертирует чувствительность совпадений</div>
+<div class="line">- <cite>*eval*</cite></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install python
+<span class="linenos">2</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install python3
+<span class="linenos">3</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install tmux<span class="p">;</span>
+<span class="linenos">4</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install net-tools
+<span class="linenos">5</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install manpages-dev<span class="p">;</span>
+<span class="linenos">6</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install wpa_supplicant<span class="p">;</span>
+<span class="linenos">7</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install mc<span class="p">;</span>
+<span class="linenos">8</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install ncdu<span class="p">;</span>
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sed <span class="s1">&#39;$a wpa-conf \/home\/rootsu\/wpa_supplicant.conf&#39;</span> interfaces &gt;&gt; interfaces<span class="p">;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install netdata<span class="p">;</span>
+<span class="linenos"> 2</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install systat<span class="p">;</span>
+<span class="linenos"> 3</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install iftop<span class="p">;</span>
+<span class="linenos"> 4</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install htop<span class="p">;</span>
+<span class="linenos"> 5</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install sudo<span class="p">;</span>
+<span class="linenos"> 6</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install iptraf<span class="p">;</span>
+<span class="linenos"> 7</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install ntp
+<span class="linenos"> 8</span>systemctl <span class="nb">enable</span> ntp<span class="p">;</span>
+<span class="linenos"> 9</span>systemctl <span class="nb">enable</span> start<span class="p">;</span>
+<span class="linenos">10</span>sudo systemctl unmask samba<span class="p">;</span>
+<span class="linenos">11</span>cp /install/etc/sudoers /etc/sudoers
+<span class="linenos">12</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install nmon<span class="p">;</span>
+<span class="linenos">13</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install nmap<span class="p">;</span>
+<span class="linenos">14</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install safe-rm
+<span class="linenos">15</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install aptitude
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>systemctl restart wpa_supplicant
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>iptables –F
+<span class="linenos"> 2</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install cifs-utils
+<span class="linenos"> 3</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install samba
+<span class="linenos"> 4</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install smbfs
+<span class="linenos"> 5</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install whois
+<span class="linenos"> 6</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install lsof
+<span class="linenos"> 7</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install mkpasswd
+<span class="linenos"> 8</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install wget
+<span class="linenos"> 9</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install tree
+<span class="linenos">10</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install autofs
+<span class="linenos">11</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install gpg
+<span class="linenos">12</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install rsync
+<span class="linenos">13</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install ca-certificates
+<span class="linenos">14</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install shared-mime-info
+<span class="linenos">15</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install wget genisoimage xorriso isolinux
+<span class="linenos">16</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install hddtemp lm-sensors
+<span class="linenos">17</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install at
+<span class="linenos">18</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install pip
+<span class="linenos">19</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install xz-utils
+<span class="linenos">20</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install curl
+<span class="linenos">21</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install python3-sphinx
+<span class="linenos">22</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
+<span class="linenos">23</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> sudo apt install -y python3-venv
+<span class="linenos">24</span>python3 -m venv env
+<span class="linenos">25</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install python3-sphinx
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">else</span>
-<span class="linenos">2</span>
-<span class="linenos">3</span><span class="k">if</span> <span class="o">[[</span> -z <span class="k">$(</span>sed -n -e <span class="s2">&quot;s/\(source \/etc\/network\/interfaces/\\).*/\1/p&quot;</span> interfaces<span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-<span class="linenos">4</span>                <span class="nv">TMPS</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">;</span>
-<span class="linenos">5</span>                reinterfaces<span class="p">;</span>
-<span class="linenos">6</span><span class="k">fi</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>pip install --upgrade myst-parser
+<span class="linenos">2</span>pip install sphinx-autodocgen
+<span class="linenos">3</span>pip install Pygments
+<span class="linenos">4</span>pip install sphinx-intl
+<span class="linenos">5</span>pip install lumache
+<span class="linenos">6</span>pip install django
+<span class="linenos">7</span>pip install django-docs
+<span class="linenos">8</span>pip install sphinxnotes-strike
 </pre></div>
-</div>
 </div>
 <div class="section" id="python-string-comparison-operators">
-<h2><span class="section-number">4.2. </span>Python String Comparison operators<a class="headerlink" href="#python-string-comparison-operators" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">6.1. </span>Python String Comparison operators<a class="headerlink" href="#python-string-comparison-operators" title="Permalink to this headline"></a></h2>
 <div class="line-block">
 <div class="line">In python language, we can compare two strings such as identify whether the two strings are equivalent to each other</div>
 <div class="line">used for this purpose below:</div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>systemctl restart networking
-<span class="linenos">2</span>
-<span class="linenos">3</span><span class="nb">cd</span> /install/
-<span class="linenos">4</span><span class="nb">echo</span> -e <span class="s2">&quot;1_settings_interface_with_wifi&quot;</span> &gt;&gt; steps.txt
-<span class="linenos">5</span><span class="k">fi</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>step_three:
 </pre></div>
 </div>
 <div class="line-block">
@@ -150,13 +206,20 @@
 <div class="line">&lt;: This operator checks whether the string on the left side is smaller than the string on the right side.</div>
 <div class="line">&gt;: This operator checks whether the string on the left side is greater than the string on the right side.</div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install firmware-linux
-<span class="linenos">2</span>
-<span class="linenos">3</span><span class="k">if</span> <span class="o">[[</span> <span class="k">$(</span>lspci <span class="p">|</span> grep Ethernet <span class="p">|</span> sed -n -e <span class="s2">&quot;s/.*ller:\s\([a-zA-Z]\+\s\).*/\1/p&quot;</span><span class="k">)</span> <span class="o">==</span> <span class="s2">&quot;Realtek&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-<span class="linenos">4</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install firmware-realtek
-<span class="linenos">5</span><span class="k">fi</span>
-<span class="linenos">6</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install firmware-linux-nonfree
-<span class="linenos">7</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install man
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nv">shd</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$line</span> <span class="p">|</span> sed <span class="s1">&#39;s/\//\\\//g&#39;</span><span class="k">)</span>
+<span class="linenos"> 2</span><span class="nv">S1</span><span class="o">=</span><span class="k">$(</span>blkid <span class="p">|</span> sed -n -e <span class="s2">&quot;s/</span><span class="nv">$shd</span><span class="s2">:\s\(.*\).*/\1/p&quot;</span> <span class="p">|</span> sed -n -e <span class="s2">&quot;s/.*UUID=\(.*\)\sB.*/\1/p&quot;</span> <span class="p">|</span> sed <span class="s1">&#39;s/\&quot;/\\&quot;/g&#39;</span><span class="k">)</span>
+<span class="linenos"> 3</span><span class="nv">TMPS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$line</span> <span class="p">|</span> sed -n -e <span class="s2">&quot;s/^\/dev\/\([a-z]*[0-9]\).*/\1/p&quot;</span><span class="k">)</span>
+<span class="linenos"> 4</span>chown admin_share:technics -Rf <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span>
+<span class="linenos"> 5</span>semanage fcontext -a -t public_content_rw_t <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">(/.*)?&quot;</span><span class="p">;</span>
+<span class="linenos"> 6</span>chcon -Rv -t public_content_rw_t <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="linenos"> 7</span>setfacl -m u:admin:rwx,u:admin_share:rwx, pub_share:rwx -R <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="linenos"> 8</span>setfacl -m g:admins:rw -R <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="linenos"> 9</span>chmod go-rwx -R <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="linenos">10</span><span class="k">if</span> <span class="o">[[</span> -n <span class="nv">$S1</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+<span class="linenos">11</span>        sed -i -e <span class="s2">&quot;</span>$<span class="s2"> a UUID\=</span><span class="nv">$S1</span><span class="s2">        \/mnt\/</span><span class="nv">$TMPS</span><span class="s2">    ext4    defaults        0       2&quot;</span> /etc/fstab
+<span class="linenos">12</span><span class="k">fi</span>
+<span class="linenos">13</span><span class="k">done</span> &lt; <span class="nv">$filename</span>
+<span class="linenos">14</span>sudo mount -a
 </pre></div>
 </div>
 </div>
@@ -167,7 +230,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="cut_discr_preseed.html" class="btn btn-neutral float-left" title="3. Preseed Cut Discr" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="only_code_pii2.html" class="btn btn-neutral float-right" title="5. Appendix Code chunck" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="only_code_pii2.html" class="btn btn-neutral float-right" title="7. Appendix Code chunck" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

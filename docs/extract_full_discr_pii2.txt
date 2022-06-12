@@ -51,7 +51,8 @@ the d command: delete the line without printing it, and restart the program cycl
 - `*:$*`	метка ``label`` в конце
 - `*eval*`
 
-..ch 2
+..ch 0
+..ch 1
 ..ch 3
 ..ch 4
 ..ch 5

@@ -15,6 +15,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -90,7 +91,7 @@
 <div class="line">и программами. В начале описывается структура файлов для формирования загрузочного диска, далее следует полное</div>
 </div>
 <div class="section" id="important">
-<h1><span class="section-number">4. </span>important<a class="headerlink" href="#important" title="Permalink to this headline"></a></h1>
+<h1><span class="section-number">4. </span>important<a class="headerlink" href="#important" title="Permalink to this heading"></a></h1>
 <blockquote>
 <div><p>important!!! Перед установкой обязательно ознакомится с данной страницей!!!</p>
 </div></blockquote>
@@ -114,10 +115,10 @@
 </div>
 </div>
 <div class="section" id="addr-x">
-<h1><span class="section-number">5. </span>[addr]X<a class="headerlink" href="#addr-x" title="Permalink to this headline"></a></h1>
+<h1><span class="section-number">5. </span>[addr]X<a class="headerlink" href="#addr-x" title="Permalink to this heading"></a></h1>
 </div>
 <div class="section" id="regexp-x">
-<h1><span class="section-number">6. </span>/regexp/X<a class="headerlink" href="#regexp-x" title="Permalink to this headline"></a></h1>
+<h1><span class="section-number">6. </span>/regexp/X<a class="headerlink" href="#regexp-x" title="Permalink to this heading"></a></h1>
 <div class="line-block">
 <div class="line"><a href="#id3"><span class="problematic" id="id4">``</span></a>Addresses and regular expressions can be used as an if/then conditional: If [addr] matches the current pattern space, execute</div>
 <div class="line">the d command: delete the line without printing it, and restart the program cycle immediately.``</div>
@@ -169,17 +170,17 @@
 <span class="linenos">12</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install rsync
 <span class="linenos">13</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install ca-certificates
 <span class="linenos">14</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install shared-mime-info
-<span class="linenos">15</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install wget genisoimage xorriso isolinux
+<span class="linenos">15</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install wget genisoimage xorriso isolinux hwinfo
 <span class="linenos">16</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install hddtemp lm-sensors
 <span class="linenos">17</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install at
 <span class="linenos">18</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install pip
 <span class="linenos">19</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install xz-utils
 <span class="linenos">20</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install curl
-<span class="linenos">21</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install python3-sphinx
-<span class="linenos">22</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
-<span class="linenos">23</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> sudo apt install -y python3-venv
-<span class="linenos">24</span>python3 -m venv env
-<span class="linenos">25</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install python3-sphinx
+<span class="linenos">21</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install sphinx
+<span class="linenos">22</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install python3-sphinx
+<span class="linenos">23</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
+<span class="linenos">24</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> sudo apt install -y python3-venv
+<span class="linenos">25</span>python3 -m venv env
 </pre></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>pip install --upgrade myst-parser
@@ -190,15 +191,22 @@
 <span class="linenos">6</span>pip install django
 <span class="linenos">7</span>pip install django-docs
 <span class="linenos">8</span>pip install sphinxnotes-strike
+<span class="linenos">9</span>pip install sphinx_rtd_theme
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>pip install -U sphinx
+<span class="linenos">2</span>python -m venv .venv
 </pre></div>
 </div>
 <div class="section" id="python-string-comparison-operators">
-<h2><span class="section-number">6.1. </span>Python String Comparison operators<a class="headerlink" href="#python-string-comparison-operators" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">6.1. </span>Python String Comparison operators<a class="headerlink" href="#python-string-comparison-operators" title="Permalink to this heading"></a></h2>
 <div class="line-block">
 <div class="line">In python language, we can compare two strings such as identify whether the two strings are equivalent to each other</div>
 <div class="line">used for this purpose below:</div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>step_three:
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>step_four:
+<span class="linenos">2</span><span class="nb">cd</span> /install/
+<span class="linenos">3</span><span class="k">if</span> <span class="o">[[</span> -z <span class="k">$(</span>sed -n -e <span class="s2">&quot;s/^\(7_driver_opt\).*/\1/p&quot;</span> steps.txt<span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -206,20 +214,8 @@
 <div class="line">&lt;: This operator checks whether the string on the left side is smaller than the string on the right side.</div>
 <div class="line">&gt;: This operator checks whether the string on the left side is greater than the string on the right side.</div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nv">shd</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$line</span> <span class="p">|</span> sed <span class="s1">&#39;s/\//\\\//g&#39;</span><span class="k">)</span>
-<span class="linenos"> 2</span><span class="nv">S1</span><span class="o">=</span><span class="k">$(</span>blkid <span class="p">|</span> sed -n -e <span class="s2">&quot;s/</span><span class="nv">$shd</span><span class="s2">:\s\(.*\).*/\1/p&quot;</span> <span class="p">|</span> sed -n -e <span class="s2">&quot;s/.*UUID=\(.*\)\sB.*/\1/p&quot;</span> <span class="p">|</span> sed <span class="s1">&#39;s/\&quot;/\\&quot;/g&#39;</span><span class="k">)</span>
-<span class="linenos"> 3</span><span class="nv">TMPS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$line</span> <span class="p">|</span> sed -n -e <span class="s2">&quot;s/^\/dev\/\([a-z]*[0-9]\).*/\1/p&quot;</span><span class="k">)</span>
-<span class="linenos"> 4</span>chown admin_share:technics -Rf <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span>
-<span class="linenos"> 5</span>semanage fcontext -a -t public_content_rw_t <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">(/.*)?&quot;</span><span class="p">;</span>
-<span class="linenos"> 6</span>chcon -Rv -t public_content_rw_t <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="linenos"> 7</span>setfacl -m u:admin:rwx,u:admin_share:rwx, pub_share:rwx -R <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="linenos"> 8</span>setfacl -m g:admins:rw -R <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="linenos"> 9</span>chmod go-rwx -R <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="linenos">10</span><span class="k">if</span> <span class="o">[[</span> -n <span class="nv">$S1</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-<span class="linenos">11</span>        sed -i -e <span class="s2">&quot;</span>$<span class="s2"> a UUID\=</span><span class="nv">$S1</span><span class="s2">        \/mnt\/</span><span class="nv">$TMPS</span><span class="s2">    ext4    defaults        0       2&quot;</span> /etc/fstab
-<span class="linenos">12</span><span class="k">fi</span>
-<span class="linenos">13</span><span class="k">done</span> &lt; <span class="nv">$filename</span>
-<span class="linenos">14</span>sudo mount -a
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;7_driver_opt&quot;</span> &gt;&gt; steps.txt
+<span class="linenos">2</span><span class="k">fi</span>
 </pre></div>
 </div>
 </div>

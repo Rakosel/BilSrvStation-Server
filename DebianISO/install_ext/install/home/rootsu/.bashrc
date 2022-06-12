@@ -26,4 +26,9 @@ alias rewifi='sudo ifdown wlp3s0 |sleep 10 | sudo ifup wlp3s0'
 # https://phoenixnap.com/kb/how-to-list-users-linux 
 alias all_users='cut -d: -f1 /etc/passwd'
 alias rm_app='echo -e "y\n" & sudo apt autoremove & sudo apt clean & sudo apt autoclean & sudo apt install -f & sudo dpkg --configure -a | sudo apt update & sudo aptitude update & sudo aptitude upgrade'
-
+alias t-start='sudo service transmission-daemon start'
+alias t-stop='sudo service transmission-daemon stop'
+alias t-reload='sudo service transmission-daemon reload'
+alias t-list='transmission-remote -n 'transmission:transmission' -l'
+alias t-basicstats='transmission-remote -n 'transmission:transmission' -st'
+alias t-fullstats='transmission-remote -n 'transmission:transmission' -si'

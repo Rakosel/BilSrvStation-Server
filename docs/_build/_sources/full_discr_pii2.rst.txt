@@ -78,17 +78,17 @@ important
 	echo -e "y\n" | apt-get install rsync
 	echo -e "y\n" | apt-get install ca-certificates
 	echo -e "y\n" | apt-get install shared-mime-info
-	echo -e "y\n" | apt-get install wget genisoimage xorriso isolinux
+	echo -e "y\n" | apt-get install wget genisoimage xorriso isolinux hwinfo
 	echo -e "y\n" | apt-get install hddtemp lm-sensors
 	echo -e "y\n" | apt-get install at
 	echo -e "y\n" | apt-get install pip
 	echo -e "y\n" | apt-get install xz-utils
 	echo -e "y\n" | apt-get install curl
+	echo -e "y\n" | apt-get install sphinx
 	echo -e "y\n" | apt-get install python3-sphinx
 	echo -e "y\n" | sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
 	echo -e "y\n" | sudo apt install -y python3-venv
 	python3 -m venv env
-	echo -e "y\n" | apt-get install python3-sphinx
 
 
 .. code-block:: bash
@@ -102,6 +102,14 @@ important
 	pip install django
 	pip install django-docs
 	pip install sphinxnotes-strike
+	pip install sphinx_rtd_theme
+
+
+.. code-block:: bash
+	:linenos:
+
+	pip install -U sphinx
+	python -m venv .venv
 
 Python String Comparison operators
 ----------------------------------
@@ -111,8 +119,9 @@ Python String Comparison operators
 .. code-block:: bash
 	:linenos:
 
-	step_three:
-	
+	step_four:
+	cd /install/
+	if [[ -z $(sed -n -e "s/^\(7_driver_opt\).*/\1/p" steps.txt) ]]; then
 
 |	==: This operator checks whether two strings are equal.
 |	<: This operator checks whether the string on the left side is smaller than the string on the right side.
@@ -121,18 +130,6 @@ Python String Comparison operators
 .. code-block:: bash
 	:linenos:
 
-	shd=$(echo $line | sed 's/\//\\\//g')
-	S1=$(blkid | sed -n -e "s/$shd:\s\(.*\).*/\1/p" | sed -n -e "s/.*UUID=\(.*\)\sB.*/\1/p" | sed 's/\"/\\"/g')
-	TMPS=$(echo $line | sed -n -e "s/^\/dev\/\([a-z]*[0-9]\).*/\1/p")
-	chown admin_share:technics -Rf "/mnt/$TMPS"
-	semanage fcontext -a -t public_content_rw_t "/mnt/$TMPS(/.*)?"; 
-	chcon -Rv -t public_content_rw_t "/mnt/$TMPS";
-	setfacl -m u:admin:rwx,u:admin_share:rwx, pub_share:rwx -R "/mnt/$TMPS";
-	setfacl -m g:admins:rw -R "/mnt/$TMPS";
-	chmod go-rwx -R "/mnt/$TMPS";
-	if [[ -n $S1 ]]; then
-		sed -i -e "$ a UUID\=$S1	\/mnt\/$TMPS	ext4	defaults	0	2" /etc/fstab
+	echo -e "7_driver_opt" >> steps.txt
 	fi
-	done < $filename
-	sudo mount -a
 

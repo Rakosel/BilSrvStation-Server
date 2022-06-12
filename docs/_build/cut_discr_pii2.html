@@ -15,6 +15,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -123,7 +124,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="autoinstall-cut-discr">
-<h1><span class="section-number">8. </span>AutoInstall Cut Discr<a class="headerlink" href="#autoinstall-cut-discr" title="Permalink to this headline"></a></h1>
+<h1><span class="section-number">8. </span>AutoInstall Cut Discr<a class="headerlink" href="#autoinstall-cut-discr" title="Permalink to this heading"></a></h1>
 <div class="line-block">
 <div class="line">Published by <a href="#id8"><span class="problematic" id="id9">|author|</span></a></div>
 <div class="line">Date: <em>|date|</em> Time <em>|time|</em></div>
@@ -155,7 +156,7 @@
 </div>
 </div>
 <div class="section" id="auto-postinstall">
-<h2><span class="section-number">8.1. </span>01      AUTO POSTINSTALL<a class="headerlink" href="#auto-postinstall" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">8.1. </span>01      AUTO POSTINSTALL<a class="headerlink" href="#auto-postinstall" title="Permalink to this heading"></a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>do postinstall copy wufu &amp; wpa_supplicant.conf + SAMBA</p>
@@ -164,7 +165,7 @@
 <div class="line"><br /></div>
 </div>
 <div class="section" id="pre-install-emv-and-settings">
-<h3><span class="section-number">8.1.1. </span>01.01   PRE-INSTALL EMV AND SETTINGS<a class="headerlink" href="#pre-install-emv-and-settings" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">8.1.1. </span>01.01   PRE-INSTALL EMV AND SETTINGS<a class="headerlink" href="#pre-install-emv-and-settings" title="Permalink to this heading"></a></h3>
 <div class="line-block">
 <div class="line">d-i preseed/late_command string mkdir -p /target/install/; cp -R /install/* /target/install/; cp -Rf /install/lib/ /target/lib/;</div>
 <div class="line"><br /></div>
@@ -257,7 +258,7 @@
 </div>
 </div>
 <div class="section" id="check-root-privilege">
-<h3><span class="section-number">8.1.2. </span>01.02   CHECK ROOT PRIVILEGE<a class="headerlink" href="#check-root-privilege" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">8.1.2. </span>01.02   CHECK ROOT PRIVILEGE<a class="headerlink" href="#check-root-privilege" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">if</span> <span class="o">[[</span> <span class="nv">$EUID</span> -ne <span class="m">0</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 <span class="linenos"> 2</span>        <span class="k">if</span> <span class="o">[[</span> <span class="si">${</span><span class="nv">LANG</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">5</span><span class="si">}</span> -eq <span class="s1">&#39;ru_RU&#39;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 <span class="linenos"> 3</span>                <span class="nb">echo</span> <span class="s2">&quot;Ошибка скрипта перезапустите скрипт на root&quot;</span> <span class="m">1</span>&gt;<span class="p">&amp;</span><span class="m">2</span>
@@ -377,7 +378,7 @@
 </div>
 </div>
 <div class="section" id="settings-etc-network-interfaces-interface-sh">
-<h3><span class="section-number">8.1.3. </span>01.03   SETTINGS /ETC/NETWORK -&gt; INTERFACES [interface_sh]<a class="headerlink" href="#settings-etc-network-interfaces-interface-sh" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">8.1.3. </span>01.03   SETTINGS /ETC/NETWORK -&gt; INTERFACES [interface_sh]<a class="headerlink" href="#settings-etc-network-interfaces-interface-sh" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nv">TMPS</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">;</span>
 <span class="linenos">2</span>interface_sh:
 <span class="linenos">3</span>
@@ -389,7 +390,7 @@
 <div class="line"><br /></div>
 </div>
 <div class="section" id="settings-network-interfaces">
-<h4><span class="section-number">8.1.3.1. </span>01.03.01        SETTINGS NETWORK/INTERFACES<a class="headerlink" href="#settings-network-interfaces" title="Permalink to this headline"></a></h4>
+<h4><span class="section-number">8.1.3.1. </span>01.03.01        SETTINGS NETWORK/INTERFACES<a class="headerlink" href="#settings-network-interfaces" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -401,7 +402,7 @@
 </div>
 </div>
 <div class="section" id="search-interfaces">
-<h4><span class="section-number">8.1.3.2. </span>01.03.02        SEARCH INTERFACES<a class="headerlink" href="#search-interfaces" title="Permalink to this headline"></a></h4>
+<h4><span class="section-number">8.1.3.2. </span>01.03.02        SEARCH INTERFACES<a class="headerlink" href="#search-interfaces" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line">|       2:      number</div>
 <div class="line"><br /></div>
@@ -769,7 +770,7 @@
 </div>
 </div>
 <div class="section" id="restart-service">
-<h4><span class="section-number">8.1.3.3. </span>01.03.02        restart service<a class="headerlink" href="#restart-service" title="Permalink to this headline"></a></h4>
+<h4><span class="section-number">8.1.3.3. </span>01.03.02        restart service<a class="headerlink" href="#restart-service" title="Permalink to this heading"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>systemctl restart networking
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="nb">cd</span> /install/
@@ -783,7 +784,7 @@
 </div>
 </div>
 <div class="section" id="update-distribution">
-<h3><span class="section-number">8.1.4. </span>01.04           Update distribution<a class="headerlink" href="#update-distribution" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">8.1.4. </span>01.04           Update distribution<a class="headerlink" href="#update-distribution" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>step_one:
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="nb">cd</span> /install/
@@ -896,7 +897,7 @@
 </div>
 </div>
 <div class="section" id="install-drivers">
-<h3><span class="section-number">8.1.5. </span>01.05           Install drivers<a class="headerlink" href="#install-drivers" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">8.1.5. </span>01.05           Install drivers<a class="headerlink" href="#install-drivers" title="Permalink to this heading"></a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -933,7 +934,7 @@
 <div class="line"><br /></div>
 </div>
 <div class="section" id="install-selinux-utils-acl">
-<h4><span class="section-number">8.1.5.1. </span>01.05.01        Install SElinux utils &amp; acl<a class="headerlink" href="#install-selinux-utils-acl" title="Permalink to this headline"></a></h4>
+<h4><span class="section-number">8.1.5.1. </span>01.05.01        Install SElinux utils &amp; acl<a class="headerlink" href="#install-selinux-utils-acl" title="Permalink to this heading"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install acl
 <span class="linenos">2</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install setools policycoreutils selinux-basics selinux-utils selinux-policy-default selinux-policy-mls auditd policycoreutils-python-utils semanage-utils audispd-plugins
 <span class="linenos">3</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install mcstrans
@@ -965,7 +966,7 @@
 </div>
 </div>
 <div class="section" id="reboot">
-<h4><span class="section-number">8.1.5.2. </span>01.05.02        Reboot<a class="headerlink" href="#reboot" title="Permalink to this headline"></a></h4>
+<h4><span class="section-number">8.1.5.2. </span>01.05.02        Reboot<a class="headerlink" href="#reboot" title="Permalink to this heading"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>reboot
 <span class="linenos">2</span><span class="k">fi</span>
 </pre></div>
@@ -976,7 +977,7 @@
 </div>
 </div>
 <div class="section" id="install-git-nanorc-step-three">
-<h3><span class="section-number">8.1.6. </span>01.06           Install git &amp;&amp; nanorc [step_three]<a class="headerlink" href="#install-git-nanorc-step-three" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">8.1.6. </span>01.06           Install git &amp;&amp; nanorc [step_three]<a class="headerlink" href="#install-git-nanorc-step-three" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="o">[[</span> -z <span class="k">$(</span>sed -n -e <span class="s2">&quot;s/^\(3_nanorc\).*/\1/p&quot;</span> steps.txt<span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 </pre></div>
 </div>
@@ -1083,7 +1084,7 @@
 </div>
 </div>
 <div class="section" id="copy-dir">
-<h3><span class="section-number">8.1.7. </span>01.07           Copy dir<a class="headerlink" href="#copy-dir" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">8.1.7. </span>01.07           Copy dir<a class="headerlink" href="#copy-dir" title="Permalink to this heading"></a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -1131,7 +1132,7 @@
 </div>
 </div>
 <div class="section" id="install-utils-step-five">
-<h3><span class="section-number">8.1.8. </span>01.08           Install utils [step_five]<a class="headerlink" href="#install-utils-step-five" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">8.1.8. </span>01.08           Install utils [step_five]<a class="headerlink" href="#install-utils-step-five" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="o">[[</span> -z <span class="k">$(</span>sed -n -e <span class="s2">&quot;s/^\(5_install_util_wd\).*/\1/p&quot;</span> steps.txt<span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 </pre></div>
 </div>
@@ -1203,17 +1204,17 @@
 <span class="linenos">12</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install rsync
 <span class="linenos">13</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install ca-certificates
 <span class="linenos">14</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install shared-mime-info
-<span class="linenos">15</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install wget genisoimage xorriso isolinux
+<span class="linenos">15</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install wget genisoimage xorriso isolinux hwinfo
 <span class="linenos">16</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install hddtemp lm-sensors
 <span class="linenos">17</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install at
 <span class="linenos">18</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install pip
 <span class="linenos">19</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install xz-utils
 <span class="linenos">20</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install curl
-<span class="linenos">21</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install python3-sphinx
-<span class="linenos">22</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
-<span class="linenos">23</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> sudo apt install -y python3-venv
-<span class="linenos">24</span>python3 -m venv env
-<span class="linenos">25</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install python3-sphinx
+<span class="linenos">21</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install sphinx
+<span class="linenos">22</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install python3-sphinx
+<span class="linenos">23</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
+<span class="linenos">24</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> sudo apt install -y python3-venv
+<span class="linenos">25</span>python3 -m venv env
 </pre></div>
 </div>
 <div class="line-block">
@@ -1233,6 +1234,7 @@
 <span class="linenos">6</span>pip install django
 <span class="linenos">7</span>pip install django-docs
 <span class="linenos">8</span>pip install sphinxnotes-strike
+<span class="linenos">9</span>pip install sphinx_rtd_theme
 </pre></div>
 </div>
 <div class="line-block">
@@ -1352,7 +1354,7 @@
 </div>
 </div>
 <div class="section" id="install-driver-opt-and-acc-step-six">
-<h3><span class="section-number">8.1.9. </span>01.09           Install driver opt and acc [step_six]<a class="headerlink" href="#install-driver-opt-and-acc-step-six" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">8.1.9. </span>01.09           Install driver opt and acc [step_six]<a class="headerlink" href="#install-driver-opt-and-acc-step-six" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>step_four:
 <span class="linenos">2</span><span class="nb">cd</span> /install/
 <span class="linenos">3</span><span class="k">if</span> <span class="o">[[</span> -z <span class="k">$(</span>sed -n -e <span class="s2">&quot;s/^\(7_driver_opt\).*/\1/p&quot;</span> steps.txt<span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
@@ -1362,10 +1364,10 @@
 <div class="line"><br /></div>
 </div>
 <div class="section" id="create-disk-opt">
-<h4><span class="section-number">8.1.9.1. </span>01.09.01        create disk /opt/<a class="headerlink" href="#create-disk-opt" title="Permalink to this headline"></a></h4>
+<h4><span class="section-number">8.1.9.1. </span>01.09.01        create disk /opt/<a class="headerlink" href="#create-disk-opt" title="Permalink to this heading"></a></h4>
 </div>
 <div class="section" id="search-dev-s">
-<h4><span class="section-number">8.1.9.2. </span>01.09.02        search /dev/s**<a class="headerlink" href="#search-dev-s" title="Permalink to this headline"></a></h4>
+<h4><span class="section-number">8.1.9.2. </span>01.09.02        search /dev/s**<a class="headerlink" href="#search-dev-s" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line">touch fdiskhdd.txt;</div>
 <div class="line">fdisk -l &gt; fdiskhdd.txt</div>
@@ -1399,7 +1401,7 @@
 </div>
 </div>
 <div class="section" id="mount-dev-s">
-<h4><span class="section-number">8.1.9.3. </span>01.09.03        mount /dev/s**<a class="headerlink" href="#mount-dev-s" title="Permalink to this headline"></a></h4>
+<h4><span class="section-number">8.1.9.3. </span>01.09.03        mount /dev/s**<a class="headerlink" href="#mount-dev-s" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line">mount -t ext4 $(sudo fdisk -l | sed -n -e &quot;s/.*(/dev/s[a-z]*[0-9]).*/1/p&quot;) /opt</div>
 </div>
@@ -1427,12 +1429,13 @@
 <div class="line-block">
 <div class="line">sed -i -e &quot;$ a UUID=$S1        /opt/ ext4    defaults        0       2&quot; /etc/fstab</div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>touch fdisk.txt
-<span class="linenos">2</span>fdisk -l <span class="p">|</span> sed -n -e <span class="s2">&quot;s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p&quot;</span> &gt; fdisk.txt
-<span class="linenos">3</span>
-<span class="linenos">4</span><span class="nv">filename</span><span class="o">=</span><span class="s1">&#39;fdisk.txt&#39;</span>
-<span class="linenos">5</span><span class="nv">n</span><span class="o">=</span><span class="m">1</span>
-<span class="linenos">6</span><span class="k">while</span> <span class="nb">read</span> line<span class="p">;</span> <span class="k">do</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">cd</span> /install/
+<span class="linenos">2</span>touch fdisk.txt
+<span class="linenos">3</span>fdisk -l <span class="p">|</span> sed -n -e <span class="s2">&quot;s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p&quot;</span> &gt; fdisk.txt
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="nv">filename</span><span class="o">=</span><span class="s1">&#39;fdisk.txt&#39;</span>
+<span class="linenos">6</span><span class="nv">n</span><span class="o">=</span><span class="m">1</span>
+<span class="linenos">7</span><span class="k">while</span> <span class="nb">read</span> line<span class="p">;</span> <span class="k">do</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -1442,16 +1445,19 @@
 <span class="linenos"> 2</span><span class="nv">S1</span><span class="o">=</span><span class="k">$(</span>blkid <span class="p">|</span> sed -n -e <span class="s2">&quot;s/</span><span class="nv">$shd</span><span class="s2">:\s\(.*\).*/\1/p&quot;</span> <span class="p">|</span> sed -n -e <span class="s2">&quot;s/.*UUID=\(.*\)\sB.*/\1/p&quot;</span> <span class="p">|</span> sed <span class="s1">&#39;s/\&quot;/\\&quot;/g&#39;</span><span class="k">)</span>
 <span class="linenos"> 3</span><span class="nv">TMPS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$line</span> <span class="p">|</span> sed -n -e <span class="s2">&quot;s/^\/dev\/\([a-z]*[0-9]\).*/\1/p&quot;</span><span class="k">)</span>
 <span class="linenos"> 4</span>chown admin_share:technics -Rf <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span>
-<span class="linenos"> 5</span>semanage fcontext -a -t public_content_rw_t <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">(/.*)?&quot;</span><span class="p">;</span>
-<span class="linenos"> 6</span>chcon -Rv -t public_content_rw_t <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="linenos"> 7</span>setfacl -m u:admin:rwx,u:admin_share:rwx, pub_share:rwx -R <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="linenos"> 8</span>setfacl -m g:admins:rw -R <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="linenos"> 9</span>chmod go-rwx -R <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="linenos">10</span><span class="k">if</span> <span class="o">[[</span> -n <span class="nv">$S1</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-<span class="linenos">11</span>        sed -i -e <span class="s2">&quot;</span>$<span class="s2"> a UUID\=</span><span class="nv">$S1</span><span class="s2">        \/mnt\/</span><span class="nv">$TMPS</span><span class="s2">    ext4    defaults        0       2&quot;</span> /etc/fstab
-<span class="linenos">12</span><span class="k">fi</span>
-<span class="linenos">13</span><span class="k">done</span> &lt; <span class="nv">$filename</span>
-<span class="linenos">14</span>sudo mount -a
+<span class="linenos"> 5</span>chmod ugo+rwx -Rf <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span>
+<span class="linenos"> 6</span>semanage fcontext -a -t public_content_rw_t <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">(/.*)?&quot;</span><span class="p">;</span>
+<span class="linenos"> 7</span>chcon -Rv -t public_content_rw_t <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="linenos"> 8</span>setfacl -m u:admin_share:rwx,u:admin:rwx,u:pub_share:rwx -R <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="linenos"> 9</span>setfacl -m g:admins:rw,g:technics:rw -R <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="linenos">10</span>chmod go+rwx -R <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="linenos">11</span><span class="k">if</span> <span class="o">[[</span> -n <span class="nv">$S1</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+<span class="linenos">12</span>        sed -i -e <span class="s2">&quot;</span>$<span class="s2"> a UUID\=</span><span class="nv">$S1</span><span class="s2">        \/mnt\/</span><span class="nv">$TMPS</span><span class="s2">    ext4    defaults        0       2&quot;</span> /etc/fstab
+<span class="linenos">13</span><span class="k">fi</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span>sed -i -e <span class="s2">&quot;s/^UUID=\&quot;b90071b5-8949-4a72-b836-63756e4c7b1d\&quot;.*</span>$<span class="s2">/#/g&quot;</span> /etc/fstab
+<span class="linenos">16</span><span class="k">done</span> &lt; <span class="nv">$filename</span>
+<span class="linenos">17</span>sudo mount -a
 </pre></div>
 </div>
 <div class="line-block">
@@ -1540,7 +1546,7 @@
 </div>
 </div>
 <div class="section" id="create-users-and-groups">
-<h3><span class="section-number">8.1.10. </span>01.10           Create users and groups<a class="headerlink" href="#create-users-and-groups" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">8.1.10. </span>01.10           Create users and groups<a class="headerlink" href="#create-users-and-groups" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="o">[[</span> -z <span class="k">$(</span>sed -n -e <span class="s2">&quot;s/^\(9_user_settings\).*/\1/p&quot;</span> steps.txt<span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 <span class="linenos">2</span>
 <span class="linenos">3</span>STEP_TWO_AFTER:
@@ -1554,7 +1560,7 @@
 </div>
 </div>
 <div class="section" id="id7">
-<h4><span class="section-number">8.1.10.1. </span>01.10.01                Create users and groups<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h4>
+<h4><span class="section-number">8.1.10.1. </span>01.10.01                Create users and groups<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line">cp -Rf /install/home/rootsu/.cmd_shell.sh ~/.cmd_shell.sh</div>
 <div class="line">cp -Rf /install/home/rootsu/.bashrc ~/.bashrc</div>
@@ -1631,14 +1637,14 @@
 </div>
 </div>
 <div class="section" id="create-ssh-ssl">
-<h4><span class="section-number">8.1.10.2. </span>01.10.02                Create ssh_ssl<a class="headerlink" href="#create-ssh-ssl" title="Permalink to this headline"></a></h4>
+<h4><span class="section-number">8.1.10.2. </span>01.10.02                Create ssh_ssl<a class="headerlink" href="#create-ssh-ssl" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line"><a class="reference external" href="https://www.cyberciti.biz/tips/checking-openssh-sshd-configuration-syntax-errors.html">https://www.cyberciti.biz/tips/checking-openssh-sshd-configuration-syntax-errors.html</a></div>
 <div class="line"><br /></div>
 </div>
 </div>
 <div class="section" id="install-ssh-settings">
-<h4><span class="section-number">8.1.10.3. </span>01.10.03        Install ssh settings<a class="headerlink" href="#install-ssh-settings" title="Permalink to this headline"></a></h4>
+<h4><span class="section-number">8.1.10.3. </span>01.10.03        Install ssh settings<a class="headerlink" href="#install-ssh-settings" title="Permalink to this heading"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">cd</span> /etc/ssh/
 <span class="linenos">2</span>
 <span class="linenos">3</span>cp sshd_config sshd_config.tmp
@@ -1859,7 +1865,7 @@
 </div>
 </div>
 <div class="section" id="create-users-ssh">
-<h4><span class="section-number">8.1.10.4. </span>01.10.04        Create users ssh<a class="headerlink" href="#create-users-ssh" title="Permalink to this headline"></a></h4>
+<h4><span class="section-number">8.1.10.4. </span>01.10.04        Create users ssh<a class="headerlink" href="#create-users-ssh" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -1873,7 +1879,7 @@
 </div>
 </div>
 <div class="section" id="create-samba">
-<h4><span class="section-number">8.1.10.5. </span>01.10.05        Create SAMBA<a class="headerlink" href="#create-samba" title="Permalink to this headline"></a></h4>
+<h4><span class="section-number">8.1.10.5. </span>01.10.05        Create SAMBA<a class="headerlink" href="#create-samba" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
@@ -1896,19 +1902,19 @@
 </div>
 </div>
 <div class="section" id="install-and-settings-firewall">
-<h4><span class="section-number">8.1.10.6. </span>01.10.06        Install and settings firewall<a class="headerlink" href="#install-and-settings-firewall" title="Permalink to this headline"></a></h4>
+<h4><span class="section-number">8.1.10.6. </span>01.10.06        Install and settings firewall<a class="headerlink" href="#install-and-settings-firewall" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 </div>
 <div class="section" id="install-other-soft">
-<h4><span class="section-number">8.1.10.7. </span>01.10.07        Install other soft<a class="headerlink" href="#install-other-soft" title="Permalink to this headline"></a></h4>
+<h4><span class="section-number">8.1.10.7. </span>01.10.07        Install other soft<a class="headerlink" href="#install-other-soft" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 </div>
 <div class="section" id="extended-nano">
-<h4><span class="section-number">8.1.10.8. </span>01.10.08        Extended nano<a class="headerlink" href="#extended-nano" title="Permalink to this headline"></a></h4>
+<h4><span class="section-number">8.1.10.8. </span>01.10.08        Extended nano<a class="headerlink" href="#extended-nano" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
@@ -1916,7 +1922,7 @@
 </div>
 </div>
 <div class="section" id="cp-ers">
-<h4><span class="section-number">8.1.10.9. </span>01.10.09        cp ers<a class="headerlink" href="#cp-ers" title="Permalink to this headline"></a></h4>
+<h4><span class="section-number">8.1.10.9. </span>01.10.09        cp ers<a class="headerlink" href="#cp-ers" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -1929,7 +1935,7 @@
 </div>
 </div>
 <div class="section" id="install-vsftp">
-<h4><span class="section-number">8.1.10.10. </span>01.10.10        Install vsftp<a class="headerlink" href="#install-vsftp" title="Permalink to this headline"></a></h4>
+<h4><span class="section-number">8.1.10.10. </span>01.10.10        Install vsftp<a class="headerlink" href="#install-vsftp" title="Permalink to this heading"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;y&quot;</span> <span class="p">|</span> sudo apt install vsftpd
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="nb">cd</span> /etc/
@@ -2342,7 +2348,7 @@
 </div>
 </div>
 <div class="section" id="settings-permissive-selinux">
-<h3><span class="section-number">8.1.11. </span>01.11   Settings permissive SELinux<a class="headerlink" href="#settings-permissive-selinux" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">8.1.11. </span>01.11   Settings permissive SELinux<a class="headerlink" href="#settings-permissive-selinux" title="Permalink to this heading"></a></h3>
 <div class="line-block">
 <div class="line">seinfo -t</div>
 </div>
@@ -2360,23 +2366,28 @@
 <span class="linenos">12</span>chcon -Rv -t samba_etc_t <span class="s2">&quot;/home/rootsu/smbuser.conf&quot;</span><span class="p">;</span>
 <span class="linenos">13</span>semanage fcontext -a -t samba_etc_t <span class="s2">&quot;/home/rootsu/.smbusers&quot;</span><span class="p">;</span>
 <span class="linenos">14</span>chcon -Rv -t samba_etc_t <span class="s2">&quot;/home/rootsu/.smbusers&quot;</span><span class="p">;</span>
-<span class="linenos">15</span>semanage fcontext -a -u system_u <span class="s2">&quot;/home/&quot;</span><span class="p">;</span>
+<span class="linenos">15</span>semanage fcontext -a -u system_u <span class="s2">&quot;/home(/.*)?&quot;</span><span class="p">;</span>
 <span class="linenos">16</span>chcon -Rv -u system_u <span class="s2">&quot;/home/&quot;</span><span class="p">;</span>
-<span class="linenos">17</span>
-<span class="linenos">18</span>chcon -Rv -t public_content_rw_t <span class="s2">&quot;/media/admin&quot;</span><span class="p">;</span>
-<span class="linenos">19</span>semanage fcontext -a -t public_content_rw_t <span class="s2">&quot;/media/admin(/.*)?&quot;</span><span class="p">;</span>
-<span class="linenos">20</span>
-<span class="linenos">21</span>setfacl -m u:admin:rwx,u:admin_share:rwx -R <span class="s2">&quot;/media/admin&quot;</span><span class="p">;</span>
-<span class="linenos">22</span>setfacl -m g:admins:rw -R <span class="s2">&quot;/media/admin&quot;</span><span class="p">;</span>
-<span class="linenos">23</span>chmod go-rwx -R <span class="s2">&quot;/media/admin&quot;</span><span class="p">;</span>
-<span class="linenos">24</span>
-<span class="linenos">25</span>semanage fcontext -a -t public_content_rw_t <span class="s2">&quot;/opt(/.*)?&quot;</span>
-<span class="linenos">26</span>chcon -Rv -t public_content_rw_t <span class="s2">&quot;/opt/&quot;</span><span class="p">;</span>
-<span class="linenos">27</span>chmod o-rwx -R <span class="s2">&quot;/opt/SAMBA_SHARE/&quot;</span><span class="p">;</span>
-<span class="linenos">28</span>setfacl -m g:technics:rwx -R <span class="s2">&quot;/opt/SAMBA_SHARE/&quot;</span><span class="p">;</span>
-<span class="linenos">29</span>setfacl -m u:pub_share:rwx,u:admin_share:rwx -R <span class="s2">&quot;/opt/SAMBA_SHARE/&quot;</span><span class="p">;</span>
-<span class="linenos">30</span>
-<span class="linenos">31</span>setsebool -P ssh_sysadm_login on
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">semanage fcontext -a -t user_home_dir_t &quot;/home/admin(/.*)?&quot;;</div>
+<div class="line">chcon -Rv -t user_home_dir_t &quot;/home/admin&quot;;</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>chcon -Rv -t public_content_rw_t <span class="s2">&quot;/media/admin&quot;</span><span class="p">;</span>
+<span class="linenos"> 2</span>semanage fcontext -a -t public_content_rw_t <span class="s2">&quot;/media/admin(/.*)?&quot;</span><span class="p">;</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span>setfacl -m u:admin:rwx,u:admin_share:rwx -R <span class="s2">&quot;/media/admin&quot;</span><span class="p">;</span>
+<span class="linenos"> 5</span>setfacl -m g:admins:rw -R <span class="s2">&quot;/media/admin&quot;</span><span class="p">;</span>
+<span class="linenos"> 6</span>chmod go-rwx -R <span class="s2">&quot;/media/admin&quot;</span><span class="p">;</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span>semanage fcontext -a -t public_content_rw_t <span class="s2">&quot;/opt(/.*)?&quot;</span>
+<span class="linenos"> 9</span>chcon -Rv -t public_content_rw_t <span class="s2">&quot;/opt/&quot;</span><span class="p">;</span>
+<span class="linenos">10</span>chmod o-rwx -R <span class="s2">&quot;/opt/SAMBA_SHARE/&quot;</span><span class="p">;</span>
+<span class="linenos">11</span>setfacl -m g:technics:rwx -R <span class="s2">&quot;/opt/SAMBA_SHARE/&quot;</span><span class="p">;</span>
+<span class="linenos">12</span>setfacl -m u:pub_share:rwx,u:admin_share:rwx -R <span class="s2">&quot;/opt/SAMBA_SHARE/&quot;</span><span class="p">;</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span>setsebool -P ssh_sysadm_login on
 </pre></div>
 </div>
 <div class="line-block">
@@ -2500,10 +2511,11 @@
 </div>
 <div class="line-block">
 <div class="line">ROLE=sysadm_r</div>
+<div class="line">TYPE=sysadm_sudo_t ROLE=sysadm_r</div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>sed -i -e <span class="s2">&quot;s/%sudo.*</span>$<span class="s2">/%sudo     ALL=(root) TYPE=sysadm_sudo_t NOPASSWD:ALL/g&quot;</span> /etc/sudoers
-<span class="linenos"> 2</span>sed -i -e <span class="s2">&quot;s/%admins.*</span>$<span class="s2">/%admins ALL=(root) ROLE=sysadm_r NOPASSWD:ALL/g&quot;</span> /etc/sudoers
-<span class="linenos"> 3</span>sed -i -e <span class="s2">&quot;s/admin.*</span>$<span class="s2">/admin     ALL=(root) ROLE=sysadm_r NOPASSWD:ALL/g&quot;</span> /etc/sudoers
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>sed -i -e <span class="s2">&quot;s/%sudo.*</span>$<span class="s2">/%sudo     ALL=(root) ROLE=sysadm_r NOPASSWD:ALL/g&quot;</span> /etc/sudoers
+<span class="linenos"> 2</span>sed -i -e <span class="s2">&quot;s/%admins.*</span>$<span class="s2">/%admins ALL=(root) NOPASSWD:ALL/g&quot;</span> /etc/sudoers
+<span class="linenos"> 3</span>sed -i -e <span class="s2">&quot;s/admin.*</span>$<span class="s2">/admin     ALL=(root) NOPASSWD:ALL/g&quot;</span> /etc/sudoers
 <span class="linenos"> 4</span>
 <span class="linenos"> 5</span>sed -i -e <span class="s1">&#39;1 a session  required        pam_selinux.so  close&#39;</span> /etc/pam.d/sshd
 <span class="linenos"> 6</span>sed -i -e <span class="s1">&#39;$a session   required        pam_selinux.so  multiple open&#39;</span> /etc/pam.d/sshd &gt;&gt; /etc/pam.d/sshd
@@ -2605,11 +2617,15 @@
 </div>
 <div class="line-block">
 <div class="line">semanage module -r permissive_boot_t</div>
-<div class="line">semanage user -m -R &quot;system_r sysadm_r staff_r&quot; -r &quot;s0-s0:c0.c1023&quot; sysadm_u</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>semanage user -m -R <span class="s2">&quot;system_r sysadm_r staff_r&quot;</span> -r <span class="s2">&quot;s0-s0:c0.c1023&quot;</span> sysadm_u
+</pre></div>
+</div>
+<div class="line-block">
 <div class="line">semanage user -m -R &quot;system_r&quot; -r &quot;s0-s0:c0.c1023&quot; system_u</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>semanage login -a -s sysadm_u -r <span class="s2">&quot;s0-s0:c0.c1023&quot;</span> admin
-<span class="linenos">2</span>semanage login -a -s root -r <span class="s2">&quot;s0-s0:c0.c1023&quot;</span> admin_tech
+<span class="linenos">2</span>semanage login -a -s sysadm_u -r <span class="s2">&quot;s0-s0:c0.c1023&quot;</span> admin_tech
 <span class="linenos">3</span>semanage login -a -s sysadm_u -r <span class="s2">&quot;s0-s0:c0.c1023&quot;</span> %admins
 </pre></div>
 </div>
@@ -2617,7 +2633,7 @@
 <div class="line">semanage login -m -s sysadm_u -r &quot;s0-s0:c0.c1023&quot; root</div>
 <div class="line">semanage login -a -s sysadm_u -r &quot;s0-s0:c0.c1023&quot; %root</div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>semanage login -a -s sysadm_u -r <span class="s2">&quot;s0-s0:c0.c1023&quot;</span> %sudo
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>semanage login -a -s unconfined_u -r <span class="s2">&quot;s0-s0:c0.c1023&quot;</span> %sudo
 <span class="linenos">2</span>semanage login -a -s user_u tom
 </pre></div>
 </div>
@@ -2668,7 +2684,7 @@
 </div>
 </div>
 <div class="section" id="optional-soft">
-<h3><span class="section-number">8.1.12. </span>01.12   Optional soft<a class="headerlink" href="#optional-soft" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">8.1.12. </span>01.12   Optional soft<a class="headerlink" href="#optional-soft" title="Permalink to this heading"></a></h3>
 <div class="line-block">
 <div class="line">sudo chmod o-rwx -R &quot;/etc/&quot;;</div>
 <div class="line">sudo chmod o-rwx -R &quot;/boot/&quot;;</div>
@@ -2685,8 +2701,116 @@
 <div class="line">chmod o+rx &quot;/etc/nanorc&quot;;</div>
 <div class="line">chmod o+rx &quot;/etc/passwd&quot;;</div>
 <div class="line">apt-get update</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">Install transmitter &amp; transmitter gui</div>
+<div class="line"><br /></div>
+<div class="line"><a class="reference external" href="https://trendoceans.com/how-to-install-transmission-bittorrent-client-on-linux/">https://trendoceans.com/how-to-install-transmission-bittorrent-client-on-linux/</a></div>
+<div class="line"><a class="reference external" href="https://pimylifeup.com/raspberry-pi-transmission/">https://pimylifeup.com/raspberry-pi-transmission/</a></div>
+<div class="line"><a class="reference external" href="https://help.ubuntu.com/community/TransmissionHowTo">https://help.ubuntu.com/community/TransmissionHowTo</a></div>
+<div class="line"><a class="reference external" href="https://fostips.com/remote-control-transmission-debian/">https://fostips.com/remote-control-transmission-debian/</a></div>
+<div class="line"><a class="reference external" href="https://habr.com/ru/post/658463/">https://habr.com/ru/post/658463/</a></div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">sudo nano /etc/init.d/transmission-daemon</div>
+<div class="line">sudo nano /etc/init/transmission-daemon.conf</div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> sudo apt-get install transmission transmission-daemon
+<span class="linenos">2</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> sudo apt-get install transmission-cli transmission-common transmission-daemon
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">enable transmission-daemon.service</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sudo systemctl <span class="nb">enable</span> transmission-daemon.service
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">create catalogue bittorrent_download_store, bittorrent_upload</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>mkdir -m <span class="m">775</span> /opt/SAMBA_SHARE/bittorrent_download_store
+<span class="linenos">2</span>mkdir -m <span class="m">775</span> /opt/SAMBA_SHARE/bittorrent_upload
+<span class="linenos">3</span>chown admin_share:technics /opt/SAMBA_SHARE/bittorrent_download_store
+<span class="linenos">4</span>chown :debian-transmission /opt/SAMBA_SHARE/bittorrent_upload
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">gpasswd --add pub_share debian-transmission</div>
+<div class="line">gpasswd --add admin_share debian-transmission</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sudo usermod -aG debian-transmission admin_share
+<span class="linenos">2</span>sudo usermod -aG debian-transmission admin_share
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">create catalogue .transmission_config for config</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>cp -R /etc/transmission-daemon/ /opt/.transmission_config
+<span class="linenos">2</span>chown admin_share:technics -R /opt/.transmission_config
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">settings ext config ???</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>chmod -R <span class="m">775</span> /opt/.transmission_config
+<span class="linenos">2</span>sed -i -e <span class="s2">&quot;s/CONFIG_DIR=.*</span>$<span class="s2">/CONFIG_DIR=\&quot;\/opt\/.transmission_config\/settings.json\&quot;/g&quot;</span> /etc/default/transmission-daemon
+<span class="linenos">3</span>semanage port -a -t http_port_t -p tcp <span class="m">9091</span>
+<span class="linenos">4</span>semanage port -a -t http_port_t -p udp <span class="m">9091</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">/etc/init.d/transmission-daemon in individual USER</div>
+<div class="line">NAME=transmission-daemon</div>
+<div class="line">DAEMON=/usr/bin/$NAME</div>
+<div class="line">USER=server</div>
+<div class="line">STOP_TIMEOUT=30</div>
+<div class="line">sudo systemctl edit transmission-daemon.service</div>
+<div class="line"><br /></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sudo service transmission-daemon stop
+<span class="linenos">2</span>sed -i -e <span class="s2">&quot;s/\&quot;rpc-whitelist\&quot;\:.*</span>$<span class="s2">/\&quot;rpc-whitelist\&quot;\: \&quot;127.0.0.1,192.168.*.*\&quot;,/g&quot;</span> /var/lib/transmission-daemon/info/settings.json
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">sed -i -e &quot;s/^&quot;rpc-whitelist&quot;:.*$/&quot;rpc-whitelist&quot;: &quot;127.0.0.1,192.168.*.*&quot;,/g&quot; /opt/.transmission_config/settings.json</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sed -i -e <span class="s2">&quot;s/\&quot;rpc-username\&quot;\:.*</span>$<span class="s2">/\&quot;rpc-username\&quot;\: \&quot;pub_share\&quot;,/g&quot;</span> /var/lib/transmission-daemon/info/settings.json
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">sed -i -e &quot;s/^&quot;rpc-&quot;:.*$/&quot;rpc-username&quot;: &quot;pub_share&quot;,/g&quot; /opt/.transmission_config/settings.json</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sed -i -e <span class="s2">&quot;s/\&quot;rpc-password\&quot;\:.*</span>$<span class="s2">/\&quot;rpc-password\&quot;\: \&quot;********\&quot;,/g&quot;</span> /var/lib/transmission-daemon/info/settings.json
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">sed -i -e &quot;s/^&quot;rpc-&quot;:.*$/&quot;rpc-password&quot;: &quot;<strong>****</strong>&quot;,/g&quot; /opt/.transmission_config/settings.json</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sed -i -e <span class="s2">&quot;s/\&quot;download-dir\&quot;\:.*</span>$<span class="s2">/\&quot;download-dir\&quot;\: \&quot;\/opt\/SAMBA_SHARE\/bittorrent_download_store\&quot;,/g&quot;</span> /var/lib/transmission-daemon/info/settings.json
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">&quot;watch-dir-enabled&quot;: true,</div>
+<div class="line">&quot;watch-dir&quot;: &quot;/home/server/torrents&quot;</div>
+</div>
+<div class="line">sudo usermod -a -G debian-transmission technics</div>
+<div class="line">sudo service transmission-daemon reload</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sudo service transmission-daemon start
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line-block">
 <div class="line">dpkg --configure -a</div>
 <div class="line">apt-get dist-upgrade</div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;\y\n&quot;</span> <span class="p">|</span> apt-get -f install
 </pre></div>

@@ -867,17 +867,17 @@ AutoInstall Cut Discr
 	echo -e "y\n" | apt-get install rsync
 	echo -e "y\n" | apt-get install ca-certificates
 	echo -e "y\n" | apt-get install shared-mime-info
-	echo -e "y\n" | apt-get install wget genisoimage xorriso isolinux
+	echo -e "y\n" | apt-get install wget genisoimage xorriso isolinux hwinfo
 	echo -e "y\n" | apt-get install hddtemp lm-sensors
 	echo -e "y\n" | apt-get install at
 	echo -e "y\n" | apt-get install pip
 	echo -e "y\n" | apt-get install xz-utils
 	echo -e "y\n" | apt-get install curl
+	echo -e "y\n" | apt-get install sphinx
 	echo -e "y\n" | apt-get install python3-sphinx
 	echo -e "y\n" | sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
 	echo -e "y\n" | sudo apt install -y python3-venv
 	python3 -m venv env
-	echo -e "y\n" | apt-get install python3-sphinx
 |	
 |	pip install mkdocs
 |	pip install -U mkdocs
@@ -894,6 +894,7 @@ AutoInstall Cut Discr
 	pip install django
 	pip install django-docs
 	pip install sphinxnotes-strike
+	pip install sphinx_rtd_theme
 |	 Install Sphinx
 .. code-block:: bash
 	:linenos:
@@ -1050,6 +1051,7 @@ AutoInstall Cut Discr
 .. code-block:: bash
 	:linenos:
 
+	cd /install/
 	touch fdisk.txt
 	fdisk -l | sed -n -e "s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p" > fdisk.txt
 	
@@ -1064,14 +1066,17 @@ AutoInstall Cut Discr
 	S1=$(blkid | sed -n -e "s/$shd:\s\(.*\).*/\1/p" | sed -n -e "s/.*UUID=\(.*\)\sB.*/\1/p" | sed 's/\"/\\"/g')
 	TMPS=$(echo $line | sed -n -e "s/^\/dev\/\([a-z]*[0-9]\).*/\1/p")
 	chown admin_share:technics -Rf "/mnt/$TMPS"
+	chmod ugo+rwx -Rf "/mnt/$TMPS"
 	semanage fcontext -a -t public_content_rw_t "/mnt/$TMPS(/.*)?"; 
 	chcon -Rv -t public_content_rw_t "/mnt/$TMPS";
-	setfacl -m u:admin:rwx,u:admin_share:rwx, pub_share:rwx -R "/mnt/$TMPS";
-	setfacl -m g:admins:rw -R "/mnt/$TMPS";
-	chmod go-rwx -R "/mnt/$TMPS";
+	setfacl -m u:admin_share:rwx,u:admin:rwx,u:pub_share:rwx -R "/mnt/$TMPS";
+	setfacl -m g:admins:rw,g:technics:rw -R "/mnt/$TMPS";
+	chmod go+rwx -R "/mnt/$TMPS";
 	if [[ -n $S1 ]]; then
 		sed -i -e "$ a UUID\=$S1	\/mnt\/$TMPS	ext4	defaults	0	2" /etc/fstab
 	fi
+	
+	sed -i -e "s/^UUID=\"b90071b5-8949-4a72-b836-63756e4c7b1d\".*$/#/g" /etc/fstab
 	done < $filename
 	sudo mount -a
 |	if [[ -z $STATE ]]; then
@@ -1782,8 +1787,14 @@ AutoInstall Cut Discr
 	chcon -Rv -t samba_etc_t "/home/rootsu/smbuser.conf";
 	semanage fcontext -a -t samba_etc_t "/home/rootsu/.smbusers";
 	chcon -Rv -t samba_etc_t "/home/rootsu/.smbusers";
-	semanage fcontext -a -u system_u "/home/";
+	semanage fcontext -a -u system_u "/home(/.*)?";
 	chcon -Rv -u system_u "/home/";
+	
+|	semanage fcontext -a -t user_home_dir_t "/home/admin(/.*)?";
+|	chcon -Rv -t user_home_dir_t "/home/admin";
+.. code-block:: bash
+	:linenos:
+
 	
 	chcon -Rv -t public_content_rw_t "/media/admin";
 	semanage fcontext -a -t public_content_rw_t "/media/admin(/.*)?";
@@ -1913,12 +1924,13 @@ AutoInstall Cut Discr
 
 	sed -i -e "s/SELINUX=permissive\|SELINUX=default/SELINUX=enforcing/g" config
 |	 ROLE=sysadm_r 
+|	 TYPE=sysadm_sudo_t ROLE=sysadm_r 
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "s/%sudo.*$/%sudo	ALL=(root) TYPE=sysadm_sudo_t NOPASSWD:ALL/g" /etc/sudoers
-	sed -i -e "s/%admins.*$/%admins	ALL=(root) ROLE=sysadm_r NOPASSWD:ALL/g" /etc/sudoers
-	sed -i -e "s/admin.*$/admin	ALL=(root) ROLE=sysadm_r NOPASSWD:ALL/g" /etc/sudoers
+	sed -i -e "s/%sudo.*$/%sudo	ALL=(root) ROLE=sysadm_r NOPASSWD:ALL/g" /etc/sudoers
+	sed -i -e "s/%admins.*$/%admins	ALL=(root) NOPASSWD:ALL/g" /etc/sudoers
+	sed -i -e "s/admin.*$/admin	ALL=(root) NOPASSWD:ALL/g" /etc/sudoers
 	
 	sed -i -e '1 a session	required	pam_selinux.so	close' /etc/pam.d/sshd
 	sed -i -e '$a session	required	pam_selinux.so	multiple open' /etc/pam.d/sshd >> /etc/pam.d/sshd
@@ -2012,20 +2024,23 @@ AutoInstall Cut Discr
 	semanage permissive -a system_crontab_t
 	semanage module -d permissive_boot_t
 |	semanage module -r permissive_boot_t
-|	semanage user -m -R "system_r sysadm_r staff_r" -r "s0-s0:c0.c1023" sysadm_u
+.. code-block:: bash
+	:linenos:
+
+	semanage user -m -R "system_r sysadm_r staff_r" -r "s0-s0:c0.c1023" sysadm_u
 |	semanage user -m -R "system_r" -r "s0-s0:c0.c1023" system_u
 .. code-block:: bash
 	:linenos:
 
 	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" admin
-	semanage login -a -s root -r "s0-s0:c0.c1023" admin_tech
+	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" admin_tech
 	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" %admins
 |	semanage login -m -s sysadm_u -r "s0-s0:c0.c1023" root
 |	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" %root
 .. code-block:: bash
 	:linenos:
 
-	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" %sudo
+	semanage login -a -s unconfined_u -r "s0-s0:c0.c1023" %sudo
 	semanage login -a -s user_u tom
 |	touch log.log
 |	journalctl -xe >> log.log
@@ -2086,6 +2101,95 @@ AutoInstall Cut Discr
 |	chmod o+rx "/etc/nanorc";
 |	chmod o+rx "/etc/passwd";
 |	apt-get update
+|	
+|	 Install transmitter & transmitter gui
+|	
+|	 https://trendoceans.com/how-to-install-transmission-bittorrent-client-on-linux/
+|	 https://pimylifeup.com/raspberry-pi-transmission/
+|	 https://help.ubuntu.com/community/TransmissionHowTo
+|	 https://fostips.com/remote-control-transmission-debian/
+|	 https://habr.com/ru/post/658463/
+|	
+|		sudo nano /etc/init.d/transmission-daemon
+|		sudo nano /etc/init/transmission-daemon.conf
+|	
+.. code-block:: bash
+	:linenos:
+
+	echo -e "y\n" | sudo apt-get install transmission transmission-daemon
+	echo -e "y\n" | sudo apt-get install transmission-cli transmission-common transmission-daemon
+|	 enable transmission-daemon.service
+.. code-block:: bash
+	:linenos:
+
+	sudo systemctl enable transmission-daemon.service
+|	 create catalogue bittorrent_download_store, bittorrent_upload
+.. code-block:: bash
+	:linenos:
+
+	mkdir -m 775 /opt/SAMBA_SHARE/bittorrent_download_store
+	mkdir -m 775 /opt/SAMBA_SHARE/bittorrent_upload
+	chown admin_share:technics /opt/SAMBA_SHARE/bittorrent_download_store
+	chown :debian-transmission /opt/SAMBA_SHARE/bittorrent_upload
+|	gpasswd --add pub_share debian-transmission
+|	gpasswd --add admin_share debian-transmission
+.. code-block:: bash
+	:linenos:
+
+	sudo usermod -aG debian-transmission admin_share
+	sudo usermod -aG debian-transmission admin_share
+|	 create catalogue .transmission_config for config
+.. code-block:: bash
+	:linenos:
+
+	cp -R /etc/transmission-daemon/ /opt/.transmission_config
+	chown admin_share:technics -R /opt/.transmission_config
+|	 settings ext config ???
+.. code-block:: bash
+	:linenos:
+
+	chmod -R 775 /opt/.transmission_config
+	sed -i -e "s/CONFIG_DIR=.*$/CONFIG_DIR=\"\/opt\/.transmission_config\/settings.json\"/g" /etc/default/transmission-daemon
+	semanage port -a -t http_port_t -p tcp 9091
+	semanage port -a -t http_port_t -p udp 9091
+|	/etc/init.d/transmission-daemon in individual USER
+|	NAME=transmission-daemon
+|	DAEMON=/usr/bin/$NAME
+|	USER=server
+|	STOP_TIMEOUT=30
+|	sudo systemctl edit transmission-daemon.service
+|	
+.. code-block:: bash
+	:linenos:
+
+	sudo service transmission-daemon stop
+	sed -i -e "s/\"rpc-whitelist\"\:.*$/\"rpc-whitelist\"\: \"127.0.0.1,192.168.*.*\",/g" /var/lib/transmission-daemon/info/settings.json
+|	sed -i -e "s/^\"rpc-whitelist\"\:.*$/\"rpc-whitelist\"\: \"127.0.0.1,192.168.*.*\",/g" /opt/.transmission_config/settings.json
+.. code-block:: bash
+	:linenos:
+
+	sed -i -e "s/\"rpc-username\"\:.*$/\"rpc-username\"\: \"pub_share\",/g" /var/lib/transmission-daemon/info/settings.json
+|	sed -i -e "s/^\"rpc-\"\:.*$/\"rpc-username\"\: \"pub_share\",/g" /opt/.transmission_config/settings.json
+.. code-block:: bash
+	:linenos:
+
+	sed -i -e "s/\"rpc-password\"\:.*$/\"rpc-password\"\: \"********\",/g" /var/lib/transmission-daemon/info/settings.json
+|	sed -i -e "s/^\"rpc-\"\:.*$/\"rpc-password\"\: \"********\",/g" /opt/.transmission_config/settings.json
+.. code-block:: bash
+	:linenos:
+
+	sed -i -e "s/\"download-dir\"\:.*$/\"download-dir\"\: \"\/opt\/SAMBA_SHARE\/bittorrent_download_store\",/g" /var/lib/transmission-daemon/info/settings.json
+|			"watch-dir-enabled": true,
+|			"watch-dir": "/home/server/torrents"
+|	sudo usermod -a -G debian-transmission technics
+|	sudo service transmission-daemon reload
+.. code-block:: bash
+	:linenos:
+
+	sudo service transmission-daemon start
+|	
+|	
+|	
 |	dpkg --configure -a
 |	apt-get dist-upgrade
 .. code-block:: bash

@@ -1,11 +1,11 @@
-	Полное описание Сервера.
+	Полное описание Server
     Данная статья рассматривает полное описание автономного сервера *BilSrvStation* на *Linux Debian10*
 by |author|. Основаня идея заключается в том, что бы обеспечить документирвоание 
 реального сервера/рабочего места, после "чистой", автоматической установки со всеми необходимыми настройками 
 и программами. В начале описывается структура файлов для формирования загрузочного диска, далее следует полное
 описание скриптового `*pii2.sh*` без 
-	 important!!! Перед установкой обязательно ознакомится с данной страницей!!!
-	 attention!!! Здесь и далее, дополнительный софт будет дополняться в файле pii2.sh, в разделе `01.12	Optional soft`, при этом описание будет дополняться в данной странице в разделе 'Опциональный софт`
+:important!!! Перед установкой обязательно ознакомится с данной страницей!!!
+:attention!!! Здесь и далее, дополнительный софт будет дополняться в файле pii2.sh, в разделе `01.12	Optional soft`, при этом описание будет дополняться в данной странице в разделе 'Опциональный софт`
 	 
         Основные возможности
         
@@ -30,10 +30,10 @@ by |author|. Основаня идея заключается в том, что 
 	
 В документации в разделе '*6.4 Branching and Flow Control*' `SEDERE <https://www.gnu.org/software/sed/manual/sed.html>`_ указана адресация::
 
-	[addr]X
-	[addr]{ X ; X ; X }
-	/regexp/X
-	/regexp/{ X ; X ; X }
+	'[addr]X'
+	'[addr]{ X ; X ; X }'
+	'/regexp/X'
+	'/regexp/{ X ; X ; X }'
 
 ``Addresses and regular expressions can be used as an if/then conditional: If [addr] matches the current pattern space, execute 
 the command(s). For example: The command /^#/d means: if the current pattern matches the regular expression ^# (a line starting with a hash), then execute 

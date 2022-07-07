@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>4. important &mdash; BilSrvStation_Server_PC 1.0.2a documentation</title>
+  <title>4. Полное описание Server &mdash; BilSrvStation_Server_PC 1.0.2a documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -20,7 +20,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="7. Appendix Code chunck" href="only_code_pii2.html" />
+    <link rel="next" title="5. Appendix Code chunck" href="only_code_pii2.html" />
     <link rel="prev" title="3. Preseed Cut Discr" href="cut_discr_preseed.html" /> 
 </head>
 
@@ -44,19 +44,18 @@
 <li class="toctree-l1"><a class="reference internal" href="sourcelink.html">1. Навигация</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cut_discr_pc.html">2. ISO InstallDeb Cut Discr</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cut_discr_preseed.html">3. Preseed Cut Discr</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">4. important</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#addr-x">5. [addr]X</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#regexp-x">6. /regexp/X</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#python-string-comparison-operators">6.1. Python String Comparison operators</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Полное описание Server</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">4.1. Разбор основного файла</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#python-string-comparison-operators">4.2. Python String Comparison operators</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="only_code_pii2.html">7. Appendix Code chunck</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2.html">8. AutoInstall Cut Discr</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2_pack.html">9. AutoInstall Package List</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cut_discr_cmd_shell.html">10. CMD_SHELL Cut Discr</a></li>
-<li class="toctree-l1"><a class="reference internal" href="structure.html">11. Структура</a></li>
-<li class="toctree-l1"><a class="reference internal" href="build_doc.html">12. Построение этой документации</a></li>
-<li class="toctree-l1"><a class="reference internal" href="note.html">13. Заметки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="only_code_pii2.html">5. Appendix Code chunck</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2.html">6. AutoInstall Cut Discr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2_pack.html">7. AutoInstall Package List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_cmd_shell.html">8. CMD_SHELL Cut Discr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structure.html">9. Структура</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_doc.html">10. Построение этой документации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="note.html">11. Заметки</a></li>
 </ul>
 
         </div>
@@ -73,7 +72,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li><span class="section-number">4. </span>important</li>
+      <li><span class="section-number">4. </span>Полное описание Server</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/full_discr_pii2.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -83,50 +82,66 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="line-block">
+  <div class="section" id="server">
+<h1><span class="section-number">4. </span>Полное описание Server<a class="headerlink" href="#server" title="Permalink to this heading"></a></h1>
 <div class="line-block">
-<div class="line">Полное описание Сервера.</div>
+<div class="line-block">
+<div class="line">Данная статья рассматривает полное описание автономного сервера <em>BilSrvStation</em> на <em>Linux Debian10</em></div>
 </div>
-<div class="line">by <a href="#id5"><span class="problematic" id="id6">|author|</span></a>. Основаня идея заключается в том, что бы обеспечить документирвоание</div>
+<div class="line">by <a href="#id4"><span class="problematic" id="id5">|author|</span></a>. Основаня идея заключается в том, что бы обеспечить документирвоание</div>
+<div class="line">реального сервера/рабочего места, после &quot;чистой&quot;, автоматической установки со всеми необходимыми настройками</div>
 <div class="line">и программами. В начале описывается структура файлов для формирования загрузочного диска, далее следует полное</div>
+<div class="line">описание скриптового <cite>*pii2.sh*</cite> без</div>
 </div>
-<div class="section" id="important">
-<h1><span class="section-number">4. </span>important<a class="headerlink" href="#important" title="Permalink to this heading"></a></h1>
-<blockquote>
-<div><p>important!!! Перед установкой обязательно ознакомится с данной страницей!!!</p>
-</div></blockquote>
-<div class="line-block">
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Перед установкой обязательно ознакомится с данной страницей!!!</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Здесь и далее, дополнительный софт будет дополняться в файле pii2.sh, в разделе <cite>01.12   Optional soft</cite>, при этом описание будет дополняться в данной странице в разделе 'Опциональный софт`</p>
+</div>
 <div class="line-block">
 <div class="line">Основные возможности</div>
 <div class="line">- Сервер предварительно настроен предустановочным файлом '<em>preseed.cfg</em>'</div>
+<div class="line">- Не требуется вручную настраивать и конфигурировать пакеты</div>
 <div class="line">- Сервер защищён пакетом SELinux с настроенными политиками</div>
+<div class="line">- Локаничное описание, позволяющее сэкономить время на освоение</div>
 <div class="line">- Установленные все полезные утилиты, необходимые для удобного администрирования</div>
+</div>
+<ul class="simple">
+<li><p>Данная установка универсальная для широкого спектра задач</p></li>
+</ul>
+<div class="section" id="id1">
+<h2><span class="section-number">4.1. </span>Разбор основного файла<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <div class="line-block">
-<div class="line">Описание структуры сервера</div>
-<div class="line">Разбор основного файла <a href="#id1"><span class="problematic" id="id2">`</span></a><em>pii2.sh</em>'</div>
-</div>
-</div>
 <div class="line">'<em>&lt;name&gt;=${&lt;number&gt;:-&quot;&lt;name&gt;&quot;}</em>'. Где <cite>*&lt;name&gt;*</cite> - название метки GOTO, &lt;number&gt; - номер метки. Т.е. переменной &lt;name&gt; присваивается структура из наименования</div>
+<div class="line">метки с соответствующему номеру. После объявление метки в коде она используется '<em>&lt;number&gt;:</em>', а её вызов осуществляется через '<em>jumpto $&lt;name&gt;</em>'.</div>
 <div class="line">Данная функция <cite>*jumpto*</cite> принимает два аргумента '<em>$0</em>' и '<em>$1</em>', которые соответствуют имени файла и названия метки.</div>
+<div class="line">Рассмотрим строчку функции::</div>
 <div class="line-block">
 <div class="line">'<em>cmd=$(sed -n &quot;/$label:/{:a;n;p;ba};&quot; $0 | grep -v ':$')</em>'.</div>
 </div>
 <div class="line">В документации в разделе '<em>6.4 Branching and Flow Control</em>' <a class="reference external" href="https://www.gnu.org/software/sed/manual/sed.html">SEDERE</a> указана адресация::</div>
-</div>
-</div>
-<div class="section" id="addr-x">
-<h1><span class="section-number">5. </span>[addr]X<a class="headerlink" href="#addr-x" title="Permalink to this heading"></a></h1>
-</div>
-<div class="section" id="regexp-x">
-<h1><span class="section-number">6. </span>/regexp/X<a class="headerlink" href="#regexp-x" title="Permalink to this heading"></a></h1>
 <div class="line-block">
-<div class="line"><a href="#id3"><span class="problematic" id="id4">``</span></a>Addresses and regular expressions can be used as an if/then conditional: If [addr] matches the current pattern space, execute</div>
+<div class="line">'[addr]X'</div>
+<div class="line">'[addr]{ X ; X ; X }'</div>
+<div class="line">'/regexp/X'</div>
+<div class="line">'/regexp/{ X ; X ; X }'</div>
+</div>
+<div class="line"><a href="#id2"><span class="problematic" id="id3">``</span></a>Addresses and regular expressions can be used as an if/then conditional: If [addr] matches the current pattern space, execute</div>
+<div class="line">the command(s). For example: The command /^#/d means: if the current pattern matches the regular expression ^# (a line starting with a hash), then execute</div>
 <div class="line">the d command: delete the line without printing it, and restart the program cycle immediately.``</div>
 <div class="line">Эта запись говорит о том, что в фигурных скобках каждая команда (оператор) выполняется последовательно, при условии, если выполняется предыдущая.</div>
+<div class="line">Краткое описание опреторов:</div>
 <div class="line">- <cite>*:a*</cite> метка</div>
+<div class="line">- <cite>*-bX*</cite>  <code class="docutils literal notranslate"><span class="pre">branch</span> <span class="pre">unconditionally</span> <span class="pre">(that</span> <span class="pre">is:</span> <span class="pre">always</span> <span class="pre">jump</span> <span class="pre">to</span> <span class="pre">a</span> <span class="pre">label,</span> <span class="pre">skipping</span> <span class="pre">or</span> <span class="pre">repeating</span> <span class="pre">other</span> <span class="pre">commands,</span> <span class="pre">without</span> <span class="pre">restarting</span> <span class="pre">a</span> <span class="pre">new</span> <span class="pre">cycle).</span></code>. Это</div>
 <div class="line">означает, что некандиционная ветвь, которая переходит на метку, пропуская или повторяя другую команду без возможности перезапуска и переходит на метку <cite>X</cite></div>
+<div class="line">- <cite>*-n*</cite>   <code class="docutils literal notranslate"><span class="pre">commands</span> <span class="pre">first</span> <span class="pre">prints</span> <span class="pre">the</span> <span class="pre">content</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">pattern</span> <span class="pre">space,</span> <span class="pre">empties</span> <span class="pre">the</span> <span class="pre">pattern</span> <span class="pre">space</span> <span class="pre">then</span> <span class="pre">reads</span> <span class="pre">the</span> <span class="pre">next</span> <span class="pre">input</span> <span class="pre">line.</span> <span class="pre">This</span> <span class="pre">command</span> <span class="pre">is</span> <span class="pre">useful</span> <span class="pre">to</span> <span class="pre">skip</span> <span class="pre">lines</span> <span class="pre">(e.g.</span> <span class="pre">process</span> <span class="pre">every</span> <span class="pre">Nth</span> <span class="pre">line).</span></code></div>
 <div class="line">Эта команда пропускает строку</div>
+<div class="line">- <cite>*-Xp*</cite>   команда вывода строки Xp. Где X - омер строки.</div>
 <div class="line">- <cite>*grep -v*</cite>   <code class="docutils literal notranslate"><span class="pre">Invert</span> <span class="pre">the</span> <span class="pre">sense</span> <span class="pre">of</span> <span class="pre">matching,</span> <span class="pre">to</span> <span class="pre">select</span> <span class="pre">non-matching</span> <span class="pre">lines.</span></code>. Инвертирует чувствительность совпадений</div>
+<div class="line">- <cite>*:$*</cite>        метка <code class="docutils literal notranslate"><span class="pre">label</span></code> в конце</div>
 <div class="line">- <cite>*eval*</cite></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install python
@@ -177,10 +192,16 @@
 <span class="linenos">19</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install xz-utils
 <span class="linenos">20</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install curl
 <span class="linenos">21</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install sphinx
-<span class="linenos">22</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install python3-sphinx
-<span class="linenos">23</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
-<span class="linenos">24</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> sudo apt install -y python3-venv
-<span class="linenos">25</span>python3 -m venv env
+<span class="linenos">22</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install smartmontools
+<span class="linenos">23</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install python3-sphinx
+<span class="linenos">24</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install nfs-common
+<span class="linenos">25</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install build-essential libssl-dev libffi-dev python3-dev
+<span class="linenos">26</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install python3-venv
+<span class="linenos">27</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install mdadm
+<span class="linenos">28</span>systemctl <span class="nb">enable</span> mdadm
+<span class="linenos">29</span>update-initramfs -u
+<span class="linenos">30</span>
+<span class="linenos">31</span>python3 -m venv env
 </pre></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>pip install --upgrade myst-parser
@@ -198,10 +219,12 @@
 <span class="linenos">2</span>python -m venv .venv
 </pre></div>
 </div>
+</div>
 <div class="section" id="python-string-comparison-operators">
-<h2><span class="section-number">6.1. </span>Python String Comparison operators<a class="headerlink" href="#python-string-comparison-operators" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.2. </span>Python String Comparison operators<a class="headerlink" href="#python-string-comparison-operators" title="Permalink to this heading"></a></h2>
 <div class="line-block">
 <div class="line">In python language, we can compare two strings such as identify whether the two strings are equivalent to each other</div>
+<div class="line">or not, or even which string is greater or smaller than each other. Let us check some of the string comparison operator</div>
 <div class="line">used for this purpose below:</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>step_four:
@@ -211,11 +234,14 @@
 </div>
 <div class="line-block">
 <div class="line">==: This operator checks whether two strings are equal.</div>
+<div class="line">!=: This operator checks whether two strings are not equal.</div>
 <div class="line">&lt;: This operator checks whether the string on the left side is smaller than the string on the right side.</div>
+<div class="line">&lt;=: This operator checks whether the string on the left side is smaller or equal to the string on the right side.</div>
 <div class="line">&gt;: This operator checks whether the string on the left side is greater than the string on the right side.</div>
+<div class="line">&gt;=: This operator checks whether the string on the left side is greater than the string on the right side.</div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;7_driver_opt&quot;</span> &gt;&gt; steps.txt
-<span class="linenos">2</span><span class="k">fi</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">done</span> &lt; <span class="nv">$filename</span>
+<span class="linenos">2</span>sudo mount -a
 </pre></div>
 </div>
 </div>
@@ -226,7 +252,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="cut_discr_preseed.html" class="btn btn-neutral float-left" title="3. Preseed Cut Discr" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="only_code_pii2.html" class="btn btn-neutral float-right" title="7. Appendix Code chunck" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="only_code_pii2.html" class="btn btn-neutral float-right" title="5. Appendix Code chunck" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

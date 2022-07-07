@@ -637,6 +637,7 @@ AutoInstall Cut Discr
 	echo -e "y\n" | apt-get install firmware-realtek
 	fi
 	echo -e "y\n" | apt-get install firmware-linux-nonfree
+	echo -e "y\n" | apt-get install firmware-iwlwifi
 	echo -e "y\n" | apt-get install man 
 |	
 01.05.01	Install SElinux utils & acl
@@ -874,9 +875,15 @@ AutoInstall Cut Discr
 	echo -e "y\n" | apt-get install xz-utils
 	echo -e "y\n" | apt-get install curl
 	echo -e "y\n" | apt-get install sphinx
+	echo -e "y\n" | apt-get install smartmontools
 	echo -e "y\n" | apt-get install python3-sphinx
-	echo -e "y\n" | sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
-	echo -e "y\n" | sudo apt install -y python3-venv
+	echo -e "y\n" | apt-get install nfs-common
+	echo -e "y\n" | apt-get install build-essential libssl-dev libffi-dev python3-dev
+	echo -e "y\n" | apt-get install python3-venv
+	echo -e "y\n" | apt-get install mdadm 
+	systemctl enable mdadm
+	update-initramfs -u
+	
 	python3 -m venv env
 |	
 |	pip install mkdocs
@@ -1075,8 +1082,10 @@ AutoInstall Cut Discr
 	if [[ -n $S1 ]]; then
 		sed -i -e "$ a UUID\=$S1	\/mnt\/$TMPS	ext4	defaults	0	2" /etc/fstab
 	fi
-	
-	sed -i -e "s/^UUID=\"b90071b5-8949-4a72-b836-63756e4c7b1d\".*$/#/g" /etc/fstab
+|	sed -i -e "s/^UUID=\"b90071b5-8949-4a72-b836-63756e4c7b1d\".*$/|	/g" /etc/fstab
+.. code-block:: bash
+	:linenos:
+
 	done < $filename
 	sudo mount -a
 |	if [[ -z $STATE ]]; then
@@ -2018,6 +2027,7 @@ AutoInstall Cut Discr
 	semodule -i sudotev70522v21.pp
 	semodule -i sudotevcrondv1.pp
 	semodule -i sphinxtev1.pp
+	semodule -i myapp1.pp
 	semanage permissive -a boot_t
 	semanage permissive -a crond_t
 	semanage permissive -a crontab_t
@@ -2116,7 +2126,7 @@ AutoInstall Cut Discr
 .. code-block:: bash
 	:linenos:
 
-	echo -e "y\n" | sudo apt-get install transmission transmission-daemon
+	echo -e "y\n" | sudo apt-get install transmission
 	echo -e "y\n" | sudo apt-get install transmission-cli transmission-common transmission-daemon
 |	 enable transmission-daemon.service
 .. code-block:: bash
@@ -2186,10 +2196,23 @@ AutoInstall Cut Discr
 .. code-block:: bash
 	:linenos:
 
-	sudo service transmission-daemon start
+	service transmission-daemon start
 |	
+.. code-block:: bash
+	:linenos:
+
+	mdadm --detail --scan | sudo tee -a /etc/mdadm/mdadm.conf
+	update-initramfs -u
 |	
+.. code-block:: bash
+	:linenos:
+
+	echo '/dev/md0 /mnt/sde1 ext4 defaults,nofail,discard 1 0' | tee -a /etc/fstab
 |	
+.. code-block:: bash
+	:linenos:
+
+	
 |	dpkg --configure -a
 |	apt-get dist-upgrade
 .. code-block:: bash

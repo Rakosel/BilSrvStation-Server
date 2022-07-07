@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+﻿#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 # extract_full_discr_pii2 version v.0.1a
 # https://en.wikipedia.org/wiki/Shebang_(Unix) #!/usr/bin/env python3\
@@ -9,11 +9,13 @@ sys.path.insert(1, os.path.abspath('../'))
 #os.pathos.getcwd()
 #os.path.normpath(path)
 
-
+    
 def strToList(st):
     return list(st.split("  "))
-
-#print(os.getcwd()) print(sys.path) print("\n\n\n\n")
+	
+#print(os.getcwd())
+#print(sys.path)
+#print("\n\n\n\n")
 pdir=''.join([os.path.abspath('../'),"/DebianISO/install_ext/install/pii2.sh"]);
 #pdir="/opt/SAMBA_SHARE/git/BilSrvStation_Server_PC/DebianISO/install_ext/install/pii2.sh";
 #print(pdir);
@@ -168,7 +170,7 @@ for i in linep:
     else:
        trig_search_comm|=0x08;
     if((trig_search_comm & 0x38) == 0x38):
-        #POS_LIST[k]=strToList("# {0} {1}".format(POS_1,POS_END1));
+#        POS_LIST[k]=strToList("# {0} {1}".format(POS_1,POS_END1));
         POS_1 = 0;POS_END1 = 0;
         trig_search_comm=0;
         #k+=1;
@@ -283,9 +285,12 @@ for i in linep_out:
                 s0=''.join(linep_out[k]).replace("|	 hint!!!",".. hint::");
                 linep_out[k] = strToList("{0}\n".format(s0));
             elif(stmp == "important!!!"):
+            #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
                 s0=''.join(linep_out[k]).replace("|	 important!!!",".. important::");
                 linep_out[k] = strToList("{0}\n".format(s0));
             elif(stmp == "warning!!!"):
+                #print("warning!!!")
+            #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
                 s0=''.join(linep_out[k]).replace("|	 warning!!!",".. warning::");
                 linep_out[k] = strToList("{0}\n".format(s0));
             elif(stmp == "tip!!!"):
@@ -325,7 +330,10 @@ trig_search_code=0x0;
 trig_search_comm=0x0;
 j=0;k=0;
 for i in linep_dfpii2:
+#   search comment #
+        #print(POS_LIST[k]);[a-zA-Z0-9\t\n$\[\]/_\ ] [a-zA-Z0-9\t\n$\[\]/_\ ]
     if((''.join(re.findall("^[^..ch]*", linep_dfpii2[j]))).strip()!=""):
+        #linep[j] = strToList("{0}".format(''.join(linep[j]).replace("vkd174asqd","********")));
         if((trig_search_comm & 0x08) == 0x08):
             trig_search_comm&=~0x08;
         trig_search_comm|=0x10;
@@ -370,105 +378,120 @@ POS_LISTdfp[k]=strToList("Z 0 0");
 k+=1
 POS_LISTdfp[k]=strToList("S 0 0");
 #print(k)
-#print("_____________________________________________")
+#print;("_____________________________________________")
 
 #print(POS_LISTdfp)
 
 j=0;k=0;z=0;
 # otvyazatb index drug ot druga
-#https://pyneng.readthedocs.io/ru/latest/book/15_module_re/
-#print(len(linep_dfpii2_out))
-#print(POS_LISTdfp)
 
+#https://pyneng.readthedocs.io/ru/latest/book/15_module_re/
 for i in linep_dfpii2_out:
+    #print(POS_LISTdfp[j])
+    #print(j)
     if(''.join(POS_LISTdfp[j])[0]=="#"):
         POS_0=int((''.join(POS_LISTdfp[j]).split(' ')[1]),10);
         POS_END=int((''.join(POS_LISTdfp[j]).split(' ')[2]),10);
         trig_search_comm=0;
-        #print("{0} {1}\n".format(POS_0,POS_END))
-        j+=1;
         while(POS_0<=POS_END):
-            s0=''.join(re.findall("^(\t[a-zA-Zа-яА-ЯеЁ/_\-&><=$%\[\]* ]*)", linep_dfpii2[POS_0])).strip();
-            s1=''.join(re.findall("^(\t\t[a-zA-Zа-яА-ЯеЁ/_\-&><=$%\[\]* ]*)", linep_dfpii2[POS_0])).strip();
-            s2=''.join(re.findall("^(\t\t\t[a-zA-Zа-яА-ЯеЁ/_\-&><=$%\[\]* ]*)", linep_dfpii2[POS_0])).strip();
-            s3=''.join(re.findall("^(\t\t\t\t[a-zA-Zа-яА-ЯеЁ/_\-&><=$%\[\]* ]*)", linep_dfpii2[POS_0])).strip();
+            #print(linep[POS_0])
+            s0=''.join(re.findall("^(\t[a-zA-Z/_\-&><=$%\[\]* ]*)", linep_dfpii2[POS_0])).strip();
+            s1=''.join(re.findall("^(\t\t[a-zA-Z/_\-&><=$%\[\]* ]*)", linep_dfpii2[POS_0])).strip();
+            s2=''.join(re.findall("^(\t\t\t[a-zA-Z/_\-&><=$%\[\]* ]*)", linep_dfpii2[POS_0])).strip();
+            s3=''.join(re.findall("^(\t\t\t\t[a-zA-Z/_\-&><=$%\[\]* ]*)", linep_dfpii2[POS_0])).strip();
             if(s0!=""):
                 h1=''.join(['=']*len(s0));
                 linep_dfpii2_out[k] = strToList("{0}\n{1}\n".format(s0,h1));
-                #k+=1;
-                #POS_0=POS_0+1;
+                k+=3;
+                POS_0=POS_0+1;
+            #print(str(["="]*len(h1)));
+            #content[k+1] = strToList("{0}\n".format(''.join(h1)));
             if(s1!=""):
                 h2=''.join(['-']*len(s1));
                 linep_dfpii2_out[k] = strToList("{0}\n{1}\n".format(s1,h2));
-                #k+=1;
+                k+=3;
                 POS_0=POS_0+1;
+            #print(str(["-"]*len(h2)));
+            #content[k+1] = strToList("{0}\n".format(''.join(h2)));
             if(s2!=""):
                 h3=''.join(["~"]*len(s2));
                 linep_dfpii2_out[k] = strToList("{0}\n{1}\n".format(s2,h3));
-                #k+=1;
-                #POS_0=POS_0+1;
+                k+=3;
+                POS_0=POS_0+1;
             if(s3!=""):
                 h4=''.join(["\""]*len(s3));
                 linep_dfpii2_out[k] = strToList("{0}\n{1}\n".format(s3,h4));
-                #k+=1;
-                #POS_0=POS_0+1;
+                k+=3;
+                POS_0=POS_0+1;
+                #print("{0} {1}".format(POS_0,POS_END))
             if(s0=="" and s1=="" and s2=="" and s3==""):
+                #linep_dfpii2_out[POS_0] = re.sub('#<--!|#!-->', '|\t', linep_dfpii2[POS_0])
+                #linep[POS_0] = re.sub('|    danger!!!', '.. danger::', linep[POS_0])
                 linep_dfpii2_out[k] = re.sub('^ ', '', linep_dfpii2[POS_0])
                 linep_dfpii2_out[k] = re.sub('^', '|\t', linep_dfpii2[POS_0])
-                #POS_0=POS_0+1;
-                #k+=1; ^\t ([:a-zA-Z!]*)
-            stmp=''.join(re.findall("^([:a-zA-Z!]*)", linep_dfpii2[POS_0]))
-            #print(linep_dfpii2[POS_0])
-            if (stmp == ":attention!!!"):
+                #print("error for index {0}".format(k))
+                POS_0=POS_0+1;
+            stmp=''.join(re.findall("^\t ([a-zA-Z!]*)", linep_dfpii2[POS_0]))
+            if (stmp == "attention!!!"):
             #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_dfpii2[POS_0]).replace(":attention!!!",".. attention::");
+                s0=''.join(linep_dfpii2[k]).replace("|	 attention!!!",".. attention::");
                 linep_dfpii2_out[k] = strToList("{0}\n".format(s0));
-            elif(stmp == ":caution!!!"):
+            elif(stmp == "caution!!!"):
             #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_dfpii2[POS_0]).replace(":caution!!!",".. caution::");
+                s0=''.join(linep_dfpii2[k]).replace("|	 caution!!!",".. caution::");
                 linep_dfpii2_out[k] = strToList("{0}\n".format(s0));
-            elif(stmp == ":error!!!"):
+            elif(stmp == "error!!!"):
             #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_dfpii2[POS_0]).replace(":error!!!",".. error::");
+                s0=''.join(linep_dfpii2[k]).replace("|	 error!!!",".. error::");
                 linep_dfpii2_out[k] = strToList("{0}\n".format(s0));
-            elif(stmp == ":hint!!!"):
+            elif(stmp == "hint!!!"):
             #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
-                s0=''.join(linep_dfpii2[POS_0]).replace(":hint!!!",".. hint::");
+                s0=''.join(linep_dfpii2[k]).replace("|	 hint!!!",".. hint::");
                 linep_dfpii2_out[k] = strToList("{0}\n".format(s0));
-            elif(stmp == ":important!!!"):
-                s0=''.join(linep_dfpii2[POS_0]).replace(":important!!!",".. important::");
+            elif(stmp == "important!!!"):
+            #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
+                s0=''.join(linep_dfpii2[k]).replace("|	 important!!!",".. important::");
                 linep_dfpii2_out[k] = strToList("{0}\n".format(s0));
-            elif(stmp == ":warning!!!"):
-                s0=''.join(linep_dfpii2[POS_0]).replace(":warning!!!",".. warning::");
+            elif(stmp == "warning!!!"):
+                #print("warning!!!")
+            #    print(''.join(re.findall("^|    danger([.*]*)", linep[POS_0])));
+                s0=''.join(linep_dfpii2[k]).replace("|	 warning!!!",".. warning::");
                 linep_dfpii2_out[k] = strToList("{0}\n".format(s0));
-            elif(stmp == ":tip!!!"):
-                s0=''.join(linep_dfpii2[POS_0]).replace(":tip!!!",".. tip::");
+            elif(stmp == "tip!!!"):
+                s0=''.join(linep_dfpii2[k]).replace("|	 tip!!!",".. tip::");
                 linep_dfpii2_out[k] = strToList("{0}\n".format(s0));
-            elif(stmp == ":note!!!"):
-                s0=''.join(linep_dfpii2[POS_0]).replace(":note!!!",".. note::");
+            elif(stmp == "note!!!"):
+                s0=''.join(linep_dfpii2[k]).replace("|	 note!!!",".. note::");
                 linep_dfpii2_out[k] = strToList("{0}\n".format(s0));
-            elif(stmp == ":rubric!!!"):
-                s0=''.join(linep_dfpii2[POS_0]).replace(":rubric!!!",".. rubric::");
+            elif(stmp == "rubric!!!"):
+                s0=''.join(linep_dfpii2[k]).replace("|	 rubric!!!",".. rubric::");
                 linep_dfpii2_out[k] = strToList("{0}\n".format(s0));
-            elif(stmp == ":danger!!!"):
-                s0=''.join(linep_dfpii2[POS_0]).replace(":danger!!!",".. danger::");
+            elif(stmp == "danger!!!"):
+                s0=''.join(linep_dfpii2[k]).replace("|	 danger!!!",".. danger::");
                 linep_dfpii2_out[k] = strToList("{0}\n".format(s0));
             POS_0=POS_0+1;
             k+=1;
+#    print(''.join(POS_LISTdfp[j]).split(' ')[0])
     if(''.join(POS_LISTdfp[j]).split(' ')[0]=="..ch"):
+#        print("yes")
         z=int(''.join(POS_LISTdfp[j]).split(' ')[1],10);
+            #POS_0=int((''.join(POS_LISTdfp[j]).split(' ')[1]),10);
+            #POS_END=int((''.join(POS_LISTdfp[j]).split(' ')[2]),10);
+            #while(POS_0<=POS_END):
         POS_1=int((''.join(POS_LIST[z]).split(' ')[1]),10);
         POS_END1=int((''.join(POS_LIST[z]).split(' ')[2]),10);
         s0="\n.. code-block:: bash\n\t:linenos:\n"
-        linep_dfpii2_out[k]=strToList("{0}\n".format(s0));\
+        linep_dfpii2_out[k]=strToList("{0}\n".format(s0));
         k+=1;
+#        print(linep_dfpii2_out[k])
         while(POS_1<=POS_END1):
+#            print(linep[POS_1])
             linep_dfpii2_out[k] = strToList("\t{0}".format(''.join(linep[POS_1])));
             k+=1;
             POS_1+=1;
-#        k+=1;
-#        linep_dfpii2_out[k] = strToList("\n");
-#        k+=1;
+        k+=1;
+        linep_dfpii2_out[k] = strToList("\n");
+        k+=1;
 #               POS_0+=1
 #                        POS_0=int((''.join(POS_LIST[j]).split(' ')[1]),10);
 #        POS_END=int((''.join(POS_LIST[j]).split(' ')[2]),10);
@@ -478,45 +501,18 @@ for i in linep_dfpii2_out:
 #        while(POS_0<=POS_END):
 #            linep_out[k] = strToList("\t{0}".format(''.join(linep[POS_0])));
 #            k+=1;
-#            POS_0=POS_0+1;
-        j+=1;
-        POS_0=POS_0+1;
-        k+=1;
+#            POS_0=POS_0+1;  
+    j+=1;
     #print(POS_LIST[j])
     if((''.join(POS_LISTdfp[j])[0])== "Z"):
         break;
-j=0;k=0;l=0;
-#print(linep_dfpii2_out)
-#stmp = "    Appendix Code chunck\n"
-#h2=''.join(["="]*len(stmp));
-#linep_dfpii2code_out[k] = strToList("{0}{1}\n".format(stmp,h2));
-#print(POS_LISTdfp)
-#k+=1;
-#for i in linep_dfpii2code_out:
-#    k+=1
-#    if(''.join(POS_LISTdfp[j]).split(' ')[0]=="..ch"):
-#        z=int(''.join(POS_LISTdfp[j]).split(' ')[1],10);
-#        POS_1=int((''.join(POS_LIST[z]).split(' ')[1]),10);
-#        POS_END1=int((''.join(POS_LIST[z]).split(' ')[2]),10);
-#        s0="\n.. code-block:: bash\n\t:linenos:\n"
-#        linep_dfpii2_out[k]=strToList("{0}\n".format(s0));
-#        k+=1;
-#        while(POS_1<=POS_END1):
-#            linep_dfpii2_out[k] = strToList("\t{0}".format(''.join(linep[POS_1])));
-#            k+=1;
-#            POS_1+=1;
-#        k+=1;
-#        linep_dfpii2_out[k] = strToList("\n");
-#        k+=1;
-#    j+=1;
-#    if((''.join(POS_LISTdfp[j])[0])== "Z"):
-#        break;
-#print(linep_dfpii2code_out)
 
+j=0;k=0;l=0;
 stmp = "    Appendix Code chunck\n"
 h2=''.join(["="]*len(stmp));
 linep_dfpii2code_out[k] = strToList("{0}{1}\n".format(stmp,h2));
 k+=1;
+#print(linep)
 
 for i in linep_dfpii2code_out:
     k+=1
@@ -545,6 +541,17 @@ for i in linep_dfpii2code_out:
     j+=1;
     if((''.join(POS_LIST[j])[0])== "S"):
         break;
+#print(linep_dfpii2code_out)
+j=0
+pdir=''.join([os.path.abspath('../'),"/docs/full_discr_pii2.rst"]);
+#pdir="/opt/SAMBA_SHARE/git/BilSrvStation_Server_PC/docs/cut_discr.rst";,encoding='utf-8'
+with open(pdir,"wt") as fpii2:
+    for i in linep_dfpii2_out:
+        #s0=''.join(content[j]);
+        fpii2.write(''.join(linep_dfpii2_out[j]));
+        #print(content[j])
+        j=j+1;
+fpii2.close();
 
 j=0;
 pdir=''.join([os.path.abspath('../'),"/docs/full_discr_pii2.rst"]);
@@ -556,7 +563,6 @@ with open(pdir,"wt") as fpii2:
         #print(content[j])
         j=j+1;
 fpii2.close();
-
 
 j=0;
 pdir=''.join([os.path.abspath('../'),"/docs/only_code_pii2.rst"]);
@@ -575,7 +581,7 @@ fpii2.close();
 
 #print(''.join(re.findall("#\t\t\t(.*)$", linep[16])));
 
-#print(re.findall("^#<--!\(.*\)$", linep[4]));
+#print(re.findall("^#<--!\(.*\)$", linep[4]));    
 
 #rint(linep[2])
 #p = re.search('\bclass\b')

@@ -508,6 +508,7 @@ if [[ $(lspci | grep Ethernet | sed -n -e "s/.*ller:\s\([a-zA-Z]\+\s\).*/\1/p") 
 echo -e "y\n" | apt-get install firmware-realtek
 fi
 echo -e "y\n" | apt-get install firmware-linux-nonfree
+echo -e "y\n" | apt-get install firmware-iwlwifi
 echo -e "y\n" | apt-get install man 
 #<--!
 #			01.05.01	Install SElinux utils & acl
@@ -700,9 +701,15 @@ echo -e "y\n" | apt-get install pip
 echo -e "y\n" | apt-get install xz-utils
 echo -e "y\n" | apt-get install curl
 echo -e "y\n" | apt-get install sphinx
+echo -e "y\n" | apt-get install smartmontools
 echo -e "y\n" | apt-get install python3-sphinx
-echo -e "y\n" | sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
-echo -e "y\n" | sudo apt install -y python3-venv
+echo -e "y\n" | apt-get install nfs-common
+echo -e "y\n" | apt-get install build-essential libssl-dev libffi-dev python3-dev
+echo -e "y\n" | apt-get install python3-venv
+echo -e "y\n" | apt-get install mdadm 
+systemctl enable mdadm
+update-initramfs -u
+
 python3 -m venv env
 #<--!
 #pip install mkdocs
@@ -853,8 +860,7 @@ chmod go+rwx -R "/mnt/$TMPS";
 if [[ -n $S1 ]]; then
 	sed -i -e "$ a UUID\=$S1	\/mnt\/$TMPS	ext4	defaults	0	2" /etc/fstab
 fi
-
-sed -i -e "s/^UUID=\"b90071b5-8949-4a72-b836-63756e4c7b1d\".*$/#/g" /etc/fstab
+#sed -i -e "s/^UUID=\"b90071b5-8949-4a72-b836-63756e4c7b1d\".*$/#/g" /etc/fstab
 done < $filename
 sudo mount -a
 #if [[ -z $STATE ]]; then
@@ -1489,6 +1495,7 @@ semodule -i sudotevb2.pp
 semodule -i sudotev70522v21.pp
 semodule -i sudotevcrondv1.pp
 semodule -i sphinxtev1.pp
+semodule -i myapp1.pp
 semanage permissive -a boot_t
 semanage permissive -a crond_t
 semanage permissive -a crontab_t
@@ -1566,7 +1573,7 @@ systemctl start webmin
 #	sudo nano /etc/init.d/transmission-daemon
 #	sudo nano /etc/init/transmission-daemon.conf
 #
-echo -e "y\n" | sudo apt-get install transmission transmission-daemon
+echo -e "y\n" | sudo apt-get install transmission
 echo -e "y\n" | sudo apt-get install transmission-cli transmission-common transmission-daemon
 # enable transmission-daemon.service
 sudo systemctl enable transmission-daemon.service
@@ -1606,10 +1613,14 @@ sed -i -e "s/\"download-dir\"\:.*$/\"download-dir\"\: \"\/opt\/SAMBA_SHARE\/bitt
 #		"watch-dir": "/home/server/torrents"
 #sudo usermod -a -G debian-transmission technics
 #sudo service transmission-daemon reload
-sudo service transmission-daemon start
+service transmission-daemon start
 #
+mdadm --detail --scan | sudo tee -a /etc/mdadm/mdadm.conf
+update-initramfs -u
 #
+echo '/dev/md0 /mnt/sde1 ext4 defaults,nofail,discard 1 0' | tee -a /etc/fstab
 #
+
 #dpkg --configure -a
 #apt-get dist-upgrade
 echo -e "\y\n" | apt-get -f install

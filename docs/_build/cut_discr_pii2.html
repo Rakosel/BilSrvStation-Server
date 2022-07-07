@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>8. AutoInstall Cut Discr &mdash; BilSrvStation_Server_PC 1.0.2a documentation</title>
+  <title>6. AutoInstall Cut Discr &mdash; BilSrvStation_Server_PC 1.0.2a documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -20,8 +20,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="9. AutoInstall Package List" href="cut_discr_pii2_pack.html" />
-    <link rel="prev" title="7. Appendix Code chunck" href="only_code_pii2.html" /> 
+    <link rel="next" title="7. AutoInstall Package List" href="cut_discr_pii2_pack.html" />
+    <link rel="prev" title="5. Appendix Code chunck" href="only_code_pii2.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,59 +44,57 @@
 <li class="toctree-l1"><a class="reference internal" href="sourcelink.html">1. Навигация</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cut_discr_pc.html">2. ISO InstallDeb Cut Discr</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cut_discr_preseed.html">3. Preseed Cut Discr</a></li>
-<li class="toctree-l1"><a class="reference internal" href="full_discr_pii2.html">4. important</a></li>
-<li class="toctree-l1"><a class="reference internal" href="full_discr_pii2.html#addr-x">5. [addr]X</a></li>
-<li class="toctree-l1"><a class="reference internal" href="full_discr_pii2.html#regexp-x">6. /regexp/X</a></li>
-<li class="toctree-l1"><a class="reference internal" href="only_code_pii2.html">7. Appendix Code chunck</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">8. AutoInstall Cut Discr</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#auto-postinstall">8.1. 01      AUTO POSTINSTALL</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#pre-install-emv-and-settings">8.1.1. 01.01   PRE-INSTALL EMV AND SETTINGS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#check-root-privilege">8.1.2. 01.02   CHECK ROOT PRIVILEGE</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#settings-etc-network-interfaces-interface-sh">8.1.3. 01.03   SETTINGS /ETC/NETWORK -&gt; INTERFACES [interface_sh]</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#settings-network-interfaces">8.1.3.1. 01.03.01        SETTINGS NETWORK/INTERFACES</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#search-interfaces">8.1.3.2. 01.03.02        SEARCH INTERFACES</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#restart-service">8.1.3.3. 01.03.02        restart service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="full_discr_pii2.html">4. Полное описание Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="only_code_pii2.html">5. Appendix Code chunck</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. AutoInstall Cut Discr</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#auto-postinstall">6.1. 01      AUTO POSTINSTALL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pre-install-emv-and-settings">6.1.1. 01.01   PRE-INSTALL EMV AND SETTINGS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#check-root-privilege">6.1.2. 01.02   CHECK ROOT PRIVILEGE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#settings-etc-network-interfaces-interface-sh">6.1.3. 01.03   SETTINGS /ETC/NETWORK -&gt; INTERFACES [interface_sh]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#settings-network-interfaces">6.1.3.1. 01.03.01        SETTINGS NETWORK/INTERFACES</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#search-interfaces">6.1.3.2. 01.03.02        SEARCH INTERFACES</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#restart-service">6.1.3.3. 01.03.02        restart service</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#update-distribution">8.1.4. 01.04           Update distribution</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#install-drivers">8.1.5. 01.05           Install drivers</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#install-selinux-utils-acl">8.1.5.1. 01.05.01        Install SElinux utils &amp; acl</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#reboot">8.1.5.2. 01.05.02        Reboot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#update-distribution">6.1.4. 01.04           Update distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-drivers">6.1.5. 01.05           Install drivers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#install-selinux-utils-acl">6.1.5.1. 01.05.01        Install SElinux utils &amp; acl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reboot">6.1.5.2. 01.05.02        Reboot</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#install-git-nanorc-step-three">8.1.6. 01.06           Install git &amp;&amp; nanorc [step_three]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#copy-dir">8.1.7. 01.07           Copy dir</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#install-utils-step-five">8.1.8. 01.08           Install utils [step_five]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#install-driver-opt-and-acc-step-six">8.1.9. 01.09           Install driver opt and acc [step_six]</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#create-disk-opt">8.1.9.1. 01.09.01        create disk /opt/</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#search-dev-s">8.1.9.2. 01.09.02        search /dev/s**</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#mount-dev-s">8.1.9.3. 01.09.03        mount /dev/s**</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-git-nanorc-step-three">6.1.6. 01.06           Install git &amp;&amp; nanorc [step_three]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#copy-dir">6.1.7. 01.07           Copy dir</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-utils-step-five">6.1.8. 01.08           Install utils [step_five]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-driver-opt-and-acc-step-six">6.1.9. 01.09           Install driver opt and acc [step_six]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-disk-opt">6.1.9.1. 01.09.01        create disk /opt/</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#search-dev-s">6.1.9.2. 01.09.02        search /dev/s**</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mount-dev-s">6.1.9.3. 01.09.03        mount /dev/s**</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#create-users-and-groups">8.1.10. 01.10           Create users and groups</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id7">8.1.10.1. 01.10.01                Create users and groups</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#create-ssh-ssl">8.1.10.2. 01.10.02                Create ssh_ssl</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#install-ssh-settings">8.1.10.3. 01.10.03        Install ssh settings</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#create-users-ssh">8.1.10.4. 01.10.04        Create users ssh</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#create-samba">8.1.10.5. 01.10.05        Create SAMBA</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#install-and-settings-firewall">8.1.10.6. 01.10.06        Install and settings firewall</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#install-other-soft">8.1.10.7. 01.10.07        Install other soft</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#extended-nano">8.1.10.8. 01.10.08        Extended nano</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#cp-ers">8.1.10.9. 01.10.09        cp ers</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#install-vsftp">8.1.10.10. 01.10.10        Install vsftp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-users-and-groups">6.1.10. 01.10           Create users and groups</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">6.1.10.1. 01.10.01                Create users and groups</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-ssh-ssl">6.1.10.2. 01.10.02                Create ssh_ssl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-ssh-settings">6.1.10.3. 01.10.03        Install ssh settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-users-ssh">6.1.10.4. 01.10.04        Create users ssh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-samba">6.1.10.5. 01.10.05        Create SAMBA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-and-settings-firewall">6.1.10.6. 01.10.06        Install and settings firewall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-other-soft">6.1.10.7. 01.10.07        Install other soft</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#extended-nano">6.1.10.8. 01.10.08        Extended nano</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cp-ers">6.1.10.9. 01.10.09        cp ers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-vsftp">6.1.10.10. 01.10.10        Install vsftp</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#settings-permissive-selinux">8.1.11. 01.11   Settings permissive SELinux</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#optional-soft">8.1.12. 01.12   Optional soft</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#settings-permissive-selinux">6.1.11. 01.11   Settings permissive SELinux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optional-soft">6.1.12. 01.12   Optional soft</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2_pack.html">9. AutoInstall Package List</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cut_discr_cmd_shell.html">10. CMD_SHELL Cut Discr</a></li>
-<li class="toctree-l1"><a class="reference internal" href="structure.html">11. Структура</a></li>
-<li class="toctree-l1"><a class="reference internal" href="build_doc.html">12. Построение этой документации</a></li>
-<li class="toctree-l1"><a class="reference internal" href="note.html">13. Заметки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2_pack.html">7. AutoInstall Package List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_cmd_shell.html">8. CMD_SHELL Cut Discr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structure.html">9. Структура</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_doc.html">10. Построение этой документации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="note.html">11. Заметки</a></li>
 </ul>
 
         </div>
@@ -113,7 +111,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li><span class="section-number">8. </span>AutoInstall Cut Discr</li>
+      <li><span class="section-number">6. </span>AutoInstall Cut Discr</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/cut_discr_pii2.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -124,7 +122,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="autoinstall-cut-discr">
-<h1><span class="section-number">8. </span>AutoInstall Cut Discr<a class="headerlink" href="#autoinstall-cut-discr" title="Permalink to this heading"></a></h1>
+<h1><span class="section-number">6. </span>AutoInstall Cut Discr<a class="headerlink" href="#autoinstall-cut-discr" title="Permalink to this heading"></a></h1>
 <div class="line-block">
 <div class="line">Published by <a href="#id8"><span class="problematic" id="id9">|author|</span></a></div>
 <div class="line">Date: <em>|date|</em> Time <em>|time|</em></div>
@@ -156,7 +154,7 @@
 </div>
 </div>
 <div class="section" id="auto-postinstall">
-<h2><span class="section-number">8.1. </span>01      AUTO POSTINSTALL<a class="headerlink" href="#auto-postinstall" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">6.1. </span>01      AUTO POSTINSTALL<a class="headerlink" href="#auto-postinstall" title="Permalink to this heading"></a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>do postinstall copy wufu &amp; wpa_supplicant.conf + SAMBA</p>
@@ -165,7 +163,7 @@
 <div class="line"><br /></div>
 </div>
 <div class="section" id="pre-install-emv-and-settings">
-<h3><span class="section-number">8.1.1. </span>01.01   PRE-INSTALL EMV AND SETTINGS<a class="headerlink" href="#pre-install-emv-and-settings" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">6.1.1. </span>01.01   PRE-INSTALL EMV AND SETTINGS<a class="headerlink" href="#pre-install-emv-and-settings" title="Permalink to this heading"></a></h3>
 <div class="line-block">
 <div class="line">d-i preseed/late_command string mkdir -p /target/install/; cp -R /install/* /target/install/; cp -Rf /install/lib/ /target/lib/;</div>
 <div class="line"><br /></div>
@@ -258,7 +256,7 @@
 </div>
 </div>
 <div class="section" id="check-root-privilege">
-<h3><span class="section-number">8.1.2. </span>01.02   CHECK ROOT PRIVILEGE<a class="headerlink" href="#check-root-privilege" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">6.1.2. </span>01.02   CHECK ROOT PRIVILEGE<a class="headerlink" href="#check-root-privilege" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">if</span> <span class="o">[[</span> <span class="nv">$EUID</span> -ne <span class="m">0</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 <span class="linenos"> 2</span>        <span class="k">if</span> <span class="o">[[</span> <span class="si">${</span><span class="nv">LANG</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">5</span><span class="si">}</span> -eq <span class="s1">&#39;ru_RU&#39;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 <span class="linenos"> 3</span>                <span class="nb">echo</span> <span class="s2">&quot;Ошибка скрипта перезапустите скрипт на root&quot;</span> <span class="m">1</span>&gt;<span class="p">&amp;</span><span class="m">2</span>
@@ -378,7 +376,7 @@
 </div>
 </div>
 <div class="section" id="settings-etc-network-interfaces-interface-sh">
-<h3><span class="section-number">8.1.3. </span>01.03   SETTINGS /ETC/NETWORK -&gt; INTERFACES [interface_sh]<a class="headerlink" href="#settings-etc-network-interfaces-interface-sh" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">6.1.3. </span>01.03   SETTINGS /ETC/NETWORK -&gt; INTERFACES [interface_sh]<a class="headerlink" href="#settings-etc-network-interfaces-interface-sh" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nv">TMPS</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">;</span>
 <span class="linenos">2</span>interface_sh:
 <span class="linenos">3</span>
@@ -390,7 +388,7 @@
 <div class="line"><br /></div>
 </div>
 <div class="section" id="settings-network-interfaces">
-<h4><span class="section-number">8.1.3.1. </span>01.03.01        SETTINGS NETWORK/INTERFACES<a class="headerlink" href="#settings-network-interfaces" title="Permalink to this heading"></a></h4>
+<h4><span class="section-number">6.1.3.1. </span>01.03.01        SETTINGS NETWORK/INTERFACES<a class="headerlink" href="#settings-network-interfaces" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -402,7 +400,7 @@
 </div>
 </div>
 <div class="section" id="search-interfaces">
-<h4><span class="section-number">8.1.3.2. </span>01.03.02        SEARCH INTERFACES<a class="headerlink" href="#search-interfaces" title="Permalink to this heading"></a></h4>
+<h4><span class="section-number">6.1.3.2. </span>01.03.02        SEARCH INTERFACES<a class="headerlink" href="#search-interfaces" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line">|       2:      number</div>
 <div class="line"><br /></div>
@@ -770,7 +768,7 @@
 </div>
 </div>
 <div class="section" id="restart-service">
-<h4><span class="section-number">8.1.3.3. </span>01.03.02        restart service<a class="headerlink" href="#restart-service" title="Permalink to this heading"></a></h4>
+<h4><span class="section-number">6.1.3.3. </span>01.03.02        restart service<a class="headerlink" href="#restart-service" title="Permalink to this heading"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>systemctl restart networking
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="nb">cd</span> /install/
@@ -784,7 +782,7 @@
 </div>
 </div>
 <div class="section" id="update-distribution">
-<h3><span class="section-number">8.1.4. </span>01.04           Update distribution<a class="headerlink" href="#update-distribution" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">6.1.4. </span>01.04           Update distribution<a class="headerlink" href="#update-distribution" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>step_one:
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="nb">cd</span> /install/
@@ -897,7 +895,7 @@
 </div>
 </div>
 <div class="section" id="install-drivers">
-<h3><span class="section-number">8.1.5. </span>01.05           Install drivers<a class="headerlink" href="#install-drivers" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">6.1.5. </span>01.05           Install drivers<a class="headerlink" href="#install-drivers" title="Permalink to this heading"></a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -927,14 +925,15 @@
 <span class="linenos">4</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install firmware-realtek
 <span class="linenos">5</span><span class="k">fi</span>
 <span class="linenos">6</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install firmware-linux-nonfree
-<span class="linenos">7</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install man
+<span class="linenos">7</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install firmware-iwlwifi
+<span class="linenos">8</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install man
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <div class="section" id="install-selinux-utils-acl">
-<h4><span class="section-number">8.1.5.1. </span>01.05.01        Install SElinux utils &amp; acl<a class="headerlink" href="#install-selinux-utils-acl" title="Permalink to this heading"></a></h4>
+<h4><span class="section-number">6.1.5.1. </span>01.05.01        Install SElinux utils &amp; acl<a class="headerlink" href="#install-selinux-utils-acl" title="Permalink to this heading"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install acl
 <span class="linenos">2</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install setools policycoreutils selinux-basics selinux-utils selinux-policy-default selinux-policy-mls auditd policycoreutils-python-utils semanage-utils audispd-plugins
 <span class="linenos">3</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install mcstrans
@@ -966,7 +965,7 @@
 </div>
 </div>
 <div class="section" id="reboot">
-<h4><span class="section-number">8.1.5.2. </span>01.05.02        Reboot<a class="headerlink" href="#reboot" title="Permalink to this heading"></a></h4>
+<h4><span class="section-number">6.1.5.2. </span>01.05.02        Reboot<a class="headerlink" href="#reboot" title="Permalink to this heading"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>reboot
 <span class="linenos">2</span><span class="k">fi</span>
 </pre></div>
@@ -977,7 +976,7 @@
 </div>
 </div>
 <div class="section" id="install-git-nanorc-step-three">
-<h3><span class="section-number">8.1.6. </span>01.06           Install git &amp;&amp; nanorc [step_three]<a class="headerlink" href="#install-git-nanorc-step-three" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">6.1.6. </span>01.06           Install git &amp;&amp; nanorc [step_three]<a class="headerlink" href="#install-git-nanorc-step-three" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="o">[[</span> -z <span class="k">$(</span>sed -n -e <span class="s2">&quot;s/^\(3_nanorc\).*/\1/p&quot;</span> steps.txt<span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 </pre></div>
 </div>
@@ -1084,7 +1083,7 @@
 </div>
 </div>
 <div class="section" id="copy-dir">
-<h3><span class="section-number">8.1.7. </span>01.07           Copy dir<a class="headerlink" href="#copy-dir" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">6.1.7. </span>01.07           Copy dir<a class="headerlink" href="#copy-dir" title="Permalink to this heading"></a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -1132,7 +1131,7 @@
 </div>
 </div>
 <div class="section" id="install-utils-step-five">
-<h3><span class="section-number">8.1.8. </span>01.08           Install utils [step_five]<a class="headerlink" href="#install-utils-step-five" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">6.1.8. </span>01.08           Install utils [step_five]<a class="headerlink" href="#install-utils-step-five" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="o">[[</span> -z <span class="k">$(</span>sed -n -e <span class="s2">&quot;s/^\(5_install_util_wd\).*/\1/p&quot;</span> steps.txt<span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 </pre></div>
 </div>
@@ -1211,10 +1210,16 @@
 <span class="linenos">19</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install xz-utils
 <span class="linenos">20</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install curl
 <span class="linenos">21</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install sphinx
-<span class="linenos">22</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install python3-sphinx
-<span class="linenos">23</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
-<span class="linenos">24</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> sudo apt install -y python3-venv
-<span class="linenos">25</span>python3 -m venv env
+<span class="linenos">22</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install smartmontools
+<span class="linenos">23</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install python3-sphinx
+<span class="linenos">24</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install nfs-common
+<span class="linenos">25</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install build-essential libssl-dev libffi-dev python3-dev
+<span class="linenos">26</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install python3-venv
+<span class="linenos">27</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install mdadm
+<span class="linenos">28</span>systemctl <span class="nb">enable</span> mdadm
+<span class="linenos">29</span>update-initramfs -u
+<span class="linenos">30</span>
+<span class="linenos">31</span>python3 -m venv env
 </pre></div>
 </div>
 <div class="line-block">
@@ -1354,7 +1359,7 @@
 </div>
 </div>
 <div class="section" id="install-driver-opt-and-acc-step-six">
-<h3><span class="section-number">8.1.9. </span>01.09           Install driver opt and acc [step_six]<a class="headerlink" href="#install-driver-opt-and-acc-step-six" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">6.1.9. </span>01.09           Install driver opt and acc [step_six]<a class="headerlink" href="#install-driver-opt-and-acc-step-six" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>step_four:
 <span class="linenos">2</span><span class="nb">cd</span> /install/
 <span class="linenos">3</span><span class="k">if</span> <span class="o">[[</span> -z <span class="k">$(</span>sed -n -e <span class="s2">&quot;s/^\(7_driver_opt\).*/\1/p&quot;</span> steps.txt<span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
@@ -1364,10 +1369,10 @@
 <div class="line"><br /></div>
 </div>
 <div class="section" id="create-disk-opt">
-<h4><span class="section-number">8.1.9.1. </span>01.09.01        create disk /opt/<a class="headerlink" href="#create-disk-opt" title="Permalink to this heading"></a></h4>
+<h4><span class="section-number">6.1.9.1. </span>01.09.01        create disk /opt/<a class="headerlink" href="#create-disk-opt" title="Permalink to this heading"></a></h4>
 </div>
 <div class="section" id="search-dev-s">
-<h4><span class="section-number">8.1.9.2. </span>01.09.02        search /dev/s**<a class="headerlink" href="#search-dev-s" title="Permalink to this heading"></a></h4>
+<h4><span class="section-number">6.1.9.2. </span>01.09.02        search /dev/s**<a class="headerlink" href="#search-dev-s" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line">touch fdiskhdd.txt;</div>
 <div class="line">fdisk -l &gt; fdiskhdd.txt</div>
@@ -1401,7 +1406,7 @@
 </div>
 </div>
 <div class="section" id="mount-dev-s">
-<h4><span class="section-number">8.1.9.3. </span>01.09.03        mount /dev/s**<a class="headerlink" href="#mount-dev-s" title="Permalink to this heading"></a></h4>
+<h4><span class="section-number">6.1.9.3. </span>01.09.03        mount /dev/s**<a class="headerlink" href="#mount-dev-s" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line">mount -t ext4 $(sudo fdisk -l | sed -n -e &quot;s/.*(/dev/s[a-z]*[0-9]).*/1/p&quot;) /opt</div>
 </div>
@@ -1454,10 +1459,13 @@
 <span class="linenos">11</span><span class="k">if</span> <span class="o">[[</span> -n <span class="nv">$S1</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 <span class="linenos">12</span>        sed -i -e <span class="s2">&quot;</span>$<span class="s2"> a UUID\=</span><span class="nv">$S1</span><span class="s2">        \/mnt\/</span><span class="nv">$TMPS</span><span class="s2">    ext4    defaults        0       2&quot;</span> /etc/fstab
 <span class="linenos">13</span><span class="k">fi</span>
-<span class="linenos">14</span>
-<span class="linenos">15</span>sed -i -e <span class="s2">&quot;s/^UUID=\&quot;b90071b5-8949-4a72-b836-63756e4c7b1d\&quot;.*</span>$<span class="s2">/#/g&quot;</span> /etc/fstab
-<span class="linenos">16</span><span class="k">done</span> &lt; <span class="nv">$filename</span>
-<span class="linenos">17</span>sudo mount -a
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">sed -i -e &quot;s/^UUID=&quot;b90071b5-8949-4a72-b836-63756e4c7b1d&quot;.*$/|        /g&quot; /etc/fstab</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">done</span> &lt; <span class="nv">$filename</span>
+<span class="linenos">2</span>sudo mount -a
 </pre></div>
 </div>
 <div class="line-block">
@@ -1546,7 +1554,7 @@
 </div>
 </div>
 <div class="section" id="create-users-and-groups">
-<h3><span class="section-number">8.1.10. </span>01.10           Create users and groups<a class="headerlink" href="#create-users-and-groups" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">6.1.10. </span>01.10           Create users and groups<a class="headerlink" href="#create-users-and-groups" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="o">[[</span> -z <span class="k">$(</span>sed -n -e <span class="s2">&quot;s/^\(9_user_settings\).*/\1/p&quot;</span> steps.txt<span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 <span class="linenos">2</span>
 <span class="linenos">3</span>STEP_TWO_AFTER:
@@ -1560,7 +1568,7 @@
 </div>
 </div>
 <div class="section" id="id7">
-<h4><span class="section-number">8.1.10.1. </span>01.10.01                Create users and groups<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h4>
+<h4><span class="section-number">6.1.10.1. </span>01.10.01                Create users and groups<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line">cp -Rf /install/home/rootsu/.cmd_shell.sh ~/.cmd_shell.sh</div>
 <div class="line">cp -Rf /install/home/rootsu/.bashrc ~/.bashrc</div>
@@ -1637,14 +1645,14 @@
 </div>
 </div>
 <div class="section" id="create-ssh-ssl">
-<h4><span class="section-number">8.1.10.2. </span>01.10.02                Create ssh_ssl<a class="headerlink" href="#create-ssh-ssl" title="Permalink to this heading"></a></h4>
+<h4><span class="section-number">6.1.10.2. </span>01.10.02                Create ssh_ssl<a class="headerlink" href="#create-ssh-ssl" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line"><a class="reference external" href="https://www.cyberciti.biz/tips/checking-openssh-sshd-configuration-syntax-errors.html">https://www.cyberciti.biz/tips/checking-openssh-sshd-configuration-syntax-errors.html</a></div>
 <div class="line"><br /></div>
 </div>
 </div>
 <div class="section" id="install-ssh-settings">
-<h4><span class="section-number">8.1.10.3. </span>01.10.03        Install ssh settings<a class="headerlink" href="#install-ssh-settings" title="Permalink to this heading"></a></h4>
+<h4><span class="section-number">6.1.10.3. </span>01.10.03        Install ssh settings<a class="headerlink" href="#install-ssh-settings" title="Permalink to this heading"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">cd</span> /etc/ssh/
 <span class="linenos">2</span>
 <span class="linenos">3</span>cp sshd_config sshd_config.tmp
@@ -1865,7 +1873,7 @@
 </div>
 </div>
 <div class="section" id="create-users-ssh">
-<h4><span class="section-number">8.1.10.4. </span>01.10.04        Create users ssh<a class="headerlink" href="#create-users-ssh" title="Permalink to this heading"></a></h4>
+<h4><span class="section-number">6.1.10.4. </span>01.10.04        Create users ssh<a class="headerlink" href="#create-users-ssh" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -1879,7 +1887,7 @@
 </div>
 </div>
 <div class="section" id="create-samba">
-<h4><span class="section-number">8.1.10.5. </span>01.10.05        Create SAMBA<a class="headerlink" href="#create-samba" title="Permalink to this heading"></a></h4>
+<h4><span class="section-number">6.1.10.5. </span>01.10.05        Create SAMBA<a class="headerlink" href="#create-samba" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
@@ -1902,19 +1910,19 @@
 </div>
 </div>
 <div class="section" id="install-and-settings-firewall">
-<h4><span class="section-number">8.1.10.6. </span>01.10.06        Install and settings firewall<a class="headerlink" href="#install-and-settings-firewall" title="Permalink to this heading"></a></h4>
+<h4><span class="section-number">6.1.10.6. </span>01.10.06        Install and settings firewall<a class="headerlink" href="#install-and-settings-firewall" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 </div>
 <div class="section" id="install-other-soft">
-<h4><span class="section-number">8.1.10.7. </span>01.10.07        Install other soft<a class="headerlink" href="#install-other-soft" title="Permalink to this heading"></a></h4>
+<h4><span class="section-number">6.1.10.7. </span>01.10.07        Install other soft<a class="headerlink" href="#install-other-soft" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 </div>
 <div class="section" id="extended-nano">
-<h4><span class="section-number">8.1.10.8. </span>01.10.08        Extended nano<a class="headerlink" href="#extended-nano" title="Permalink to this heading"></a></h4>
+<h4><span class="section-number">6.1.10.8. </span>01.10.08        Extended nano<a class="headerlink" href="#extended-nano" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
@@ -1922,7 +1930,7 @@
 </div>
 </div>
 <div class="section" id="cp-ers">
-<h4><span class="section-number">8.1.10.9. </span>01.10.09        cp ers<a class="headerlink" href="#cp-ers" title="Permalink to this heading"></a></h4>
+<h4><span class="section-number">6.1.10.9. </span>01.10.09        cp ers<a class="headerlink" href="#cp-ers" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -1935,7 +1943,7 @@
 </div>
 </div>
 <div class="section" id="install-vsftp">
-<h4><span class="section-number">8.1.10.10. </span>01.10.10        Install vsftp<a class="headerlink" href="#install-vsftp" title="Permalink to this heading"></a></h4>
+<h4><span class="section-number">6.1.10.10. </span>01.10.10        Install vsftp<a class="headerlink" href="#install-vsftp" title="Permalink to this heading"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;y&quot;</span> <span class="p">|</span> sudo apt install vsftpd
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="nb">cd</span> /etc/
@@ -2348,7 +2356,7 @@
 </div>
 </div>
 <div class="section" id="settings-permissive-selinux">
-<h3><span class="section-number">8.1.11. </span>01.11   Settings permissive SELinux<a class="headerlink" href="#settings-permissive-selinux" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">6.1.11. </span>01.11   Settings permissive SELinux<a class="headerlink" href="#settings-permissive-selinux" title="Permalink to this heading"></a></h3>
 <div class="line-block">
 <div class="line">seinfo -t</div>
 </div>
@@ -2608,11 +2616,12 @@
 <span class="linenos"> 8</span>semodule -i sudotev70522v21.pp
 <span class="linenos"> 9</span>semodule -i sudotevcrondv1.pp
 <span class="linenos">10</span>semodule -i sphinxtev1.pp
-<span class="linenos">11</span>semanage permissive -a boot_t
-<span class="linenos">12</span>semanage permissive -a crond_t
-<span class="linenos">13</span>semanage permissive -a crontab_t
-<span class="linenos">14</span>semanage permissive -a system_crontab_t
-<span class="linenos">15</span>semanage module -d permissive_boot_t
+<span class="linenos">11</span>semodule -i myapp1.pp
+<span class="linenos">12</span>semanage permissive -a boot_t
+<span class="linenos">13</span>semanage permissive -a crond_t
+<span class="linenos">14</span>semanage permissive -a crontab_t
+<span class="linenos">15</span>semanage permissive -a system_crontab_t
+<span class="linenos">16</span>semanage module -d permissive_boot_t
 </pre></div>
 </div>
 <div class="line-block">
@@ -2684,7 +2693,7 @@
 </div>
 </div>
 <div class="section" id="optional-soft">
-<h3><span class="section-number">8.1.12. </span>01.12   Optional soft<a class="headerlink" href="#optional-soft" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">6.1.12. </span>01.12   Optional soft<a class="headerlink" href="#optional-soft" title="Permalink to this heading"></a></h3>
 <div class="line-block">
 <div class="line">sudo chmod o-rwx -R &quot;/etc/&quot;;</div>
 <div class="line">sudo chmod o-rwx -R &quot;/boot/&quot;;</div>
@@ -2718,7 +2727,7 @@
 </div>
 </div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> sudo apt-get install transmission transmission-daemon
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> sudo apt-get install transmission
 <span class="linenos">2</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> sudo apt-get install transmission-cli transmission-common transmission-daemon
 </pre></div>
 </div>
@@ -2800,17 +2809,31 @@
 <div class="line">sudo usermod -a -G debian-transmission technics</div>
 <div class="line">sudo service transmission-daemon reload</div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sudo service transmission-daemon start
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>service transmission-daemon start
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>mdadm --detail --scan <span class="p">|</span> sudo tee -a /etc/mdadm/mdadm.conf
+<span class="linenos">2</span>update-initramfs -u
+</pre></div>
+</div>
+<div class="line-block">
 <div class="line"><br /></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> <span class="s1">&#39;/dev/md0 /mnt/sde1 ext4 defaults,nofail,discard 1 0&#39;</span> <span class="p">|</span> tee -a /etc/fstab
+</pre></div>
+</div>
+<div class="line-block">
 <div class="line"><br /></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
+</pre></div>
+</div>
 <div class="line-block">
 <div class="line">dpkg --configure -a</div>
 <div class="line">apt-get dist-upgrade</div>
-</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;\y\n&quot;</span> <span class="p">|</span> apt-get -f install
 </pre></div>
@@ -2870,8 +2893,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="only_code_pii2.html" class="btn btn-neutral float-left" title="7. Appendix Code chunck" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="cut_discr_pii2_pack.html" class="btn btn-neutral float-right" title="9. AutoInstall Package List" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="only_code_pii2.html" class="btn btn-neutral float-left" title="5. Appendix Code chunck" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cut_discr_pii2_pack.html" class="btn btn-neutral float-right" title="7. AutoInstall Package List" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

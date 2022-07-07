@@ -473,6 +473,7 @@ Chunck 41
 	echo -e "y\n" | apt-get install firmware-realtek
 	fi
 	echo -e "y\n" | apt-get install firmware-linux-nonfree
+	echo -e "y\n" | apt-get install firmware-iwlwifi
 	echo -e "y\n" | apt-get install man 
 Chunck 42
 -------------
@@ -642,9 +643,15 @@ Chunck 56
 	echo -e "y\n" | apt-get install xz-utils
 	echo -e "y\n" | apt-get install curl
 	echo -e "y\n" | apt-get install sphinx
+	echo -e "y\n" | apt-get install smartmontools
 	echo -e "y\n" | apt-get install python3-sphinx
-	echo -e "y\n" | sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
-	echo -e "y\n" | sudo apt install -y python3-venv
+	echo -e "y\n" | apt-get install nfs-common
+	echo -e "y\n" | apt-get install build-essential libssl-dev libffi-dev python3-dev
+	echo -e "y\n" | apt-get install python3-venv
+	echo -e "y\n" | apt-get install mdadm 
+	systemctl enable mdadm
+	update-initramfs -u
+	
 	python3 -m venv env
 Chunck 57
 -------------
@@ -792,29 +799,26 @@ Chunck 72
 	if [[ -n $S1 ]]; then
 		sed -i -e "$ a UUID\=$S1	\/mnt\/$TMPS	ext4	defaults	0	2" /etc/fstab
 	fi
-	
-	sed -i -e "s/^UUID=\"b90071b5-8949-4a72-b836-63756e4c7b1d\".*$/#/g" /etc/fstab
+Chunck 73
+-------------
+.. code-block:: bash
+	:linenos:
+
 	done < $filename
 	sudo mount -a
-Chunck 73
+Chunck 74
 -------------
 .. code-block:: bash
 	:linenos:
 
 	echo -e "7_driver_opt" >> steps.txt
 	fi
-Chunck 74
--------------
-.. code-block:: bash
-	:linenos:
-
-	cd /install/
 Chunck 75
 -------------
 .. code-block:: bash
 	:linenos:
 
-	
+	cd /install/
 Chunck 76
 -------------
 .. code-block:: bash
@@ -827,11 +831,17 @@ Chunck 77
 	:linenos:
 
 	
+Chunck 78
+-------------
+.. code-block:: bash
+	:linenos:
+
+	
 	if [[ -z $(sed -n -e "s/^\(9_user_settings\).*/\1/p" steps.txt) ]]; then
 	
 	STEP_TWO_AFTER:
 	
-Chunck 78
+Chunck 79
 -------------
 .. code-block:: bash
 	:linenos:
@@ -859,13 +869,13 @@ Chunck 78
 	 useradd -u 5100 -g technics -d /opt/SAMBA_SHARE/ -s /bin/false -c "technical admin_share" -p $(echo "********" | mkpasswd -s -H MD5) admin_share
 	 useradd -u 5200 -g technics -d /opt/SAMBA_SHARE/ -s /bin/false -c "technical pub_share" -p $(echo "********" | mkpasswd -s -H MD5) pub_share
 	 useradd -u 6100 -g ps_users -s /bin/bash -c "far_user" -p $(echo "********" | mkpasswd -s -H MD5) -m far_user
-Chunck 79
+Chunck 80
 -------------
 .. code-block:: bash
 	:linenos:
 
 	useradd -g ps_users -c "tom" -s /bin/bash -p $(echo "********" | mkpasswd -s -H MD5) -m tom
-Chunck 80
+Chunck 81
 -------------
 .. code-block:: bash
 	:linenos:
@@ -874,7 +884,7 @@ Chunck 80
 	echo -e "********\n********" | smbpasswd -a pub_share
 	smbpasswd -e admin_share
 	smbpasswd -e pub_share
-Chunck 81
+Chunck 82
 -------------
 .. code-block:: bash
 	:linenos:
@@ -890,13 +900,13 @@ Chunck 81
 	chown -R admin_share:technics /opt/ /opt/SAMBA_SHARE /mnt/SMB
 	chmod ug+rw /opt/ /opt/SAMBA_SHARE /mnt/SMB
 	setfacl -m u:pub_share:rwx,u:admin_share:rwx -R "/mnt/SMB";
-Chunck 82
+Chunck 83
 -------------
 .. code-block:: bash
 	:linenos:
 
 	
-Chunck 83
+Chunck 84
 -------------
 .. code-block:: bash
 	:linenos:
@@ -904,140 +914,140 @@ Chunck 83
 	cd /etc/ssh/
 	
 	cp sshd_config sshd_config.tmp
-Chunck 84
--------------
-.. code-block:: bash
-	:linenos:
-
-	 sed -i -e "s/#Port\s.*$\|Port\s.*$/Port $PORT_SSH/g" sshd_config
 Chunck 85
 -------------
 .. code-block:: bash
 	:linenos:
 
-	 sed -i -e "s/#HostKey/HostKey/g" sshd_config
+	 sed -i -e "s/#Port\s.*$\|Port\s.*$/Port $PORT_SSH/g" sshd_config
 Chunck 86
 -------------
 .. code-block:: bash
 	:linenos:
 
-	 sed -i -e "s/#PubkeyAuthentication\s.*$\|PubkeyAuthentication\s.*$/PubkeyAuthentication yes/g" sshd_config
+	 sed -i -e "s/#HostKey/HostKey/g" sshd_config
 Chunck 87
 -------------
 .. code-block:: bash
 	:linenos:
 
-	 sed -i -e "s/#SysLogFacility\s.*$\|SysLogFacility\s.*$/SysLogFacility AUTHPRIV/g" sshd_config
+	 sed -i -e "s/#PubkeyAuthentication\s.*$\|PubkeyAuthentication\s.*$/PubkeyAuthentication yes/g" sshd_config
 Chunck 88
 -------------
 .. code-block:: bash
 	:linenos:
 
-	 sed -i -e "s/#LogLevel\s.*$\|LogLevel\s.*$/#LogLevel INFO/g" sshd_config
+	 sed -i -e "s/#SysLogFacility\s.*$\|SysLogFacility\s.*$/SysLogFacility AUTHPRIV/g" sshd_config
 Chunck 89
 -------------
 .. code-block:: bash
 	:linenos:
 
-	 sed -i -e "s/#LoginGraceTime\s.*$\|LoginGraceTime\s.*$/LoginGraceTime 2m/g" sshd_config
+	 sed -i -e "s/#LogLevel\s.*$\|LogLevel\s.*$/#LogLevel INFO/g" sshd_config
 Chunck 90
 -------------
 .. code-block:: bash
 	:linenos:
 
-	 sed -i -e "s/#PermitRootLogin\s.*$\|PermitRootLogin\s.*$/PermitRootLogin yes/g" sshd_config
+	 sed -i -e "s/#LoginGraceTime\s.*$\|LoginGraceTime\s.*$/LoginGraceTime 2m/g" sshd_config
 Chunck 91
 -------------
 .. code-block:: bash
 	:linenos:
 
-	 sed -i -e "s/#StrictModes\s.*$\|StrictModes\s.*$/StrictModes no/g" sshd_config
+	 sed -i -e "s/#PermitRootLogin\s.*$\|PermitRootLogin\s.*$/PermitRootLogin yes/g" sshd_config
 Chunck 92
 -------------
 .. code-block:: bash
 	:linenos:
 
-	 sed -i -e "s/#MaxAuthTries\s.*$\|MaxAuthTries\s.*$/MaxAuthTries 3/g" sshd_config
+	 sed -i -e "s/#StrictModes\s.*$\|StrictModes\s.*$/StrictModes no/g" sshd_config
 Chunck 93
 -------------
 .. code-block:: bash
 	:linenos:
 
-	 sed -i -e "s/#MaxSessions\s.*$\|MaxSessions\s.*$/MaxSessions 3/g" sshd_config
+	 sed -i -e "s/#MaxAuthTries\s.*$\|MaxAuthTries\s.*$/MaxAuthTries 3/g" sshd_config
 Chunck 94
 -------------
 .. code-block:: bash
 	:linenos:
 
-	 sed -i -e "s/#AuthorizedKeysFile\s.*$\|AuthorizedKeysFile\s.*$/AuthorizedKeysFile \/home\/rootsu\/.ssh\/authorized_keys \/home\/%u\/.ssh\/authorized_keys/g" sshd_config
+	 sed -i -e "s/#MaxSessions\s.*$\|MaxSessions\s.*$/MaxSessions 3/g" sshd_config
 Chunck 95
 -------------
 .. code-block:: bash
 	:linenos:
 
-	 sed -i -e "s/#PasswordAuthentication\s.*$\|PasswordAuthentication\s.*$/PasswordAuthentication no/g" sshd_config
+	 sed -i -e "s/#AuthorizedKeysFile\s.*$\|AuthorizedKeysFile\s.*$/AuthorizedKeysFile \/home\/rootsu\/.ssh\/authorized_keys \/home\/%u\/.ssh\/authorized_keys/g" sshd_config
 Chunck 96
 -------------
 .. code-block:: bash
 	:linenos:
 
-	 sed -i -e "s/#PermitEmptyPasswords\s.*$\|PermitEmptyPasswords\s.*$/PermitEmptyPasswords no/g" sshd_config
+	 sed -i -e "s/#PasswordAuthentication\s.*$\|PasswordAuthentication\s.*$/PasswordAuthentication no/g" sshd_config
 Chunck 97
 -------------
 .. code-block:: bash
 	:linenos:
 
-	 sed -i -e "s/ChallengeResponseAuthentication.*$\|#ChallengeResponseAuthentication.*$/ChallengeResponseAuthentication yes/g" sshd_config
+	 sed -i -e "s/#PermitEmptyPasswords\s.*$\|PermitEmptyPasswords\s.*$/PermitEmptyPasswords no/g" sshd_config
 Chunck 98
 -------------
 .. code-block:: bash
 	:linenos:
 
-	 sed -i -e "s/#UsePAM\s.*$\|UsePAM\s.*$/UsePAM yes/g" sshd_config
+	 sed -i -e "s/ChallengeResponseAuthentication.*$\|#ChallengeResponseAuthentication.*$/ChallengeResponseAuthentication yes/g" sshd_config
 Chunck 99
 -------------
 .. code-block:: bash
 	:linenos:
 
-	 sed -i -e "s/#AllowTcpForwarding\s.*$\|AllowTcpForwarding\s.*$/AllowTcpForwarding yes/g" sshd_config
+	 sed -i -e "s/#UsePAM\s.*$\|UsePAM\s.*$/UsePAM yes/g" sshd_config
 Chunck 100
 --------------
 .. code-block:: bash
 	:linenos:
 
-	 sed -i -e "s/#X11Forwarding\s.*$\|X11Forwarding\s.*$/X11Forwarding yes/g" sshd_config
+	 sed -i -e "s/#AllowTcpForwarding\s.*$\|AllowTcpForwarding\s.*$/AllowTcpForwarding yes/g" sshd_config
 Chunck 101
 --------------
 .. code-block:: bash
 	:linenos:
 
-	 sed -i -e "s/#X11DisplayOffset\s.*$\|X11DisplayOffset\s.*$/X11DisplayOffset 10/g" sshd_config
+	 sed -i -e "s/#X11Forwarding\s.*$\|X11Forwarding\s.*$/X11Forwarding yes/g" sshd_config
 Chunck 102
 --------------
 .. code-block:: bash
 	:linenos:
 
-	 sed -i -e "s/#PrintMotd\s.*$\|PrintMotd\s.*$/PrintMotd yes/g" sshd_config
+	 sed -i -e "s/#X11DisplayOffset\s.*$\|X11DisplayOffset\s.*$/X11DisplayOffset 10/g" sshd_config
 Chunck 103
 --------------
 .. code-block:: bash
 	:linenos:
 
-	 sed -i -e "s/Subsystem\s/#Subsystem\s/g" sshd_config
+	 sed -i -e "s/#PrintMotd\s.*$\|PrintMotd\s.*$/PrintMotd yes/g" sshd_config
 Chunck 104
 --------------
 .. code-block:: bash
 	:linenos:
 
-	systemctl restart ssh
+	 sed -i -e "s/Subsystem\s/#Subsystem\s/g" sshd_config
 Chunck 105
+--------------
+.. code-block:: bash
+	:linenos:
+
+	systemctl restart ssh
+Chunck 106
 --------------
 .. code-block:: bash
 	:linenos:
 
 	sudo bash ~/.cmd_shell.sh --mode "ssh_keygen" --uadd "tom" --gadd "ps_users" --pwd "debian"
 	bash ~/.cmd_shell.sh --mode "ssh_keygen" --uadd "admin" --gadd "admins" --pwd "debian"
-Chunck 106
+Chunck 107
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1055,13 +1065,13 @@ Chunck 106
 	systemctl restart autofs
 	systemctl restart smbd
 	
-Chunck 107
+Chunck 108
 --------------
 .. code-block:: bash
 	:linenos:
 
 	echo -e "y" | apt-get install ntfs-3g;
-Chunck 108
+Chunck 109
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1071,60 +1081,54 @@ Chunck 108
 	cd /etc/
 	sudo cp /etc/vsftpd.conf/etc/vsftpd.conf_default
 	
-Chunck 109
---------------
-.. code-block:: bash
-	:linenos:
-
-	sed -i -e "s/listen=.*$/listen=YES/g" vsftpd.conf
 Chunck 110
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "s/listen_ipv6=.*$/listen_ipv6=NO/g" vsftpd.conf
+	sed -i -e "s/listen=.*$/listen=YES/g" vsftpd.conf
 Chunck 111
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "s/#anonymous_enable=.*$\|anonymous_enable=.*$/anonymous_enable=NO/g" vsftpd.conf
+	sed -i -e "s/listen_ipv6=.*$/listen_ipv6=NO/g" vsftpd.conf
 Chunck 112
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "s/#anon_upload_enable=.*$\|anon_upload_enable=.*$/anon_upload_enable=NO/g" vsftpd.conf
+	sed -i -e "s/#anonymous_enable=.*$\|anonymous_enable=.*$/anonymous_enable=NO/g" vsftpd.conf
 Chunck 113
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "s/anon_mkdir_write_enable=.*$\|#anon_mkdir_write_enable=.*$/anon_mkdir_write_enable=NO/g" vsftpd.conf
+	sed -i -e "s/#anon_upload_enable=.*$\|anon_upload_enable=.*$/anon_upload_enable=NO/g" vsftpd.conf
 Chunck 114
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "s/#write_enable=.*$\|write_enable=.*$/write_enable=YES/g" vsftpd.conf
+	sed -i -e "s/anon_mkdir_write_enable=.*$\|#anon_mkdir_write_enable=.*$/anon_mkdir_write_enable=NO/g" vsftpd.conf
 Chunck 115
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "s/#local_umask=.*$\|local_umask=.*$/local_umask=022/g" vsftpd.conf
+	sed -i -e "s/#write_enable=.*$\|write_enable=.*$/write_enable=YES/g" vsftpd.conf
 Chunck 116
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "s/connect_from_port_20=.*$/connect_from_port_20=NO/g" vsftpd.conf
+	sed -i -e "s/#local_umask=.*$\|local_umask=.*$/local_umask=022/g" vsftpd.conf
 Chunck 117
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "s/#ascii_upload_enable=.*$\|ascii_upload_enable=.*$/ascii_upload_enable=YES/g" vsftpd.conf
+	sed -i -e "s/connect_from_port_20=.*$/connect_from_port_20=NO/g" vsftpd.conf
 Chunck 118
 --------------
 .. code-block:: bash
@@ -1136,196 +1140,202 @@ Chunck 119
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "s/#ascii_download_enable=.*$\|ascii_download_enable=.*$/ascii_download_enable=YES/g" vsftpd.conf
+	sed -i -e "s/#ascii_upload_enable=.*$\|ascii_upload_enable=.*$/ascii_upload_enable=YES/g" vsftpd.conf
 Chunck 120
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "s/#ftpd_banner=.*$\|ftpd_banner=.*$/ftpd_banner=Welcome to $HOSTNAME!!!/g" vsftpd.conf
+	sed -i -e "s/#ascii_download_enable=.*$\|ascii_download_enable=.*$/ascii_download_enable=YES/g" vsftpd.conf
 Chunck 121
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "0,/#chroot_local_user=.*$\|chroot_local_user=.*$/ s//chroot_local_user=YES/g" vsftpd.conf
+	sed -i -e "s/#ftpd_banner=.*$\|ftpd_banner=.*$/ftpd_banner=Welcome to $HOSTNAME!!!/g" vsftpd.conf
 Chunck 122
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "s/#ls_recurse_enable=.*$\|ls_recurse_enable=.*$/ls_recurse_enable=YES/g" vsftpd.conf
+	sed -i -e "0,/#chroot_local_user=.*$\|chroot_local_user=.*$/ s//chroot_local_user=YES/g" vsftpd.conf
 Chunck 123
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "s/#chroot_list_file=.*$\|chroot_list_file=.*$/chroot_list_file=\/home\/rootsu\/vsftpd.chroot_list/g" vsftpd.conf
+	sed -i -e "s/#ls_recurse_enable=.*$\|ls_recurse_enable=.*$/ls_recurse_enable=YES/g" vsftpd.conf
 Chunck 124
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "s/#utf8_filesystem=.*$\|utf8_filesystem=.*$/utf8_filesystem=YES/g" vsftpd.conf
+	sed -i -e "s/#chroot_list_file=.*$\|chroot_list_file=.*$/chroot_list_file=\/home\/rootsu\/vsftpd.chroot_list/g" vsftpd.conf
 Chunck 125
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "s/pam_service_name=.*$/#pam_service_name=vsftpd/g" vsftpd.conf
+	sed -i -e "s/#utf8_filesystem=.*$\|utf8_filesystem=.*$/utf8_filesystem=YES/g" vsftpd.conf
 Chunck 126
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "s/rsa_cert_file=.*$\|#rsa_cert_file=.*$/rsa_cert_file=\/etc\/ssl\/certs\/vsftpd.crt/g" vsftpd.conf
+	sed -i -e "s/pam_service_name=.*$/#pam_service_name=vsftpd/g" vsftpd.conf
 Chunck 127
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "s/rsa_private_key_file=.*$\|#rsa_private_key_file=.*$/rsa_private_key_file=\/etc\/ssl\/private\/vsftpd.key/g" vsftpd.conf
+	sed -i -e "s/rsa_cert_file=.*$\|#rsa_cert_file=.*$/rsa_cert_file=\/etc\/ssl\/certs\/vsftpd.crt/g" vsftpd.conf
 Chunck 128
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "s/ssl_enable=.*$\|#ssl_enable=.*$/ssl_enable=YES/g" vsftpd.conf
+	sed -i -e "s/rsa_private_key_file=.*$\|#rsa_private_key_file=.*$/rsa_private_key_file=\/etc\/ssl\/private\/vsftpd.key/g" vsftpd.conf
 Chunck 129
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "$ a force_dot_files=YES" vsftpd.conf
+	sed -i -e "s/ssl_enable=.*$\|#ssl_enable=.*$/ssl_enable=YES/g" vsftpd.conf
 Chunck 130
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "$ a allow_anon_ssl=NO" vsftpd.conf
+	sed -i -e "$ a force_dot_files=YES" vsftpd.conf
 Chunck 131
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "$ a force_local_data_ssl=NO" vsftpd.conf
+	sed -i -e "$ a allow_anon_ssl=NO" vsftpd.conf
 Chunck 132
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "$ a force_local_logins_ssl=YES" vsftpd.conf
+	sed -i -e "$ a force_local_data_ssl=NO" vsftpd.conf
 Chunck 133
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "$ a ssl_sslv3=YES" vsftpd.conf
+	sed -i -e "$ a force_local_logins_ssl=YES" vsftpd.conf
 Chunck 134
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "$ a require_ssl_reuse=YES" vsftpd.conf
+	sed -i -e "$ a ssl_sslv3=YES" vsftpd.conf
 Chunck 135
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "$ a ssl_ciphers=HIGH" vsftpd.conf
+	sed -i -e "$ a require_ssl_reuse=YES" vsftpd.conf
 Chunck 136
+--------------
+.. code-block:: bash
+	:linenos:
+
+	sed -i -e "$ a ssl_ciphers=HIGH" vsftpd.conf
+Chunck 137
 --------------
 .. code-block:: bash
 	:linenos:
 
 	sed -i -e "$ a cmds_allowed=ABOR,CWD,RMW,DELE,LIST,MDTM,MKD,NLST,PASS,PASV,PORT,PWD,QUIT,RETR,RMD,RNFR,RNTO,SITE,SIZE,STOR,TYPE,USER,CDUP,HELP,MODE,NOOP,STAT,STOU,STRU" vsftpd.conf
 	
-Chunck 137
---------------
-.. code-block:: bash
-	:linenos:
-
-	sed -i -e "$ a userlist_enable=YES" vsftpd.conf
 Chunck 138
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "$ a userlist_deny=NO" vsftpd.conf
+	sed -i -e "$ a userlist_enable=YES" vsftpd.conf
 Chunck 139
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "$ a userlist_enable=YES" vsftpd.conf
+	sed -i -e "$ a userlist_deny=NO" vsftpd.conf
 Chunck 140
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "$ a userlist_file=/home/rootsu/vsftpd-virtual_user/vsftpd_user" vsftpd.conf
+	sed -i -e "$ a userlist_enable=YES" vsftpd.conf
 Chunck 141
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "$ a user_config_dir=/home/rootsu/vsftpd-virtual_user/" vsftpd.conf
+	sed -i -e "$ a userlist_file=/home/rootsu/vsftpd-virtual_user/vsftpd_user" vsftpd.conf
 Chunck 142
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "$ a chown_uploads=YES" vsftpd.conf
+	sed -i -e "$ a user_config_dir=/home/rootsu/vsftpd-virtual_user/" vsftpd.conf
 Chunck 143
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "$ a chown_username=nobody" vsftpd.conf
+	sed -i -e "$ a chown_uploads=YES" vsftpd.conf
 Chunck 144
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "$ a tcp_wrappers=YES" vsftpd.conf
+	sed -i -e "$ a chown_username=nobody" vsftpd.conf
 Chunck 145
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "$ a max_per_ip=10" vsftpd.conf
+	sed -i -e "$ a tcp_wrappers=YES" vsftpd.conf
 Chunck 146
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "$ a userlist_enable=YES" vsftpd.conf
+	sed -i -e "$ a max_per_ip=10" vsftpd.conf
 Chunck 147
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "$ a local_enable=YES" vsftpd.conf
+	sed -i -e "$ a userlist_enable=YES" vsftpd.conf
 Chunck 148
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "$ a virtual_use_local_privs=YES" vsftpd.conf
+	sed -i -e "$ a local_enable=YES" vsftpd.conf
 Chunck 149
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "$ a listen_port=21" vsftpd.conf
+	sed -i -e "$ a virtual_use_local_privs=YES" vsftpd.conf
 Chunck 150
+--------------
+.. code-block:: bash
+	:linenos:
+
+	sed -i -e "$ a listen_port=21" vsftpd.conf
+Chunck 151
 --------------
 .. code-block:: bash
 	:linenos:
 
 	cd /etc/pam.d/
 	sed -i -e "s/auth	required	pam_shells.so.*$\|#auth	required	pam_shells.so.*$/#auth	required	pam_shells.so/g" vsftpd
-Chunck 151
+Chunck 152
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1336,7 +1346,7 @@ Chunck 151
 	chmod 770 /home/rootsu/vsftpd.chroot_list
 	chmod 750 -R /home/rootsu
 	
-Chunck 152
+Chunck 153
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1345,7 +1355,7 @@ Chunck 152
 	sudo systemctl restart vsftpd
 	sudo systemctl enable vsftpd
 	iptables –F
-Chunck 153
+Chunck 154
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1357,13 +1367,13 @@ Chunck 153
 	
 	echo -e "9_user_settings" >> steps.txt
 	fi
-Chunck 154
+Chunck 155
 --------------
 .. code-block:: bash
 	:linenos:
 
 	
-Chunck 155
+Chunck 156
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1385,7 +1395,7 @@ Chunck 155
 	semanage fcontext -a -u system_u "/home(/.*)?";
 	chcon -Rv -u system_u "/home/";
 	
-Chunck 156
+Chunck 157
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1405,7 +1415,7 @@ Chunck 156
 	setfacl -m u:pub_share:rwx,u:admin_share:rwx -R "/opt/SAMBA_SHARE/";
 	
 	setsebool -P ssh_sysadm_login on
-Chunck 157
+Chunck 158
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1433,13 +1443,13 @@ Chunck 157
 	semanage interface -a -t netif_t -r s0-s0:c0.c1023 $( ip addr | sed -n -e "s/.*$COUNT\:\s\(.*\)\:\s<.*/\1/p")
 	((COUNT++));
 	done
-Chunck 158
+Chunck 159
 --------------
 .. code-block:: bash
 	:linenos:
 
 	semanage permissive -a boot_t 
-Chunck 159
+Chunck 160
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1451,7 +1461,7 @@ Chunck 159
 	setsebool -P cron_read_all_user_content 1
 	setsebool -P cron_read_generic_user_content 1
 	
-Chunck 160
+Chunck 161
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1460,7 +1470,7 @@ Chunck 160
 	setsebool -P webadm_manage_user_files 1
 	setsebool -P webadm_read_user_files 1
 	
-Chunck 161
+Chunck 162
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1473,7 +1483,7 @@ Chunck 161
 	setsebool -P samba_share_fusefs 1
 	setsebool -P samba_share_nfs 1
 	setsebool -P use_samba_home_dirs 1
-Chunck 162
+Chunck 163
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1484,7 +1494,7 @@ Chunck 162
 	setsebool -P systemd_tmpfiles_manage_all 1
 	setsebool -P cron_manage_generic_user_content 1
 	
-Chunck 163
+Chunck 164
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1508,7 +1518,7 @@ Chunck 163
 	systemctl reenable fstrim.timer
 	systemctl start fstrim.service
 	systemctl start fstrim.timer
-Chunck 164
+Chunck 165
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1516,13 +1526,13 @@ Chunck 164
 	
 	cd /etc/selinux
 	
-Chunck 165
+Chunck 166
 --------------
 .. code-block:: bash
 	:linenos:
 
 	sed -i -e "s/SELINUX=permissive\|SELINUX=default/SELINUX=enforcing/g" config
-Chunck 166
+Chunck 167
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1538,20 +1548,20 @@ Chunck 166
 	sed -i -e '$a -a exit,always -S open -F auid>=0' /etc/audit/audit.rules
 	
 	chmod o-x "/etc/systemd/system.conf";
-Chunck 167
+Chunck 168
 --------------
 .. code-block:: bash
 	:linenos:
 
 	chmod o-rwx -R "/boot/";
-Chunck 168
+Chunck 169
 --------------
 .. code-block:: bash
 	:linenos:
 
 	chmod o-rwx -R "/srv/";
 	chmod o-rwx -R "/mnt/";
-Chunck 169
+Chunck 170
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1560,7 +1570,7 @@ Chunck 169
 	chcon -t tmp_t -R "/tmp"
 	chmod o-rwx -R "/tmp/";
 	chmod o-rwx "/media/";
-Chunck 170
+Chunck 171
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1570,20 +1580,20 @@ Chunck 170
 	
 	chmod o-r -R "/home/";
 	chmod o-x -R "/home/rootsu" "/home/admin/";
-Chunck 171
+Chunck 172
 --------------
 .. code-block:: bash
 	:linenos:
 
 	
 	echo "deb https:\\\download.webmin.com\download\repository sarge contrib" >> /etc/apt/sources.list
-Chunck 172
+Chunck 173
 --------------
 .. code-block:: bash
 	:linenos:
 
 	cd ~
-Chunck 173
+Chunck 174
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1594,7 +1604,7 @@ Chunck 173
 	semodule -i loaderlocalv3.pp
 	semodule -i loaderlocalv4.pp
 	
-Chunck 174
+Chunck 175
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1609,18 +1619,19 @@ Chunck 174
 	semodule -i sudotev70522v21.pp
 	semodule -i sudotevcrondv1.pp
 	semodule -i sphinxtev1.pp
+	semodule -i myapp1.pp
 	semanage permissive -a boot_t
 	semanage permissive -a crond_t
 	semanage permissive -a crontab_t
 	semanage permissive -a system_crontab_t
 	semanage module -d permissive_boot_t
-Chunck 175
+Chunck 176
 --------------
 .. code-block:: bash
 	:linenos:
 
 	semanage user -m -R "system_r sysadm_r staff_r" -r "s0-s0:c0.c1023" sysadm_u
-Chunck 176
+Chunck 177
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1628,20 +1639,20 @@ Chunck 176
 	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" admin
 	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" admin_tech
 	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" %admins
-Chunck 177
+Chunck 178
 --------------
 .. code-block:: bash
 	:linenos:
 
 	semanage login -a -s unconfined_u -r "s0-s0:c0.c1023" %sudo
 	semanage login -a -s user_u tom
-Chunck 178
+Chunck 179
 --------------
 .. code-block:: bash
 	:linenos:
 
 	
-Chunck 179
+Chunck 180
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1662,7 +1673,7 @@ Chunck 179
 	chmod 755 /var/webmin/.webmin
 	semanage fcontext -a -t tmp_t "/var/webmin/.webmin";
 	chcon -Rv -t tmp_t "/var/webmin/.webmin";
-Chunck 180
+Chunck 181
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1673,20 +1684,20 @@ Chunck 180
 	systemctl enable webmin
 	systemctl start webmin
 	
-Chunck 181
---------------
-.. code-block:: bash
-	:linenos:
-
-	echo -e "y\n" | sudo apt-get install transmission transmission-daemon
-	echo -e "y\n" | sudo apt-get install transmission-cli transmission-common transmission-daemon
 Chunck 182
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sudo systemctl enable transmission-daemon.service
+	echo -e "y\n" | sudo apt-get install transmission
+	echo -e "y\n" | sudo apt-get install transmission-cli transmission-common transmission-daemon
 Chunck 183
+--------------
+.. code-block:: bash
+	:linenos:
+
+	sudo systemctl enable transmission-daemon.service
+Chunck 184
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1695,21 +1706,21 @@ Chunck 183
 	mkdir -m 775 /opt/SAMBA_SHARE/bittorrent_upload
 	chown admin_share:technics /opt/SAMBA_SHARE/bittorrent_download_store
 	chown :debian-transmission /opt/SAMBA_SHARE/bittorrent_upload
-Chunck 184
+Chunck 185
 --------------
 .. code-block:: bash
 	:linenos:
 
 	sudo usermod -aG debian-transmission admin_share
 	sudo usermod -aG debian-transmission admin_share
-Chunck 185
+Chunck 186
 --------------
 .. code-block:: bash
 	:linenos:
 
 	cp -R /etc/transmission-daemon/ /opt/.transmission_config
 	chown admin_share:technics -R /opt/.transmission_config
-Chunck 186
+Chunck 187
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1718,50 +1729,69 @@ Chunck 186
 	sed -i -e "s/CONFIG_DIR=.*$/CONFIG_DIR=\"\/opt\/.transmission_config\/settings.json\"/g" /etc/default/transmission-daemon
 	semanage port -a -t http_port_t -p tcp 9091
 	semanage port -a -t http_port_t -p udp 9091
-Chunck 187
+Chunck 188
 --------------
 .. code-block:: bash
 	:linenos:
 
 	sudo service transmission-daemon stop
 	sed -i -e "s/\"rpc-whitelist\"\:.*$/\"rpc-whitelist\"\: \"127.0.0.1,192.168.*.*\",/g" /var/lib/transmission-daemon/info/settings.json
-Chunck 188
---------------
-.. code-block:: bash
-	:linenos:
-
-	sed -i -e "s/\"rpc-username\"\:.*$/\"rpc-username\"\: \"pub_share\",/g" /var/lib/transmission-daemon/info/settings.json
 Chunck 189
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "s/\"rpc-password\"\:.*$/\"rpc-password\"\: \"********\",/g" /var/lib/transmission-daemon/info/settings.json
+	sed -i -e "s/\"rpc-username\"\:.*$/\"rpc-username\"\: \"pub_share\",/g" /var/lib/transmission-daemon/info/settings.json
 Chunck 190
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "s/\"download-dir\"\:.*$/\"download-dir\"\: \"\/opt\/SAMBA_SHARE\/bittorrent_download_store\",/g" /var/lib/transmission-daemon/info/settings.json
+	sed -i -e "s/\"rpc-password\"\:.*$/\"rpc-password\"\: \"********\",/g" /var/lib/transmission-daemon/info/settings.json
 Chunck 191
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sudo service transmission-daemon start
+	sed -i -e "s/\"download-dir\"\:.*$/\"download-dir\"\: \"\/opt\/SAMBA_SHARE\/bittorrent_download_store\",/g" /var/lib/transmission-daemon/info/settings.json
 Chunck 192
 --------------
 .. code-block:: bash
 	:linenos:
 
-	echo -e "\y\n" | apt-get -f install
+	service transmission-daemon start
 Chunck 193
 --------------
 .. code-block:: bash
 	:linenos:
 
-	echo -e "y\n" | apt-get autoremove
+	mdadm --detail --scan | sudo tee -a /etc/mdadm/mdadm.conf
+	update-initramfs -u
 Chunck 194
+--------------
+.. code-block:: bash
+	:linenos:
+
+	echo '/dev/md0 /mnt/sde1 ext4 defaults,nofail,discard 1 0' | tee -a /etc/fstab
+Chunck 195
+--------------
+.. code-block:: bash
+	:linenos:
+
+	
+Chunck 196
+--------------
+.. code-block:: bash
+	:linenos:
+
+	echo -e "\y\n" | apt-get -f install
+Chunck 197
+--------------
+.. code-block:: bash
+	:linenos:
+
+	echo -e "y\n" | apt-get autoremove
+Chunck 198
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1770,14 +1800,14 @@ Chunck 194
 	echo -e "10_SELinux_settings" >> steps.txt
 	fi
 	echo "Press ESC key to quit"
-Chunck 195
+Chunck 199
 --------------
 .. code-block:: bash
 	:linenos:
 
 	while read -r -n1 key
 	do
-Chunck 196
+Chunck 200
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1787,7 +1817,7 @@ Chunck 196
 	break;
 	fi
 	done;
-Chunck 197
+Chunck 201
 --------------
 .. code-block:: bash
 	:linenos:

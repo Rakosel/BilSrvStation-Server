@@ -276,6 +276,7 @@ k+=1;
 s0="";
 s1="";
 s2="";
+s3="";
 #print(POS_LIST)
 #https://pyneng.readthedocs.io/ru/latest/book/15_module_re/
 for i in linep_out:
@@ -287,6 +288,7 @@ for i in linep_out:
             s0=''.join(re.findall("#\t\t\t(\d\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
             s1=''.join(re.findall("#\t\t\t(\d\d.\d\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
             s2=''.join(re.findall("#\t\t\t(\d\d.\d\d.\d\d+\t+[a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
+            s3=''.join(re.findall("^.. ", linep[POS_0]));
             if(s0!=""):
                 h1=''.join(['=']*len(s0));
                 linep_out[k] = strToList("{0}\n{1}\n".format(s0,h1));
@@ -306,8 +308,11 @@ for i in linep_out:
                 linep_out[k] = strToList("{0}\n{1}\n".format(s2,h3));
                 k+=3;
                 POS_0=POS_0+1;
+            if(s3!=""):
+                k+=1;
+                POS_0=POS_0+1;
                 #print("{0} {1}".format(POS_0,POS_END))
-            if(s0=="" and s1=="" and s2==""):
+            if(s0=="" and s1=="" and s2=="" and s3==""):
                 linep[POS_0] = re.sub('#<--!|#!-->', '|\t', linep[POS_0])
                 linep[POS_0] = re.sub('#', '|\t', linep[POS_0])
                 #linep[POS_0] = re.sub('|    danger!!!', '.. danger::', linep[POS_0])

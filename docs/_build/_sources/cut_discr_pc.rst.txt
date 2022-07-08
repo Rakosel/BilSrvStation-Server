@@ -101,7 +101,6 @@ ISO InstallDeb Cut Discr
 	if [ $? -ne 0 ]
 	then
 	echo "Bad SHA512SUMS GPG signature. Aborting\r\n"
-|	        exit 1
 .. code-block:: bash
 	:linenos:
 
@@ -119,7 +118,6 @@ ISO InstallDeb Cut Discr
 	if [ $? -ne 0 ]
 	then
 	echo "Bad ISO checksum. Aborting\r\n"
-|	        exit 1
 .. code-block:: bash
 	:linenos:
 
@@ -127,7 +125,6 @@ ISO InstallDeb Cut Discr
 	fi
 |	if [ $ONLY_DOWNLOAD == 1 ]
 |	then
-|	     exit 0
 |	fi
 .. code-block:: bash
 	:linenos:
@@ -337,7 +334,6 @@ ISO InstallDeb Cut Discr
 	
 	if [[ -z $PRESEED ]]
 	then
-|	   echo "d-i debian-installer/locale string en_US" > preseed.cfg
 .. code-block:: bash
 	:linenos:
 

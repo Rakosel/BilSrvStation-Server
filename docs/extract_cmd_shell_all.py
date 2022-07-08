@@ -291,10 +291,10 @@ for i in linep_out:
         POS_END=int((''.join(POS_LIST[j]).split(' ')[2]),10);
         while(POS_0<=POS_END):
             #print(linep[POS_0])
-            s0=''.join(re.findall("#\t([a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
-            s1=''.join(re.findall("#\t\t([a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
-            s2=''.join(re.findall("#\t\t\t([a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
-            s3=''.join(re.findall("#\t\t\t\t([a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
+            s0=''.join(re.findall("#\t([0-9a-zA-Zа-яА-ЯеЁ\./_\-&><=$%\[\]* ]*)", linep[POS_0]));
+            s1=''.join(re.findall("#\t\t([0-9a-zA-Zа-яА-ЯеЁ\./_\-&><=$%\[\]* ]*)", linep[POS_0]));
+            s2=''.join(re.findall("#\t\t\t([0-9a-zA-Zа-яА-ЯеЁ\./_\-&><=$%\[\]* ]*)", linep[POS_0]));
+            s3=''.join(re.findall("#\t\t\t\t([0-9a-zA-Zа-яА-ЯеЁ\./_\-&><=$%\[\]* ]*)", linep[POS_0]));
             if(s0!=""):
                 h1=''.join(['=']*len(s0));
                 linep_out[k] = strToList("{0}\n{1}\n".format(s0,h1));

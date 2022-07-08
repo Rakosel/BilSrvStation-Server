@@ -9,8 +9,8 @@ CMD_SHELL Cut Discr
 
 	set -x
 |	
-User script generator Version 
-==============================
+User script generator Version 1.2.1a 
+=====================================
 |	
 |	 $|	 - counter arguments
 |	 $@ - listing arguments

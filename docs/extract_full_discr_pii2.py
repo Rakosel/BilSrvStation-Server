@@ -94,7 +94,7 @@ with open(pdir,"rt") as fpii2:
         #print(content[j])
 fpii2.close();
 
-pdir="extract_full_discr_pii2.txt";
+pdir="full_discr_pii2.txt";
 
 with open(pdir,"rt") as dfpii2:
         #s0=''.join(content[j]);
@@ -229,10 +229,10 @@ for i in linep_out:
         trig_search_comm=0;
         while(POS_0<=POS_END):
             #print(linep[POS_0])
-            s0=''.join(re.findall("#\t([a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
-            s1=''.join(re.findall("#\t\t([a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
-            s2=''.join(re.findall("#\t\t\t([a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
-            s3=''.join(re.findall("#\t\t\t\t([a-zA-Z/_\-&><=$%\[\]* ]*)", linep[POS_0]));
+            s0=''.join(re.findall("#\t([0-9a-zA-Zа-яА-ЯеЁ\./_\-&><=$%\[\]* ]*)", linep[POS_0]));
+            s1=''.join(re.findall("#\t\t([0-9a-zA-Zа-яА-ЯеЁ\./_\-&><=$%\[\]* ]*)", linep[POS_0]));
+            s2=''.join(re.findall("#\t\t\t([0-9a-zA-Zа-яА-ЯеЁ\./_\-&><=$%\[\]* ]*)", linep[POS_0]));
+            s3=''.join(re.findall("#\t\t\t\t([0-9a-zA-Zа-яА-ЯеЁ\./_\-&><=$%\[\]* ]*)", linep[POS_0]));
             if(s0!=""):
                 h1=''.join(['=']*len(s0));
                 linep_out[k] = strToList("{0}\n{1}\n".format(s0,h1));
@@ -388,10 +388,10 @@ for i in linep_dfpii2_out:
         #print("{0} {1}\n".format(POS_0,POS_END))
         j+=1;
         while(POS_0<=POS_END):
-            s0=''.join(re.findall("^(\t[a-zA-Zа-яА-ЯеЁ/_\-&><=$%\[\]* ]*)", linep_dfpii2[POS_0])).strip();
-            s1=''.join(re.findall("^(\t\t[a-zA-Zа-яА-ЯеЁ/_\-&><=$%\[\]* ]*)", linep_dfpii2[POS_0])).strip();
-            s2=''.join(re.findall("^(\t\t\t[a-zA-Zа-яА-ЯеЁ/_\-&><=$%\[\]* ]*)", linep_dfpii2[POS_0])).strip();
-            s3=''.join(re.findall("^(\t\t\t\t[a-zA-Zа-яА-ЯеЁ/_\-&><=$%\[\]* ]*)", linep_dfpii2[POS_0])).strip();
+            s0=''.join(re.findall("^(\t[0-9a-zA-Zа-яА-ЯеЁ\./_\-&><=$%\[\]* ]*)", linep_dfpii2[POS_0])).strip();
+            s1=''.join(re.findall("^(\t\t[0-9a-zA-Zа-яА-ЯеЁ\./_\-&><=$%\[\]* ]*)", linep_dfpii2[POS_0])).strip();
+            s2=''.join(re.findall("^(\t\t\t[0-9a-zA-Zа-яА-ЯеЁ\./_\-&><=$%\[\]* ]*)", linep_dfpii2[POS_0])).strip();
+            s3=''.join(re.findall("^(\t\t\t\t[0-9a-zA-Zа-яА-ЯеЁ\./_\-&><=$%\[\]* ]*)", linep_dfpii2[POS_0])).strip();
             if(s0!=""):
                 h1=''.join(['=']*len(s0));
                 linep_dfpii2_out[k] = strToList("{0}\n{1}\n".format(s0,h1));
@@ -401,7 +401,7 @@ for i in linep_dfpii2_out:
                 h2=''.join(['-']*len(s1));
                 linep_dfpii2_out[k] = strToList("{0}\n{1}\n".format(s1,h2));
                 #k+=1;
-                POS_0=POS_0+1;
+                #POS_0=POS_0+1;
             if(s2!=""):
                 h3=''.join(["~"]*len(s2));
                 linep_dfpii2_out[k] = strToList("{0}\n{1}\n".format(s2,h3));

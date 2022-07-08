@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>4. Полное описание Server &mdash; BilSrvStation_Server_PC 1.0.2a documentation</title>
+  <title>4. Полное описание сервера &mdash; BilSrvStation_Server_PC 1.0.2a documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -44,9 +44,10 @@
 <li class="toctree-l1"><a class="reference internal" href="sourcelink.html">1. Навигация</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cut_discr_pc.html">2. ISO InstallDeb Cut Discr</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cut_discr_preseed.html">3. Preseed Cut Discr</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Полное описание Server</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">4.1. Разбор основного файла</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#python-string-comparison-operators">4.2. Python String Comparison operators</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Полное описание сервера</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id4">4.1. Описание структуры сервера</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pii2-sh">4.2. Разбор основного файла pii2.sh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#python-string-comparison-operators">4.3. Python String Comparison operators</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="only_code_pii2.html">5. Appendix Code chunck</a></li>
@@ -72,7 +73,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li><span class="section-number">4. </span>Полное описание Server</li>
+      <li><span class="section-number">4. </span>Полное описание сервера</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/full_discr_pii2.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -82,16 +83,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="server">
-<h1><span class="section-number">4. </span>Полное описание Server<a class="headerlink" href="#server" title="Permalink to this heading"></a></h1>
+  <div class="section" id="id1">
+<h1><span class="section-number">4. </span>Полное описание сервера<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
 <div class="line-block">
 <div class="line-block">
-<div class="line">Данная статья рассматривает полное описание автономного сервера <em>BilSrvStation</em> на <em>Linux Debian10</em></div>
+<div class="line">Данная статья рассматривает полное описание автономного сервера <em>BilSrvStation</em> на <a href="#id2"><span class="problematic" id="id3">*</span></a>Linux</div>
 </div>
-<div class="line">by <a href="#id4"><span class="problematic" id="id5">|author|</span></a>. Основаня идея заключается в том, что бы обеспечить документирвоание</div>
-<div class="line">реального сервера/рабочего места, после &quot;чистой&quot;, автоматической установки со всеми необходимыми настройками</div>
-<div class="line">и программами. В начале описывается структура файлов для формирования загрузочного диска, далее следует полное</div>
-<div class="line">описание скриптового <cite>*pii2.sh*</cite> без</div>
+<div class="line">Debian10* by <a href="#id7"><span class="problematic" id="id8">|author|</span></a>. Основаня идея заключается в том, что бы обеспечить документирование реального сервера/рабочего места, после &quot;чистой&quot;, автоматической установки со всеми необходимыми настройками и программами. В начале описывается структура файлов для формирования загрузочного диска, далее следует полное</div>
+<div class="line">описание скриптового <strong>pii2.sh</strong> без</div>
 </div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -108,28 +107,35 @@
 <div class="line">- Сервер защищён пакетом SELinux с настроенными политиками</div>
 <div class="line">- Локаничное описание, позволяющее сэкономить время на освоение</div>
 <div class="line">- Установленные все полезные утилиты, необходимые для удобного администрирования</div>
+<div class="line">- Данная установка универсальная для широкого спектра задач</div>
 </div>
-<ul class="simple">
-<li><p>Данная установка универсальная для широкого спектра задач</p></li>
-</ul>
-<div class="section" id="id1">
-<h2><span class="section-number">4.1. </span>Разбор основного файла<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<div class="section" id="id4">
+<h2><span class="section-number">4.1. </span>Описание структуры сервера<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
 <div class="line-block">
+<div class="line">Структура сервера состоит из следующих папок и файлов.</div>
+</div>
+</div>
+<div class="section" id="pii2-sh">
+<h2><span class="section-number">4.2. </span>Разбор основного файла pii2.sh<a class="headerlink" href="#pii2-sh" title="Permalink to this heading"></a></h2>
+<div class="line-block">
+<div class="line-block">
+<div class="line">Код начинается с функции <cite>*jumpto*</cite>, которая обеспечивает переход по меткам '<em>GOTO</em>'. В роли метки служит её объявление</div>
+</div>
 <div class="line">'<em>&lt;name&gt;=${&lt;number&gt;:-&quot;&lt;name&gt;&quot;}</em>'. Где <cite>*&lt;name&gt;*</cite> - название метки GOTO, &lt;number&gt; - номер метки. Т.е. переменной &lt;name&gt; присваивается структура из наименования</div>
 <div class="line">метки с соответствующему номеру. После объявление метки в коде она используется '<em>&lt;number&gt;:</em>', а её вызов осуществляется через '<em>jumpto $&lt;name&gt;</em>'.</div>
-<div class="line">Данная функция <cite>*jumpto*</cite> принимает два аргумента '<em>$0</em>' и '<em>$1</em>', которые соответствуют имени файла и названия метки.</div>
+<div class="line">Данная функция <cite>*jumpto*</cite> принимает два аргумента <cite>*$0*</cite> и <cite>*$1*</cite>, которые соответствуют имени файла и названия метки.</div>
 <div class="line">Рассмотрим строчку функции::</div>
 <div class="line-block">
-<div class="line">'<em>cmd=$(sed -n &quot;/$label:/{:a;n;p;ba};&quot; $0 | grep -v ':$')</em>'.</div>
+<div class="line"><cite>*cmd=$(sed -n &quot;/$label:/{:a;n;p;ba};&quot; $0 | grep -v ':$')*</cite>.</div>
 </div>
 <div class="line">В документации в разделе '<em>6.4 Branching and Flow Control</em>' <a class="reference external" href="https://www.gnu.org/software/sed/manual/sed.html">SEDERE</a> указана адресация::</div>
 <div class="line-block">
-<div class="line">'[addr]X'</div>
-<div class="line">'[addr]{ X ; X ; X }'</div>
-<div class="line">'/regexp/X'</div>
-<div class="line">'/regexp/{ X ; X ; X }'</div>
+<div class="line"><cite>[addr]X</cite></div>
+<div class="line"><cite>[addr]{ X ; X ; X }</cite></div>
+<div class="line"><cite>/regexp/X</cite></div>
+<div class="line"><cite>/regexp/{ X ; X ; X }</cite></div>
 </div>
-<div class="line"><a href="#id2"><span class="problematic" id="id3">``</span></a>Addresses and regular expressions can be used as an if/then conditional: If [addr] matches the current pattern space, execute</div>
+<div class="line"><a href="#id5"><span class="problematic" id="id6">``</span></a>Addresses and regular expressions can be used as an if/then conditional: If [addr] matches the current pattern space, execute</div>
 <div class="line">the command(s). For example: The command /^#/d means: if the current pattern matches the regular expression ^# (a line starting with a hash), then execute</div>
 <div class="line">the d command: delete the line without printing it, and restart the program cycle immediately.``</div>
 <div class="line">Эта запись говорит о том, что в фигурных скобках каждая команда (оператор) выполняется последовательно, при условии, если выполняется предыдущая.</div>
@@ -143,6 +149,18 @@
 <div class="line">- <cite>*grep -v*</cite>   <code class="docutils literal notranslate"><span class="pre">Invert</span> <span class="pre">the</span> <span class="pre">sense</span> <span class="pre">of</span> <span class="pre">matching,</span> <span class="pre">to</span> <span class="pre">select</span> <span class="pre">non-matching</span> <span class="pre">lines.</span></code>. Инвертирует чувствительность совпадений</div>
 <div class="line">- <cite>*:$*</cite>        метка <code class="docutils literal notranslate"><span class="pre">label</span></code> в конце</div>
 <div class="line">- <cite>*eval*</cite></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="o">[[</span> -z <span class="k">$(</span>sed -n -e <span class="s2">&quot;s/^\(5_install_util_wd\).*/\1/p&quot;</span> steps.txt<span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install build-essential
+<span class="linenos">2</span><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+<span class="linenos">3</span> <span class="nb">echo</span> <span class="s2">&quot;Error: error install gcc-utils!!!&quot;</span>
+<span class="linenos">4</span> <span class="nb">exit</span> <span class="m">1</span>
+<span class="linenos">5</span><span class="k">fi</span>
+<span class="linenos">6</span>
+<span class="linenos">7</span>add-apt-repository-get ppa:ubuntu-toolchain-r/test <span class="o">&amp;&amp;</span> apt update
+</pre></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install python
 <span class="linenos">2</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install python3
@@ -204,32 +222,15 @@
 <span class="linenos">31</span>python3 -m venv env
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>pip install --upgrade myst-parser
-<span class="linenos">2</span>pip install sphinx-autodocgen
-<span class="linenos">3</span>pip install Pygments
-<span class="linenos">4</span>pip install sphinx-intl
-<span class="linenos">5</span>pip install lumache
-<span class="linenos">6</span>pip install django
-<span class="linenos">7</span>pip install django-docs
-<span class="linenos">8</span>pip install sphinxnotes-strike
-<span class="linenos">9</span>pip install sphinx_rtd_theme
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>pip install -U sphinx
-<span class="linenos">2</span>python -m venv .venv
-</pre></div>
-</div>
 </div>
 <div class="section" id="python-string-comparison-operators">
-<h2><span class="section-number">4.2. </span>Python String Comparison operators<a class="headerlink" href="#python-string-comparison-operators" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.3. </span>Python String Comparison operators<a class="headerlink" href="#python-string-comparison-operators" title="Permalink to this heading"></a></h2>
 <div class="line-block">
 <div class="line">In python language, we can compare two strings such as identify whether the two strings are equivalent to each other</div>
 <div class="line">or not, or even which string is greater or smaller than each other. Let us check some of the string comparison operator</div>
 <div class="line">used for this purpose below:</div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>step_four:
-<span class="linenos">2</span><span class="nb">cd</span> /install/
-<span class="linenos">3</span><span class="k">if</span> <span class="o">[[</span> -z <span class="k">$(</span>sed -n -e <span class="s2">&quot;s/^\(7_driver_opt\).*/\1/p&quot;</span> steps.txt<span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">fi</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -240,8 +241,13 @@
 <div class="line">&gt;: This operator checks whether the string on the left side is greater than the string on the right side.</div>
 <div class="line">&gt;=: This operator checks whether the string on the left side is greater than the string on the right side.</div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">done</span> &lt; <span class="nv">$filename</span>
-<span class="linenos">2</span>sudo mount -a
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">cd</span> /install/
+<span class="linenos">2</span>touch fdisk.txt
+<span class="linenos">3</span>fdisk -l <span class="p">|</span> sed -n -e <span class="s2">&quot;s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p&quot;</span> &gt; fdisk.txt
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="nv">filename</span><span class="o">=</span><span class="s1">&#39;fdisk.txt&#39;</span>
+<span class="linenos">6</span><span class="nv">n</span><span class="o">=</span><span class="m">1</span>
+<span class="linenos">7</span><span class="k">while</span> <span class="nb">read</span> line<span class="p">;</span> <span class="k">do</span>
 </pre></div>
 </div>
 </div>

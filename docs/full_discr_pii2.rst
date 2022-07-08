@@ -1,10 +1,8 @@
-Полное описание Server
-======================
-|	    Данная статья рассматривает полное описание автономного сервера *BilSrvStation* на *Linux Debian10*
-|	by |author|. Основаня идея заключается в том, что бы обеспечить документирвоание 
-|	реального сервера/рабочего места, после "чистой", автоматической установки со всеми необходимыми настройками 
-|	и программами. В начале описывается структура файлов для формирования загрузочного диска, далее следует полное
-|	описание скриптового `*pii2.sh*` без 
+Полное описание сервера
+=======================
+|	    Данная статья рассматривает полное описание автономного сервера *BilSrvStation* на *Linux
+|	Debian10* by |author|. Основаня идея заключается в том, что бы обеспечить документирование реального сервера/рабочего места, после "чистой", автоматической установки со всеми необходимыми настройками и программами. В начале описывается структура файлов для формирования загрузочного диска, далее следует полное
+|	описание скриптового **pii2.sh** без 
 .. important:: Перед установкой обязательно ознакомится с данной страницей!!!
 
 .. attention:: Здесь и далее, дополнительный софт будет дополняться в файле pii2.sh, в разделе `01.12	Optional soft`, при этом описание будет дополняться в данной странице в разделе 'Опциональный софт`
@@ -15,22 +13,23 @@
 |	        - Сервер защищён пакетом SELinux с настроенными политиками
 |	        - Локаничное описание, позволяющее сэкономить время на освоение
 |	        - Установленные все полезные утилиты, необходимые для удобного администрирования
-- Данная установка универсальная для широкого спектра задач
------------------------------------------------------------
+|	        - Данная установка универсальная для широкого спектра задач
 Описание структуры сервера
 --------------------------
-Разбор основного файла
-----------------------
+|	Структура сервера состоит из следующих папок и файлов.
+Разбор основного файла pii2.sh
+------------------------------
+|	    Код начинается с функции `*jumpto*`, которая обеспечивает переход по меткам '*GOTO*'. В роли метки служит её объявление
 |	'*<name>=${<number>:-"<name>"}*'. Где `*<name>*` - название метки GOTO, <number> - номер метки. Т.е. переменной <name> присваивается структура из наименования
 |	метки с соответствующему номеру. После объявление метки в коде она используется '*<number>:*', а её вызов осуществляется через '*jumpto $<name>*'.
-|	Данная функция `*jumpto*` принимает два аргумента '*$0*' и '*$1*', которые соответствуют имени файла и названия метки.
+|	Данная функция `*jumpto*` принимает два аргумента `*$0*` и `*$1*`, которые соответствуют имени файла и названия метки.
 |	Рассмотрим строчку функции::
-|		'*cmd=$(sed -n "/$label:/{:a;n;p;ba};" $0 | grep -v ':$')*'. 
+|		`*cmd=$(sed -n "/$label:/{:a;n;p;ba};" $0 | grep -v ':$')*`. 
 |	В документации в разделе '*6.4 Branching and Flow Control*' `SEDERE <https://www.gnu.org/software/sed/manual/sed.html>`_ указана адресация::
-|		'[addr]X'
-|		'[addr]{ X ; X ; X }'
-|		'/regexp/X'
-|		'/regexp/{ X ; X ; X }'
+|		`[addr]X`
+|		`[addr]{ X ; X ; X }`
+|		`/regexp/X`
+|		`/regexp/{ X ; X ; X }`
 |	``Addresses and regular expressions can be used as an if/then conditional: If [addr] matches the current pattern space, execute 
 |	the command(s). For example: The command /^#/d means: if the current pattern matches the regular expression ^# (a line starting with a hash), then execute 
 |	the d command: delete the line without printing it, and restart the program cycle immediately.``
@@ -45,6 +44,22 @@
 |	- `*grep -v*`	``Invert the sense of matching, to select non-matching lines.``. Инвертирует чувствительность совпадений
 |	- `*:$*`	метка ``label`` в конце
 |	- `*eval*`
+
+.. code-block:: bash
+	:linenos:
+
+	if [[ -z $(sed -n -e "s/^\(5_install_util_wd\).*/\1/p" steps.txt) ]]; then
+
+.. code-block:: bash
+	:linenos:
+
+	echo "y\n" | apt-get install build-essential
+	if [ $? -ne 0 ]; then
+	 echo "Error: error install gcc-utils!!!"
+	 exit 1
+	fi
+	
+	add-apt-repository-get ppa:ubuntu-toolchain-r/test && apt update
 
 .. code-block:: bash
 	:linenos:
@@ -111,25 +126,6 @@
 	update-initramfs -u
 	
 	python3 -m venv env
-
-.. code-block:: bash
-	:linenos:
-
-	pip install --upgrade myst-parser
-	pip install sphinx-autodocgen
-	pip install Pygments
-	pip install sphinx-intl
-	pip install lumache
-	pip install django
-	pip install django-docs
-	pip install sphinxnotes-strike
-	pip install sphinx_rtd_theme
-
-.. code-block:: bash
-	:linenos:
-
-	pip install -U sphinx
-	python -m venv .venv
 Python String Comparison operators
 ----------------------------------
 |	In python language, we can compare two strings such as identify whether the two strings are equivalent to each other 
@@ -139,9 +135,8 @@ Python String Comparison operators
 .. code-block:: bash
 	:linenos:
 
-	step_four:
-	cd /install/
-	if [[ -z $(sed -n -e "s/^\(7_driver_opt\).*/\1/p" steps.txt) ]]; then
+	
+	fi
 |	==: This operator checks whether two strings are equal.
 |	!=: This operator checks whether two strings are not equal.
 |	<: This operator checks whether the string on the left side is smaller than the string on the right side.
@@ -152,5 +147,10 @@ Python String Comparison operators
 .. code-block:: bash
 	:linenos:
 
-	done < $filename
-	sudo mount -a
+	cd /install/
+	touch fdisk.txt
+	fdisk -l | sed -n -e "s/.*\(\/dev\/s[a-z]*[0-9]\).*/\1/p" > fdisk.txt
+	
+	filename='fdisk.txt'
+	n=1
+	while read line; do

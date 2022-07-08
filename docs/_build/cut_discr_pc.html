@@ -44,7 +44,7 @@
 <li class="toctree-l1"><a class="reference internal" href="sourcelink.html">1. Навигация</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">2. ISO InstallDeb Cut Discr</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cut_discr_preseed.html">3. Preseed Cut Discr</a></li>
-<li class="toctree-l1"><a class="reference internal" href="full_discr_pii2.html">4. Полное описание Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="full_discr_pii2.html">4. Полное описание сервера</a></li>
 <li class="toctree-l1"><a class="reference internal" href="only_code_pii2.html">5. Appendix Code chunck</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2.html">6. AutoInstall Cut Discr</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2_pack.html">7. AutoInstall Package List</a></li>
@@ -187,9 +187,6 @@
 <span class="linenos">49</span><span class="nb">echo</span> <span class="s2">&quot;Bad SHA512SUMS GPG signature. Aborting\r\n&quot;</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line">exit 1</div>
-</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>                <span class="k">fi</span>
 <span class="linenos"> 2</span><span class="k">fi</span>
 <span class="linenos"> 3</span>
@@ -206,9 +203,6 @@
 <span class="linenos">14</span><span class="nb">echo</span> <span class="s2">&quot;Bad ISO checksum. Aborting\r\n&quot;</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line">exit 1</div>
-</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">fi</span>
 <span class="linenos">2</span><span class="k">fi</span>
 </pre></div>
@@ -216,9 +210,6 @@
 <div class="line-block">
 <div class="line">if [ $ONLY_DOWNLOAD == 1 ]</div>
 <div class="line">then</div>
-<div class="line-block">
-<div class="line">exit 0</div>
-</div>
 <div class="line">fi</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="o">}</span>
@@ -430,9 +421,6 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="o">[[</span> -z <span class="nv">$PRESEED</span> <span class="o">]]</span>
 <span class="linenos">2</span><span class="k">then</span>
 </pre></div>
-</div>
-<div class="line-block">
-<div class="line">echo &quot;d-i debian-installer/locale string en_US&quot; &gt; preseed.cfg</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>        cp <span class="s2">&quot;</span><span class="nv">$MYPWD</span><span class="s2">/preseed.cfg&quot;</span> <span class="s2">&quot;</span><span class="nv">$MYPWD</span><span class="s2">/preseed_creator/irmod/preseed.cfg&quot;</span>
 <span class="linenos">2</span>        <span class="nv">PRESEED</span><span class="o">=</span><span class="s2">&quot;preseed.cfg&quot;</span>

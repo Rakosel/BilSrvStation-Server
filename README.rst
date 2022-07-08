@@ -57,10 +57,11 @@ Features
 |
 |	- In cross-reference link page to pages
 |
-- **15.05.2022-10.06.2022**
+- **15.05.2022-06.07.2022**
 |
-- Add script `extract_full_discr_pii2.py` v.0.1a with polu-auto generated code for pii2.sh for hand-discrabe /docs/extract_full_discr/pii2.pii
-- from extract_full_discr_pii2.txt file
+- Add script `extract_build_doc.py` v.0.1a with polu-auto generated code for 'build_doc.rst' via 'build_doc.txt'
+- Add script `extract_full_discr_pii2.py` v.0.1a with polu-auto generated code 'full_discr_pii2.rst' via 'full_discr_pii2.txt'
+- from full_discr_pii2.txt file
 - Add script pii2.sh new generated /etc/fstab/
 - Add script `cut_discr_cmd_shell.py` v.0.1a generator from .cmd_shell.sh to 'cut_discr_cmd_shell' /docs/cut_discr_cmd_shell.rst
 - Add script `extract_preseed_all.py' v.0.8a add generate file 'cut_discr_pii2_pack' /docs/cut_discr_pii2_pack.rst

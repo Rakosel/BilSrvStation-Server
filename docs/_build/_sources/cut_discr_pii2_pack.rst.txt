@@ -90,6 +90,8 @@ AutoInstall Package List
 	"85", "transmission-cli"
 	"86", "transmission-common"
 	"87", "transmission-daemon"
+	"88", "libpcap-dev"
+	"89", "sendmail"
 
 .. csv-table:: Python pip package
 	:header: "#", "Module PIP"
@@ -136,7 +138,7 @@ AutoInstall Package List
 	"12", "semodule sudotev70522v21.pp"
 	"13", "semodule sudotevcrondv1.pp"
 	"14", "semodule sphinxtev1.pp"
-	"15", "semodule myapp1.pp"
+	"15", "semodule nodegcc_app1.pp"
 
 .. csv-table:: Policy permissive
 	:header: "Permissive name", "Permissive mode"

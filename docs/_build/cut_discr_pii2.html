@@ -124,7 +124,7 @@
   <div class="section" id="autoinstall-cut-discr">
 <h1><span class="section-number">6. </span>AutoInstall Cut Discr<a class="headerlink" href="#autoinstall-cut-discr" title="Permalink to this heading"></a></h1>
 <div class="line-block">
-<div class="line">Published by <a href="#id8"><span class="problematic" id="id9">|author|</span></a></div>
+<div class="line">Published by <a href="#id10"><span class="problematic" id="id11">|author|</span></a></div>
 <div class="line">Date: <em>|date|</em> Time <em>|time|</em></div>
 <div class="line-block">
 <div class="line">Type script: <em>bash</em></div>
@@ -991,13 +991,12 @@
 </div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install git
-<span class="linenos">2</span><span class="k">if</span> <span class="o">[</span>
-<span class="linenos">3</span>? -ne <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-<span class="linenos">4</span> <span class="nb">echo</span> <span class="s2">&quot;Error: error install git!!!&quot;</span>
-<span class="linenos">5</span> <span class="nb">exit</span> <span class="m">1</span><span class="p">;</span>
-<span class="linenos">6</span><span class="k">fi</span>
-<span class="linenos">7</span><span class="nb">cd</span> /install
-<span class="linenos">8</span>git clone git://git.savannah.gnu.org/nano.git<span class="p">;</span> <span class="nb">cd</span> nano<span class="p">;</span>./autogen.sh<span class="p">;</span>./configure<span class="p">;</span> make install
+<span class="linenos">2</span><span class="k">if</span> <span class="o">[</span> ? -ne <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+<span class="linenos">3</span> <span class="nb">echo</span> <span class="s2">&quot;Error: error install git!!!&quot;</span>
+<span class="linenos">4</span> <span class="nb">exit</span> <span class="m">1</span><span class="p">;</span>
+<span class="linenos">5</span><span class="k">fi</span>
+<span class="linenos">6</span><span class="nb">cd</span> /install
+<span class="linenos">7</span>git clone git://git.savannah.gnu.org/nano.git<span class="p">;</span> <span class="nb">cd</span> nano<span class="p">;</span>./autogen.sh<span class="p">;</span>./configure<span class="p">;</span> make install
 </pre></div>
 </div>
 <div class="line-block">
@@ -1420,7 +1419,7 @@
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">S1=$(sudo blkid | sed -n -e &quot;s/$shd:s(.*).*/1/p&quot; | sed -n -e &quot;s/$shd:s([=a-<a href="#id10"><span class="problematic" id="id11">zA-Z_</span></a>]*)/1/p;s/UUID=(.*)sB.*/1/p&quot; | sed 's/&quot;/\&quot;/g')</div>
+<div class="line">S1=$(sudo blkid | sed -n -e &quot;s/$shd:s(.*).*/1/p&quot; | sed -n -e &quot;s/$shd:s([=a-<a href="#id12"><span class="problematic" id="id13">zA-Z_</span></a>]*)/1/p;s/UUID=(.*)sB.*/1/p&quot; | sed 's/&quot;/\&quot;/g')</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
@@ -2595,33 +2594,28 @@
 <div class="line">grep AVC altlog.log | audit2allow -m loaderlocalv4 &gt; loaderlocalv4.te</div>
 <div class="line">checkmodule -M -m -o loaderlocalv1.mod loaderlocalv1.te</div>
 <div class="line">semodule_package -o loaderlocalv1.pp -m loaderlocalv1.mod</div>
+<div class="line">$(find . -type f -name '<a href="#id8"><span class="problematic" id="id9">*</span></a>.pp')</div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>semodule -i loaderlocalv1.pp
-<span class="linenos">2</span>semodule -i loaderlocalv2.pp
-<span class="linenos">3</span>semodule -i loaderlocalv3.pp
-<span class="linenos">4</span>semodule -i loaderlocalv4.pp
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line">sudo apt-get install</div>
-<div class="line">sudo apt-get automount</div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>semodule -i sudotev1.pp
-<span class="linenos"> 2</span>semodule -i sudotev2.pp
-<span class="linenos"> 3</span>semodule -i sudotev3.pp
-<span class="linenos"> 4</span>semodule -i sudotev4.pp
-<span class="linenos"> 5</span>semodule -i sudotev5.pp
-<span class="linenos"> 6</span>semodule -i sudotevb1.pp
-<span class="linenos"> 7</span>semodule -i sudotevb2.pp
-<span class="linenos"> 8</span>semodule -i sudotev70522v21.pp
-<span class="linenos"> 9</span>semodule -i sudotevcrondv1.pp
-<span class="linenos">10</span>semodule -i sphinxtev1.pp
-<span class="linenos">11</span>semodule -i myapp1.pp
-<span class="linenos">12</span>semanage permissive -a boot_t
-<span class="linenos">13</span>semanage permissive -a crond_t
-<span class="linenos">14</span>semanage permissive -a crontab_t
-<span class="linenos">15</span>semanage permissive -a system_crontab_t
-<span class="linenos">16</span>semanage module -d permissive_boot_t
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>semodule -i loaderlocalv1.pp
+<span class="linenos"> 2</span>semodule -i loaderlocalv2.pp
+<span class="linenos"> 3</span>semodule -i loaderlocalv3.pp
+<span class="linenos"> 4</span>semodule -i loaderlocalv4.pp
+<span class="linenos"> 5</span>semodule -i sudotev1.pp
+<span class="linenos"> 6</span>semodule -i sudotev2.pp
+<span class="linenos"> 7</span>semodule -i sudotev3.pp
+<span class="linenos"> 8</span>semodule -i sudotev4.pp
+<span class="linenos"> 9</span>semodule -i sudotev5.pp
+<span class="linenos">10</span>semodule -i sudotevb1.pp
+<span class="linenos">11</span>semodule -i sudotevb2.pp
+<span class="linenos">12</span>semodule -i sudotev70522v21.pp
+<span class="linenos">13</span>semodule -i sudotevcrondv1.pp
+<span class="linenos">14</span>semodule -i sphinxtev1.pp
+<span class="linenos">15</span>semodule -i nodegcc_app1.pp
+<span class="linenos">16</span>semanage permissive -a boot_t
+<span class="linenos">17</span>semanage permissive -a crond_t
+<span class="linenos">18</span>semanage permissive -a crontab_t
+<span class="linenos">19</span>semanage permissive -a system_crontab_t
+<span class="linenos">20</span>semanage module -d permissive_boot_t
 </pre></div>
 </div>
 <div class="line-block">
@@ -2685,7 +2679,8 @@
 <span class="linenos">2</span>semanage port -a -t http_port_t -p tcp <span class="m">20000</span>
 <span class="linenos">3</span>
 <span class="linenos">4</span>systemctl <span class="nb">enable</span> webmin
-<span class="linenos">5</span>systemctl start webmin
+<span class="linenos">5</span>cp -Rf /install/etc/webmin /etc/
+<span class="linenos">6</span>systemctl start webmin
 </pre></div>
 </div>
 <div class="line-block">
@@ -2798,7 +2793,9 @@
 <div class="line-block">
 <div class="line">sed -i -e &quot;s/^&quot;rpc-&quot;:.*$/&quot;rpc-password&quot;: &quot;<strong>****</strong>&quot;,/g&quot; /opt/.transmission_config/settings.json</div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sed -i -e <span class="s2">&quot;s/\&quot;download-dir\&quot;\:.*</span>$<span class="s2">/\&quot;download-dir\&quot;\: \&quot;\/opt\/SAMBA_SHARE\/bittorrent_download_store\&quot;,/g&quot;</span> /var/lib/transmission-daemon/info/settings.json
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sed -i -e <span class="s2">&quot;s/\&quot;download-dir\&quot;\:.*</span>$<span class="s2">/\&quot;download-dir\&quot;\: \&quot;\/opt\/SAMBA_SHARE\/torrents\&quot;,/g&quot;</span> /var/lib/transmission-daemon/info/settings.json
+<span class="linenos">2</span>sed -i -e <span class="s2">&quot;s/\&quot;incomplete-dir\&quot;\:.*</span>$<span class="s2">/\&quot;incomplete-dir\&quot;\: \&quot;\/opt\/SAMBA_SHARE\/bittorrent_download_store\&quot;,/g&quot;</span> /var/lib/transmission-daemon/info/settings.json
+<span class="linenos">3</span>sed -i -e <span class="s2">&quot;s/\&quot;watch-dir\&quot;\:.*</span>$<span class="s2">/\&quot;watch-dir\&quot;\: \&quot;\/opt\/SAMBA_SHARE\/bittorrent_watch\&quot;,/g&quot;</span> /var/lib/transmission-daemon/info/settings.json
 </pre></div>
 </div>
 <div class="line-block">
@@ -2835,11 +2832,40 @@
 <div class="line">dpkg --configure -a</div>
 <div class="line">apt-get dist-upgrade</div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;\y\n&quot;</span> <span class="p">|</span> apt-get -f install
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;\y\n&quot;</span> <span class="p">|</span> apt-get install libpcap-dev
+<span class="linenos">2</span><span class="nb">echo</span> -e <span class="s2">&quot;\y\n&quot;</span> <span class="p">|</span> apt-get install sendmail
+<span class="linenos">3</span><span class="nb">cd</span> ~
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">echo -e &quot;yn&quot; | apt-get remove nvidia-*</div>
+<div class="line"><a class="reference external" href="https://www.linuxfromscratch.org/blfs/view/svn/general/fcron.html">https://www.linuxfromscratch.org/blfs/view/svn/general/fcron.html</a></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>wget http://fcron.free.fr/archives/fcron-3.2.1.src.tar.gz
+<span class="linenos"> 2</span>tar -xvf fcron-3.2.1
+<span class="linenos"> 3</span><span class="nb">cd</span> fcron-3.2.1
+<span class="linenos"> 4</span>./configure
+<span class="linenos"> 5</span>make install
+<span class="linenos"> 6</span><span class="nb">cd</span> ..
+<span class="linenos"> 7</span>rm -Rf fcron-3.2.1
+<span class="linenos"> 8</span>cp -Rf /install/spool/ /usr/local/var/spool/
+<span class="linenos"> 9</span>cp -Rf /install/usr/local/ /usr/local/
+<span class="linenos">10</span>
+<span class="linenos">11</span>systemctl <span class="nb">enable</span> fcron
+<span class="linenos">12</span>systemctl start fcron
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">echo -e &quot;yn&quot; | apt-get search gccgo-go</div>
+<div class="line">echo -e &quot;yn&quot; | apt-get install gccgo-go</div>
+<div class="line">echo -e &quot;yn&quot; | apt-get install golang-go</div>
+<div class="line">|        <a class="reference external" href="https://dshearer.github.io/jobber/doc/v1.4/">https://dshearer.github.io/jobber/doc/v1.4/</a></div>
+<div class="line">git clone <a class="reference external" href="https://github.com/dshearer/jobber.git">https://github.com/dshearer/jobber.git</a></div>
+<div class="line">cd jobber</div>
+<div class="line">git checkout v1.4.4</div>
+<div class="line">make install</div>
+<div class="line">cd ..</div>
+<div class="line">rm -Rf jobber</div>
+<div class="line">echo -e &quot;yn&quot; | apt-get -f install</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get autoremove
 </pre></div>

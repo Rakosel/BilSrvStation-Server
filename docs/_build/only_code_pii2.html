@@ -792,13 +792,12 @@
 <div class="section" id="chunck-46">
 <h2><span class="section-number">5.46. </span>Chunck 46<a class="headerlink" href="#chunck-46" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install git
-<span class="linenos">2</span><span class="k">if</span> <span class="o">[</span>
-<span class="linenos">3</span>? -ne <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-<span class="linenos">4</span> <span class="nb">echo</span> <span class="s2">&quot;Error: error install git!!!&quot;</span>
-<span class="linenos">5</span> <span class="nb">exit</span> <span class="m">1</span><span class="p">;</span>
-<span class="linenos">6</span><span class="k">fi</span>
-<span class="linenos">7</span><span class="nb">cd</span> /install
-<span class="linenos">8</span>git clone git://git.savannah.gnu.org/nano.git<span class="p">;</span> <span class="nb">cd</span> nano<span class="p">;</span>./autogen.sh<span class="p">;</span>./configure<span class="p">;</span> make install
+<span class="linenos">2</span><span class="k">if</span> <span class="o">[</span> ? -ne <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+<span class="linenos">3</span> <span class="nb">echo</span> <span class="s2">&quot;Error: error install git!!!&quot;</span>
+<span class="linenos">4</span> <span class="nb">exit</span> <span class="m">1</span><span class="p">;</span>
+<span class="linenos">5</span><span class="k">fi</span>
+<span class="linenos">6</span><span class="nb">cd</span> /install
+<span class="linenos">7</span>git clone git://git.savannah.gnu.org/nano.git<span class="p">;</span> <span class="nb">cd</span> nano<span class="p">;</span>./autogen.sh<span class="p">;</span>./configure<span class="p">;</span> make install
 </pre></div>
 </div>
 </div>
@@ -1849,63 +1848,58 @@
 </div>
 <div class="section" id="chunck-174">
 <h2><span class="section-number">5.174. </span>Chunck 174<a class="headerlink" href="#chunck-174" title="Permalink to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>semodule -i loaderlocalv1.pp
-<span class="linenos">2</span>semodule -i loaderlocalv2.pp
-<span class="linenos">3</span>semodule -i loaderlocalv3.pp
-<span class="linenos">4</span>semodule -i loaderlocalv4.pp
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>semodule -i loaderlocalv1.pp
+<span class="linenos"> 2</span>semodule -i loaderlocalv2.pp
+<span class="linenos"> 3</span>semodule -i loaderlocalv3.pp
+<span class="linenos"> 4</span>semodule -i loaderlocalv4.pp
+<span class="linenos"> 5</span>semodule -i sudotev1.pp
+<span class="linenos"> 6</span>semodule -i sudotev2.pp
+<span class="linenos"> 7</span>semodule -i sudotev3.pp
+<span class="linenos"> 8</span>semodule -i sudotev4.pp
+<span class="linenos"> 9</span>semodule -i sudotev5.pp
+<span class="linenos">10</span>semodule -i sudotevb1.pp
+<span class="linenos">11</span>semodule -i sudotevb2.pp
+<span class="linenos">12</span>semodule -i sudotev70522v21.pp
+<span class="linenos">13</span>semodule -i sudotevcrondv1.pp
+<span class="linenos">14</span>semodule -i sphinxtev1.pp
+<span class="linenos">15</span>semodule -i nodegcc_app1.pp
+<span class="linenos">16</span>semanage permissive -a boot_t
+<span class="linenos">17</span>semanage permissive -a crond_t
+<span class="linenos">18</span>semanage permissive -a crontab_t
+<span class="linenos">19</span>semanage permissive -a system_crontab_t
+<span class="linenos">20</span>semanage module -d permissive_boot_t
 </pre></div>
 </div>
 </div>
 <div class="section" id="chunck-175">
 <h2><span class="section-number">5.175. </span>Chunck 175<a class="headerlink" href="#chunck-175" title="Permalink to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>semodule -i sudotev1.pp
-<span class="linenos"> 2</span>semodule -i sudotev2.pp
-<span class="linenos"> 3</span>semodule -i sudotev3.pp
-<span class="linenos"> 4</span>semodule -i sudotev4.pp
-<span class="linenos"> 5</span>semodule -i sudotev5.pp
-<span class="linenos"> 6</span>semodule -i sudotevb1.pp
-<span class="linenos"> 7</span>semodule -i sudotevb2.pp
-<span class="linenos"> 8</span>semodule -i sudotev70522v21.pp
-<span class="linenos"> 9</span>semodule -i sudotevcrondv1.pp
-<span class="linenos">10</span>semodule -i sphinxtev1.pp
-<span class="linenos">11</span>semodule -i myapp1.pp
-<span class="linenos">12</span>semanage permissive -a boot_t
-<span class="linenos">13</span>semanage permissive -a crond_t
-<span class="linenos">14</span>semanage permissive -a crontab_t
-<span class="linenos">15</span>semanage permissive -a system_crontab_t
-<span class="linenos">16</span>semanage module -d permissive_boot_t
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>semanage user -m -R <span class="s2">&quot;system_r sysadm_r staff_r&quot;</span> -r <span class="s2">&quot;s0-s0:c0.c1023&quot;</span> sysadm_u
 </pre></div>
 </div>
 </div>
 <div class="section" id="chunck-176">
 <h2><span class="section-number">5.176. </span>Chunck 176<a class="headerlink" href="#chunck-176" title="Permalink to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>semanage user -m -R <span class="s2">&quot;system_r sysadm_r staff_r&quot;</span> -r <span class="s2">&quot;s0-s0:c0.c1023&quot;</span> sysadm_u
-</pre></div>
-</div>
-</div>
-<div class="section" id="chunck-177">
-<h2><span class="section-number">5.177. </span>Chunck 177<a class="headerlink" href="#chunck-177" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>semanage login -a -s sysadm_u -r <span class="s2">&quot;s0-s0:c0.c1023&quot;</span> admin
 <span class="linenos">2</span>semanage login -a -s sysadm_u -r <span class="s2">&quot;s0-s0:c0.c1023&quot;</span> admin_tech
 <span class="linenos">3</span>semanage login -a -s sysadm_u -r <span class="s2">&quot;s0-s0:c0.c1023&quot;</span> %admins
 </pre></div>
 </div>
 </div>
-<div class="section" id="chunck-178">
-<h2><span class="section-number">5.178. </span>Chunck 178<a class="headerlink" href="#chunck-178" title="Permalink to this heading"></a></h2>
+<div class="section" id="chunck-177">
+<h2><span class="section-number">5.177. </span>Chunck 177<a class="headerlink" href="#chunck-177" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>semanage login -a -s unconfined_u -r <span class="s2">&quot;s0-s0:c0.c1023&quot;</span> %sudo
 <span class="linenos">2</span>semanage login -a -s user_u tom
 </pre></div>
 </div>
 </div>
-<div class="section" id="chunck-179">
-<h2><span class="section-number">5.179. </span>Chunck 179<a class="headerlink" href="#chunck-179" title="Permalink to this heading"></a></h2>
+<div class="section" id="chunck-178">
+<h2><span class="section-number">5.178. </span>Chunck 178<a class="headerlink" href="#chunck-178" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="chunck-180">
-<h2><span class="section-number">5.180. </span>Chunck 180<a class="headerlink" href="#chunck-180" title="Permalink to this heading"></a></h2>
+<div class="section" id="chunck-179">
+<h2><span class="section-number">5.179. </span>Chunck 179<a class="headerlink" href="#chunck-179" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>update-initramfs -k all -u
 <span class="linenos"> 2</span>update-grub
 <span class="linenos"> 3</span>
@@ -1924,31 +1918,32 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="chunck-181">
-<h2><span class="section-number">5.181. </span>Chunck 181<a class="headerlink" href="#chunck-181" title="Permalink to this heading"></a></h2>
+<div class="section" id="chunck-180">
+<h2><span class="section-number">5.180. </span>Chunck 180<a class="headerlink" href="#chunck-180" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>semanage port -a -t http_port_t -p tcp <span class="m">10000</span>
 <span class="linenos">2</span>semanage port -a -t http_port_t -p tcp <span class="m">20000</span>
 <span class="linenos">3</span>
 <span class="linenos">4</span>systemctl <span class="nb">enable</span> webmin
-<span class="linenos">5</span>systemctl start webmin
+<span class="linenos">5</span>cp -Rf /install/etc/webmin /etc/
+<span class="linenos">6</span>systemctl start webmin
 </pre></div>
 </div>
 </div>
-<div class="section" id="chunck-182">
-<h2><span class="section-number">5.182. </span>Chunck 182<a class="headerlink" href="#chunck-182" title="Permalink to this heading"></a></h2>
+<div class="section" id="chunck-181">
+<h2><span class="section-number">5.181. </span>Chunck 181<a class="headerlink" href="#chunck-181" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> sudo apt-get install transmission
 <span class="linenos">2</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> sudo apt-get install transmission-cli transmission-common transmission-daemon
 </pre></div>
 </div>
 </div>
-<div class="section" id="chunck-183">
-<h2><span class="section-number">5.183. </span>Chunck 183<a class="headerlink" href="#chunck-183" title="Permalink to this heading"></a></h2>
+<div class="section" id="chunck-182">
+<h2><span class="section-number">5.182. </span>Chunck 182<a class="headerlink" href="#chunck-182" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sudo systemctl <span class="nb">enable</span> transmission-daemon.service
 </pre></div>
 </div>
 </div>
-<div class="section" id="chunck-184">
-<h2><span class="section-number">5.184. </span>Chunck 184<a class="headerlink" href="#chunck-184" title="Permalink to this heading"></a></h2>
+<div class="section" id="chunck-183">
+<h2><span class="section-number">5.183. </span>Chunck 183<a class="headerlink" href="#chunck-183" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>mkdir -m <span class="m">775</span> /opt/SAMBA_SHARE/bittorrent_download_store
 <span class="linenos">2</span>mkdir -m <span class="m">775</span> /opt/SAMBA_SHARE/bittorrent_upload
 <span class="linenos">3</span>chown admin_share:technics /opt/SAMBA_SHARE/bittorrent_download_store
@@ -1956,22 +1951,22 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="chunck-185">
-<h2><span class="section-number">5.185. </span>Chunck 185<a class="headerlink" href="#chunck-185" title="Permalink to this heading"></a></h2>
+<div class="section" id="chunck-184">
+<h2><span class="section-number">5.184. </span>Chunck 184<a class="headerlink" href="#chunck-184" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sudo usermod -aG debian-transmission admin_share
 <span class="linenos">2</span>sudo usermod -aG debian-transmission admin_share
 </pre></div>
 </div>
 </div>
-<div class="section" id="chunck-186">
-<h2><span class="section-number">5.186. </span>Chunck 186<a class="headerlink" href="#chunck-186" title="Permalink to this heading"></a></h2>
+<div class="section" id="chunck-185">
+<h2><span class="section-number">5.185. </span>Chunck 185<a class="headerlink" href="#chunck-185" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>cp -R /etc/transmission-daemon/ /opt/.transmission_config
 <span class="linenos">2</span>chown admin_share:technics -R /opt/.transmission_config
 </pre></div>
 </div>
 </div>
-<div class="section" id="chunck-187">
-<h2><span class="section-number">5.187. </span>Chunck 187<a class="headerlink" href="#chunck-187" title="Permalink to this heading"></a></h2>
+<div class="section" id="chunck-186">
+<h2><span class="section-number">5.186. </span>Chunck 186<a class="headerlink" href="#chunck-186" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>chmod -R <span class="m">775</span> /opt/.transmission_config
 <span class="linenos">2</span>sed -i -e <span class="s2">&quot;s/CONFIG_DIR=.*</span>$<span class="s2">/CONFIG_DIR=\&quot;\/opt\/.transmission_config\/settings.json\&quot;/g&quot;</span> /etc/default/transmission-daemon
 <span class="linenos">3</span>semanage port -a -t http_port_t -p tcp <span class="m">9091</span>
@@ -1979,59 +1974,80 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="chunck-188">
-<h2><span class="section-number">5.188. </span>Chunck 188<a class="headerlink" href="#chunck-188" title="Permalink to this heading"></a></h2>
+<div class="section" id="chunck-187">
+<h2><span class="section-number">5.187. </span>Chunck 187<a class="headerlink" href="#chunck-187" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sudo service transmission-daemon stop
 <span class="linenos">2</span>sed -i -e <span class="s2">&quot;s/\&quot;rpc-whitelist\&quot;\:.*</span>$<span class="s2">/\&quot;rpc-whitelist\&quot;\: \&quot;127.0.0.1,192.168.*.*\&quot;,/g&quot;</span> /var/lib/transmission-daemon/info/settings.json
 </pre></div>
 </div>
 </div>
+<div class="section" id="chunck-188">
+<h2><span class="section-number">5.188. </span>Chunck 188<a class="headerlink" href="#chunck-188" title="Permalink to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sed -i -e <span class="s2">&quot;s/\&quot;rpc-username\&quot;\:.*</span>$<span class="s2">/\&quot;rpc-username\&quot;\: \&quot;pub_share\&quot;,/g&quot;</span> /var/lib/transmission-daemon/info/settings.json
+</pre></div>
+</div>
+</div>
 <div class="section" id="chunck-189">
 <h2><span class="section-number">5.189. </span>Chunck 189<a class="headerlink" href="#chunck-189" title="Permalink to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sed -i -e <span class="s2">&quot;s/\&quot;rpc-username\&quot;\:.*</span>$<span class="s2">/\&quot;rpc-username\&quot;\: \&quot;pub_share\&quot;,/g&quot;</span> /var/lib/transmission-daemon/info/settings.json
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sed -i -e <span class="s2">&quot;s/\&quot;rpc-password\&quot;\:.*</span>$<span class="s2">/\&quot;rpc-password\&quot;\: \&quot;********\&quot;,/g&quot;</span> /var/lib/transmission-daemon/info/settings.json
 </pre></div>
 </div>
 </div>
 <div class="section" id="chunck-190">
 <h2><span class="section-number">5.190. </span>Chunck 190<a class="headerlink" href="#chunck-190" title="Permalink to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sed -i -e <span class="s2">&quot;s/\&quot;rpc-password\&quot;\:.*</span>$<span class="s2">/\&quot;rpc-password\&quot;\: \&quot;********\&quot;,/g&quot;</span> /var/lib/transmission-daemon/info/settings.json
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sed -i -e <span class="s2">&quot;s/\&quot;download-dir\&quot;\:.*</span>$<span class="s2">/\&quot;download-dir\&quot;\: \&quot;\/opt\/SAMBA_SHARE\/torrents\&quot;,/g&quot;</span> /var/lib/transmission-daemon/info/settings.json
+<span class="linenos">2</span>sed -i -e <span class="s2">&quot;s/\&quot;incomplete-dir\&quot;\:.*</span>$<span class="s2">/\&quot;incomplete-dir\&quot;\: \&quot;\/opt\/SAMBA_SHARE\/bittorrent_download_store\&quot;,/g&quot;</span> /var/lib/transmission-daemon/info/settings.json
+<span class="linenos">3</span>sed -i -e <span class="s2">&quot;s/\&quot;watch-dir\&quot;\:.*</span>$<span class="s2">/\&quot;watch-dir\&quot;\: \&quot;\/opt\/SAMBA_SHARE\/bittorrent_watch\&quot;,/g&quot;</span> /var/lib/transmission-daemon/info/settings.json
 </pre></div>
 </div>
 </div>
 <div class="section" id="chunck-191">
 <h2><span class="section-number">5.191. </span>Chunck 191<a class="headerlink" href="#chunck-191" title="Permalink to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sed -i -e <span class="s2">&quot;s/\&quot;download-dir\&quot;\:.*</span>$<span class="s2">/\&quot;download-dir\&quot;\: \&quot;\/opt\/SAMBA_SHARE\/bittorrent_download_store\&quot;,/g&quot;</span> /var/lib/transmission-daemon/info/settings.json
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>service transmission-daemon start
 </pre></div>
 </div>
 </div>
 <div class="section" id="chunck-192">
 <h2><span class="section-number">5.192. </span>Chunck 192<a class="headerlink" href="#chunck-192" title="Permalink to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>service transmission-daemon start
-</pre></div>
-</div>
-</div>
-<div class="section" id="chunck-193">
-<h2><span class="section-number">5.193. </span>Chunck 193<a class="headerlink" href="#chunck-193" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>mdadm --detail --scan <span class="p">|</span> sudo tee -a /etc/mdadm/mdadm.conf
 <span class="linenos">2</span>update-initramfs -u
 </pre></div>
 </div>
 </div>
+<div class="section" id="chunck-193">
+<h2><span class="section-number">5.193. </span>Chunck 193<a class="headerlink" href="#chunck-193" title="Permalink to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> <span class="s1">&#39;/dev/md0 /mnt/sde1 ext4 defaults,nofail,discard 1 0&#39;</span> <span class="p">|</span> tee -a /etc/fstab
+</pre></div>
+</div>
+</div>
 <div class="section" id="chunck-194">
 <h2><span class="section-number">5.194. </span>Chunck 194<a class="headerlink" href="#chunck-194" title="Permalink to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> <span class="s1">&#39;/dev/md0 /mnt/sde1 ext4 defaults,nofail,discard 1 0&#39;</span> <span class="p">|</span> tee -a /etc/fstab
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="chunck-195">
 <h2><span class="section-number">5.195. </span>Chunck 195<a class="headerlink" href="#chunck-195" title="Permalink to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;\y\n&quot;</span> <span class="p">|</span> apt-get install libpcap-dev
+<span class="linenos">2</span><span class="nb">echo</span> -e <span class="s2">&quot;\y\n&quot;</span> <span class="p">|</span> apt-get install sendmail
+<span class="linenos">3</span><span class="nb">cd</span> ~
 </pre></div>
 </div>
 </div>
 <div class="section" id="chunck-196">
 <h2><span class="section-number">5.196. </span>Chunck 196<a class="headerlink" href="#chunck-196" title="Permalink to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;\y\n&quot;</span> <span class="p">|</span> apt-get -f install
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>wget http://fcron.free.fr/archives/fcron-3.2.1.src.tar.gz
+<span class="linenos"> 2</span>tar -xvf fcron-3.2.1
+<span class="linenos"> 3</span><span class="nb">cd</span> fcron-3.2.1
+<span class="linenos"> 4</span>./configure
+<span class="linenos"> 5</span>make install
+<span class="linenos"> 6</span><span class="nb">cd</span> ..
+<span class="linenos"> 7</span>rm -Rf fcron-3.2.1
+<span class="linenos"> 8</span>cp -Rf /install/spool/ /usr/local/var/spool/
+<span class="linenos"> 9</span>cp -Rf /install/usr/local/ /usr/local/
+<span class="linenos">10</span>
+<span class="linenos">11</span>systemctl <span class="nb">enable</span> fcron
+<span class="linenos">12</span>systemctl start fcron
 </pre></div>
 </div>
 </div>

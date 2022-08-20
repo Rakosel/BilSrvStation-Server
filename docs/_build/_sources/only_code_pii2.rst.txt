@@ -520,8 +520,7 @@ Chunck 46
 	:linenos:
 
 	echo -e "y\n" | apt-get install git
-	if [ 
-	? -ne 0 ]; then
+	if [ ? -ne 0 ]; then
 	 echo "Error: error install git!!!"
 	 exit 1;
 	fi
@@ -1603,12 +1602,6 @@ Chunck 174
 	semodule -i loaderlocalv2.pp
 	semodule -i loaderlocalv3.pp
 	semodule -i loaderlocalv4.pp
-	
-Chunck 175
---------------
-.. code-block:: bash
-	:linenos:
-
 	semodule -i sudotev1.pp
 	semodule -i sudotev2.pp
 	semodule -i sudotev3.pp
@@ -1619,19 +1612,19 @@ Chunck 175
 	semodule -i sudotev70522v21.pp
 	semodule -i sudotevcrondv1.pp
 	semodule -i sphinxtev1.pp
-	semodule -i myapp1.pp
+	semodule -i nodegcc_app1.pp
 	semanage permissive -a boot_t
 	semanage permissive -a crond_t
 	semanage permissive -a crontab_t
 	semanage permissive -a system_crontab_t
 	semanage module -d permissive_boot_t
-Chunck 176
+Chunck 175
 --------------
 .. code-block:: bash
 	:linenos:
 
 	semanage user -m -R "system_r sysadm_r staff_r" -r "s0-s0:c0.c1023" sysadm_u
-Chunck 177
+Chunck 176
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1639,20 +1632,20 @@ Chunck 177
 	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" admin
 	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" admin_tech
 	semanage login -a -s sysadm_u -r "s0-s0:c0.c1023" %admins
-Chunck 178
+Chunck 177
 --------------
 .. code-block:: bash
 	:linenos:
 
 	semanage login -a -s unconfined_u -r "s0-s0:c0.c1023" %sudo
 	semanage login -a -s user_u tom
-Chunck 179
+Chunck 178
 --------------
 .. code-block:: bash
 	:linenos:
 
 	
-Chunck 180
+Chunck 179
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1673,7 +1666,7 @@ Chunck 180
 	chmod 755 /var/webmin/.webmin
 	semanage fcontext -a -t tmp_t "/var/webmin/.webmin";
 	chcon -Rv -t tmp_t "/var/webmin/.webmin";
-Chunck 181
+Chunck 180
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1682,22 +1675,23 @@ Chunck 181
 	semanage port -a -t http_port_t -p tcp 20000
 	
 	systemctl enable webmin
+	cp -Rf /install/etc/webmin /etc/
 	systemctl start webmin
 	
-Chunck 182
+Chunck 181
 --------------
 .. code-block:: bash
 	:linenos:
 
 	echo -e "y\n" | sudo apt-get install transmission
 	echo -e "y\n" | sudo apt-get install transmission-cli transmission-common transmission-daemon
-Chunck 183
+Chunck 182
 --------------
 .. code-block:: bash
 	:linenos:
 
 	sudo systemctl enable transmission-daemon.service
-Chunck 184
+Chunck 183
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1706,21 +1700,21 @@ Chunck 184
 	mkdir -m 775 /opt/SAMBA_SHARE/bittorrent_upload
 	chown admin_share:technics /opt/SAMBA_SHARE/bittorrent_download_store
 	chown :debian-transmission /opt/SAMBA_SHARE/bittorrent_upload
-Chunck 185
+Chunck 184
 --------------
 .. code-block:: bash
 	:linenos:
 
 	sudo usermod -aG debian-transmission admin_share
 	sudo usermod -aG debian-transmission admin_share
-Chunck 186
+Chunck 185
 --------------
 .. code-block:: bash
 	:linenos:
 
 	cp -R /etc/transmission-daemon/ /opt/.transmission_config
 	chown admin_share:technics -R /opt/.transmission_config
-Chunck 187
+Chunck 186
 --------------
 .. code-block:: bash
 	:linenos:
@@ -1729,62 +1723,83 @@ Chunck 187
 	sed -i -e "s/CONFIG_DIR=.*$/CONFIG_DIR=\"\/opt\/.transmission_config\/settings.json\"/g" /etc/default/transmission-daemon
 	semanage port -a -t http_port_t -p tcp 9091
 	semanage port -a -t http_port_t -p udp 9091
-Chunck 188
+Chunck 187
 --------------
 .. code-block:: bash
 	:linenos:
 
 	sudo service transmission-daemon stop
 	sed -i -e "s/\"rpc-whitelist\"\:.*$/\"rpc-whitelist\"\: \"127.0.0.1,192.168.*.*\",/g" /var/lib/transmission-daemon/info/settings.json
-Chunck 189
+Chunck 188
 --------------
 .. code-block:: bash
 	:linenos:
 
 	sed -i -e "s/\"rpc-username\"\:.*$/\"rpc-username\"\: \"pub_share\",/g" /var/lib/transmission-daemon/info/settings.json
-Chunck 190
+Chunck 189
 --------------
 .. code-block:: bash
 	:linenos:
 
 	sed -i -e "s/\"rpc-password\"\:.*$/\"rpc-password\"\: \"********\",/g" /var/lib/transmission-daemon/info/settings.json
+Chunck 190
+--------------
+.. code-block:: bash
+	:linenos:
+
+	sed -i -e "s/\"download-dir\"\:.*$/\"download-dir\"\: \"\/opt\/SAMBA_SHARE\/torrents\",/g" /var/lib/transmission-daemon/info/settings.json
+	sed -i -e "s/\"incomplete-dir\"\:.*$/\"incomplete-dir\"\: \"\/opt\/SAMBA_SHARE\/bittorrent_download_store\",/g" /var/lib/transmission-daemon/info/settings.json
+	sed -i -e "s/\"watch-dir\"\:.*$/\"watch-dir\"\: \"\/opt\/SAMBA_SHARE\/bittorrent_watch\",/g" /var/lib/transmission-daemon/info/settings.json
 Chunck 191
 --------------
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "s/\"download-dir\"\:.*$/\"download-dir\"\: \"\/opt\/SAMBA_SHARE\/bittorrent_download_store\",/g" /var/lib/transmission-daemon/info/settings.json
-Chunck 192
---------------
-.. code-block:: bash
-	:linenos:
-
 	service transmission-daemon start
-Chunck 193
+Chunck 192
 --------------
 .. code-block:: bash
 	:linenos:
 
 	mdadm --detail --scan | sudo tee -a /etc/mdadm/mdadm.conf
 	update-initramfs -u
-Chunck 194
+Chunck 193
 --------------
 .. code-block:: bash
 	:linenos:
 
 	echo '/dev/md0 /mnt/sde1 ext4 defaults,nofail,discard 1 0' | tee -a /etc/fstab
-Chunck 195
+Chunck 194
 --------------
 .. code-block:: bash
 	:linenos:
 
 	
+Chunck 195
+--------------
+.. code-block:: bash
+	:linenos:
+
+	echo -e "\y\n" | apt-get install libpcap-dev
+	echo -e "\y\n" | apt-get install sendmail
+	cd ~
 Chunck 196
 --------------
 .. code-block:: bash
 	:linenos:
 
-	echo -e "\y\n" | apt-get -f install
+	wget http://fcron.free.fr/archives/fcron-3.2.1.src.tar.gz
+	tar -xvf fcron-3.2.1
+	cd fcron-3.2.1
+	./configure
+	make install
+	cd ..
+	rm -Rf fcron-3.2.1
+	cp -Rf /install/spool/ /usr/local/var/spool/
+	cp -Rf /install/usr/local/ /usr/local/
+	
+	systemctl enable fcron
+	systemctl start fcron
 Chunck 197
 --------------
 .. code-block:: bash

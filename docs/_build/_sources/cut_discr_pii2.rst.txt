@@ -690,8 +690,7 @@ AutoInstall Cut Discr
 	:linenos:
 
 	echo -e "y\n" | apt-get install git
-	if [ 
-	? -ne 0 ]; then
+	if [ ? -ne 0 ]; then
 	 echo "Error: error install git!!!"
 	 exit 1;
 	fi
@@ -2003,6 +2002,7 @@ AutoInstall Cut Discr
 |	grep AVC altlog.log | audit2allow -m loaderlocalv4 > loaderlocalv4.te
 |	checkmodule -M -m -o loaderlocalv1.mod loaderlocalv1.te
 |	semodule_package -o loaderlocalv1.pp -m loaderlocalv1.mod
+|	$(find . -type f -name '*.pp')
 .. code-block:: bash
 	:linenos:
 
@@ -2011,12 +2011,6 @@ AutoInstall Cut Discr
 	semodule -i loaderlocalv2.pp
 	semodule -i loaderlocalv3.pp
 	semodule -i loaderlocalv4.pp
-	
-|	sudo apt-get install
-|	sudo apt-get automount
-.. code-block:: bash
-	:linenos:
-
 	semodule -i sudotev1.pp
 	semodule -i sudotev2.pp
 	semodule -i sudotev3.pp
@@ -2027,7 +2021,7 @@ AutoInstall Cut Discr
 	semodule -i sudotev70522v21.pp
 	semodule -i sudotevcrondv1.pp
 	semodule -i sphinxtev1.pp
-	semodule -i myapp1.pp
+	semodule -i nodegcc_app1.pp
 	semanage permissive -a boot_t
 	semanage permissive -a crond_t
 	semanage permissive -a crontab_t
@@ -2091,6 +2085,7 @@ AutoInstall Cut Discr
 	semanage port -a -t http_port_t -p tcp 20000
 	
 	systemctl enable webmin
+	cp -Rf /install/etc/webmin /etc/
 	systemctl start webmin
 	
 |	
@@ -2188,7 +2183,9 @@ AutoInstall Cut Discr
 .. code-block:: bash
 	:linenos:
 
-	sed -i -e "s/\"download-dir\"\:.*$/\"download-dir\"\: \"\/opt\/SAMBA_SHARE\/bittorrent_download_store\",/g" /var/lib/transmission-daemon/info/settings.json
+	sed -i -e "s/\"download-dir\"\:.*$/\"download-dir\"\: \"\/opt\/SAMBA_SHARE\/torrents\",/g" /var/lib/transmission-daemon/info/settings.json
+	sed -i -e "s/\"incomplete-dir\"\:.*$/\"incomplete-dir\"\: \"\/opt\/SAMBA_SHARE\/bittorrent_download_store\",/g" /var/lib/transmission-daemon/info/settings.json
+	sed -i -e "s/\"watch-dir\"\:.*$/\"watch-dir\"\: \"\/opt\/SAMBA_SHARE\/bittorrent_watch\",/g" /var/lib/transmission-daemon/info/settings.json
 |			"watch-dir-enabled": true,
 |			"watch-dir": "/home/server/torrents"
 |	sudo usermod -a -G debian-transmission technics
@@ -2218,8 +2215,36 @@ AutoInstall Cut Discr
 .. code-block:: bash
 	:linenos:
 
-	echo -e "\y\n" | apt-get -f install
-|	echo -e "y\n" | apt-get remove nvidia-*
+	echo -e "\y\n" | apt-get install libpcap-dev
+	echo -e "\y\n" | apt-get install sendmail
+	cd ~
+|	https://www.linuxfromscratch.org/blfs/view/svn/general/fcron.html
+.. code-block:: bash
+	:linenos:
+
+	wget http://fcron.free.fr/archives/fcron-3.2.1.src.tar.gz
+	tar -xvf fcron-3.2.1
+	cd fcron-3.2.1
+	./configure
+	make install
+	cd ..
+	rm -Rf fcron-3.2.1
+	cp -Rf /install/spool/ /usr/local/var/spool/
+	cp -Rf /install/usr/local/ /usr/local/
+	
+	systemctl enable fcron
+	systemctl start fcron
+|	echo -e "\y\n" | apt-get search gccgo-go
+|	echo -e "\y\n" | apt-get install gccgo-go
+|	echo -e "\y\n" | apt-get install golang-go
+|	|	 https://dshearer.github.io/jobber/doc/v1.4/
+|	git clone https://github.com/dshearer/jobber.git
+|	cd jobber
+|	git checkout v1.4.4
+|	make install
+|	cd ..
+|	rm -Rf jobber
+|	echo -e "\y\n" | apt-get -f install
 .. code-block:: bash
 	:linenos:
 

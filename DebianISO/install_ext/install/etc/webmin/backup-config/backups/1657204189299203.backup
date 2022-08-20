@@ -1,0 +1,16 @@
+sched=1
+weekdays=*
+nofiles=
+hours=*
+id=1657204189299203
+email=
+days=*
+pre=cd /mnt/sdd1/Backup/Debian_PC_BACKUP/;touch $PWD/Debian10_BilSrv.tar.gz;chmod 660 $PWD/Debian10_BilSrv.tar.gz;
+others=/dev/	/usr/	/home/	/lib/	/bin/
+post=bash /home/rootsu/WebMin_PostBackup.sh
+emode=0
+months=*
+configfile=1
+dest=/mnt/sdd1/Backup/Debian_PC_BACKUP/Debian10_BilSrv.tar.gz
+mods=adsl-client bacula-backup init fail2ban heartbeat ipsec krb5 firewall6 raid logrotate mailcap exports xinetd inetd phpini ppp-client pptp-client pptp-server cron shorewall shorewall6 spam sarg syslog-ng logviewer tcpwrappers iscsi-client iscsi-server idmapd webalizer pam apache grub nis custom sendmail firewall mon bandwidth postfix usermin webmin net qmailadmin acl useradmin procmail squid at fetchmail dhcpd bind8 dovecot ldap-server openslp pap proftpd sshd wuftpd mysql postgresql vgetty jabber servers time syslog status stunnel lvm samba mount
+mins=1-59

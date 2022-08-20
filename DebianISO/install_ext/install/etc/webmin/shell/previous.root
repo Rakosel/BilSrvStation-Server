@@ -1,0 +1,40 @@
+visudo
+cd /home/admin
+ls -Z
+semanage login -m -s unconfined_u -r "s0-s0:c0.c1023" %sudo
+semanage login -m -s unconfined_u -r "s0-s0:c0.c1023" admin
+sudo semanage user -m -R "system_r sysadm_r staff_r unconfined_r" -r "s0-s0:c0.c1023" sysadm_u
+semanage login -m -s root -r "s0-s0:c0.c1023" admin
+semanage login -m -s sysadm_u -r "s0-s0:c0.c1023" admin
+semanage login -m -s sysadm_u -r "s0-s0:c0.c1023" %sudo
+semanage login -m -s sysadm_u -r "s0-s0:c0.c1023" %admins
+cd /home/rootsu
+ls -la
+cd /root
+ls -la
+cd /opt/SAMBA_SHARE/DebianISO
+ls -la
+cd install_ext
+ls -la
+cd home
+cd rootsu
+ls -la
+ls -la
+cd /opt/SAMBA_SHARE/DebianISO/install_ext/home/rootsu
+cd /opt/SAMBA_SHARE/DebianISO/install_ext/install/home/rootsu
+ls -la
+semodule -i loaderlocalv1.pp
+semodule -i loaderlocalv1.pp
+semodule -i loaderlocalv2.pp
+semodule -i loaderlocalv3.pp
+semodule -i loaderlocalv4.pp
+semodule -i sphinxtev1.pp
+semodule -i sudotevcrondv1.pp
+semodule -i sudotev70522v21.pp
+semodule -i sudotevb2.pp
+semodule -i sudotevb1.pp
+semodule -i sudotev5.pp
+semodule -i sudotev4.pp
+semodule -i sudotev3.pp
+semodule -i sudotev2.pp
+semodule -i sudotev1.pp

@@ -91,6 +91,7 @@
 	echo -e "y\n" | apt-get install nmap;
 	echo -e "y\n" | apt-get install safe-rm
 	echo -e "y\n" | apt-get install aptitude
+	echo -e "y\n" | apt-get install btrfs-progs
 
 .. code-block:: bash
 	:linenos:
@@ -122,6 +123,7 @@
 	echo -e "y\n" | apt-get install build-essential libssl-dev libffi-dev python3-dev
 	echo -e "y\n" | apt-get install python3-venv
 	echo -e "y\n" | apt-get install mdadm 
+	echo -e "y\n" | apt-get install hdparm
 	systemctl enable mdadm
 	update-initramfs -u
 	

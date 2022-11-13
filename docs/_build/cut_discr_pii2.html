@@ -283,7 +283,7 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">select</span> opt in Auto PoluAuto Hands Exit<span class="p">;</span> <span class="k">do</span>
 <span class="linenos"> 2</span><span class="k">case</span> <span class="nv">$opt</span> in
 <span class="linenos"> 3</span>Auto<span class="o">)</span>
-<span class="linenos"> 4</span>                <span class="nb">echo</span> -n <span class="s2">&quot;Сейчас будет произведена автоматическая найстройка &quot;</span><span class="p">;</span>
+<span class="linenos"> 4</span>                <span class="nb">echo</span> -n <span class="s2">&quot;Сейчас будет произведена автоматическая настройка &quot;</span><span class="p">;</span>
 <span class="linenos"> 5</span>                sleep <span class="m">3</span><span class="p">;</span>
 <span class="linenos"> 6</span>                jumpto start
 <span class="linenos"> 7</span><span class="p">;;</span>
@@ -938,8 +938,8 @@
 <span class="linenos">2</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install setools policycoreutils selinux-basics selinux-utils selinux-policy-default selinux-policy-mls auditd policycoreutils-python-utils semanage-utils audispd-plugins
 <span class="linenos">3</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install mcstrans
 <span class="linenos">4</span>
-<span class="linenos">5</span>sudo systemctl <span class="nb">enable</span> auditd
-<span class="linenos">6</span>sudo systemctl start auditd
+<span class="linenos">5</span>systemctl <span class="nb">enable</span> auditd
+<span class="linenos">6</span>systemctl start auditd
 </pre></div>
 </div>
 <div class="line-block">
@@ -1183,6 +1183,7 @@
 <span class="linenos">13</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install nmap<span class="p">;</span>
 <span class="linenos">14</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install safe-rm
 <span class="linenos">15</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install aptitude
+<span class="linenos">16</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install btrfs-progs
 </pre></div>
 </div>
 <div class="line-block">
@@ -1215,10 +1216,11 @@
 <span class="linenos">25</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install build-essential libssl-dev libffi-dev python3-dev
 <span class="linenos">26</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install python3-venv
 <span class="linenos">27</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install mdadm
-<span class="linenos">28</span>systemctl <span class="nb">enable</span> mdadm
-<span class="linenos">29</span>update-initramfs -u
-<span class="linenos">30</span>
-<span class="linenos">31</span>python3 -m venv env
+<span class="linenos">28</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install hdparm
+<span class="linenos">29</span>systemctl <span class="nb">enable</span> mdadm
+<span class="linenos">30</span>update-initramfs -u
+<span class="linenos">31</span>
+<span class="linenos">32</span>python3 -m venv env
 </pre></div>
 </div>
 <div class="line-block">
@@ -1445,19 +1447,30 @@
 <div class="line-block">
 <div class="line">reading each line</div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nv">shd</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$line</span> <span class="p">|</span> sed <span class="s1">&#39;s/\//\\\//g&#39;</span><span class="k">)</span>
-<span class="linenos"> 2</span><span class="nv">S1</span><span class="o">=</span><span class="k">$(</span>blkid <span class="p">|</span> sed -n -e <span class="s2">&quot;s/</span><span class="nv">$shd</span><span class="s2">:\s\(.*\).*/\1/p&quot;</span> <span class="p">|</span> sed -n -e <span class="s2">&quot;s/.*UUID=\(.*\)\sB.*/\1/p&quot;</span> <span class="p">|</span> sed <span class="s1">&#39;s/\&quot;/\\&quot;/g&#39;</span><span class="k">)</span>
-<span class="linenos"> 3</span><span class="nv">TMPS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$line</span> <span class="p">|</span> sed -n -e <span class="s2">&quot;s/^\/dev\/\([a-z]*[0-9]\).*/\1/p&quot;</span><span class="k">)</span>
-<span class="linenos"> 4</span>chown admin_share:technics -Rf <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span>
-<span class="linenos"> 5</span>chmod ugo+rwx -Rf <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span>
-<span class="linenos"> 6</span>semanage fcontext -a -t public_content_rw_t <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">(/.*)?&quot;</span><span class="p">;</span>
-<span class="linenos"> 7</span>chcon -Rv -t public_content_rw_t <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="linenos"> 8</span>setfacl -m u:admin_share:rwx,u:admin:rwx,u:pub_share:rwx -R <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="linenos"> 9</span>setfacl -m g:admins:rw,g:technics:rw -R <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="linenos">10</span>chmod go+rwx -R <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="linenos">11</span><span class="k">if</span> <span class="o">[[</span> -n <span class="nv">$S1</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-<span class="linenos">12</span>        sed -i -e <span class="s2">&quot;</span>$<span class="s2"> a UUID\=</span><span class="nv">$S1</span><span class="s2">        \/mnt\/</span><span class="nv">$TMPS</span><span class="s2">    ext4    defaults        0       2&quot;</span> /etc/fstab
-<span class="linenos">13</span><span class="k">fi</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nv">shd</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$line</span> <span class="p">|</span> sed <span class="s1">&#39;s/\//\\\//g&#39;</span><span class="k">)</span>
+<span class="linenos">2</span><span class="nv">S1</span><span class="o">=</span><span class="k">$(</span>blkid <span class="p">|</span> sed -n -e <span class="s2">&quot;s/</span><span class="nv">$shd</span><span class="s2">:\s\(.*\).*/\1/p&quot;</span> <span class="p">|</span> sed -n -e <span class="s2">&quot;s/.*UUID=\(.*\)\sB.*/\1/p&quot;</span> <span class="p">|</span> sed <span class="s1">&#39;s/\&quot;/\\&quot;/g&#39;</span><span class="k">)</span>
+<span class="linenos">3</span><span class="nv">TMPS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$line</span> <span class="p">|</span> sed -n -e <span class="s2">&quot;s/^\/dev\/\([a-z]*[0-9]\).*/\1/p&quot;</span><span class="k">)</span>
+<span class="linenos">4</span>chown admin_share:technics -Rf <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span>
+<span class="linenos">5</span>chmod ugo+rwx -Rf <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span>
+<span class="linenos">6</span>semanage fcontext -a -t public_content_rw_t <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">(/.*)?&quot;</span><span class="p">;</span>
+<span class="linenos">7</span>
+<span class="linenos">8</span>setfacl -m u:admin_share:rwx,u:admin:rwx,u:pub_share:rwx,g:admins:rw,g:technics:rw -R <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">setfacl -m u:admin_share:rwx,u:admin:rwx,u:pub_share:rwx,g:admins:rw,g:technics:rw -R &quot;/mnt/$TMPS&quot;;</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>chcon -Rv -t public_content_rw_t <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">setfacl -m u:admin_share:rwx,u:admin:rwx,u:pub_share:rwx -R &quot;/mnt/$TMPS&quot;;</div>
+<div class="line">setfacl -m g:admins:rw,g:technics:rw -R &quot;/mnt/$TMPS&quot;;</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>chmod go+rwx -R <span class="s2">&quot;/mnt/</span><span class="nv">$TMPS</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="linenos">2</span><span class="k">if</span> <span class="o">[[</span> -n <span class="nv">$S1</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+<span class="linenos">3</span>        sed -i -e <span class="s2">&quot;</span>$<span class="s2"> a UUID\=</span><span class="nv">$S1</span><span class="s2">        \/mnt\/</span><span class="nv">$TMPS</span><span class="s2">    ext4    defaults        0       2&quot;</span> /etc/fstab
+<span class="linenos">4</span><span class="k">fi</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -2679,7 +2692,7 @@
 <span class="linenos">2</span>semanage port -a -t http_port_t -p tcp <span class="m">20000</span>
 <span class="linenos">3</span>
 <span class="linenos">4</span>systemctl <span class="nb">enable</span> webmin
-<span class="linenos">5</span>cp -Rf /install/etc/webmin /etc/
+<span class="linenos">5</span>cp -Rf /install/etc/webmin/etc/
 <span class="linenos">6</span>systemctl start webmin
 </pre></div>
 </div>
@@ -2715,6 +2728,10 @@
 <div class="line"><a class="reference external" href="https://fostips.com/remote-control-transmission-debian/">https://fostips.com/remote-control-transmission-debian/</a></div>
 <div class="line"><a class="reference external" href="https://habr.com/ru/post/658463/">https://habr.com/ru/post/658463/</a></div>
 <div class="line"><br /></div>
+<div class="line">Nado li ustanavlivatb eto ?</div>
+<div class="line"><a class="reference external" href="https://github.com/transmission/transmission/blob/main/docs/Building-Transmission.md">https://github.com/transmission/transmission/blob/main/docs/Building-Transmission.md</a></div>
+<div class="line">for <a class="reference external" href="https://build.transmissionbt.com/job/trunk-linux/lastSuccessfulBuild/artifact/transmission-4.0.0-beta.1.dev+r00cc28cf0b.tar.xz">https://build.transmissionbt.com/job/trunk-linux/lastSuccessfulBuild/artifact/transmission-4.0.0-beta.1.dev+r00cc28cf0b.tar.xz</a></div>
+<div class="line"><a class="reference external" href="https://github.com/transmission/transmission/blob/main/docs/Building-Transmission">https://github.com/transmission/transmission/blob/main/docs/Building-Transmission</a>.md|  building-from-a-tarball</div>
 <div class="line-block">
 <div class="line">sudo nano /etc/init.d/transmission-daemon</div>
 <div class="line">sudo nano /etc/init/transmission-daemon.conf</div>
@@ -2735,17 +2752,21 @@
 <div class="line-block">
 <div class="line">create catalogue bittorrent_download_store, bittorrent_upload</div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>mkdir -m <span class="m">775</span> /opt/SAMBA_SHARE/bittorrent_download_store
-<span class="linenos">2</span>mkdir -m <span class="m">775</span> /opt/SAMBA_SHARE/bittorrent_upload
-<span class="linenos">3</span>chown admin_share:technics /opt/SAMBA_SHARE/bittorrent_download_store
-<span class="linenos">4</span>chown :debian-transmission /opt/SAMBA_SHARE/bittorrent_upload
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>mkdir -m <span class="m">777</span> /opt/SAMBA_SHARE/bittorrent_download_store
+<span class="linenos">2</span>mkdir -m <span class="m">777</span> /opt/SAMBA_SHARE/bittorrent_upload
+<span class="linenos">3</span>mkdir -m <span class="m">777</span> /opt/SAMBA_SHARE/bittorrent_watch
+<span class="linenos">4</span>chown debian-transmission:debian-transmission /opt/SAMBA_SHARE/bittorrent_download_store
+<span class="linenos">5</span>chown debian-transmission:debian-transmission /opt/SAMBA_SHARE/bittorrent_upload
+<span class="linenos">6</span>chown debian-transmission:debian-transmission /opt/SAMBA_SHARE/bittorrent_watch
+<span class="linenos">7</span>chown debian-transmission:debian-transmission /opt/SAMBA_SHARE/torrents
+<span class="linenos">8</span>setfacl -m u:admin_share:rwx,u:admin:rwx,u:pub_share:rwx,g:admins:rw,g:technics:rw -R <span class="s2">&quot;/opt/&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line">gpasswd --add pub_share debian-transmission</div>
 <div class="line">gpasswd --add admin_share debian-transmission</div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sudo usermod -aG debian-transmission admin_share
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sudo usermod -aG debian-transmission admins
 <span class="linenos">2</span>sudo usermod -aG debian-transmission admin_share
 </pre></div>
 </div>
@@ -2760,9 +2781,14 @@
 <div class="line">settings ext config ???</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>chmod -R <span class="m">775</span> /opt/.transmission_config
-<span class="linenos">2</span>sed -i -e <span class="s2">&quot;s/CONFIG_DIR=.*</span>$<span class="s2">/CONFIG_DIR=\&quot;\/opt\/.transmission_config\/settings.json\&quot;/g&quot;</span> /etc/default/transmission-daemon
-<span class="linenos">3</span>semanage port -a -t http_port_t -p tcp <span class="m">9091</span>
-<span class="linenos">4</span>semanage port -a -t http_port_t -p udp <span class="m">9091</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Edit path settings file <a class="reference external" href="https://habr.com/ru/post/658463/">https://habr.com/ru/post/658463/</a></div>
+<div class="line">sourced by /etc/init.d/transmission-daemon</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sed -i -e <span class="s2">&quot;s/CONFIG_DIR=.*</span>$<span class="s2">/CONFIG_DIR=\&quot;\/opt\/.transmission_config\/settings.json\&quot;/g&quot;</span> /etc/default/transmission-daemon
+<span class="linenos">2</span>semanage port -a -t http_port_t -p tcp <span class="m">9091</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -2818,12 +2844,10 @@
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> <span class="s1">&#39;/dev/md0 /mnt/sde1 ext4 defaults,nofail,discard 1 0&#39;</span> <span class="p">|</span> tee -a /etc/fstab
-</pre></div>
-</div>
 <div class="line-block">
+<div class="line">echo '/dev/md0 /mnt/sde1 ext4 defaults,nofail,discard 1 0' | tee -a /etc/fstab</div>
 <div class="line"><br /></div>
+</div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
 </pre></div>
@@ -2841,7 +2865,7 @@
 <div class="line"><a class="reference external" href="https://www.linuxfromscratch.org/blfs/view/svn/general/fcron.html">https://www.linuxfromscratch.org/blfs/view/svn/general/fcron.html</a></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>wget http://fcron.free.fr/archives/fcron-3.2.1.src.tar.gz
-<span class="linenos"> 2</span>tar -xvf fcron-3.2.1
+<span class="linenos"> 2</span>tar -xvf fcron-3.2.1.src.tar.gz
 <span class="linenos"> 3</span><span class="nb">cd</span> fcron-3.2.1
 <span class="linenos"> 4</span>./configure
 <span class="linenos"> 5</span>make install

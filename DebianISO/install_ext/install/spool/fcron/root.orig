@@ -1,0 +1,20 @@
+# https://crontab.guru
+@bootrun 60s sudo e2fsck -y -f -v /dev/sdc1 && sudo mount /dev/sdc1 /mnt/sdc1
+#@runatreboot 60s sudo e2fsck -y -f -v /dev/sdc1 && sudo mount /dev/sdc1 /mnt/sdc1
+#& * 4 * 8 * perl /etc/webmin/backup-config/backup.pl 1657204189299203
+& * 4 30 * * sudo perl /etc/webmin/backup-config/backup.pl 1657204189299203
+# @ 1w
+@ 1w rm -Rf /etc/ssh/ssh_host_* && sudo dpkg-reconfigure openssh-server 
+& 57 4 1 * 0 sudo bash if [ -x /usr/share/mdadm/checkarray ] && [ $(date +\%d) -le 7 ]; then /usr/share/mdadm/checkarray --cron --all --idle --quiet; fi
+# /opt/
+& * 4 26 2 * sudo e4defrag /dev/sda1
+# FLASH opt /mnt/sdb2
+& * 4 30 1 * sudo e4defrag /dev/sdb2
+# RAID Array 1GB
+& * 4 29 * * sudo e4defrag /dev/md0
+# 2GB green damage!
+& * 4 28 * * sudo e4defrag /dev/sdc1
+# 3GB blue 
+& * 4 27 * * sudo e4defrag /dev/sdd1
+# System
+& * 4 27 6 * sudo e4defrag /dev/nvme0n1p3

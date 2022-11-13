@@ -187,6 +187,7 @@
 <span class="linenos">13</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install nmap<span class="p">;</span>
 <span class="linenos">14</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install safe-rm
 <span class="linenos">15</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install aptitude
+<span class="linenos">16</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install btrfs-progs
 </pre></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>iptables –F
@@ -216,10 +217,11 @@
 <span class="linenos">25</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install build-essential libssl-dev libffi-dev python3-dev
 <span class="linenos">26</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install python3-venv
 <span class="linenos">27</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install mdadm
-<span class="linenos">28</span>systemctl <span class="nb">enable</span> mdadm
-<span class="linenos">29</span>update-initramfs -u
-<span class="linenos">30</span>
-<span class="linenos">31</span>python3 -m venv env
+<span class="linenos">28</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install hdparm
+<span class="linenos">29</span>systemctl <span class="nb">enable</span> mdadm
+<span class="linenos">30</span>update-initramfs -u
+<span class="linenos">31</span>
+<span class="linenos">32</span>python3 -m venv env
 </pre></div>
 </div>
 </div>

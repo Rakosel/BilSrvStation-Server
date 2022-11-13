@@ -135,7 +135,7 @@ AutoInstall Cut Discr
 	select opt in Auto PoluAuto Hands Exit; do
 	case $opt in
 	Auto)
-			echo -n "Сейчас будет произведена автоматическая найстройка ";
+			echo -n "Сейчас будет произведена автоматическая настройка ";
 			sleep 3;
 			jumpto start
 	;;
@@ -649,8 +649,8 @@ AutoInstall Cut Discr
 	echo -e "y\n" | apt-get install setools policycoreutils selinux-basics selinux-utils selinux-policy-default selinux-policy-mls auditd policycoreutils-python-utils semanage-utils audispd-plugins
 	echo -e "y\n" | apt-get install mcstrans
 	
-	sudo systemctl enable auditd
-	sudo systemctl start auditd
+	systemctl enable auditd
+	systemctl start auditd
 |	
 |	policycoreutils-gui
 |	
@@ -849,6 +849,7 @@ AutoInstall Cut Discr
 	echo -e "y\n" | apt-get install nmap;
 	echo -e "y\n" | apt-get install safe-rm
 	echo -e "y\n" | apt-get install aptitude
+	echo -e "y\n" | apt-get install btrfs-progs
 |	echo -e "y\n" | apt-get install iptables
 .. code-block:: bash
 	:linenos:
@@ -880,12 +881,13 @@ AutoInstall Cut Discr
 	echo -e "y\n" | apt-get install build-essential libssl-dev libffi-dev python3-dev
 	echo -e "y\n" | apt-get install python3-venv
 	echo -e "y\n" | apt-get install mdadm 
+	echo -e "y\n" | apt-get install hdparm
 	systemctl enable mdadm
 	update-initramfs -u
 	
 	python3 -m venv env
 |	
-|	pip install mkdocs
+|	pip install mkdocs 
 |	pip install -U mkdocs
 |	pip install mkdocs-rtd-dropdown
 |	
@@ -1074,9 +1076,18 @@ AutoInstall Cut Discr
 	chown admin_share:technics -Rf "/mnt/$TMPS"
 	chmod ugo+rwx -Rf "/mnt/$TMPS"
 	semanage fcontext -a -t public_content_rw_t "/mnt/$TMPS(/.*)?"; 
+	
+	setfacl -m u:admin_share:rwx,u:admin:rwx,u:pub_share:rwx,g:admins:rw,g:technics:rw -R "/mnt/$TMPS";
+|	setfacl -m u:admin_share:rwx,u:admin:rwx,u:pub_share:rwx,g:admins:rw,g:technics:rw -R "/mnt/$TMPS";
+.. code-block:: bash
+	:linenos:
+
 	chcon -Rv -t public_content_rw_t "/mnt/$TMPS";
-	setfacl -m u:admin_share:rwx,u:admin:rwx,u:pub_share:rwx -R "/mnt/$TMPS";
-	setfacl -m g:admins:rw,g:technics:rw -R "/mnt/$TMPS";
+|	setfacl -m u:admin_share:rwx,u:admin:rwx,u:pub_share:rwx -R "/mnt/$TMPS";
+|	setfacl -m g:admins:rw,g:technics:rw -R "/mnt/$TMPS";
+.. code-block:: bash
+	:linenos:
+
 	chmod go+rwx -R "/mnt/$TMPS";
 	if [[ -n $S1 ]]; then
 		sed -i -e "$ a UUID\=$S1	\/mnt\/$TMPS	ext4	defaults	0	2" /etc/fstab
@@ -2085,7 +2096,7 @@ AutoInstall Cut Discr
 	semanage port -a -t http_port_t -p tcp 20000
 	
 	systemctl enable webmin
-	cp -Rf /install/etc/webmin /etc/
+	cp -Rf /install/etc/webmin/etc/
 	systemctl start webmin
 	
 |	
@@ -2115,6 +2126,10 @@ AutoInstall Cut Discr
 |	 https://fostips.com/remote-control-transmission-debian/
 |	 https://habr.com/ru/post/658463/
 |	
+|	 Nado li ustanavlivatb eto ?
+|	 https://github.com/transmission/transmission/blob/main/docs/Building-Transmission.md
+|	 for https://build.transmissionbt.com/job/trunk-linux/lastSuccessfulBuild/artifact/transmission-4.0.0-beta.1.dev+r00cc28cf0b.tar.xz
+|	 https://github.com/transmission/transmission/blob/main/docs/Building-Transmission.md|	building-from-a-tarball
 |		sudo nano /etc/init.d/transmission-daemon
 |		sudo nano /etc/init/transmission-daemon.conf
 |	
@@ -2132,16 +2147,20 @@ AutoInstall Cut Discr
 .. code-block:: bash
 	:linenos:
 
-	mkdir -m 775 /opt/SAMBA_SHARE/bittorrent_download_store
-	mkdir -m 775 /opt/SAMBA_SHARE/bittorrent_upload
-	chown admin_share:technics /opt/SAMBA_SHARE/bittorrent_download_store
-	chown :debian-transmission /opt/SAMBA_SHARE/bittorrent_upload
+	mkdir -m 777 /opt/SAMBA_SHARE/bittorrent_download_store
+	mkdir -m 777 /opt/SAMBA_SHARE/bittorrent_upload
+	mkdir -m 777 /opt/SAMBA_SHARE/bittorrent_watch
+	chown debian-transmission:debian-transmission /opt/SAMBA_SHARE/bittorrent_download_store
+	chown debian-transmission:debian-transmission /opt/SAMBA_SHARE/bittorrent_upload
+	chown debian-transmission:debian-transmission /opt/SAMBA_SHARE/bittorrent_watch
+	chown debian-transmission:debian-transmission /opt/SAMBA_SHARE/torrents
+	setfacl -m u:admin_share:rwx,u:admin:rwx,u:pub_share:rwx,g:admins:rw,g:technics:rw -R "/opt/";
 |	gpasswd --add pub_share debian-transmission
 |	gpasswd --add admin_share debian-transmission
 .. code-block:: bash
 	:linenos:
 
-	sudo usermod -aG debian-transmission admin_share
+	sudo usermod -aG debian-transmission admins
 	sudo usermod -aG debian-transmission admin_share
 |	 create catalogue .transmission_config for config
 .. code-block:: bash
@@ -2154,9 +2173,13 @@ AutoInstall Cut Discr
 	:linenos:
 
 	chmod -R 775 /opt/.transmission_config
+|	 Edit path settings file https://habr.com/ru/post/658463/
+|	 sourced by /etc/init.d/transmission-daemon
+.. code-block:: bash
+	:linenos:
+
 	sed -i -e "s/CONFIG_DIR=.*$/CONFIG_DIR=\"\/opt\/.transmission_config\/settings.json\"/g" /etc/default/transmission-daemon
 	semanage port -a -t http_port_t -p tcp 9091
-	semanage port -a -t http_port_t -p udp 9091
 |	/etc/init.d/transmission-daemon in individual USER
 |	NAME=transmission-daemon
 |	DAEMON=/usr/bin/$NAME
@@ -2201,10 +2224,7 @@ AutoInstall Cut Discr
 	mdadm --detail --scan | sudo tee -a /etc/mdadm/mdadm.conf
 	update-initramfs -u
 |	
-.. code-block:: bash
-	:linenos:
-
-	echo '/dev/md0 /mnt/sde1 ext4 defaults,nofail,discard 1 0' | tee -a /etc/fstab
+|	echo '/dev/md0 /mnt/sde1 ext4 defaults,nofail,discard 1 0' | tee -a /etc/fstab
 |	
 .. code-block:: bash
 	:linenos:
@@ -2223,7 +2243,7 @@ AutoInstall Cut Discr
 	:linenos:
 
 	wget http://fcron.free.fr/archives/fcron-3.2.1.src.tar.gz
-	tar -xvf fcron-3.2.1
+	tar -xvf fcron-3.2.1.src.tar.gz
 	cd fcron-3.2.1
 	./configure
 	make install

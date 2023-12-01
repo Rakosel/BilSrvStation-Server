@@ -470,7 +470,7 @@ j=k+len(strapt.split(' '))-1
 #print("{0}\n".format(strapt.split(' ')[len(strapt.split(' '))-1]))
 #print("{0} {1}".format(k,j))
 while (j>=k):
-    if(strapt.split(' ')[z]!="" and strapt.split(' ')!="-y"):
+    if(strapt.split(' ')[z]!="" and strapt.split(' ')[z]!="-y"):
         linep_out_pack[k]=strToList("\t\"{0}\", \"{1}\"\n".format(z,strapt.split(' ')[z]));
     z+=1;k+=1;
 

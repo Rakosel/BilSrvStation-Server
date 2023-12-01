@@ -33,7 +33,7 @@ today_fmt = '%B %d, %Y'
 
 project = 'BilSrvStation_Server_PC'
 project_copyright = 'BilSrvStation_Server_PC'
-copyright = '2022, BiLymo iOT corp'
+copyright = '2023, BiLymo iOT corp'
 author = 'BiLymo F@rid'
 
 

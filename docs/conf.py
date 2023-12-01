@@ -13,13 +13,28 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
+import sys, os
+sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(1, os.path.abspath('../'))
+import sphinx_rtd_theme
 
+# adding Folder_2 to the system path
+
+import extract_pii2_all,extract_pc_all,extract_preseed_all,extract_cmd_shell_all,extract_full_discr_pii2,extract_build_doc
 
 # -- Project information -----------------------------------------------------
 
-project = "Basic Sphinx Example Project"
-copyright = "2022, Read the Docs core team"
-author = "Read the Docs core team"
+numfig = True
+# time.strtime
+today = '%d.%m.%Y'
+today_fmt = '%B %d, %Y'
+
+# -- Project information -----------------------------------------------------
+
+project = 'BilSrvStation_Server_PC'
+project_copyright = 'BilSrvStation_Server_PC'
+copyright = '2022, BiLymo iOT corp'
+author = 'BiLymo F@rid'
 
 
 # -- General configuration ---------------------------------------------------

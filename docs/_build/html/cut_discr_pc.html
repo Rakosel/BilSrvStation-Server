@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru,en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2. ISO InstallDeb Cut Discr &mdash; BilSrvStation_Server_PC 1.0.2a documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3. Preseed Cut Discr" href="cut_discr_preseed.html" />
+    <link rel="prev" title="1. Навигация" href="sourcelink.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> BilSrvStation_Server_PC
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="sourcelink.html">1. Навигация</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. ISO InstallDeb Cut Discr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_preseed.html">3. Preseed Cut Discr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="full_discr_pii2.html">4. Полное описание сервера</a></li>
+<li class="toctree-l1"><a class="reference internal" href="only_code_pii2.html">5. Appendix Code chunck</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2.html">6. AutoInstall Cut Discr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2_pack.html">7. AutoInstall Package List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_cmd_shell.html">8. CMD_SHELL Cut Discr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structure.html">9. Структура</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_doc.html">10. Построение этой документации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="note.html">11. Заметки</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BilSrvStation_Server_PC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><span class="section-number">2. </span>ISO InstallDeb Cut Discr</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/cut_discr_pc.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="iso-installdeb-cut-discr">
+<h1><span class="section-number">2. </span>ISO InstallDeb Cut Discr<a class="headerlink" href="#iso-installdeb-cut-discr" title="Permalink to this heading"></a></h1>
+<div class="line-block">
+<div class="line">by (c) Luc Didry 2017, WTFPL and <a href="#id1"><span class="problematic" id="id2">|author||</span></a> Date: <em>|date|</em> Time: <em>|time|</em></div>
+<div class="line-block">
+<div class="line">Type script: <em>bash</em></div>
+<div class="line">!/bin/bash</div>
+<div class="line">-xv</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://framagit.org/fiat-tux/hat-softwares/preseed-creator/-/blob/master/preseed_creator.sh">https://framagit.org/fiat-tux/hat-softwares/preseed-creator/-/blob/master/preseed_creator.sh</a></div>
+</div>
+<div class="line">set -x</div>
+</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">function</span> usage <span class="o">{</span>
+<span class="linenos"> 2</span>cat <span class="s">&lt;&lt;EOF</span>
+<span class="linenos"> 3</span><span class="s">Preseed Creator (c) Luc Didry 2017, WTFPL</span>
+<span class="linenos"> 4</span><span class="s">./preseed_creator.sh [options]</span>
+<span class="linenos"> 5</span><span class="s">Options:</span>
+<span class="linenos"> 6</span><span class="s">-i &lt;image.iso&gt;ISO image to preseed. If not provided, the script will download and use the latest Debian amd64 netinst ISO image</span>
+<span class="linenos"> 7</span><span class="s">-o &lt;preseeded_image.iso&gt;output preseeded ISO image. Default to preseed_creator/debian-netinst-latest-preseed.ISO</span>
+<span class="linenos"> 8</span><span class="s">-p &lt;preseed_file.cfg&gt; preseed file. If not provided, the script will put &quot;d-i debian-installer/locale string fr_FR&quot; in the preseed.cfg file</span>
+<span class="linenos"> 9</span><span class="s">-xUse xorriso instead of genisoimage, to create an iso-hybrid</span>
+<span class="linenos">10</span><span class="s">-ddownload the latest Debian amd64 netinst ISO image in the current folder</span>
+<span class="linenos">11</span><span class="s">-gdownload the latest Debian stable example preseed file into preseed_example.cfg and exit</span>
+<span class="linenos">12</span><span class="s">-hprint this help and exit</span>
+<span class="linenos">13</span><span class="s">EOF</span>
+<span class="linenos">14</span><span class="nb">exit</span>
+<span class="linenos">15</span><span class="o">}</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="k">function</span> download_latest_iso <span class="o">{</span>
+<span class="linenos">18</span><span class="nv">ONLY_DOWNLOAD</span><span class="o">=</span><span class="nv">$1</span>
+<span class="linenos">19</span>        <span class="nv">LOCK</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">;</span>
+<span class="linenos">20</span>        <span class="nv">INPUT1</span><span class="o">=</span><span class="s2">&quot;debian-netinst-latest.iso&quot;</span>
+<span class="linenos">21</span><span class="nv">INPUT1</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">MYPWD</span><span class="si">}</span><span class="s2">/preseed_creator/</span><span class="si">${</span><span class="nv">INPUT1</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span>        <span class="k">if</span> <span class="o">[[</span> <span class="nv">$ONLY_DOWNLOAD</span> <span class="o">==</span> <span class="m">1</span> <span class="o">&amp;&amp;</span> -f <span class="s2">&quot;</span><span class="nv">$INPUT1</span><span class="s2">&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+<span class="linenos">24</span>                <span class="nb">echo</span> <span class="s2">&quot;file exists.&quot;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">ONLY_DOWNLOAD = 1;</div>
+<div class="line">exit 0;</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>        <span class="k">else</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">rm -Rf ${MYPWD}/preseed_creator</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>                <span class="nv">LOCK</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="linenos">2</span>                <span class="nb">echo</span> <span class="s2">&quot;file not exists.&quot;</span>
+<span class="linenos">3</span>        <span class="k">fi</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">echo -e &quot;n dli $ONLY_DOWNLOAD $LOCK&quot;</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">if</span> <span class="o">[[</span> <span class="nv">$ONLY_DOWNLOAD</span> <span class="o">==</span> <span class="m">1</span> <span class="o">&amp;&amp;</span> -n <span class="s2">&quot;</span><span class="nv">$LOCK</span><span class="s2">&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+<span class="linenos"> 2</span> <span class="nb">echo</span> -ne <span class="s2">&quot;Getting Debian GPG keys [&gt; ](0%)\r&quot;</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">fi</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="k">if</span> <span class="o">[[</span> <span class="nv">$ONLY_DOWNLOAD</span> <span class="o">==</span> <span class="m">1</span> <span class="o">&amp;&amp;</span> -n <span class="s2">&quot;</span><span class="nv">$LOCK</span><span class="s2">&quot;</span> <span class="o">]]</span><span class="p">;</span>
+<span class="linenos"> 7</span><span class="k">then</span>
+<span class="linenos"> 8</span><span class="nb">echo</span> -ne <span class="s1">&#39;Getting Debian GPG keys [========&gt; ](25%)\r&#39;</span>
+<span class="linenos"> 9</span><span class="k">else</span>
+<span class="linenos">10</span><span class="nb">echo</span> -ne <span class="s1">&#39;Getting Debian GPG keys [&gt; ](0%)\r&#39;</span>
+<span class="linenos">11</span>        <span class="k">fi</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="k">for</span> i <span class="k">in</span> F41D30342F3546695F65C66942468F4009EA8AC3 DF9B9C49EAA9298432589D76DA87E80D6294BE9B 10460DAD76165AD81FBC0CE9988021A964E6EA7D
+<span class="linenos">14</span><span class="k">do</span>
+<span class="linenos">15</span>gpg --list-keys <span class="nv">$i</span> &gt; /dev/null <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<span class="linenos">16</span><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> !<span class="o">=</span> <span class="m">0</span> <span class="o">]</span>
+<span class="linenos">17</span><span class="k">then</span>
+<span class="linenos">18</span>gpg --keyserver keyring.debian.org --recv-keys 0x<span class="nv">$i</span> &gt; /dev/null <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<span class="linenos">19</span><span class="k">fi</span>
+<span class="linenos">20</span><span class="k">done</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span><span class="k">if</span> <span class="o">[[</span> <span class="nv">$ONLY_DOWNLOAD</span> <span class="o">==</span> <span class="m">1</span> <span class="o">&amp;&amp;</span> -n <span class="s2">&quot;</span><span class="nv">$LOCK</span><span class="s2">&quot;</span> <span class="o">]]</span><span class="p">;</span>
+<span class="linenos">23</span><span class="k">then</span>
+<span class="linenos">24</span><span class="nb">echo</span> -ne <span class="s1">&#39;Downloading latest Debian amd64 netinst ISO [==============&gt; ](50%)\r&#39;</span>
+<span class="linenos">25</span><span class="k">else</span>
+<span class="linenos">26</span><span class="nb">echo</span> -ne <span class="s1">&#39;Downloading latest Debian amd64 netinst ISO [===&gt;](10%)\r&#39;</span>
+<span class="linenos">27</span>
+<span class="linenos">28</span><span class="nb">export</span> <span class="nv">LATEST</span><span class="o">=</span><span class="k">$(</span>wget -q -O - https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/ <span class="p">|</span> grep <span class="s2">&quot;netinst.iso&quot;</span> <span class="p">|</span> grep -v <span class="s2">&quot;debian-mac&quot;</span> <span class="p">|</span> grep -v <span class="s2">&quot;debian-edu&quot;</span> <span class="p">|</span> sed -e <span class="s1">&#39;s@.*a href=&quot;\([^&quot;]*\)&quot;.*@\1@&#39;</span><span class="k">)</span>
+<span class="linenos">29</span>wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/<span class="nv">$LATEST</span> -O debian-netinst-latest.iso
+<span class="linenos">30</span>
+<span class="linenos">31</span>wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/SHA512SUMS -O SHA512SUMS
+<span class="linenos">32</span>wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/SHA512SUMS.sign -O SHA512SUMS.sign
+<span class="linenos">33</span>        <span class="k">fi</span>
+<span class="linenos">34</span>
+<span class="linenos">35</span>        <span class="k">if</span> <span class="o">[[</span> <span class="k">$(</span>wc -c <span class="s2">&quot;</span><span class="nv">$INPUT1</span><span class="s2">&quot;</span> <span class="p">|</span> awk <span class="s1">&#39;{print $1}&#39;</span><span class="k">)</span> <span class="o">==</span> <span class="s2">&quot;0&quot;</span> <span class="o">]]</span><span class="p">;</span>
+<span class="linenos">36</span>        <span class="k">then</span>
+<span class="linenos">37</span>                <span class="nb">echo</span> -e <span class="s2">&quot;\r\n file downloaded invaild&quot;</span>
+<span class="linenos">38</span>                <span class="nb">exit</span> <span class="m">1</span><span class="p">;</span>
+<span class="linenos">39</span>        <span class="k">fi</span>
+<span class="linenos">40</span>
+<span class="linenos">41</span><span class="k">if</span> <span class="o">[[</span> <span class="nv">$ONLY_DOWNLOAD</span> <span class="o">==</span> <span class="m">1</span> <span class="o">&amp;&amp;</span> -n <span class="s2">&quot;</span><span class="nv">$LOCK</span><span class="s2">&quot;</span> <span class="o">]]</span><span class="p">;</span>
+<span class="linenos">42</span><span class="k">then</span>
+<span class="linenos">43</span><span class="nb">echo</span> -ne <span class="s1">&#39;Verifying GPG signature [======================&gt; ](75%)\r&#39;</span>
+<span class="linenos">44</span><span class="k">else</span>
+<span class="linenos">45</span><span class="nb">echo</span> -ne <span class="s1">&#39;Verifying GPG signature [======&gt; ](20%)\r&#39;</span>
+<span class="linenos">46</span>gpg --verify SHA512SUMS.sign SHA512SUMS &gt; /dev/null <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<span class="linenos">47</span><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne <span class="m">0</span> <span class="o">]</span>
+<span class="linenos">48</span><span class="k">then</span>
+<span class="linenos">49</span><span class="nb">echo</span> <span class="s2">&quot;Bad SHA512SUMS GPG signature. Aborting\r\n&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>                <span class="k">fi</span>
+<span class="linenos"> 2</span><span class="k">fi</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">if</span> <span class="o">[[</span> <span class="nv">$ONLY_DOWNLOAD</span> <span class="o">==</span> <span class="m">1</span> <span class="o">&amp;&amp;</span> -n <span class="s2">&quot;</span><span class="nv">$LOCK</span><span class="s2">&quot;</span> <span class="o">]]</span><span class="p">;</span>
+<span class="linenos"> 5</span><span class="k">then</span>
+<span class="linenos"> 6</span><span class="nb">echo</span> -ne <span class="s1">&#39;Veryfying sha512sum [=============================&gt;](100%)\r&#39;</span>
+<span class="linenos"> 7</span><span class="k">else</span>
+<span class="linenos"> 8</span><span class="nb">echo</span> -ne <span class="s1">&#39;Veryfying sha512sum [=========&gt;](30%)\r&#39;</span>
+<span class="linenos"> 9</span>        sed -e <span class="s2">&quot;s@</span><span class="si">${</span><span class="nv">LATEST</span><span class="si">}</span><span class="s2">@debian-netinst-latest.iso@&quot;</span> -i SHA512SUMS
+<span class="linenos">10</span>sha512sum --ignore-missing -c SHA512SUMS &gt; /dev/null <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne <span class="m">0</span> <span class="o">]</span>
+<span class="linenos">13</span><span class="k">then</span>
+<span class="linenos">14</span><span class="nb">echo</span> <span class="s2">&quot;Bad ISO checksum. Aborting\r\n&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">fi</span>
+<span class="linenos">2</span><span class="k">fi</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">if [ $ONLY_DOWNLOAD == 1 ]</div>
+<div class="line">then</div>
+<div class="line">fi</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="o">}</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="nv">INPUT</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="linenos"> 4</span><span class="nv">PRESEED</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="linenos"> 5</span><span class="nv">POSTINSTALL</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="linenos"> 6</span><span class="nv">MYPWD</span><span class="o">=</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>
+<span class="linenos"> 7</span><span class="nv">OUTPUT</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="linenos"> 8</span><span class="nv">XORRISO</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="linenos"> 9</span><span class="k">while</span> <span class="nb">getopts</span> <span class="s2">&quot;:i:o:p:s:xdgh&quot;</span> opt<span class="p">;</span> <span class="k">do</span>
+<span class="linenos">10</span><span class="k">case</span> <span class="nv">$opt</span> <span class="k">in</span>
+<span class="linenos">11</span>i<span class="o">)</span>
+<span class="linenos">12</span><span class="nv">INPUT</span><span class="o">=</span><span class="nv">$OPTARG</span>
+<span class="linenos">13</span><span class="p">;;</span>
+<span class="linenos">14</span>o<span class="o">)</span>
+<span class="linenos">15</span><span class="nv">OUTPUT</span><span class="o">=</span><span class="nv">$OPTARG</span>
+<span class="linenos">16</span><span class="p">;;</span>
+<span class="linenos">17</span>p<span class="o">)</span>
+<span class="linenos">18</span><span class="nv">PRESEED</span><span class="o">=</span><span class="nv">$OPTARG</span>
+<span class="linenos">19</span><span class="p">;;</span>
+<span class="linenos">20</span>s<span class="o">)</span>
+<span class="linenos">21</span><span class="nv">POSTINSTALL</span><span class="o">=</span><span class="nv">$OPTARG</span>
+<span class="linenos">22</span><span class="p">;;</span>
+<span class="linenos">23</span>x<span class="o">)</span>
+<span class="linenos">24</span><span class="nv">XORRISO</span><span class="o">=</span><span class="s1">&#39;yes&#39;</span>
+<span class="linenos">25</span><span class="p">;;</span>
+<span class="linenos">26</span>d<span class="o">)</span>
+<span class="linenos">27</span><span class="nb">echo</span> <span class="s2">&quot;Downloading latest Debian amd64 netinst ISO image\r\n&quot;</span>
+<span class="linenos">28</span>download_latest_iso <span class="m">1</span>
+<span class="linenos">29</span><span class="p">;;</span>
+<span class="linenos">30</span>g<span class="o">)</span>
+<span class="linenos">31</span><span class="nb">echo</span> <span class="s2">&quot;Downloading latest Debian stable example preseed file into preseed_example.cfg\r\n&quot;</span>
+<span class="linenos">32</span>wget -q http://www.debian.org/releases/stable/example-preseed.txt -O preseed_example.cfg
+<span class="linenos">33</span><span class="nb">echo</span> <span class="s2">&quot;Done\r\n&quot;</span>
+<span class="linenos">34</span><span class="nb">exit</span>
+<span class="linenos">35</span><span class="p">;;</span>
+<span class="linenos">36</span>h<span class="o">)</span>
+<span class="linenos">37</span>usage
+<span class="linenos">38</span><span class="p">;;</span>
+<span class="linenos">39</span><span class="se">\?</span><span class="o">)</span>
+<span class="linenos">40</span><span class="nb">echo</span> <span class="s2">&quot;Invalid option: -</span><span class="nv">$OPTARG</span><span class="s2">\r\n&quot;</span> &gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="linenos">41</span>usage
+<span class="linenos">42</span><span class="p">;;</span>
+<span class="linenos">43</span><span class="k">esac</span>
+<span class="linenos">44</span><span class="k">done</span>
+<span class="linenos">45</span>
+<span class="linenos">46</span>rm -Rf <span class="s2">&quot;</span><span class="si">${</span><span class="nv">MYPWD</span><span class="si">}</span><span class="s2">/preseed_creator/irmod&quot;</span>
+<span class="linenos">47</span>rm -Rf <span class="s2">&quot;</span><span class="si">${</span><span class="nv">MYPWD</span><span class="si">}</span><span class="s2">/preseed_creator/cd&quot;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">exit 1;</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>mkdir preseed_creator -p
+<span class="linenos"> 2</span><span class="nb">cd</span> preseed_creator
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">if</span> <span class="o">[[</span> ! -z <span class="nv">$POSTINSTALL</span> <span class="o">]]</span>
+<span class="linenos"> 5</span><span class="k">then</span>
+<span class="linenos"> 6</span><span class="k">if</span> <span class="o">[</span> <span class="si">${</span><span class="nv">POSTINSTALL</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">1</span><span class="si">}</span> !<span class="o">=</span> / <span class="o">]</span>
+<span class="linenos"> 7</span><span class="k">then</span>
+<span class="linenos"> 8</span><span class="nv">POSTINSTALL</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">MYPWD</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">POSTINSTALL</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="linenos"> 9</span><span class="k">fi</span>
+<span class="linenos">10</span><span class="k">if</span> <span class="o">[[</span> ! -e <span class="nv">$POSTINSTALL</span> <span class="o">]]</span>
+<span class="linenos">11</span><span class="k">then</span>
+<span class="linenos">12</span><span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$POSTINSTALL</span><span class="s2"> does not exists. Aborting\r\n&quot;</span>
+<span class="linenos">13</span><span class="nb">exit</span> <span class="m">1</span>
+<span class="linenos">14</span><span class="k">fi</span>
+<span class="linenos">15</span><span class="k">if</span> <span class="o">[[</span> ! -r <span class="nv">$POSTINSTALL</span> <span class="o">]]</span>
+<span class="linenos">16</span><span class="k">then</span>
+<span class="linenos">17</span><span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$POSTINSTALL</span><span class="s2"> is not readable. Aborting\r\n&quot;</span>
+<span class="linenos">18</span><span class="nb">exit</span> <span class="m">1</span>
+<span class="linenos">19</span><span class="k">fi</span>
+<span class="linenos">20</span><span class="k">fi</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span><span class="k">if</span> <span class="o">[[</span> ! -z <span class="nv">$PRESEED</span> <span class="o">]]</span>
+<span class="linenos">23</span><span class="k">then</span>
+<span class="linenos">24</span><span class="k">if</span> <span class="o">[</span> <span class="si">${</span><span class="nv">PRESEED</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">1</span><span class="si">}</span> !<span class="o">=</span> / <span class="o">]</span>
+<span class="linenos">25</span><span class="k">then</span>
+<span class="linenos">26</span><span class="nv">PRESEED</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">MYPWD</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">PRESEED</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="linenos">27</span><span class="k">fi</span>
+<span class="linenos">28</span><span class="k">if</span> <span class="o">[[</span> ! -e <span class="nv">$PRESEED</span> <span class="o">]]</span>
+<span class="linenos">29</span><span class="k">then</span>
+<span class="linenos">30</span><span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$PRESEED</span><span class="s2"> does not exists. Aborting\r\n&quot;</span>
+<span class="linenos">31</span><span class="nb">exit</span> <span class="m">1</span>
+<span class="linenos">32</span><span class="k">fi</span>
+<span class="linenos">33</span><span class="k">if</span> <span class="o">[[</span> ! -r <span class="nv">$PRESEED</span> <span class="o">]]</span>
+<span class="linenos">34</span><span class="k">then</span>
+<span class="linenos">35</span><span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$PRESEED</span><span class="s2"> is not readable. Aborting\r\n&quot;</span>
+<span class="linenos">36</span><span class="nb">exit</span> <span class="m">1</span>
+<span class="linenos">37</span><span class="k">fi</span>
+<span class="linenos">38</span><span class="k">fi</span>
+<span class="linenos">39</span>
+<span class="linenos">40</span><span class="k">if</span> <span class="o">[[</span> ! -z <span class="nv">$OUTPUT</span> <span class="o">]]</span>
+<span class="linenos">41</span><span class="k">then</span>
+<span class="linenos">42</span><span class="k">if</span> <span class="o">[</span> <span class="si">${</span><span class="nv">OUTPUT</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">1</span><span class="si">}</span> !<span class="o">=</span> / <span class="o">]</span>
+<span class="linenos">43</span><span class="k">then</span>
+<span class="linenos">44</span><span class="nv">OUTPUT</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">MYPWD</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">OUTPUT</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="linenos">45</span><span class="k">fi</span>
+<span class="linenos">46</span><span class="k">else</span>
+<span class="linenos">47</span><span class="nv">OUTPUT</span><span class="o">=</span><span class="s2">&quot;debian-netinst-latest-preseed.iso&quot;</span>
+<span class="linenos">48</span><span class="k">fi</span>
+<span class="linenos">49</span>
+<span class="linenos">50</span><span class="k">if</span> <span class="o">[[</span> -z <span class="nv">$INPUT</span> <span class="o">]]</span>
+<span class="linenos">51</span><span class="k">then</span>
+<span class="linenos">52</span><span class="nb">echo</span> <span class="s2">&quot;No ISO image provided, will download the latest Debian amd64 netinst ISO image\r\n&quot;</span>
+<span class="linenos">53</span>download_latest_iso <span class="m">1</span>
+<span class="linenos">54</span>
+<span class="linenos">55</span><span class="nv">INPUT</span><span class="o">=</span><span class="s2">&quot;debian-netinst-latest.iso&quot;</span>
+<span class="linenos">56</span><span class="k">else</span>
+<span class="linenos">57</span><span class="k">if</span> <span class="o">[</span> <span class="si">${</span><span class="nv">INPUT</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">1</span><span class="si">}</span> !<span class="o">=</span> / <span class="o">]</span>
+<span class="linenos">58</span><span class="k">then</span>
+<span class="linenos">59</span><span class="nv">INPUT</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">MYPWD</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">INPUT</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="linenos">60</span><span class="k">fi</span>
+<span class="linenos">61</span><span class="k">if</span> <span class="o">[[</span> ! -e <span class="nv">$INPUT</span> <span class="o">]]</span>
+<span class="linenos">62</span><span class="k">then</span>
+<span class="linenos">63</span><span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$INPUT</span><span class="s2"> does not exists. Aborting\r\n&quot;</span>
+<span class="linenos">64</span><span class="nb">exit</span> <span class="m">1</span>
+<span class="linenos">65</span><span class="k">fi</span>
+<span class="linenos">66</span><span class="k">if</span> <span class="o">[[</span> ! -r <span class="nv">$INPUT</span> <span class="o">]]</span>
+<span class="linenos">67</span><span class="k">then</span>
+<span class="linenos">68</span><span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$INPUT</span><span class="s2"> is not readable. Aborting\r\n&quot;</span>
+<span class="linenos">69</span><span class="nb">exit</span> <span class="m">1</span>
+<span class="linenos">70</span><span class="k">fi</span>
+<span class="linenos">71</span><span class="k">fi</span>
+<span class="linenos">72</span>
+<span class="linenos">73</span><span class="nb">echo</span> -ne <span class="s1">&#39;Mounting ISO image[===========&gt;](40%)\r&#39;</span>
+<span class="linenos">74</span>mkdir loopdir -p
+<span class="linenos">75</span>mount -o loop <span class="nv">$INPUT</span> loopdir &gt; /dev/null <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<span class="linenos">76</span><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne <span class="m">0</span> <span class="o">]</span>
+<span class="linenos">77</span><span class="k">then</span>
+<span class="linenos">78</span><span class="nb">echo</span> -e <span class="s2">&quot;Error while mounting the ISO image. Aborting </span><span class="nv">$?</span><span class="s2">\r\n&quot;</span>
+<span class="linenos">79</span>umount loopdir
+<span class="linenos">80</span><span class="nb">exit</span> <span class="m">1</span>
+<span class="linenos">81</span><span class="k">fi</span>
+<span class="linenos">82</span>
+<span class="linenos">83</span>mkdir <span class="nb">cd</span>
+<span class="linenos">84</span><span class="nb">echo</span> -ne <span class="s1">&#39;Extracting ISO image[==============&gt; ](50%)\r&#39;</span>
+<span class="linenos">85</span>rsync -a -H --exclude<span class="o">=</span>TRANS.TBL loopdir/ <span class="nb">cd</span>
+<span class="linenos">86</span><span class="nb">echo</span> -ne <span class="s1">&#39;Umounting ISO image [=================&gt;](60%)\r\n&#39;</span>
+<span class="linenos">87</span>umount loopdir
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">rmdir loopdir</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -ne <span class="s1">&#39;Hacking initrd [====================&gt; ](70%)\r\n&#39;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">echo -e &quot;ws $INPUT ${INPUT} ${MYPWD}  /  ${INPUT}rn&quot;</div>
+<div class="line">mkdir &quot;$MYPWD/preseed_creator/irmod/install/&quot;</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>mkdir irmod -p
+<span class="linenos">2</span><span class="nb">cd</span> irmod
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">exit 1</div>
+<div class="line-block">
+<div class="line">Суть проблемы - есть BASH скрипт, работающий из Ubuntu для перепаковки ramdisk (initrd.gz), нужен аналог для Windows</div>
+<div class="line">Скрипт использует cpio и gunzip, их версии скомпиленые для Windows (бины, сорцы и доки)</div>
+</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>gzip -d &lt; ../cd/install.amd/initrd.gz <span class="p">|</span> cpio --extract --make-directories --no-absolute-filenames <span class="m">2</span>&gt;/dev/null
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">&gt;/dev/null</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne <span class="m">0</span> <span class="o">]</span>
+<span class="linenos"> 2</span><span class="k">then</span>
+<span class="linenos"> 3</span><span class="nb">echo</span> <span class="s2">&quot;Error while getting ../cd/install.amd/initrd.gz content. Aborting&quot;</span>
+<span class="linenos"> 4</span><span class="nb">exit</span> <span class="m">1</span>
+<span class="linenos"> 5</span><span class="k">fi</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span>cp -Rf <span class="s2">&quot;</span><span class="nv">$MYPWD</span><span class="s2">/install_ext/install/&quot;</span> <span class="s2">&quot;</span><span class="nv">$MYPWD</span><span class="s2">/preseed_creator/irmod/install/&quot;</span>
+<span class="linenos"> 8</span><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+<span class="linenos"> 9</span> <span class="nb">echo</span> <span class="s2">&quot;Copy ext files Aborting&quot;</span>
+<span class="linenos">10</span> <span class="nb">exit</span> <span class="m">1</span>
+<span class="linenos">11</span><span class="k">fi</span>
+<span class="linenos">12</span>mv -f <span class="s2">&quot;</span><span class="nv">$MYPWD</span><span class="s2">/preseed_creator/irmod/install/lib&quot;</span> <span class="s2">&quot;</span><span class="nv">$MYPWD</span><span class="s2">/preseed_creator/irmod/lib/&quot;</span>
+<span class="linenos">13</span><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+<span class="linenos">14</span> <span class="nb">echo</span> <span class="s2">&quot;rm ext files lib Aborting&quot;</span>
+<span class="linenos">15</span> <span class="nb">exit</span> <span class="m">1</span>
+<span class="linenos">16</span><span class="k">fi</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="nb">echo</span> -ne <span class="s1">&#39;Disable menu graphic installer[=======================&gt;](80%)\r\n&#39;</span>
+<span class="linenos">19</span>sed -i <span class="s1">&#39;s/include gtk.cfg//g&#39;</span> ../cd/isolinux/menu.cfg <span class="m">2</span>&gt;/dev/null
+<span class="linenos">20</span><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne <span class="m">0</span> <span class="o">]</span>
+<span class="linenos">21</span><span class="k">then</span>
+<span class="linenos">22</span><span class="nb">echo</span> <span class="s2">&quot;Error while disabling graphic menu installer in ../cd/isolinux/isolinux.cfg. Aborting&quot;</span>
+<span class="linenos">23</span><span class="nb">exit</span> <span class="m">1</span>
+<span class="linenos">24</span><span class="k">fi</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">mkdir install -p</div>
+<div class="line">cp $POSTINSTALL install/postinstall.sh</div>
+<div class="line">echo -e &quot;n now {$MYPWD} cp &quot;</div>
+<div class="line">ls -la</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">exit 1;</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="o">[[</span> -z <span class="nv">$PRESEED</span> <span class="o">]]</span>
+<span class="linenos">2</span><span class="k">then</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>        cp <span class="s2">&quot;</span><span class="nv">$MYPWD</span><span class="s2">/preseed.cfg&quot;</span> <span class="s2">&quot;</span><span class="nv">$MYPWD</span><span class="s2">/preseed_creator/irmod/preseed.cfg&quot;</span>
+<span class="linenos">2</span>        <span class="nv">PRESEED</span><span class="o">=</span><span class="s2">&quot;preseed.cfg&quot;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">echo -e &quot;n d-i debian-installer/locale&quot;</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">else</span>
+<span class="linenos">2</span>cp <span class="nv">$PRESEED</span> preseed.cfg
+<span class="linenos">3</span><span class="k">fi</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span>
+<span class="linenos">6</span><span class="k">if</span> <span class="o">[[</span> ! -f <span class="s2">&quot;</span><span class="nv">$PRESEED</span><span class="s2">&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+<span class="linenos">7</span>        <span class="nb">echo</span> <span class="s2">&quot;file pressed.cfg not exists!&quot;</span><span class="p">;</span>
+<span class="linenos">8</span>        <span class="nb">exit</span> <span class="m">1</span><span class="p">;</span>
+<span class="linenos">9</span><span class="k">fi</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">exit 1</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -ne <span class="s1">&#39;Packing files in initrd.gz \r\n&#39;</span>
+<span class="linenos">2</span>find . <span class="p">|</span> cpio -H newc --create <span class="m">2</span>&gt;/dev/null <span class="p">|</span> gzip -9 &gt; ../cd/install.amd/initrd.gz <span class="m">2</span>&gt;/dev/null
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">gzip -c -9 find. &gt; ../cd/install.amd/initrd.gz 2&gt;/dev/null</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne <span class="m">0</span> <span class="o">]</span>
+<span class="linenos">2</span><span class="k">then</span>
+<span class="linenos">3</span><span class="nb">echo</span> <span class="s1">&#39;Error while putting new content into ../cd/install.amd/initrd.gz. Aborting&#39;</span>
+<span class="linenos">4</span><span class="nb">exit</span> <span class="m">1</span>
+<span class="linenos">5</span><span class="k">fi</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">exit 1;</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nb">cd</span> ../
+<span class="linenos"> 2</span>rm -rf irmod/
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="nb">echo</span> -ne <span class="s1">&#39;Fixing md5sums[========================&gt; ](85%)\r&#39;</span>
+<span class="linenos"> 5</span><span class="nb">cd</span> <span class="nb">cd</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span>md5sum <span class="sb">`</span>find -follow -type f <span class="m">2</span>&gt;/dev/null<span class="sb">`</span> &gt; md5sum.txt <span class="m">2</span>&gt;/dev/null
+<span class="linenos"> 9</span><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne <span class="m">0</span> <span class="o">]</span>
+<span class="linenos">10</span><span class="k">then</span>
+<span class="linenos">11</span><span class="nb">echo</span> -ne <span class="s1">&#39;Error while fixing md5sums. Aborting\r&#39;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">exit 1</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">fi</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">exit 1</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nb">cd</span> ..
+<span class="linenos"> 2</span>mkdir <span class="s2">&quot;</span><span class="nv">$MYPWD</span><span class="s2">/preseed_creator/cd/install_ext/&quot;</span>
+<span class="linenos"> 3</span><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+<span class="linenos"> 4</span> <span class="nb">echo</span> -ne <span class="s1">&#39;Do not create install_ext&#39;</span>
+<span class="linenos"> 5</span> <span class="nb">exit</span> <span class="m">1</span>
+<span class="linenos"> 6</span><span class="k">fi</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span>cp -Rf <span class="s2">&quot;</span><span class="nv">$MYPWD</span><span class="s2">/install_ext/home/&quot;</span> <span class="s2">&quot;</span><span class="nv">$MYPWD</span><span class="s2">/preseed_creator/cd/install_ext/&quot;</span>
+<span class="linenos"> 9</span>cp -Rf <span class="s2">&quot;</span><span class="nv">$MYPWD</span><span class="s2">/install_ext/install/lib/&quot;</span> <span class="s2">&quot;</span><span class="nv">$MYPWD</span><span class="s2">/preseed_creator/cd/install_ext/&quot;</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+<span class="linenos">12</span> <span class="nb">echo</span> -ne <span class="s1">&#39;Copy ext files in cd Aborting&#39;</span>
+<span class="linenos">13</span> <span class="nb">exit</span> <span class="m">1</span>
+<span class="linenos">14</span><span class="k">fi</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span>cp -Rf <span class="s2">&quot;</span><span class="nv">$MYPWD</span><span class="s2">/dep11/&quot;</span> <span class="s2">&quot;</span><span class="nv">$MYPWD</span><span class="s2">/preseed_creator/cd/firmware/&quot;</span>
+<span class="linenos">17</span><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+<span class="linenos">18</span> <span class="nb">echo</span> -ne <span class="s1">&#39;Copy ext files dep11 in cd Aborting&#39;</span>
+<span class="linenos">19</span> <span class="nb">exit</span> <span class="m">1</span>
+<span class="linenos">20</span><span class="k">fi</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span><span class="nb">echo</span> -ne <span class="s1">&#39;Creating preseeded ISO image[==========================&gt; ](90%)\r&#39;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">exit 1;</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="o">[[</span> -z <span class="nv">$XORRISO</span> <span class="o">]]</span>
+<span class="linenos">2</span><span class="k">then</span>
+<span class="linenos">3</span><span class="nb">echo</span> -ne <span class="s1">&#39;Create iso by genisoimage tool\r&#39;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">genisoimage -quiet -o $OUTPUT -r -J -no-emul-boot -boot-load-size 4 -boot-info-table -b isolinux/isolinux.bin -c isolinux/boot.cat ./cd &gt; /dev/null 2&gt;&amp;1 -f</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>genisoimage -o <span class="nv">$OUTPUT</span> -r -J -no-emul-boot -boot-load-size <span class="m">4</span> -boot-info-table -b isolinux/isolinux.bin -c isolinux/boot.cat ./cd &gt; /dev/null <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">else</span>
+<span class="linenos"> 4</span><span class="nb">echo</span> -ne <span class="s1">&#39;Create iso by xorriso -as mkisofs tool\r&#39;</span>
+<span class="linenos"> 5</span>        xorriso -as mkisofs <span class="se">\</span>
+<span class="linenos"> 6</span>                -quiet <span class="se">\</span>
+<span class="linenos"> 7</span>                -o <span class="nv">$OUTPUT</span> <span class="se">\</span>
+<span class="linenos"> 8</span>                -isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin <span class="se">\</span>
+<span class="linenos"> 9</span>                -c isolinux/boot.cat <span class="se">\</span>
+<span class="linenos">10</span>                -b isolinux/isolinux.bin <span class="se">\</span>
+<span class="linenos">11</span>                -no-emul-boot -boot-load-size <span class="m">4</span> -boot-info-table <span class="se">\</span>
+<span class="linenos">12</span>                -eltorito-alt-boot <span class="se">\</span>
+<span class="linenos">13</span>                -e boot/grub/efi.img <span class="se">\</span>
+<span class="linenos">14</span>                -no-emul-boot <span class="se">\</span>
+<span class="linenos">15</span>                -isohybrid-gpt-basdat <span class="se">\</span>
+<span class="linenos">16</span>                ./cd /dev/null <span class="m">2</span>&gt;<span class="nv">$1</span>
+<span class="linenos">17</span><span class="k">fi</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne <span class="m">0</span> <span class="o">]</span>
+<span class="linenos">20</span><span class="k">then</span>
+<span class="linenos">21</span><span class="nb">echo</span> <span class="s2">&quot;Error while creating the preseeded ISO image. Aborting&quot;</span>
+<span class="linenos">22</span><span class="nb">exit</span> <span class="m">1</span>
+<span class="linenos">23</span><span class="k">fi</span>
+<span class="linenos">24</span>
+<span class="linenos">25</span>rm -rf <span class="nb">cd</span>
+<span class="linenos">26</span>rm -rf loopdir
+<span class="linenos">27</span>
+<span class="linenos">28</span><span class="nb">echo</span> -ne <span class="s1">&#39;Preseeded ISO image created [==============================](100%)\r&#39;</span>
+<span class="linenos">29</span><span class="nb">echo</span> -e <span class="s2">&quot;\nYour preseeded ISO image is located at </span><span class="nv">$OUTPUT</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="sourcelink.html" class="btn btn-neutral float-left" title="1. Навигация" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cut_discr_preseed.html" class="btn btn-neutral float-right" title="3. Preseed Cut Discr" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, BiLymo iOT corp.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

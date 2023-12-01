@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru,en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="BilSrvStation_Server_PC's docimentations" name="description" />
+<meta content="Linux,OS,Server,WebServer" name="keywords" />
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Добро пожаловать на BilSrvStation_Server_PC&#39;s!!! &mdash; BilSrvStation_Server_PC 1.0.2a documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="1. Навигация" href="sourcelink.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="#" class="icon icon-home"> BilSrvStation_Server_PC
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sourcelink.html">1. Навигация</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_pc.html">2. ISO InstallDeb Cut Discr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_preseed.html">3. Preseed Cut Discr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="full_discr_pii2.html">4. Полное описание сервера</a></li>
+<li class="toctree-l1"><a class="reference internal" href="only_code_pii2.html">5. Appendix Code chunck</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2.html">6. AutoInstall Cut Discr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2_pack.html">7. AutoInstall Package List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_cmd_shell.html">8. CMD_SHELL Cut Discr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structure.html">9. Структура</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_doc.html">10. Построение этой документации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="note.html">11. Заметки</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">BilSrvStation_Server_PC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li>Добро пожаловать на BilSrvStation_Server_PC's!!!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bilsrvstation-server-pc-s">
+<h1>Добро пожаловать на BilSrvStation_Server_PC's!!!<a class="headerlink" href="#bilsrvstation-server-pc-s" title="Permalink to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sourcelink.html">1. Навигация</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_pc.html">2. ISO InstallDeb Cut Discr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_preseed.html">3. Preseed Cut Discr</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cut_discr_preseed.html#preseed-file-for-install-debian-server">3.1. Preseed file for install Debian Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cut_discr_preseed.html#contents-of-the-preconfiguration-file">3.2. Contents of the preconfiguration file</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_preseed.html#localization">3.2.1. Localization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#the-values-can-also-be-preseeded-individually-for-greater-flexibility">3.2.1.1. The values can also be preseeded individually for greater flexibility</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_preseed.html#keyboard-selection">3.2.2. Keyboard selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_preseed.html#network-configuration">3.2.3. Network configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#static-network-configuration">3.2.3.1. Static network configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#network-console">3.2.3.2. Network console</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#mirror-settings">3.2.3.3. Mirror settings</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_preseed.html#suite-to-install">3.2.4. Suite to install</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#account-setup">3.2.4.1. Account setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#root-password">3.2.4.2. Root password</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#to-create-a-normal-user-account">3.2.4.3. To create a normal user account</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#normal-user">3.2.4.4. Normal user</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_preseed.html#clock-and-time-zone-setup">3.2.5. Clock and time zone setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#time-zone">3.2.5.1. Time/zone</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#ntp-setup">3.2.5.2. NTP-setup</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_preseed.html#partitioning">3.2.6. Partitioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#partman-auto-disk">3.2.6.1. Partman-auto/disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#lvm-configuration">3.2.6.2. LVM configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#you-can-choose-one-of-the-three-predefined-partitioning-recipes">3.2.6.3. You can choose one of the three predefined partitioning recipes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#or-provide-a-recipe-of-your-own">3.2.6.4. Or provide a recipe of your own</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#partitioning-using-raid">3.2.6.5. Partitioning using RAID</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#partman-automatically-partition-without-confirmation">3.2.6.6. Partman automatically partition without confirmation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#controlling-how-partitions-are-mounted">3.2.6.7. Controlling how partitions are mounted</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_preseed.html#base-system-installation">3.2.7. Base system installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#uncomment-this-if-you-don">3.2.7.1. Uncomment this if you don</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#additional-repositories">3.2.7.2. Additional repositories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#package-selection">3.2.7.3. Package selection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#individual-additional-packages-to-install">3.2.7.4. Individual additional packages to install</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#boot-loader-installation">3.2.7.5. Boot loader installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#optional-password-for-grub">3.2.7.6. Optional password for grub</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#finishing-up-the-installation">3.2.7.7. Finishing up the installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#avoid-that-last-message-about-the-install-being-complete">3.2.7.8. Avoid that last message about the install being complete</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#preseeding-other-packages">3.2.7.9. Preseeding other packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_preseed.html#advanced-options">3.2.7.10. Advanced options</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="cut_discr_preseed.html#running-custom-commands-during-the-installation">3.2.7.10.1. Running custom commands during the installation</a></li>
+<li class="toctree-l5"><a class="reference internal" href="cut_discr_preseed.html#certificate-and-postinstall">3.2.7.10.2. Certificate and postinstall</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="full_discr_pii2.html">4. Полное описание сервера</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="full_discr_pii2.html#id4">4.1. Описание структуры сервера</a></li>
+<li class="toctree-l2"><a class="reference internal" href="full_discr_pii2.html#pii2-sh">4.2. Разбор основного файла pii2.sh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="full_discr_pii2.html#python-string-comparison-operators">4.3. Python String Comparison operators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="only_code_pii2.html">5. Appendix Code chunck</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-1">5.1. Chunck 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-2">5.2. Chunck 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-3">5.3. Chunck 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-4">5.4. Chunck 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-5">5.5. Chunck 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-6">5.6. Chunck 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-7">5.7. Chunck 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-8">5.8. Chunck 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-9">5.9. Chunck 9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-10">5.10. Chunck 10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-11">5.11. Chunck 11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-12">5.12. Chunck 12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-13">5.13. Chunck 13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-14">5.14. Chunck 14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-15">5.15. Chunck 15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-16">5.16. Chunck 16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-17">5.17. Chunck 17</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-18">5.18. Chunck 18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-19">5.19. Chunck 19</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-20">5.20. Chunck 20</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-21">5.21. Chunck 21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-22">5.22. Chunck 22</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-23">5.23. Chunck 23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-24">5.24. Chunck 24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-25">5.25. Chunck 25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-26">5.26. Chunck 26</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-27">5.27. Chunck 27</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-28">5.28. Chunck 28</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-29">5.29. Chunck 29</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-30">5.30. Chunck 30</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-31">5.31. Chunck 31</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-32">5.32. Chunck 32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-33">5.33. Chunck 33</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-34">5.34. Chunck 34</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-35">5.35. Chunck 35</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-36">5.36. Chunck 36</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-37">5.37. Chunck 37</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-38">5.38. Chunck 38</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-39">5.39. Chunck 39</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-40">5.40. Chunck 40</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-41">5.41. Chunck 41</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-42">5.42. Chunck 42</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-43">5.43. Chunck 43</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-44">5.44. Chunck 44</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-45">5.45. Chunck 45</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-46">5.46. Chunck 46</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-47">5.47. Chunck 47</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-48">5.48. Chunck 48</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-49">5.49. Chunck 49</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-50">5.50. Chunck 50</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-51">5.51. Chunck 51</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-52">5.52. Chunck 52</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-53">5.53. Chunck 53</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-54">5.54. Chunck 54</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-55">5.55. Chunck 55</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-56">5.56. Chunck 56</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-57">5.57. Chunck 57</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-58">5.58. Chunck 58</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-59">5.59. Chunck 59</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-60">5.60. Chunck 60</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-61">5.61. Chunck 61</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-62">5.62. Chunck 62</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-63">5.63. Chunck 63</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-64">5.64. Chunck 64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-65">5.65. Chunck 65</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-66">5.66. Chunck 66</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-67">5.67. Chunck 67</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-68">5.68. Chunck 68</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-69">5.69. Chunck 69</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-70">5.70. Chunck 70</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-71">5.71. Chunck 71</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-72">5.72. Chunck 72</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-73">5.73. Chunck 73</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-74">5.74. Chunck 74</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-75">5.75. Chunck 75</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-76">5.76. Chunck 76</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-77">5.77. Chunck 77</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-78">5.78. Chunck 78</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-79">5.79. Chunck 79</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-80">5.80. Chunck 80</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-81">5.81. Chunck 81</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-82">5.82. Chunck 82</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-83">5.83. Chunck 83</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-84">5.84. Chunck 84</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-85">5.85. Chunck 85</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-86">5.86. Chunck 86</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-87">5.87. Chunck 87</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-88">5.88. Chunck 88</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-89">5.89. Chunck 89</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-90">5.90. Chunck 90</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-91">5.91. Chunck 91</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-92">5.92. Chunck 92</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-93">5.93. Chunck 93</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-94">5.94. Chunck 94</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-95">5.95. Chunck 95</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-96">5.96. Chunck 96</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-97">5.97. Chunck 97</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-98">5.98. Chunck 98</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-99">5.99. Chunck 99</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-100">5.100. Chunck 100</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-101">5.101. Chunck 101</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-102">5.102. Chunck 102</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-103">5.103. Chunck 103</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-104">5.104. Chunck 104</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-105">5.105. Chunck 105</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-106">5.106. Chunck 106</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-107">5.107. Chunck 107</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-108">5.108. Chunck 108</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-109">5.109. Chunck 109</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-110">5.110. Chunck 110</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-111">5.111. Chunck 111</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-112">5.112. Chunck 112</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-113">5.113. Chunck 113</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-114">5.114. Chunck 114</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-115">5.115. Chunck 115</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-116">5.116. Chunck 116</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-117">5.117. Chunck 117</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-118">5.118. Chunck 118</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-119">5.119. Chunck 119</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-120">5.120. Chunck 120</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-121">5.121. Chunck 121</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-122">5.122. Chunck 122</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-123">5.123. Chunck 123</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-124">5.124. Chunck 124</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-125">5.125. Chunck 125</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-126">5.126. Chunck 126</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-127">5.127. Chunck 127</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-128">5.128. Chunck 128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-129">5.129. Chunck 129</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-130">5.130. Chunck 130</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-131">5.131. Chunck 131</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-132">5.132. Chunck 132</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-133">5.133. Chunck 133</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-134">5.134. Chunck 134</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-135">5.135. Chunck 135</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-136">5.136. Chunck 136</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-137">5.137. Chunck 137</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-138">5.138. Chunck 138</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-139">5.139. Chunck 139</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-140">5.140. Chunck 140</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-141">5.141. Chunck 141</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-142">5.142. Chunck 142</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-143">5.143. Chunck 143</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-144">5.144. Chunck 144</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-145">5.145. Chunck 145</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-146">5.146. Chunck 146</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-147">5.147. Chunck 147</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-148">5.148. Chunck 148</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-149">5.149. Chunck 149</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-150">5.150. Chunck 150</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-151">5.151. Chunck 151</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-152">5.152. Chunck 152</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-153">5.153. Chunck 153</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-154">5.154. Chunck 154</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-155">5.155. Chunck 155</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-156">5.156. Chunck 156</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-157">5.157. Chunck 157</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-158">5.158. Chunck 158</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-159">5.159. Chunck 159</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-160">5.160. Chunck 160</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-161">5.161. Chunck 161</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-162">5.162. Chunck 162</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-163">5.163. Chunck 163</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-164">5.164. Chunck 164</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-165">5.165. Chunck 165</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-166">5.166. Chunck 166</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-167">5.167. Chunck 167</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-168">5.168. Chunck 168</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-169">5.169. Chunck 169</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-170">5.170. Chunck 170</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-171">5.171. Chunck 171</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-172">5.172. Chunck 172</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-173">5.173. Chunck 173</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-174">5.174. Chunck 174</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-175">5.175. Chunck 175</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-176">5.176. Chunck 176</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-177">5.177. Chunck 177</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-178">5.178. Chunck 178</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-179">5.179. Chunck 179</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-180">5.180. Chunck 180</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-181">5.181. Chunck 181</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-182">5.182. Chunck 182</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-183">5.183. Chunck 183</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-184">5.184. Chunck 184</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-185">5.185. Chunck 185</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-186">5.186. Chunck 186</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-187">5.187. Chunck 187</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-188">5.188. Chunck 188</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-189">5.189. Chunck 189</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-190">5.190. Chunck 190</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-191">5.191. Chunck 191</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-192">5.192. Chunck 192</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-193">5.193. Chunck 193</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-194">5.194. Chunck 194</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-195">5.195. Chunck 195</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-196">5.196. Chunck 196</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-197">5.197. Chunck 197</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-198">5.198. Chunck 198</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-199">5.199. Chunck 199</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-200">5.200. Chunck 200</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-201">5.201. Chunck 201</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-202">5.202. Chunck 202</a></li>
+<li class="toctree-l2"><a class="reference internal" href="only_code_pii2.html#chunck-203">5.203. Chunck 203</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2.html">6. AutoInstall Cut Discr</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cut_discr_pii2.html#auto-postinstall">6.1. 01      AUTO POSTINSTALL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#pre-install-emv-and-settings">6.1.1. 01.01   PRE-INSTALL EMV AND SETTINGS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#check-root-privilege">6.1.2. 01.02   CHECK ROOT PRIVILEGE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#settings-etc-network-interfaces-interface-sh">6.1.3. 01.03   SETTINGS /ETC/NETWORK -&gt; INTERFACES [interface_sh]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#settings-network-interfaces">6.1.3.1. 01.03.01        SETTINGS NETWORK/INTERFACES</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#search-interfaces">6.1.3.2. 01.03.02        SEARCH INTERFACES</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#restart-service">6.1.3.3. 01.03.02        restart service</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#update-distribution">6.1.4. 01.04           Update distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#install-drivers">6.1.5. 01.05           Install drivers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#install-selinux-utils-acl">6.1.5.1. 01.05.01        Install SElinux utils &amp; acl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#reboot">6.1.5.2. 01.05.02        Reboot</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#install-git-nanorc-step-three">6.1.6. 01.06           Install git &amp;&amp; nanorc [step_three]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#copy-dir">6.1.7. 01.07           Copy dir</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#install-utils-step-five">6.1.8. 01.08           Install utils [step_five]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#install-driver-opt-and-acc-step-six">6.1.9. 01.09           Install driver opt and acc [step_six]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#create-disk-opt">6.1.9.1. 01.09.01        create disk /opt/</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#search-dev-s">6.1.9.2. 01.09.02        search /dev/s**</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#mount-dev-s">6.1.9.3. 01.09.03        mount /dev/s**</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#create-users-and-groups">6.1.10. 01.10           Create users and groups</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#id7">6.1.10.1. 01.10.01                Create users and groups</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#create-ssh-ssl">6.1.10.2. 01.10.02                Create ssh_ssl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#install-ssh-settings">6.1.10.3. 01.10.03        Install ssh settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#create-users-ssh">6.1.10.4. 01.10.04        Create users ssh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#create-samba">6.1.10.5. 01.10.05        Create SAMBA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#install-and-settings-firewall">6.1.10.6. 01.10.06        Install and settings firewall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#install-other-soft">6.1.10.7. 01.10.07        Install other soft</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#extended-nano">6.1.10.8. 01.10.08        Extended nano</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#cp-ers">6.1.10.9. 01.10.09        cp ers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cut_discr_pii2.html#install-vsftp">6.1.10.10. 01.10.10        Install vsftp</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#settings-permissive-selinux">6.1.11. 01.11   Settings permissive SELinux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_pii2.html#optional-soft">6.1.12. 01.12   Optional soft</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_pii2_pack.html">7. AutoInstall Package List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cut_discr_cmd_shell.html">8. CMD_SHELL Cut Discr</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cut_discr_cmd_shell.html#user-script-generator-version-1-2-1a">8.1. User script generator Version 1.2.1a</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_cmd_shell.html#mode">8.1.1. Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cut_discr_cmd_shell.html#https">8.2. https</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cut_discr_cmd_shell.html#id1">8.3. https</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_cmd_shell.html#check-root-privilege">8.3.1. Check root privilege</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_cmd_shell.html#menu-select">8.3.2. Menu SELECT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_cmd_shell.html#check-users-and-groups">8.3.3. Check users and groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cut_discr_cmd_shell.html#process-generate-keys">8.3.4. Process generate keys</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cut_discr_cmd_shell.html#sudo-touch-auth-user-add-group-add">8.4. sudo touch auth_$USER_ADD$GROUP_ADD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cut_discr_cmd_shell.html#echo">8.5. echo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="structure.html">9. Структура</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_doc.html">10. Построение этой документации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="note.html">11. Заметки</a></li>
+</ul>
+</div>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="sourcelink.html" class="btn btn-neutral float-right" title="1. Навигация" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, BiLymo iOT corp.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

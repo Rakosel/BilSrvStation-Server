@@ -59,8 +59,7 @@ extensions = [
 #    'multiproject',
     "sphinx.ext.duration",
     "sphinx.ext.doctest",
-    "sphinx.ext.autodoc",
-    "sphinx.ext.autosummary",
+#   "sphinx.ext.autosummary",
     'sphinx.ext.autosectionlabel',
     'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
@@ -79,11 +78,11 @@ extensions = [
 #    'myst_parser'
 ]
 
-intersphinx_mapping = {
-    "rtd": ("https://docs.readthedocs.io/en/stable/", None),
-    "python": ("https://docs.python.org/3/", None),
-    "sphinx": ("https://www.sphinx-doc.org/en/master/", None),
-}
+#intersphinx_mapping = {
+#    "rtd": ("https://docs.readthedocs.io/en/stable/", None),
+#    "python": ("https://docs.python.org/3/", None),
+#    "sphinx": ("https://www.sphinx-doc.org/en/master/", None),
+#}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

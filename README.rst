@@ -112,7 +112,9 @@ Other [helping commands]
 |	git commit -a
 |	git push https://github.com/Rakosel/BilSrvStation_Server_PC.git master
 cd /opt/SAMBA_SHARE/git/BilSrvStation_Server_PC & sphinx-build -b html docs/ docs/_build/
-
+|	git commit -m "first commit"
+|	git branch -M main
+|	git push -u -origin main
 License
 -------
 

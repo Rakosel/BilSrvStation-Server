@@ -218,10 +218,12 @@
 <span class="linenos">26</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install python3-venv
 <span class="linenos">27</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install mdadm
 <span class="linenos">28</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install hdparm
-<span class="linenos">29</span>systemctl <span class="nb">enable</span> mdadm
-<span class="linenos">30</span>update-initramfs -u
-<span class="linenos">31</span>
-<span class="linenos">32</span>python3 -m venv env
+<span class="linenos">29</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install hddtemp lm-sensors psensor
+<span class="linenos">30</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install stress
+<span class="linenos">31</span>systemctl <span class="nb">enable</span> mdadm
+<span class="linenos">32</span>update-initramfs -u
+<span class="linenos">33</span>
+<span class="linenos">34</span>python3 -m venv env
 </pre></div>
 </div>
 </div>

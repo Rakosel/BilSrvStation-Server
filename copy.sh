@@ -1,5 +1,5 @@
 #!/bin/bash -xv 
-#set -x
+#set -x 
 sudo rm -Rf /opt/SAMBA_SHARE/git/BilSrvStation_Server_PC/DebianISO/
 sudo mkdir /opt/SAMBA_SHARE/git/BilSrvStation_Server_PC/DebianISO
 

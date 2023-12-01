@@ -1,3 +1,0 @@
-#!/bin/sh
-/etc/webmin/.stop-init
-/etc/webmin/.start-init

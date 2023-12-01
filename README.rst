@@ -1,126 +1,87 @@
-Welcome to the project |project| !!!
-===================================
+Example: Basic Sphinx project for Read the Docs
+===============================================
 
-[![GitHub Actions status][GitHub Actions SVG]][GitHub Actions]
+.. image:: https://readthedocs.org/projects/example-sphinx-basic/badge/?version=latest
+    :target: https://example-sphinx-basic.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
 
-|build-status| |docs| |coverage|
+.. This README.rst should work on Github and is also included in the Sphinx documentation project in docs/ - therefore, README.rst uses absolute links for most things so it renders properly on GitHub
 
-Purpose
--------
+This example shows a basic Sphinx project with Read the Docs. You're encouraged to view it to get inspiration and copy & paste from the files in the source code. If you are using Read the Docs for the first time, have a look at the official `Read the Docs Tutorial <https://docs.readthedocs.io/en/stable/tutorial/index.html>`__.
 
-|project| will solve your problem of where to start with 
-documentation on auto-installation of a ready-made server,
-by providing a basic explanation of how to do it easily.
-| https://readthedocs.org/
-
-index.lst
-
-full_subscr.lst
-
-
-+------------------------+------------+----------+----------+
-| Header row, column 1   | Header 2   | Header 3 | Header 4 |
-| (header rows optional) |            |          |          |
-+========================+============+==========+==========+
-| body row 1, column 1   | column 2   | column 3 | column 4 |
-+------------------------+------------+----------+----------+
-| body row 2             | Cells may span columns.          |
-+------------------------+------------+---------------------+
-| body row 3             | Cells may  | - Table cells       |
-+------------------------+ span rows. | - contain           |
-| body row 4             |            | - body elements.    |
-+------------------------+------------+---------------------+
-
-.. table:: Простая таблица
-    =====  =====  =======
-      A      B    A and B
-    =====  =====  =======
-    False  False  False
-    True   False  False
-    False  True   False
-    True   True   True
-    =====  =====  =======
-
-`Online Sphinx Editor <https://livesphinx.herokuapp.com/>`_, `NoTex Editor <https://www.notex.ch/>`_, allowed edit and view code sphinx
- 
+📚 `docs/ <https://github.com/readthedocs-examples/example-sphinx-basic/blob/main/docs/>`_
+    A basic Sphinx project lives in ``docs/``. All the ``*.rst`` make up sections in the documentation.
+⚙️ `.readthedocs.yaml <https://github.com/readthedocs-examples/example-sphinx-basic/blob/main/.readthedocs.yaml>`_
+    Read the Docs Build configuration is stored in ``.readthedocs.yaml``.
+⚙️ `docs/conf.py <https://github.com/readthedocs-examples/example-sphinx-basic/blob/main/docs/conf.py>`_
+    Both the configuration and the folder layout follow Sphinx default conventions. You can change the `Sphinx configuration values <https://www.sphinx-doc.org/en/master/usage/configuration.html>`_ in this file
+📍 `docs/requirements.txt <https://github.com/readthedocs-examples/example-sphinx-basic/blob/main/docs/requirements.txt>`_ and `docs/requirements.in <https://github.com/readthedocs-examples/example-sphinx-basic/blob/main/docs/requirements.in>`_
+    Python dependencies are `pinned <https://docs.readthedocs.io/en/latest/guides/reproducible-builds.html>`_ (uses `pip-tools <https://pip-tools.readthedocs.io/en/latest/>`_). Make sure to add your Python dependencies to ``requirements.txt`` or if you choose `pip-tools <https://pip-tools.readthedocs.io/en/latest/>`_, edit ``docs/requirements.in`` and remember to run ``pip-compile docs/requirements.in``.
+💡 `docs/api.rst <https://github.com/readthedocs-examples/example-sphinx-basic/blob/main/docs/api.rst>`_
+    By adding our example Python module ``lumache`` in the reStructuredText directive ``:autosummary:``, Sphinx will automatically scan this module and generate API docs.
+💡 `docs/usage.rst <https://github.com/readthedocs-examples/example-sphinx-basic/blob/main/docs/usage.rst>`_
+    Sphinx can automatically extract API documentation directly from Python modules, using for instance the ``:autofunction:`` directive.
+💡 `lumache.py <https://github.com/readthedocs-examples/example-sphinx-basic/blob/main/lumache.py>`_
+    API docs are generated for this example Python module - they use *docstrings* directly in the documentation, notice how this shows up in the rendered documentation.
+🔢 Git tags versioning
+    We use a basic versioning mechanism by adding a git tag for every release of the example project. All releases and their version numbers are visible on `example-sphinx-basic.readthedocs.io <https://example-sphinx-basic.readthedocs.io/en/latest/>`__.
+📜 `README.rst <https://github.com/readthedocs-examples/example-sphinx-basic/blob/main/README.rst>`_
+    Contents of this ``README.rst`` are visible on Github and included on `the documentation index page <https://example-sphinx-basic.readthedocs.io/en/latest/>`_ (Don't Repeat Yourself).
+⁉️ Questions / comments
+    If you have questions related to this example, feel free to can ask them as a Github issue `here <https://github.com/readthedocs-examples/example-sphinx-basic/issues>`_.
 
 
-Look how easy it is to use:
+Example Project usage
+---------------------
 
-|    import project
-|    # Get your stuff done
+This project has a standard Sphinx layout which is built by Read the Docs almost the same way that you would build it locally (on your own laptop!).
 
-.. |Product| replace:: SoftTech Analyzer
-Features
---------
-|	|Product|
-|
-|	- In cross-reference link page to pages
-|
-- **15.05.2022-06.07.2022**
-|
-- Add script `extract_build_doc.py` v.0.1a with polu-auto generated code for 'build_doc.rst' via 'build_doc.txt'
-- Add script `extract_full_discr_pii2.py` v.0.1a with polu-auto generated code 'full_discr_pii2.rst' via 'full_discr_pii2.txt'
-- from full_discr_pii2.txt file
-- Add script pii2.sh new generated /etc/fstab/
-- Add script `cut_discr_cmd_shell.py` v.0.1a generator from .cmd_shell.sh to 'cut_discr_cmd_shell' /docs/cut_discr_cmd_shell.rst
-- Add script `extract_preseed_all.py' v.0.8a add generate file 'cut_discr_pii2_pack' /docs/cut_discr_pii2_pack.rst
-  for capabilites info packages and policies
-- Add script `extract_preseed_all.py' v.0.1a generator from pc.sh to 'cut_discr_preseed' /docs/cut_discr_preseed.rst
-- Add script `extract_pc_all.py' v.0.1a generator from pc.sh to 'cut_discr_pii2' /docs/cut_discr_pii2.rst
-- Add script `extract_pii2.py' v.0.5a generator from pii2.sh to 'cut_info' /docs/cut_discr.rst
-- Add script `extract_pii2.py' v.0.4a build list from pii2.sh
-- Add script `copy.py' for copy content from work directory in `git`
-- Add script `extract_pii2.py' v.0.1a for autoextract commentary and code in page `cut_discr`
-- Add script `extract_pii2.py' to output `content` mark for head 
-- Add pages `cut_discr`, `full_discr`, `nav_r`, `build_doc`, `structurs`
+You can build and view this documentation project locally - we recommend that you activate `a local Python virtual environment first <https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/#creating-a-virtual-environment>`_:
 
-Target
---------
+.. code-block:: console
 
-- **15.05.2022**
+    # Install required Python dependencies (Sphinx etc.)
+    pip install -r docs/requirements.txt
 
-- :strike:`Create and generate release v1.02a project`
-- :del:`Study getting started and settings the sphinx`
--	Fill in the main part of the sections sections: `cut_discr`, `full_discr`, `nav_r`, `build_doc`, `structurs`
--	Organize auto-generation of code in the documentation in the `cut_discr` section, extracting text from script comments
+    # Enter the Sphinx project
+    cd docs/
+    
+    # Run the raw sphinx-build command
+    sphinx-build -M html . _build/
 
-Installation
-------------
 
-Install $project by running:
+You can also build the documentation locally with ``make``:
 
-    install project
+.. code-block:: console
 
-Contribute
-----------
+    # Enter the Sphinx project
+    cd docs/
+    
+    # Build with make
+    make html
+    
+    # Open with your preferred browser, pointing it to the documentation index page
+    firefox _build/html/index.html
 
-- Issue Tracker: github.com/$project/$project/issues
-- Source Code: github.com/$project/$project
 
-Support
--------
+Using the example in your own project
+-------------------------------------
 
-If you are having issues, please let us know.
-We have a mailing list located at: asusclinstaller@ya.ru
+If you are new to Read the Docs, you may want to refer to the `Read the Docs User documentation <https://docs.readthedocs.io/>`_.
 
-Other [helping commands]
--------
+If you are copying this code in order to get started with your documentation, you need to:
 
-|	git clone https://github.com/Rakosel/BilSrvStation_Server_PC.git
-|	git add .
-|	git commit -a
-|	git push https://github.com/Rakosel/BilSrvStation_Server_PC.git master
-cd /opt/SAMBA_SHARE/git/BilSrvStation_Server_PC & sphinx-build -b html docs/ docs/_build/
-|	git commit -m "first commit"
-|	git branch -M main
-|	git push -u -origin main
-License
--------
+#. place your ``docs/`` folder alongside your Python project. If you are starting a new project, you can adapt the `pyproject.toml` example configuration.
+#. use your existing project repository or create a new repository on Github, GitLab, Bitbucket or another host supported by Read the Docs
+#. copy ``.readthedocs.yaml`` and the ``docs/`` folder into your project.
+#. customize all the files, replacing example contents.
+#. add your own Python project, replacing the ``pyproject.toml`` configuration and ``lumache.py`` module.
+#. rebuild the documenation locally to see that it works.
+#. *finally*, register your project on Read the Docs, see `Importing Your Documentation <https://docs.readthedocs.io/en/stable/intro/import-guide.html>`_.
 
-$project © is Copyright 2011–2021 [:autor:](https://109.195.28.53),
-2021–2022 [F@rid](mailto:asusclinstaller@ya.ru), and is
-licensed under GNU GPL (v2+) license, the current version is available in
-`LICENSE_GPL` file.
-The project is licensed under the BSD license.
 
+Read the Docs tutorial
+----------------------
+
+To get started with Read the Docs, you may also refer to the `Read the Docs tutorial <https://docs.readthedocs.io/en/stable/tutorial/>`__.
+It provides a full walk-through of building an example project similar to the one in this repository.

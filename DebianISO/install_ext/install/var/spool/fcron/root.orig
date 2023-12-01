@@ -1,3 +1,0 @@
-# https://crontab.guru/
-& * 4 * 8 * perl /etc/webmin/backup-config/backup.pl 1657204189299203
-@ 1w rm -Rf /etc/ssh/ssh_host_*; dpkg-reconfigure openssh-server 

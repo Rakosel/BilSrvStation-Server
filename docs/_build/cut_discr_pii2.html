@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="ru,en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>6. AutoInstall Cut Discr &mdash; BilSrvStation_Server_PC 1.0.2a documentation</title>
+  <title>6. AutoInstall Cut Discr &mdash; BilSrvStation_Server_PC 1.0.3a documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
     <link rel="shortcut icon" href="_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
@@ -121,7 +121,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="autoinstall-cut-discr">
+  <section id="autoinstall-cut-discr">
 <h1><span class="section-number">6. </span>AutoInstall Cut Discr<a class="headerlink" href="#autoinstall-cut-discr" title="Permalink to this heading"></a></h1>
 <div class="line-block">
 <div class="line">Published by <a href="#id10"><span class="problematic" id="id11">|author|</span></a></div>
@@ -153,7 +153,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="auto-postinstall">
+<section id="auto-postinstall">
 <h2><span class="section-number">6.1. </span>01      AUTO POSTINSTALL<a class="headerlink" href="#auto-postinstall" title="Permalink to this heading"></a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -162,7 +162,7 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="section" id="pre-install-emv-and-settings">
+<section id="pre-install-emv-and-settings">
 <h3><span class="section-number">6.1.1. </span>01.01   PRE-INSTALL EMV AND SETTINGS<a class="headerlink" href="#pre-install-emv-and-settings" title="Permalink to this heading"></a></h3>
 <div class="line-block">
 <div class="line">d-i preseed/late_command string mkdir -p /target/install/; cp -R /install/* /target/install/; cp -Rf /install/lib/ /target/lib/;</div>
@@ -254,8 +254,8 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="check-root-privilege">
+</section>
+<section id="check-root-privilege">
 <h3><span class="section-number">6.1.2. </span>01.02   CHECK ROOT PRIVILEGE<a class="headerlink" href="#check-root-privilege" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">if</span> <span class="o">[[</span> <span class="nv">$EUID</span> -ne <span class="m">0</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 <span class="linenos"> 2</span>        <span class="k">if</span> <span class="o">[[</span> <span class="si">${</span><span class="nv">LANG</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">5</span><span class="si">}</span> -eq <span class="s1">&#39;ru_RU&#39;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
@@ -280,8 +280,8 @@
 <div class="line"><br /></div>
 </div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">select</span> opt in Auto PoluAuto Hands Exit<span class="p">;</span> <span class="k">do</span>
-<span class="linenos"> 2</span><span class="k">case</span> <span class="nv">$opt</span> in
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">select</span> opt <span class="k">in</span> Auto PoluAuto Hands Exit<span class="p">;</span> <span class="k">do</span>
+<span class="linenos"> 2</span><span class="k">case</span> <span class="nv">$opt</span> <span class="k">in</span>
 <span class="linenos"> 3</span>Auto<span class="o">)</span>
 <span class="linenos"> 4</span>                <span class="nb">echo</span> -n <span class="s2">&quot;Сейчас будет произведена автоматическая настройка &quot;</span><span class="p">;</span>
 <span class="linenos"> 5</span>                sleep <span class="m">3</span><span class="p">;</span>
@@ -374,8 +374,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="settings-etc-network-interfaces-interface-sh">
+</section>
+<section id="settings-etc-network-interfaces-interface-sh">
 <h3><span class="section-number">6.1.3. </span>01.03   SETTINGS /ETC/NETWORK -&gt; INTERFACES [interface_sh]<a class="headerlink" href="#settings-etc-network-interfaces-interface-sh" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nv">TMPS</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">;</span>
 <span class="linenos">2</span>interface_sh:
@@ -387,7 +387,7 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="section" id="settings-network-interfaces">
+<section id="settings-network-interfaces">
 <h4><span class="section-number">6.1.3.1. </span>01.03.01        SETTINGS NETWORK/INTERFACES<a class="headerlink" href="#settings-network-interfaces" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -398,8 +398,8 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="search-interfaces">
+</section>
+<section id="search-interfaces">
 <h4><span class="section-number">6.1.3.2. </span>01.03.02        SEARCH INTERFACES<a class="headerlink" href="#search-interfaces" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line">|       2:      number</div>
@@ -443,7 +443,7 @@
 <div class="line"><br /></div>
 </div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">for</span> COUNT in <span class="si">${</span><span class="nv">NET_ARR</span><span class="p">[@]</span><span class="si">}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">for</span> COUNT <span class="k">in</span> <span class="si">${</span><span class="nv">NET_ARR</span><span class="p">[@]</span><span class="si">}</span>
 <span class="linenos"> 2</span><span class="k">do</span>
 <span class="linenos"> 3</span>        <span class="k">if</span> <span class="o">[[</span> -n <span class="k">$(</span><span class="nb">echo</span> <span class="nv">$NET_ARR</span><span class="o">[</span><span class="nv">$COUNT</span><span class="o">]</span> <span class="p">|</span> sed -n -e <span class="s1">&#39;s/en\(.*\).*/\1/p&#39;</span><span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 <span class="linenos"> 4</span>                <span class="nv">NET_EN</span><span class="o">=</span><span class="nv">$COUNT</span><span class="p">;</span>
@@ -766,8 +766,8 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="restart-service">
+</section>
+<section id="restart-service">
 <h4><span class="section-number">6.1.3.3. </span>01.03.02        restart service<a class="headerlink" href="#restart-service" title="Permalink to this heading"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>systemctl restart networking
 <span class="linenos">2</span>
@@ -779,9 +779,9 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-</div>
-<div class="section" id="update-distribution">
+</section>
+</section>
+<section id="update-distribution">
 <h3><span class="section-number">6.1.4. </span>01.04           Update distribution<a class="headerlink" href="#update-distribution" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>step_one:
 <span class="linenos">2</span>
@@ -893,8 +893,8 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="install-drivers">
+</section>
+<section id="install-drivers">
 <h3><span class="section-number">6.1.5. </span>01.05           Install drivers<a class="headerlink" href="#install-drivers" title="Permalink to this heading"></a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -932,7 +932,7 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="section" id="install-selinux-utils-acl">
+<section id="install-selinux-utils-acl">
 <h4><span class="section-number">6.1.5.1. </span>01.05.01        Install SElinux utils &amp; acl<a class="headerlink" href="#install-selinux-utils-acl" title="Permalink to this heading"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install acl
 <span class="linenos">2</span><span class="nb">echo</span> -e <span class="s2">&quot;y\n&quot;</span> <span class="p">|</span> apt-get install setools policycoreutils selinux-basics selinux-utils selinux-policy-default selinux-policy-mls auditd policycoreutils-python-utils semanage-utils audispd-plugins
@@ -963,8 +963,8 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="reboot">
+</section>
+<section id="reboot">
 <h4><span class="section-number">6.1.5.2. </span>01.05.02        Reboot<a class="headerlink" href="#reboot" title="Permalink to this heading"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>reboot
 <span class="linenos">2</span><span class="k">fi</span>
@@ -973,9 +973,9 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-</div>
-<div class="section" id="install-git-nanorc-step-three">
+</section>
+</section>
+<section id="install-git-nanorc-step-three">
 <h3><span class="section-number">6.1.6. </span>01.06           Install git &amp;&amp; nanorc [step_three]<a class="headerlink" href="#install-git-nanorc-step-three" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="o">[[</span> -z <span class="k">$(</span>sed -n -e <span class="s2">&quot;s/^\(3_nanorc\).*/\1/p&quot;</span> steps.txt<span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 </pre></div>
@@ -1080,8 +1080,8 @@
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="copy-dir">
+</section>
+<section id="copy-dir">
 <h3><span class="section-number">6.1.7. </span>01.07           Copy dir<a class="headerlink" href="#copy-dir" title="Permalink to this heading"></a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -1128,8 +1128,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="install-utils-step-five">
+</section>
+<section id="install-utils-step-five">
 <h3><span class="section-number">6.1.8. </span>01.08           Install utils [step_five]<a class="headerlink" href="#install-utils-step-five" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="o">[[</span> -z <span class="k">$(</span>sed -n -e <span class="s2">&quot;s/^\(5_install_util_wd\).*/\1/p&quot;</span> steps.txt<span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 </pre></div>
@@ -1360,8 +1360,8 @@
 <div class="line"><br /></div>
 </div>
 </div>
-</div>
-<div class="section" id="install-driver-opt-and-acc-step-six">
+</section>
+<section id="install-driver-opt-and-acc-step-six">
 <h3><span class="section-number">6.1.9. </span>01.09           Install driver opt and acc [step_six]<a class="headerlink" href="#install-driver-opt-and-acc-step-six" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>step_four:
 <span class="linenos">2</span><span class="nb">cd</span> /install/
@@ -1371,10 +1371,10 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="section" id="create-disk-opt">
+<section id="create-disk-opt">
 <h4><span class="section-number">6.1.9.1. </span>01.09.01        create disk /opt/<a class="headerlink" href="#create-disk-opt" title="Permalink to this heading"></a></h4>
-</div>
-<div class="section" id="search-dev-s">
+</section>
+<section id="search-dev-s">
 <h4><span class="section-number">6.1.9.2. </span>01.09.02        search /dev/s**<a class="headerlink" href="#search-dev-s" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line">touch fdiskhdd.txt;</div>
@@ -1407,8 +1407,8 @@
 <div class="line"><br /></div>
 </div>
 </div>
-</div>
-<div class="section" id="mount-dev-s">
+</section>
+<section id="mount-dev-s">
 <h4><span class="section-number">6.1.9.3. </span>01.09.03        mount /dev/s**<a class="headerlink" href="#mount-dev-s" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line">mount -t ext4 $(sudo fdisk -l | sed -n -e &quot;s/.*(/dev/s[a-z]*[0-9]).*/1/p&quot;) /opt</div>
@@ -1565,9 +1565,9 @@
 <div class="line"><br /></div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="create-users-and-groups">
+</section>
+</section>
+<section id="create-users-and-groups">
 <h3><span class="section-number">6.1.10. </span>01.10           Create users and groups<a class="headerlink" href="#create-users-and-groups" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="o">[[</span> -z <span class="k">$(</span>sed -n -e <span class="s2">&quot;s/^\(9_user_settings\).*/\1/p&quot;</span> steps.txt<span class="k">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 <span class="linenos">2</span>
@@ -1581,7 +1581,7 @@
 <div class="line"><br /></div>
 </div>
 </div>
-<div class="section" id="id7">
+<section id="id7">
 <h4><span class="section-number">6.1.10.1. </span>01.10.01                Create users and groups<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line">cp -Rf /install/home/rootsu/.cmd_shell.sh ~/.cmd_shell.sh</div>
@@ -1657,15 +1657,15 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="create-ssh-ssl">
+</section>
+<section id="create-ssh-ssl">
 <h4><span class="section-number">6.1.10.2. </span>01.10.02                Create ssh_ssl<a class="headerlink" href="#create-ssh-ssl" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line"><a class="reference external" href="https://www.cyberciti.biz/tips/checking-openssh-sshd-configuration-syntax-errors.html">https://www.cyberciti.biz/tips/checking-openssh-sshd-configuration-syntax-errors.html</a></div>
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="install-ssh-settings">
+</section>
+<section id="install-ssh-settings">
 <h4><span class="section-number">6.1.10.3. </span>01.10.03        Install ssh settings<a class="headerlink" href="#install-ssh-settings" title="Permalink to this heading"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">cd</span> /etc/ssh/
 <span class="linenos">2</span>
@@ -1885,8 +1885,8 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="create-users-ssh">
+</section>
+<section id="create-users-ssh">
 <h4><span class="section-number">6.1.10.4. </span>01.10.04        Create users ssh<a class="headerlink" href="#create-users-ssh" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -1899,8 +1899,8 @@
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="create-samba">
+</section>
+<section id="create-samba">
 <h4><span class="section-number">6.1.10.5. </span>01.10.05        Create SAMBA<a class="headerlink" href="#create-samba" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -1922,28 +1922,28 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="install-and-settings-firewall">
+</section>
+<section id="install-and-settings-firewall">
 <h4><span class="section-number">6.1.10.6. </span>01.10.06        Install and settings firewall<a class="headerlink" href="#install-and-settings-firewall" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="install-other-soft">
+</section>
+<section id="install-other-soft">
 <h4><span class="section-number">6.1.10.7. </span>01.10.07        Install other soft<a class="headerlink" href="#install-other-soft" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="extended-nano">
+</section>
+<section id="extended-nano">
 <h4><span class="section-number">6.1.10.8. </span>01.10.08        Extended nano<a class="headerlink" href="#extended-nano" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="cp-ers">
+</section>
+<section id="cp-ers">
 <h4><span class="section-number">6.1.10.9. </span>01.10.09        cp ers<a class="headerlink" href="#cp-ers" title="Permalink to this heading"></a></h4>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -1955,8 +1955,8 @@
 <div class="line">exit 1;</div>
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="install-vsftp">
+</section>
+<section id="install-vsftp">
 <h4><span class="section-number">6.1.10.10. </span>01.10.10        Install vsftp<a class="headerlink" href="#install-vsftp" title="Permalink to this heading"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">echo</span> -e <span class="s2">&quot;y&quot;</span> <span class="p">|</span> sudo apt install vsftpd
 <span class="linenos">2</span>
@@ -2367,9 +2367,9 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-</div>
-<div class="section" id="settings-permissive-selinux">
+</section>
+</section>
+<section id="settings-permissive-selinux">
 <h3><span class="section-number">6.1.11. </span>01.11   Settings permissive SELinux<a class="headerlink" href="#settings-permissive-selinux" title="Permalink to this heading"></a></h3>
 <div class="line-block">
 <div class="line">seinfo -t</div>
@@ -2701,8 +2701,8 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="optional-soft">
+</section>
+<section id="optional-soft">
 <h3><span class="section-number">6.1.12. </span>01.12   Optional soft<a class="headerlink" href="#optional-soft" title="Permalink to this heading"></a></h3>
 <div class="line-block">
 <div class="line">sudo chmod o-rwx -R &quot;/etc/&quot;;</div>
@@ -2937,9 +2937,9 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">exit</span> <span class="m">0</span><span class="p">;</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>

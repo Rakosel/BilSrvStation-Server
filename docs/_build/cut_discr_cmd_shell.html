@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="ru,en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>8. CMD_SHELL Cut Discr &mdash; BilSrvStation_Server_PC 1.0.2a documentation</title>
+  <title>8. CMD_SHELL Cut Discr &mdash; BilSrvStation_Server_PC 1.0.3a documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
     <link rel="shortcut icon" href="_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
@@ -94,7 +94,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="cmd-shell-cut-discr">
+  <section id="cmd-shell-cut-discr">
 <h1><span class="section-number">8. </span>CMD_SHELL Cut Discr<a class="headerlink" href="#cmd-shell-cut-discr" title="Permalink to this heading"></a></h1>
 <div class="line-block">
 <div class="line">Published by <a href="#id2"><span class="problematic" id="id3">|author|</span></a></div>
@@ -110,7 +110,7 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="section" id="user-script-generator-version-1-2-1a">
+<section id="user-script-generator-version-1-2-1a">
 <h2><span class="section-number">8.1. </span>User script generator Version 1.2.1a<a class="headerlink" href="#user-script-generator-version-1-2-1a" title="Permalink to this heading"></a></h2>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -134,7 +134,7 @@
 <div class="line">set -x</div>
 </div>
 </div>
-<div class="section" id="mode">
+<section id="mode">
 <h3><span class="section-number">8.1.1. </span>Mode<a class="headerlink" href="#mode" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nv">USER_ADD</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">;</span>
 <span class="linenos"> 2</span><span class="nv">GROUP_ADD</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">;</span>
@@ -149,12 +149,12 @@
 <span class="linenos">11</span><span class="nv">PARAMETER</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="https">
+</section>
+</section>
+<section id="https">
 <h2><span class="section-number">8.2. </span>https<a class="headerlink" href="#https" title="Permalink to this heading"></a></h2>
-</div>
-<div class="section" id="id1">
+</section>
+<section id="id1">
 <h2><span class="section-number">8.3. </span>https<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <div class="line-block">
 <div class="line-block">
@@ -193,7 +193,7 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="section" id="check-root-privilege">
+<section id="check-root-privilege">
 <h3><span class="section-number">8.3.1. </span>Check root privilege<a class="headerlink" href="#check-root-privilege" title="Permalink to this heading"></a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -211,8 +211,8 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="menu-select">
+</section>
+<section id="menu-select">
 <h3><span class="section-number">8.3.2. </span>Menu SELECT<a class="headerlink" href="#menu-select" title="Permalink to this heading"></a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -222,7 +222,7 @@
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">while</span> <span class="o">[</span> -n <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span>
 <span class="linenos">2</span><span class="k">do</span>
-<span class="linenos">3</span><span class="k">case</span> <span class="nv">$1</span> in
+<span class="linenos">3</span><span class="k">case</span> <span class="nv">$1</span> <span class="k">in</span>
 <span class="linenos">4</span>--mode <span class="o">)</span> <span class="nb">shift</span>
 <span class="linenos">5</span><span class="nv">SH_MODE</span><span class="o">=</span><span class="nv">$1</span> <span class="p">;;</span>
 <span class="linenos">6</span>--uadd <span class="o">)</span> <span class="nb">shift</span>
@@ -272,8 +272,8 @@
 </div>
 <div class="line">fi</div>
 </div>
-</div>
-<div class="section" id="check-users-and-groups">
+</section>
+<section id="check-users-and-groups">
 <h3><span class="section-number">8.3.3. </span>Check users and groups<a class="headerlink" href="#check-users-and-groups" title="Permalink to this heading"></a></h3>
 <div class="line-block">
 <div class="line">echo $GROUPS</div>
@@ -301,8 +301,8 @@
 <div class="line">echo -e &quot;$GROUP_ADD not exist&quot;</div>
 <div class="line">exit 1;</div>
 </div>
-</div>
-<div class="section" id="process-generate-keys">
+</section>
+<section id="process-generate-keys">
 <h3><span class="section-number">8.3.4. </span>Process generate keys<a class="headerlink" href="#process-generate-keys" title="Permalink to this heading"></a></h3>
 <div class="line-block">
 <div class="line">fi</div>
@@ -327,9 +327,9 @@
 <span class="linenos">15</span>        sudo touch authorized_keys
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="sudo-touch-auth-user-add-group-add">
+</section>
+</section>
+<section id="sudo-touch-auth-user-add-group-add">
 <h2><span class="section-number">8.4. </span>sudo touch auth_$USER_ADD$GROUP_ADD<a class="headerlink" href="#sudo-touch-auth-user-add-group-add" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nv">TMP</span><span class="o">=</span><span class="k">$(</span>date +<span class="s2">&quot;%m-%d-%Y+%T&quot;</span><span class="k">)</span><span class="p">;</span>
 <span class="linenos"> 2</span>        ssh-keygen -t <span class="nv">$sign</span> -b <span class="nv">$bits</span> -f /home/<span class="nv">$USER_ADD</span>/.ssh/auth_<span class="nv">$USER_ADD$GROUP_ADD</span> -N <span class="s2">&quot;</span><span class="nv">$PWD_USER</span><span class="s2">&quot;</span> -C <span class="s2">&quot;</span><span class="nv">$HOSTNAME</span><span class="s2"> </span><span class="nv">$USER_ADD</span><span class="s2">:</span><span class="nv">$GROUP_ADD</span><span class="s2"> </span><span class="nv">$TMP</span><span class="s2">&quot;</span>
@@ -370,8 +370,8 @@
 <div class="line">if[[$1 == ${cmd_arr[2]}]];</div>
 <div class="line">then</div>
 </div>
-</div>
-<div class="section" id="echo">
+</section>
+<section id="echo">
 <h2><span class="section-number">8.5. </span>echo<a class="headerlink" href="#echo" title="Permalink to this heading"></a></h2>
 <div class="line-block">
 <div class="line">elif</div>
@@ -384,8 +384,8 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">exit</span> <span class="m">0</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

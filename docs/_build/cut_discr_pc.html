@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="ru,en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2. ISO InstallDeb Cut Discr &mdash; BilSrvStation_Server_PC 1.0.2a documentation</title>
+  <title>2. ISO InstallDeb Cut Discr &mdash; BilSrvStation_Server_PC 1.0.3a documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
     <link rel="shortcut icon" href="_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
@@ -78,7 +78,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="iso-installdeb-cut-discr">
+  <section id="iso-installdeb-cut-discr">
 <h1><span class="section-number">2. </span>ISO InstallDeb Cut Discr<a class="headerlink" href="#iso-installdeb-cut-discr" title="Permalink to this heading"></a></h1>
 <div class="line-block">
 <div class="line">by (c) Luc Didry 2017, WTFPL and <a href="#id1"><span class="problematic" id="id2">|author||</span></a> Date: <em>|date|</em> Time: <em>|time|</em></div>
@@ -148,7 +148,7 @@
 <span class="linenos">10</span><span class="nb">echo</span> -ne <span class="s1">&#39;Getting Debian GPG keys [&gt; ](0%)\r&#39;</span>
 <span class="linenos">11</span>        <span class="k">fi</span>
 <span class="linenos">12</span>
-<span class="linenos">13</span><span class="k">for</span> i in F41D30342F3546695F65C66942468F4009EA8AC3 DF9B9C49EAA9298432589D76DA87E80D6294BE9B 10460DAD76165AD81FBC0CE9988021A964E6EA7D
+<span class="linenos">13</span><span class="k">for</span> i <span class="k">in</span> F41D30342F3546695F65C66942468F4009EA8AC3 DF9B9C49EAA9298432589D76DA87E80D6294BE9B 10460DAD76165AD81FBC0CE9988021A964E6EA7D
 <span class="linenos">14</span><span class="k">do</span>
 <span class="linenos">15</span>gpg --list-keys <span class="nv">$i</span> &gt; /dev/null <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
 <span class="linenos">16</span><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> !<span class="o">=</span> <span class="m">0</span> <span class="o">]</span>
@@ -221,7 +221,7 @@
 <span class="linenos"> 7</span><span class="nv">OUTPUT</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
 <span class="linenos"> 8</span><span class="nv">XORRISO</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
 <span class="linenos"> 9</span><span class="k">while</span> <span class="nb">getopts</span> <span class="s2">&quot;:i:o:p:s:xdgh&quot;</span> opt<span class="p">;</span> <span class="k">do</span>
-<span class="linenos">10</span><span class="k">case</span> <span class="nv">$opt</span> in
+<span class="linenos">10</span><span class="k">case</span> <span class="nv">$opt</span> <span class="k">in</span>
 <span class="linenos">11</span>i<span class="o">)</span>
 <span class="linenos">12</span><span class="nv">INPUT</span><span class="o">=</span><span class="nv">$OPTARG</span>
 <span class="linenos">13</span><span class="p">;;</span>
@@ -548,7 +548,7 @@
 <span class="linenos">29</span><span class="nb">echo</span> -e <span class="s2">&quot;\nYour preseeded ISO image is located at </span><span class="nv">$OUTPUT</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
-</div>
+</section>
 
 
            </div>

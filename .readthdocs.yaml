@@ -23,11 +23,6 @@ python:
     - requirements: docs/requirements
     - method: pip
     path: .
-    extra_requirements:
-    - docs
-    - method: setuptools
-#      path: package
-    system_packages: true
 # search:
 #   ignore:
      # Custom files to ignore

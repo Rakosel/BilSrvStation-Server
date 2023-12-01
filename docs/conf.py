@@ -37,15 +37,21 @@ copyright = '2022, BiLymo iOT corp'
 author = 'BiLymo F@rid'
 
 
+# The full version, including alpha/beta/rc tags 
+release = '1.0.3a'
+# -- General configuration ---------------------------------------------------
+verison = '1.0.3'
 # -- General configuration ---------------------------------------------------
 # -- General configuration
 
 extensions = [
     "sphinx.ext.duration",
     "sphinx.ext.doctest",
-    "sphinx.ext.autodoc",
-    "sphinx.ext.autosummary",
-    "sphinx.ext.intersphinx",
+#   "sphinx.ext.autosummary",
+    'sphinx.ext.autosectionlabel',
+    'sphinx.ext.autodoc',
+    'sphinx.ext.intersphinx',
+    'sphinx.ext.mathjax',
 ]
 
 intersphinx_mapping = {

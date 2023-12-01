@@ -3,6 +3,7 @@
 # This file only contains a selection of the most common options. For a full
 # list see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
+# https://sphinx-ru.readthedocs.io/ru/latest/sphinx.html
 
 # -- Path setup --------------------------------------------------------------
 
@@ -13,6 +14,14 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
+import sys, os
+sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(1, os.path.abspath('../'))
+import sphinx_rtd_theme
+
+# adding Folder_2 to the system path
+
+import extract_pii2_all,extract_pc_all,extract_preseed_all,extract_cmd_shell_all,extract_full_discr_pii2,extract_build_doc
 
 
 # -- Project information -----------------------------------------------------
@@ -28,9 +37,11 @@ author = "Read the Docs core team"
 extensions = [
     "sphinx.ext.duration",
     "sphinx.ext.doctest",
-    "sphinx.ext.autodoc",
-    "sphinx.ext.autosummary",
-    "sphinx.ext.intersphinx",
+#   "sphinx.ext.autosummary",
+    'sphinx.ext.autosectionlabel',
+    'sphinx.ext.autodoc',
+    'sphinx.ext.intersphinx',
+    'sphinx.ext.mathjax',
 ]
 
 intersphinx_mapping = {

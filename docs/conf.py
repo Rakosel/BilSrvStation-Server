@@ -44,9 +44,9 @@ copyright = '2022, BiLymo iOT corp'
 author = 'BiLymo F@rid'
 
 # The full version, including alpha/beta/rc tags 
-release = '1.0.2a'
+release = '1.0.3a'
 # -- General configuration ---------------------------------------------------
-verison = '1.0.2'
+verison = '1.0.3'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.extensions = ['myst_parser',
@@ -57,6 +57,10 @@ exclude_patterns = ["_build"]
 # sys.path.append(os.path.abspath("_ext"))
 extensions = [
 #    'multiproject',
+    "sphinx.ext.duration",
+    "sphinx.ext.doctest",
+    "sphinx.ext.autodoc",
+    "sphinx.ext.autosummary",
     'sphinx.ext.autosectionlabel',
     'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
@@ -74,6 +78,12 @@ extensions = [
 #    'sphinxemoji.sphinxemoji',
 #    'myst_parser'
 ]
+
+intersphinx_mapping = {
+    "rtd": ("https://docs.readthedocs.io/en/stable/", None),
+    "python": ("https://docs.python.org/3/", None),
+    "sphinx": ("https://www.sphinx-doc.org/en/master/", None),
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

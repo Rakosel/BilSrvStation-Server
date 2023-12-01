@@ -59,42 +59,6 @@ intersphinx_mapping = {
 }
 
 
-man_pages = [
-    (
-        "index",
-        "read-the-docs",
-        "Read the Docs Documentation",
-        ["Eric Holscher, Charlie Leifer, Bobby Grace"],
-        1,
-    )
-]
-
-hoverxref_intersphinx = [
-    "sphinx",
-    "pip",
-    "nbsphinx",
-    "myst-nb",
-    "ipywidgets",
-    "jupytext",
-]
-
-
-
-
-hoverxref_auto_ref = True
-hoverxref_domains = ["py"]
-hoverxref_roles = [
-    "option",
-    "doc",
-]
-hoverxref_role_types = {
-    "mod": "modal",  # for Python Sphinx Domain
-    "doc": "modal",  # for whole docs
-    "class": "tooltip",  # for Python Sphinx Domain
-    "ref": "tooltip",  # for hoverxref_auto_ref config
-    "confval": "tooltip",  # for custom object
-}
-
 rst_epilog = """
 .. |org_brand| replace:: Read the Docs Community
 .. |com_brand| replace:: Read the Docs for Business

@@ -1,0 +1,231 @@
+sudo umount -a
+sudo mount -a
+cp -Rf /home/admin/.ssh /opt/SAMBA_SHARE/
+chown admin_share:technics /opt/SAMBA_SHARE/.ssh
+chmod g+rwx -Rf /opt/SAMBA_SHARE/.ssh
+chmod ugo+rwx -Rf /opt/SAMBA_SHARE/.ssh
+sudo systemctl stop daemond-transmission
+sudo systemctl stop daemon-transmission
+sudo systemctl stop transmission-daemon
+sudo systemctl start transmission-daemon
+cp -Rf /home/admin/.ssh /opt/SAMBA_SHARE/
+chown admin_share -Rf /opt/SAMBA_SHARE/.ssh
+chown admin_share -R /torrents/Caribbeancom.com SuperPack [2010-2012] 720p
+chown admin_share -R /mnt/sdd1/torrents/Caribbeancom.com SuperPack [2010-2012] 720p
+cd /mmt/sdd1/torrents
+poweron
+sudo standby
+sudo suspend
+sudo systemctl suspend
+sudo fdisk -l
+history
+cat etc/mdadm/mdadm.conf
+cat /etc/mdadm/mdadm.conf
+update-initramfs -u
+sudo mdadm --detail --scan | sudo tee -a /etc/mdadm/mdadm.conf
+cat /etc/mdadm/mdadm.conf
+update-initramfs -u
+sudo mdadm --detail --scan
+sudo blkid
+sudo blkid
+sudo blkid
+sudo systemctl suspend
+sudo mdadm --detail --scan | sudo tee -a /etc/mdadm/mdadm.conf
+sudo update-initramfs -u
+sudo disk -l
+sudo fdisk -l
+6.	sudo mkfs.ext4 -F /dev/md0
+mkfs.ext4 -F /dev/md0
+sudo mount /dev/md0 /mnt/sde1
+echo '/dev/md0 /mnt/sde1 ext4 defaults,nofail,discard 0 0' | sudo tee -a /etc/fstab
+sudo setenforce 1
+nano /etc/fstab
+nano /etc/selinux/config
+chown admin_share:technics -Rf "/mnt/sde1"
+chmod ugo+rwx -Rf /mnt/sde1
+setfacl -m u:admin_share:rwx,u:admin:rwx,u:pub_share:rwx -R "/mnt/sde1;
+setfacl -m g:admins:rw,g:technics:rw -R "/mnt/sde1
+chcon -Rv -t public_content_rw_t "/mnt/sde1
+getfacl /mnt/sde1
+mc
+cd /mnt/sdeq
+cd /mnt/sde1
+ls -Z
+setenforce 0
+setenforce 1
+semanage fcontext -a -t public_content_rw_t "/mnt/sde1(/.*)?";
+chcon -Rv -t public_content_rw_t "/mnt/sde1";
+mv -Rf mnt/sdd1/Ddsk mnt/sde1
+mv mnt/sdd1/Ddsk mnt/sde1
+mv -Rf mnt/sdd1/Ddsk mnt/sde1
+cd mnt
+cd /mnt
+ls - la
+la -la
+mv -Rf /mnt/sdd1/Ddsk /mnt/sde1
+mv -f /mnt/sdd1/Ddsk /mnt/sde1
+mv -Rf /mnt/sdd1/Ddsk /mnt/sde1/Ddsk
+mv /mnt/sdd1/Ddsk /mnt/sde1/Ddsk
+sudo systemctl suspend
+mv /mnt/sdd1/Ddsk /mnt/sde1/Ddsk
+chown admin_share:technics -Rf "/mnt/sde1"
+cd /mnt/sdc1
+ls -la
+cd ..
+chmod ugo+rwx /mnt/sdc1
+mdadm --examine --scan >> /etc/mdadm/mdadm.conf
+cd /mnt
+ls -la
+mount /dev/sdc1 /mnt/sdc1
+nano /etc/fstab
+tmux ls
+cd  /mnt/sdb2/FreeRTOS/Demo/Posix_GCC/build
+./posix_demo
+sudo /etc/webmin/backup-config/backup.pl 1657204189299203
+ls -la
+cd /
+ls -la
+/etc/webmin/backup-config/backup.pl 1657204189299203
+cd (/usr/local/var/spool/fcron/
+cd /usr/local/var/spool/fcron/
+ls -la
+ls -la
+cd /dev/
+ls -la
+cd /
+dh -u /
+du -h /
+ls -la
+ls -lh
+ls -sh
+du -sh /
+dusort /
+du -h --max-dep=1
+du -sh --max-dep=1
+cd /etc/webmin
+ls -la
+cd backup-config
+ls -la
+nano backup. pl
+cd /etc/webmin/backup-config
+ls -la
+nano backup.pl
+nano config
+cd backups
+ls -la
+nano 1657204189299203.backup
+cd /usr
+ls -la
+cd..
+cd dev
+cd /dev
+ls -la
+n
+cd /home/rootsu
+ls -la
+nano WebMin_PostBackup.sh
+nano WebMin_PostBackup.sh
+nano WebMin_PostBackup.sh
+sudo service samba stop
+sudo service smbd stop
+sudo umount -a
+sudo systemctl smbd stop
+setfacl -m u:admin_share:rwx,u:admin:rwx,u:pub_share:rwx,g:admins:rw,g:technics:rw -R "/mnt/sdc1/";
+chown admin_share:technics -Rf "/mnt/sdc1"
+cd /mnt/sdc1
+ls -la
+cd ..
+ls -la
+chmod ugo+rwx -Rf /mnt/sdc1
+ls -la
+getfacl /mnt/sdc1
+getfacl /mnt/sdd1
+chmod ugo+rwx -Rf /mnt/sdc1
+chmod ugo+rwx -Rf /mnt/sdc1
+getfacl /mnt/sdd1
+sudo systemctl stop smbd
+sudo umount -a
+sudo mount -a
+sudo systemctl start smbd
+sudo systemctl stop smbd
+sudo umount -a
+sudo fdisk -l
+sudo nano /etc/fstab
+nano /etc/fstab
+mount -a
+nano /etc/fstab
+nano /etc/fstab
+mount -a
+systemctl start smbd
+sudo chcon -Rv -t public_content_rw_t "/mnt/sdc1";
+sudo nano /etc/fstab
+\nano /etc/fstab
+\nano /etc/fstab
+nano /etc/fstab
+chmod ugo+rwx /mnt/sdb2
+service transmission-daemon status
+cd /opt/SAMBA_SHARE/DebianISO/install_ext/install/home/rootsu
+checkmodule -M -m -o nodegcc_app1.mod  nodegcc_app1.te
+cd /etc/ssh
+ls -la
+sudo fcrontab -e
+fcrontab -e
+systemctl stop fcron
+dpkg-reconfigure openssh-server
+sudo e4defrag /dev/sda5
+e4defrag /dev/sda5
+sudo e4defrag /dev/sda1
+sudo mount /dev/sdc1 /mnt/sdc1
+sudo systemctl disable cron
+sudo service fcron status
+fcrontab -e
+fcrontab -e
+sudo journalctl -xe | grep fcron
+systemctl fcron restart
+systemctl restart fcron
+e2fsck -y /dev/sdc1 &&& mount /dev/sdc1 /mnt/sdc1
+e2fsck -y /dev/sdc1 && mount /dev/sdc1 /mnt/sdc1
+cd /usr/
+ls -la
+cd local
+ls -la
+cd var
+ls -la
+cd spool
+ls -la
+cd fcron
+ls -la
+nano root.orig
+fcrontab -e
+fcrontab -e
+cd /etc/ssh
+ls -la
+sudo fcrontab -e
+fcrontab -e
+fcrontab -e
+fdisk -l
+umount /dev/md0
+e2fsck -y /dev/md0
+mount -a
+chmod ugo+rwx -RF /mnt/sde1
+chmod ugo+rwx -R /mnt/sde1
+gf
+gf
+nano /etc/fstab
+umount /dev/sdd1
+systemctl smbd stop
+systemctl stop smbd]
+systemctl stop smbd
+e2fsck -y -f -v /dev/sdd1 && mount /dev/sdd1
+umount /dev/sdd1
+e2fsck -y -f -v /dev/sdd1 && mount /dev/sdd1
+systemctl start smbd
+frcontab -e
+bash /home/rootsu/WebMin_PostBackup.sh
+bash /home/rootsu/WebMin_PostBackup.sh
+bash /home/rootsu/WebMin_PostBackup.sh
+fcronatb -e
+fcrontab -e
+sudo perl /etc/webmin/backup=config/backup.pl 1657204189299203
+sudo perl /etc/webmin/backup-config/backup.pl 1657204189299203
+journalctl -xe

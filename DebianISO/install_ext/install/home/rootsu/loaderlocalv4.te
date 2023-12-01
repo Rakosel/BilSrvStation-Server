@@ -1,0 +1,30 @@
+
+module loaderlocalv4 1.0;
+
+require {
+	type auditd_t;
+	type systemd_modules_load_t;
+	type systemd_sysusers_t;
+	type setrans_t;
+	type tmp_t;
+	type systemd_tmpfiles_t;
+	class capability { dac_override dac_read_search };
+	class dir create;
+}
+
+#============= auditd_t ==============
+allow auditd_t self:capability { dac_override dac_read_search };
+
+#============= setrans_t ==============
+allow setrans_t self:capability { dac_override dac_read_search };
+
+#============= systemd_modules_load_t ==============
+allow systemd_modules_load_t self:capability { dac_override dac_read_search };
+
+#============= systemd_sysusers_t ==============
+allow systemd_sysusers_t self:capability { dac_override dac_read_search };
+
+#============= systemd_tmpfiles_t ==============
+
+#!!!! This avc can be allowed using the boolean 'systemd_tmpfiles_manage_all'
+allow systemd_tmpfiles_t tmp_t:dir create;

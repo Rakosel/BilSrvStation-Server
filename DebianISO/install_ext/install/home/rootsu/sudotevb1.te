@@ -1,0 +1,41 @@
+
+module sudotevb1 1.0;
+
+require {
+	type var_t;
+	type sysadm_t;
+	type mount_t;
+	type system_cronjob_t;
+	type crond_t;
+	class process { getcap noatsecure rlimitinh setcap siginh transition };
+	class file relabelto;
+}
+
+#============= crond_t ==============
+
+#!!!! This avc is a constraint violation.  You would need to modify the attributes of either the source or target types to allow this access.
+#Constraint rule: 
+#	constrain process { transition noatsecure siginh rlimitinh dyntransition } ((u1 == u2 -Fail-)  or (t1 == can_change_process_identity)  and (t2 == process_user_target -Fail-)  or (t1 == cron_source_domain)  and (t2 == cron_job_domain -Fail-)  or (u2 == system_u -Fail-)  or (t1 == can_system_change -Fail-)  and (u2 == system_u -Fail-)  or (t1 == process_uncond_exempt -Fail-) ); Constraint DENIED
+
+#	Possible cause is the source user (system_u) and target user (unconfined_u) are different.
+allow crond_t system_cronjob_t:process transition;
+
+#============= mount_t ==============
+allow mount_t self:process { getcap setcap };
+
+#============= system_cronjob_t ==============
+
+#!!!! This avc is a constraint violation.  You would need to modify the attributes of either the source or target types to allow this access.
+#Constraint rule: 
+#	constrain process { transition noatsecure siginh rlimitinh dyntransition } ((r1 == r2 -Fail-)  or (t1 == can_change_process_role -Fail-)  and (t2 == process_user_target)  or (t1 == cron_source_domain -Fail-)  and (t2 == cron_job_domain -Fail-)  or (t1 == can_system_change -Fail-)  and (r2 == system_r -Fail-)  or (t1 == process_uncond_exempt -Fail-) ); Constraint DENIED
+
+#	Possible cause is the source role (system_r) and target role (sysadm_r) are different.
+allow system_cronjob_t sysadm_t:process { noatsecure rlimitinh siginh transition };
+
+#!!!! This avc is a constraint violation.  You would need to modify the attributes of either the source or target types to allow this access.
+#Constraint rule: 
+#	constrain file { create relabelfrom relabelto } ((u1 == u2 -Fail-)  or (t1 == can_change_object_identity -Fail-) ); Constraint DENIED
+
+#	Possible cause is the source user (unconfined_u) and target user (system_u) are different.
+#	Possible cause is the source level (s0-s0:c0.c1023) and target level (s0) are different.
+allow system_cronjob_t var_t:file relabelto;

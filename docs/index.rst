@@ -1,25 +1,43 @@
-.. include:: ../README.rst
+.. BilSrvStation_Server_PC's documentation master file, created by
+   sphinx-quickstart on Fri May 13 21:38:34 2022.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
 
-Welcome to Lumache's documentation!
-===================================
-
-**Lumache** (/lu'make/) is a Python library for cooks and food lovers
-that creates recipes mixing random ingredients.
-It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
-and offers a *simple* and *intuitive* API.
-
-Check out the :doc:`usage` section for further information, including
-how to :ref:`installation` the project.
-
-.. note::
-
-   This project is under active development.
-
-Contents
---------
+Добро пожаловать на BilSrvStation_Server_PC's!!!
+================================================
 
 .. toctree::
+   :maxdepth: 11
+   :caption: Содержание:
+   :numbered:
+   
+   sourcelink
+   cut_discr_pc
+   cut_discr_preseed
+   full_discr_pii2
+   only_code_pii2
+   cut_discr_pii2
+   cut_discr_pii2_pack
+   cut_discr_cmd_shell
+   structure
+   build_doc
+   note
 
-   Home <self>
-   usage
-   api
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+   
+.. |date| date:: %d.%m.%Y
+.. |time| time:: %H.%M.%s
+.. |author| replace:: BiLymo F@rid
+.. |copy| unicode:: 0xA9
+.. |---| unicode:: U+02014
+
+.. meta::
+   :description: BilSrvStation_Server_PC's docimentations
+   :keywords: Linux,OS,Server,WebServer
+   :http-equiv=Content-Type: text/html; charset=UTF-8
+   

@@ -1,0 +1,51 @@
+
+module sudotev1 1.0;
+
+require {
+	type user_home_t;
+	type updpwd_t;
+	type home_root_t;
+	type user_home_dir_t;
+	type sysadm_t;
+	type etc_t;
+	type locale_t;
+	type var_lib_t;
+	type bacula_t;
+	type semanage_read_lock_t;
+	type sysadm_sudo_t;
+	type sshd_t;
+	type user_home_t;
+	class capability fsetid;
+	class file { create execute execute_no_trans read ioctl open rename setattr unlink write getattr map };
+	class key search;
+	class key link;
+}
+#============= bacula_t ==============
+allow bacula_t locale_t:file map;
+allow bacula_t var_lib_t:file { create write };
+
+#============= sshd_t ==============
+allow sshd_t sysadm_t:key link;
+allow sshd_t sysadm_t:key search;
+allow sshd_t user_home_dir_t:file { getattr open };
+
+#============= sysadm_sudo_t ==============
+allow sysadm_sudo_t semanage_read_lock_t:file getattr;
+allow sysadm_sudo_t user_home_t:file map;
+
+#============= sysadm_sudo_t ==============
+allow sysadm_sudo_t etc_t:file { create rename setattr unlink };
+
+#!!!! This avc is a constraint violation.  You would need to modify the attributes of either the source or target types to allow this access.
+#Constraint rule: 
+#	constrain file { ioctl read write create getattr setattr lock relabelfrom relabelto append map unlink link rename execute quotaon mounton audit_access open execmod watch watch_mount watch_sb watch_with_perm watch_reads execute_no_trans entrypoint } ((u1 == u2 -Fail-)  or (u1 == system_u -Fail-)  or (u1 == unconfined_u -Fail-)  or (u1 == sysadm_u -Fail-)  or (u2 == system_u -Fail-)  or (t1 != ubac_constrained_type -Fail-)  or (t2 != ubac_constrained_type -Fail-)  or (t1 == ubacfile -Fail-) ); Constraint DENIED
+
+#	Possible cause is the source user (root) and target user (unconfined_u) are different.
+#	Possible cause is the source level (s0-s0:c0.c1023) and target level (s0) are different.
+allow sysadm_sudo_t user_home_t:file { ioctl write };
+
+#============= sysadm_t ==============
+allow sysadm_t home_root_t:file { getattr open read execute execute_no_trans };
+
+#============= updpwd_t ==============
+allow updpwd_t self:capability fsetid;

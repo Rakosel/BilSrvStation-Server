@@ -1,0 +1,19 @@
+.. Список автозамен:
+.. |rest| replace:: reStructuredText
+
+
+.. Дата:
+.. |date| date:: %d.%m.%Y
+.. |time| date:: %H:%M
+.. _SPHINX: https://www.sphinx-doc.org/ru/master/index.html
+
+.. _build_doc:
+
+	Построение этой документации
+
+Discribtion for build autoreplace
+
+В данном разделе приведены инструменты с помощью которых возможно построения данной документации.
+Для чего использовались средства разработки `sphinx <https://www.sphinx-doc.org/ru/master/index.html>`, синтаксис которого подчиняется ``reStructuredText`` на языке ``python``.
+:note!!! **reStructuredText** (сокращение: **ReST**, расширение файла: **.rst**) — облегчённый язык разметки, который может быть преобразован в различные форматы — HTML, ePub, PDF и другие.
+

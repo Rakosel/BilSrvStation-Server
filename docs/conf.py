@@ -13,16 +13,16 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
-import sys, os
-sys.path.insert(0, os.path.abspath('.'))
-sys.path.insert(1, os.path.abspath('../'))
-import sphinx_rtd_theme
+# import sys, os
+# sys.path.insert(0, os.path.abspath('.'))
+# sys.path.insert(1, os.path.abspath('../'))
+# import sphinx_rtd_theme
 
 # adding Folder_2 to the system path
 
 # -- Project information -----------------------------------------------------
 
-numfig = True
+# numfig = True
 # time.strtime
 today = '%d.%m.%Y'
 today_fmt = '%B %d, %Y'

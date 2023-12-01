@@ -708,6 +708,8 @@ echo -e "y\n" | apt-get install build-essential libssl-dev libffi-dev python3-de
 echo -e "y\n" | apt-get install python3-venv
 echo -e "y\n" | apt-get install mdadm 
 echo -e "y\n" | apt-get install hdparm
+echo -e "y\n" | apt-get install hddtemp lm-sensors psensor
+echo -e "y\n" | apt-get install stress
 systemctl enable mdadm
 update-initramfs -u
 
